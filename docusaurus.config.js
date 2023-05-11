@@ -40,7 +40,6 @@ const config = {
         api: {
           path: require.resolve("./static/dist.json"),
           routeBasePath: "/api",
-          remark: []
         },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
