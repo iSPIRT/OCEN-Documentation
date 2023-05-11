@@ -2,46 +2,29 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's discover **What is OCEN**.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+OCEN 4.0: Open Credit Enablement Network specification APIs
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+India is starved of access to formal, affordable credit. There is a massive market opportunity to be tapped here that has been inhibited because the current rails for flow of capital to the untapped market are broken.
 
-### What you'll need
+They are broken for the lenders, to be able to reach out to these prospective borrowers and surface creditworthy borrowers. Few of the many reasons include high cost of borrower acquisition and time consuming custom third party tie-ups with loan originators.
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+They are broken for the marketplaces to connect their customers with lenders. The custom integrations and manual processes are costly and time consuming. The Turnaround Time to get loans deposited to customers is high and their ability to provide custom financial products quickly is restricted, owing to implementation challenges.
 
-## Generate a new site
+Sourcing, identity verification, underwriting, disbursement, recollections and dispute management are few of the many responsibilities managed by a lender today. Historically, the best lenders have had to excel at each of these skills in order to maximize their profit pools and serve the larger and larger markets.
 
-Generate a new Docusaurus site using the **classic template**.
+OCEN is an initiative to unbundle lending and enable the creation of specialized entities, each specialized at one part of the job. Therefore, we envision the future of lending to be a partnership between multiple firms individually focused on sourcing/distribution, identity verification, underwriting, capital arrangement, recollections, etc. The entities like marketplaces who have high business-connect with their customers (businesses or individuals), can embed credit offerings in their applications now. These entities are referred to as ‘Borrower Agents’ (BAs) and were previously referred to as 'Loan Service Providers' (LSPs).
 
-The classic template will automatically be added to your project after you run the command:
+BA is a departure from the Direct Sourcing Agent (DSA) model and is an 'agent of the borrower'. BA explains to borrowers their 'bill of rights' ensuring transparency and safeguarding of borrower interests. It educates them about the various credit product offerings, pricing and more details. It helps them get access to formal, affordable credit at low interest rates and collaborates with lenders to create more tailored offerings for borrowers.
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+A reference pilot was created to showcase the power of the above idea in the GST SAHAY pilot project that used the OCEN 3.3 APIs. In its simplest form, it's a loan marketplace that enables SMEs to compare loan offers from multiple lenders and choose the best one. In its more advanced version, this BA would be akin to a borrower’s financial advisor, looking after their interests, fetching the best offers and advising the customer to make good decisions.
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+In the longer run, it is envisioned that many more BAs (with apps) will be created. Each of these would focus on distinct borrower pools and build the specialized experiences suited to their customers. This would allow lenders to focus purely on their underwriting and collections logic and cater to diverse collaborations with the BAs.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+This is a manifestation of our efforts to democratise credit.
 
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
