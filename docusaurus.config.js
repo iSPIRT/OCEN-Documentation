@@ -42,6 +42,7 @@ const config = {
           routeBasePath: "/api",
         },
         docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -75,7 +76,12 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          { to: '/docs', label: 'Docs', position: 'left' },
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'left',
+            label: 'Docs',
+          },
           { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/api', label: 'API', position: 'left' },
         ],
