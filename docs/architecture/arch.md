@@ -1,8 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 1
 ---
 
-# High Level Architecture
+# Introduction
 
 The following is a high-level sequence diagram of the OCEN 4.0 flow for the initial phases from Product creation through loan granting that highlights the role of the above components. The end-to-end flow can be split into 3 phases:
 
