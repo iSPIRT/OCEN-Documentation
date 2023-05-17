@@ -1,17 +1,15 @@
 ---
-sidebar_position: 2
+sidebar_position: 10
 ---
 
-# Terminology
+# Terminologies
 
-Following is the list of all abbreviations used in the document
+Following is the list of all abbreviations and acronyms used in the document
 
-
-| Acronym   |  Expansion                        |
-| :---      |                             ----: |
+| Abbreviation / Acronym | Expansion                         |
+| :---      | :-----                            |
 | AA        | Account Aggregator                |
 | BA        | Borrower Agent                    |
-| LSPA      | Loan Service Provider (see BA)    |
+| LSP       | Loan Service Provider (see BA)    |
 | OCEN      | Open Credit Enablement Network    |
-
-
+| SRO       | Self Regulated Organization       |
