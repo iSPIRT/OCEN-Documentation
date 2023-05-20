@@ -2,9 +2,14 @@
 apis:
   main@v1:
     root: openapi/openapi.yaml
-theme.openapi:
-  htmlTemplate: ./docs/dev.html
-  theme:
-    colors:
-      primary:
-        main: "#32329f"
+
+extends:
+  - recommended
+
+theme:
+  openapi:
+    htmlTemplate: ./redocly/dev.html
+    theme:
+      colors:
+        primary:
+          main: "#32329f"

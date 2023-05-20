@@ -10,9 +10,6 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   x-logo:
     url: './images/logo.svg'
-  description: 
-    $ref: ../docs/index.md
-
 externalDocs:
   description: Find out how to create a GitHub repo for your OpenAPI definition.
   url: 'https://github.com/iSPIRT/OCEN-Specs'

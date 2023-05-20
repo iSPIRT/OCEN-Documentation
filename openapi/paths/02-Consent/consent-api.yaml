@@ -6,7 +6,7 @@ consentHandleRequest:
     - Consent BA to Lender
     summary: Consent Handle Request
     description: Create consent handle with Account Aggregator |
-      This API is used to request the lenders to send a consent request for fetching the bank account statements, GST historical data. <br>
+      This API is used to request the lenders to send a consent request for fetching the bank account statements, GST historical data. <br />
       The lender (FIU) checks with the AA and creates a consent handle internally once this API is triggered
     requestBody:
       description: Request by BA to lender to get consent handle with Account Aggregator

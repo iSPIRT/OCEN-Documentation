@@ -4,51 +4,54 @@ DPRegisterSchemaRequest:
     version: 
       type: string
       description: follow semantic version, ref https://semver.org/ |
-        <table> <thead>
+        <table>
+          <thead>
             <tr>
-              <td>Status</th>
-              <td>Stage</th>
-              <td>Rule</th>
-              <td>ExampleVersion</th>
+              <th>Status </th>
+              <th>Stage </th>
+              <th>Rule </th>
+              <th>ExampleVersion </th>
             </tr>
-          </thead> <tbody>
+          </thead>
+          <tbody>
             <tr>
-              <td>First release</th>
-              <td>New product</th>
-              <td>Start with 1.0.0</th>
-              <td>1.0.0</th>
-            </tr>
-            <tr>
-              <td>-</th>
-            </tr>
-            <tr>
-              <td>Backward compatible bug fixes</th>
-              <td>Patch release</th>
-              <td>Increment the third digit</th>
-              <td>1.0.1</th>
+              <td>First release </td>
+              <td>New product </td>
+              <td>Start with 1.0.0 </td>
+              <td>1.0.0 </td>
             </tr>
             <tr>
-              <td>-</th>
+              <td>- </td>
             </tr>
             <tr>
-              <td>Backward compatible new features</th>
-              <td>Minor release</th>
-              <td>Increment the middle digit and reset last digit to zero</th>
-              <td>1.1.0</th>
+              <td>Backward compatible bug fixes </td>
+              <td>Patch release </td>
+              <td>Increment the third digit </td>
+              <td>1.0.1 </td>
             </tr>
             <tr>
-              <td>-</th>
+              <td>- </td>
             </tr>
             <tr>
-              <td>Changes that break backward compatibility</th>
-              <td>Major release</th>
-              <td>Increment the first digit and reset middle and last digits to zero</th>
-              <td>2.0.0</th>
+              <td>Backward compatible new features </td>
+              <td>Minor release </td>
+              <td>Increment the middle digit and reset last digit to zero </td>
+              <td>1.1.0 </td>
             </tr>
             <tr>
-              <td>-</th>
+              <td>- </td>
             </tr>
-          </tbody> </table>
+            <tr>
+              <td>Changes that break backward compatibility </td>
+              <td>Major release </td>
+              <td>Increment the first digit and reset middle and last digits to zero </td>
+              <td>2.0.0 </td>
+            </tr>
+            <tr>
+              <th>- </th>
+            </tr>
+          </tbody>
+        </table>
     name: 
       type: string
     jsonSchema:

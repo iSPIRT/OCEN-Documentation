@@ -17,14 +17,14 @@ properties:
     creater:
         type: string
     is_enable:
-        type: bool
+        type: boolean
     is_private:
-        type: bool
+        type: boolean
     approved_at:
         type: integer
         format: int64
     is_aa_required:
-        type: bool
+        type: boolean
     dedupe:
         type: object
         properties:
@@ -39,7 +39,7 @@ properties:
         type: object
         properties:
             allowed:
-                type: bool
+                type: boolean
             partners:
                 type: array
                 items:
@@ -48,7 +48,7 @@ properties:
         type: object
         properties:
             allowed:
-                type: bool
+                type: boolean
             partners:
                 type: array
                 items:
@@ -57,7 +57,7 @@ properties:
         type: object
         properties:
             allowed:
-                type: bool
+                type: boolean
             partners:
                 type: array
                 items:
@@ -70,7 +70,7 @@ properties:
         type: object
         properties:
             allowed:
-                type: bool
+                type: boolean
             partners:
                 type: array
                 items:
@@ -83,7 +83,7 @@ properties:
         type: object
         properties:
             allowed:
-                type: bool
+                type: boolean
             partners:
                 type: array
                 items:
@@ -92,7 +92,7 @@ properties:
         type: object
         properties:
             allowed:
-                type: bool
+                type: boolean
             partners:
                 type: array
                 items:
@@ -101,7 +101,7 @@ properties:
         type: object
         properties:
             allowed:
-                type: bool
+                type: boolean
             partners:
                 type: array
                 items:

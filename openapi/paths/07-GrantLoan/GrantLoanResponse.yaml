@@ -28,45 +28,48 @@ post:
                     $ref: '../../components/schemas/Response.yaml'
                   loanDetails:
                     type: object
-                    loanId: 
-                      type: string
-                    loanApplicationId:
-                      type: string
-                    loanStatus:
-                      type: string
-                      enum:
-                        - GRANTED
-                        - REJECTED
-                        - ACTIVE
-                        - DEFAULTED
-                        - OVERDUE
-                        - ACTION_REQUIRED
-                    createdDate:
-                      type: string
-                    startDate:
-                      type: string
-                    endDate:
-                      type: string
-                    #TODO made the change to map to the product registry
-                    productId:
-                      type: string
-                    borrower:
-                      $ref: '../../components/schemas/Borrower.yaml'
-                    documents:
-                      type: array
-                      $ref: '../../components/schemas/Document.yaml'
-                    guarantors:
-                      type: array
-                      $ref: '../../components/schemas/Guarantor.yaml'
-                    applications:
-                      type: array
-                      $ref: '../../components/schemas/Applicant.yaml'
-                    terms:
-                      $ref: '../../components/schemas/LoanTerms.yaml'
-                    disbursement:
-                      $ref: '../../components/schemas/Disbursement.yaml'
-                    repayment:
-                      $ref: '../../components/schemas/Repayment.yaml'
+                    properties:
+                      loanId: 
+                        type: string
+                      loanApplicationId:
+                        type: string
+                      loanStatus:
+                        type: string
+                        enum:
+                          - GRANTED
+                          - REJECTED
+                          - ACTIVE
+                          - DEFAULTED
+                          - OVERDUE
+                          - ACTION_REQUIRED
+                      createdDate:
+                        type: string
+                      startDate:
+                        type: string
+                      endDate:
+                        type: string
+                      productId:
+                        type: string
+                      borrower:
+                        $ref: '../../components/schemas/Borrower.yaml'
+                      documents:
+                        type: array
+                        items:
+                          $ref: '../../components/schemas/Document.yaml'
+                      guarantors:
+                        type: array
+                        items:  
+                          $ref: '../../components/schemas/Guarantor.yaml'
+                      applications:
+                        type: array
+                        items:
+                          $ref: '../../components/schemas/Applicant.yaml'
+                      terms:
+                        $ref: '../../components/schemas/LoanTerms.yaml'
+                      disbursement:
+                        $ref: '../../components/schemas/Disbursement.yaml'
+                      repayment:
+                        $ref: '../../components/schemas/Repayment.yaml'
           
 
   responses:

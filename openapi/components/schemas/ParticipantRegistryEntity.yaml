@@ -27,7 +27,7 @@ EntityAttributes:
     baseUrl:
       type: string
       description: base url of the module in eco-system.
-          The typical format of a baseUrl is as follows.<br>
+          The typical format of a baseUrl is as follows.<br />
           ``` <fqdn>.<extension>
           ```
           where, <br/>
