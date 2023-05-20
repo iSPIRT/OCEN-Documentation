@@ -1,0 +1,15 @@
+type: object
+required:
+  - key
+  - value
+properties:
+  key:
+    type: string
+  value:
+    type: string
+    examples:
+      - AADHAAR
+  url:
+    type: string
+  extensibleData:
+    $ref: "./ExtensibleData.yaml"

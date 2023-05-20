@@ -1,0 +1,54 @@
+#TODO the loanId and loanApplicationId missing from the response
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Set Repayment Lender to BA 
+  summary: Set Repayment Plan Response
+  description: This API is invoked by the lender to the BA giving the payment url where he can enter details of repayment.
+  operationId: setRepaymentPlanResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - loanApplicationId
+                  - response
+                  - requestId
+                  #TODO Missing in the specification but there in the GEM Doc.
+                  - useCollectionSupport
+                  - plan
+                  - paymentMethod
+              
+              properties:
+                  metadata:
+                    $ref: '../../components/schemas/MetaData.yaml'
+                  response:
+                    $ref: '../../components/schemas/Response.yaml'
+                  loanApplicationId:
+                    type: string
+                  loanId:
+                    type: string
+                  requestId:
+                    type: string
+                  plan:
+                    $ref: '../../components/schemas/PaymentPlan.yaml'
+                  paymentMethod:
+                    $ref: '../../components/schemas/PaymentMethod.yaml'
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

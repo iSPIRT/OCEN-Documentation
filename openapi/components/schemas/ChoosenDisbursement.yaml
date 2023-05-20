@@ -1,0 +1,9 @@
+#TODO Check with Disbursement
+type: object
+required:
+    - plan
+properties:
+    plan:
+        $ref: './PaymentPlan.yaml'
+    accountDetails:
+        $ref: './AccountDetails.yaml'

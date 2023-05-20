@@ -1,0 +1,9 @@
+Signature:
+  name: Signature
+  in: header
+  required: true
+  description: Detached JWS of the body. This is the digital signature of the request body signed using the signing private key of the caller.
+    For bodyless request JWS of path should be provided, <br />e.g. for API ```GET /v1/{type}/{id}```, JWS of ```/{type}/{id}```
+  schema:
+    type: string
+    format: byte

@@ -1,0 +1,8 @@
+type: object
+required:
+    - plan
+properties:
+    plan:
+        $ref: './PaymentPlan.yaml'
+    method:
+        $ref: './PaymentMethod.yaml'

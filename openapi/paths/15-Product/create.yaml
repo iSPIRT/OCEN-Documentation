@@ -1,0 +1,67 @@
+post:
+  operationId: createProduct
+  tags:
+    - Product Registry
+  summary: Product create API. 
+  requestBody:
+    description: This will be called from console to create product
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - description
+          properties:
+            name:
+              type: string
+              format: 'Alphanumeric'
+              maxLength: 35
+              description: Name of product
+            description:
+              type: string
+              format: 'Alphanumeric'
+              maxLength: 35
+              description: Description of product. 
+
+  responses:
+    '200':
+      description: Acknowledgement of product creation
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../components/schemas/Product.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+
+get:
+  operationId: listProduct
+  tags:
+    - Product Registry
+  summary: List product API 
+  responses:
+    '200':
+      description: Acknowledgement of product creation
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/Product.yaml
+                
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

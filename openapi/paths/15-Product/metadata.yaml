@@ -1,0 +1,26 @@
+get:
+  operationId: getProductMetadata
+  tags:
+    - Product Registry
+  summary: Get Product Metadata.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Product.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

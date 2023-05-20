@@ -1,0 +1,15 @@
+# See https://redoc.ly/docs/cli/configuration/ for more information.
+apis:
+  main@v1:
+    root: openapi/openapi.yaml
+
+extends:
+  - recommended
+
+theme:
+  openapi:
+    htmlTemplate: ./redocly/dev.html
+    theme:
+      colors:
+        primary:
+          main: "#32329f"

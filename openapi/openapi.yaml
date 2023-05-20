@@ -1,0 +1,217 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: ispirt.in/
+  contact:
+    email: community@ispirt.in
+    url: 'https://ispirt.in/'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: './images/logo.svg'
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: 'https://github.com/iSPIRT/OCEN-Specs'
+
+paths:
+  /v4.0.0alpha/loanApplications/createLoanRequest:
+    $ref: './paths/01-LoanApplications/CreateLoanApplicationsRequest.yaml'
+  /v4.0.0alpha/loanApplications/createLoanResponse:
+    $ref: './paths/01-LoanApplications/CreateLoanApplicationsResponse.yaml'
+  /v4.0.0alpha/consent/consentHandleRequest:
+    $ref: 'paths/02-Consent/consent-api.yaml#/consentHandleRequest'
+  /v4.0.0alpha/consent/consentHandleResponse:
+    $ref: 'paths/02-Consent/consent-api.yaml#/consentHandleResponse'
+  /v4.0.0alpha/ba/onConsentHandle:
+    $ref: './paths/02-Consent/ConsentHandleUpdate.yaml'
+  /v4.0.0alpha/lender/consent/notify:
+    $ref: './paths/02-Consent/ConsentJourneyNotification.yaml'
+  /v4.0.0alpha/ba/consentStatusRequest:
+    $ref: './paths/02-Consent/ConsentStatusRequest.yaml'
+  /v4.0.0alpha/lender/consentStatusResponse:
+    $ref: './paths/02-Consent/ConsentStatusResponse.yaml'    
+  /v4.0.0alpha/offers/generateOffersRequest:
+    $ref: 'paths/03-Offers/GenerateOffersRequest.yaml'
+  /v4.0.0alpha/offers/generateOffersResponse:
+    $ref: 'paths/03-Offers/GenerateOffersResponse.yaml'
+  /v4.0.0alpha/offers/setOffersRequest:
+    $ref: 'paths/03-Offers/SetOfferRequest.yaml'
+  /v4.0.0alpha/offers/setOffersResponse:
+    $ref: 'paths/03-Offers/SetOfferResponse.yaml'
+  /v4.0.0alpha/offers/triggerKycRequest:
+    $ref: 'paths/04-KYC/TriggerKYCRequest.yaml'
+  /v4.0.0alpha/offers/triggerKycResponse:
+    $ref: 'paths/04-KYC/TriggerKYCResponse.yaml'
+  /v4.0.0alpha/offers/kycStatusRequest:
+    $ref: 'paths/04-KYC/KYCStatusRequest.yaml'
+  /v4.0.0alpha/offers/kycStatusResponse:
+    $ref: 'paths/04-KYC/KYCStatusResponse.yaml'
+  /v4.0.0alpha/loanAcceptance/triggerLoanAcceptanceRequest:
+    $ref: 'paths/05-LoanAcceptance/TriggerLoanAcceptanceRequest.yaml'
+  /v4.0.0alpha/loanAcceptance/triggerLoanAcceptanceResponse:
+    $ref: 'paths/05-LoanAcceptance/TriggerLoanAcceptanceResponse.yaml'
+  /v4.0.0alpha/loanAcceptance/verifyLoanAcceptanceRequest:
+    $ref: 'paths/05-LoanAcceptance/VerifyLoanAcceptanceRequest.yaml'
+  /v4.0.0alpha/loanAcceptance/verifyLoanAcceptanceResponse:
+    $ref: 'paths/05-LoanAcceptance/VerifyLoanAcceptanceResponse.yaml'
+  /v4.0.0alpha/loanAcceptance/loanAgreementRequest:
+    $ref: 'paths/05-LoanAcceptance/LoanAgreementRequest.yaml'
+  /v4.0.0alpha/loanAcceptance/LoanAgreementResponse:
+    $ref: 'paths/05-LoanAcceptance/LoanAgreementResponse.yaml'
+  /v4.0.0alpha/disbursement/setRepaymentPlanRequest:
+    $ref: 'paths/06-SetRepayment/SetRepaymentPlanRequest.yaml'
+  /v4.0.0alpha/disbursement/setRepaymentPlanResponse:
+    $ref: 'paths/06-SetRepayment/SetRepaymentPlanResponse.yaml'
+  /v4.0.0alpha/disbursement/setRepaymentPlanStatusRequest:
+    $ref: 'paths/06-SetRepayment/SetRepaymentPlanStatusRequest.yaml'
+  /v4.0.0alpha/disbursement/setRepaymentPlanStatusResponse:
+    $ref: 'paths/06-SetRepayment/SetRepaymentPlanStatusResponse.yaml'
+  /v4.0.0alpha/grantLoan/grantLoanRequest:
+    $ref: 'paths/07-GrantLoan/GrantLoanRequest.yaml'
+  /v4.0.0alpha/grantLoan/grantLoanResponse:
+    $ref: 'paths/07-GrantLoan/GrantLoanResponse.yaml'
+  /v4.0.0alpha/disbursement/setDisbursementAccountRequest:
+    $ref: 'paths/08-Disbursement/SetDisbursementAccountRequest.yaml'
+  /v4.0.0alpha/disbursement/setDisbursementAccountResponse:
+    $ref: 'paths/08-Disbursement/SetDisbursementAccountResponse.yaml'
+  /v4.0.0alpha/disbursement/triggerDisbursementRequest:
+    $ref: 'paths/08-Disbursement/TriggerDisbursementRequest.yaml'
+  /v4.0.0alpha/disbursement/triggerDisbursementResponse:
+    $ref: 'paths/08-Disbursement/TriggerDisbursementResponse.yaml'
+  /v4.0.0alpha/disbursement/triggerDisbursementStatusRequest:
+    $ref: 'paths/08-Disbursement/TriggerDisbursementStatusRequest.yaml'
+  /v4.0.0alpha/disbursement/triggerDisbursementStatusResponse:
+    $ref: 'paths/08-Disbursement/TriggerDisbursementStatusResponse.yaml'
+  /v4.0.0alpha/repayment/triggerRepaymentRequest:
+    $ref: 'paths/09-TriggerRepayment/TriggerRepaymentRequest.yaml'
+  /v4.0.0alpha/repayment/triggerRepaymentResponse:
+    $ref: 'paths/09-TriggerRepayment/TriggerRepaymentResponse.yaml'
+  /v4.0.0alpha/repayment/triggerRepaymentStatusRequest:
+    $ref: 'paths/09-TriggerRepayment/TriggerRepaymentStatusRequest.yaml'
+  /v4.0.0alpha/repayment/triggerRepaymentStatusResponse:
+    $ref: 'paths/09-TriggerRepayment/TriggerRepaymentStatusResponse.yaml'
+  /v4.0.0alpha/repayment/confirmRepaymentRequest:
+    $ref: 'paths/06-SetRepayment/ConfirmRepaymentRequest.yaml'
+  /v4.0.0alpha/loanDetails/getloanRequest:
+    $ref: 'paths/10-LoanDetails/GetLoanRequest.yaml'
+  /v4.0.0alpha/loanDetails/getloanResponse:
+    $ref: 'paths/10-LoanDetails/GetLoanResponse.yaml'
+  /v4.0.0alpha/loanDetails/listloansRequest:
+    $ref: 'paths/10-LoanDetails/ListLoansRequest.yaml'
+  /v4.0.0alpha/loanDetails/listLoansResponse:
+    $ref: 'paths/10-LoanDetails/ListLoansResponse.yaml'
+  /v4.0.0alpha/loanDetails/loanStatementRequest:
+    $ref: 'paths/10-LoanDetails/LoanStatementRequest.yaml'
+  /v4.0.0alpha/loanDetails/loanStatementResponse:
+    $ref: 'paths/10-LoanDetails/LoanStatementResponse.yaml'
+  /v4.0.0alpha/loanDetails/loanStatementSummaryRequest:
+    $ref: 'paths/10-LoanDetails/LoanSummaryRequest.yaml'
+  /v4.0.0alpha/loanDetails/loanStatementSummaryResponse:
+    $ref: 'paths/10-LoanDetails/LoanSummaryResponse.yaml'
+
+  /v1/metrics/report:
+    $ref: 'paths/11-Analytics/AnalyticsMetricsPushRequest.yaml'
+  /v1/heartbeat/event:
+    $ref: 'paths/11-Analytics/AnalyticsHeartbeatPushRequest.yaml'
+
+  /derivedDataProvider/schema:
+    $ref: 'paths/12-DerivedDataProvider/derivedDataProvider.yaml#/registerSchema'
+  /derivedDataProvider/schema/byDataProvider/{id}:
+    $ref: 'paths/12-DerivedDataProvider/derivedDataProvider.yaml#/getSchemaByDataProviderId'
+  /derivedDataProvider/schema/{schemaId}:
+    $ref: 'paths/12-DerivedDataProvider/derivedDataProvider.yaml#/schemaBySchemaId'
+
+  /networks:
+    $ref: 'paths/13-Network/index.yaml'
+  /networks/{id}/add:
+    $ref: 'paths/13-Network/add.yaml'
+  /networks/{id}/delete:
+    $ref: 'paths/13-Network/delete.yaml'
+    
+  /participantRegistry/{type}:
+    $ref: 'paths/14-ParticipantRegistry/registerPaticipant.yaml'
+  /participantRegistry/{type}/{id}:
+    $ref: 'paths/14-ParticipantRegistry/updatePaticipant.yaml'
+  /participantRegistry/{type}/lookup:
+    $ref: 'paths/14-ParticipantRegistry/lookupPaticipant.yaml'
+
+  /products:
+    $ref: 'paths/15-Product/create.yaml'
+  /products/{id}:
+    $ref: 'paths/15-Product/index.yaml'
+  /products/{id}/disable:
+    $ref: 'paths/15-Product/disable.yaml'
+  /products/{id}/metadata:
+    $ref: 'paths/15-Product/metadata.yaml'
+  
+  /products/{id}/allowed_participants:
+    $ref: 'paths/15-Product/allowed_participants.yaml'
+  /products/{id}/participants:
+    $ref: 'paths/15-Product/participants.yaml'
+  /products/{id}/participants/{type}/fields:
+    $ref: 'paths/15-Product/field_type.yaml'
+  /products/{id}/participants/{participant_product_id}/disable:
+    $ref: 'paths/15-Product/disable_participant.yaml'
+
+  /products/{id}/participants/invite:
+    $ref: 'paths/15-Product/participants_invite.yaml'
+  /products/{id}/approve:
+    $ref: 'paths/15-Product/approve.yaml'
+  /products/{id}/admin/{user_id}/make:
+    $ref: 'paths/15-Product/admin_make.yaml'
+  /products/{id}/admin/{user_id}:
+    $ref: 'paths/15-Product/admin_remove.yaml'
+  /products/{user_id}/participants/endpoint:
+    $ref: 'paths/15-Product/participants_endpoint.yaml'
+
+  # /products/{id}/history:
+  #   $ref: 'paths/15-Product/history.yaml'
+  /products/{id}/update:
+    $ref: 'paths/15-Product/update.yaml'
+  # /products/{id}/clone:
+  #   $ref: 'paths/15-Product/clone.yaml'
+  /products/{id}/notify:
+    $ref: 'paths/15-Product/notify.yaml'
+  /products/{id}/notice_notify:
+    $ref: 'paths/15-Product/notify.yaml'
+
+  /v4.0.0alpha/disbursementPartner/getDisbursementOptionsRequest:
+    $ref: './paths/16-DisbursementPartner/GetDisbursementOptionsRequest.yaml'
+  /v4.0.0alpha/disbursementPartner/getDisbursementOptionsResponse:
+    $ref: './paths/16-DisbursementPartner/GetDisbursementOptionsResponse.yaml'
+  /v4.0.0alpha/disbursementPartner/getDisbursementProductDetailsRequest:
+    $ref: './paths/16-DisbursementPartner/GetDisbursementProductDetailsRequest.yaml'
+  /v4.0.0alpha/disbursementPartner/getDisbursementProductDetailsResponse:
+    $ref: './paths/16-DisbursementPartner/GetDisbursementProductDetailsResponse.yaml'
+
+  /v4.0.0alpha/collectionsPartner/getCollectionsStatusRequest:
+    $ref: './paths/17-CollectionsPartner/GetCollectionsStatusRequest.yaml'
+  /v4.0.0alpha/collectionsPartner/getCollectionsStatusResponse:
+    $ref: './paths/17-CollectionsPartner/GetCollectionsStatusResponse.yaml'
+  /v4.0.0alpha/collectionsPartner/getPaymentMethodsRequest:
+    $ref: './paths/17-CollectionsPartner/GetPaymentMethodsRequest.yaml'
+  /v4.0.0alpha/collectionsPartner/getPaymentMethodsResponse:
+    $ref: './paths/17-CollectionsPartner/GetPaymentMethodsResponse.yaml'
+  /v4.0.0alpha/collectionsPartner/triggerCollectionsRequest:
+    $ref: './paths/17-CollectionsPartner/TriggerCollectionsRequest.yaml'
+  /v4.0.0alpha/collectionsPartner/triggerCollectionsResponse:
+    $ref: './paths/17-CollectionsPartner/TriggerCollectionsResponse.yaml'
+
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # optional, arbitrary value for documentation purposes
+    oAuth2Client:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://ocen.com/auth/oauth2/token/
+          scopes: {} # no scopes configured till now
+
+# Apply the security globally to all operations
+security:
+  - bearerAuth: []
+  - oAuth2Client: []

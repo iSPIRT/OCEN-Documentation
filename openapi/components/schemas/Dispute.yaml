@@ -1,0 +1,20 @@
+#TODO eventually replace with the AA Module
+type: object
+required: []
+properties:
+    id:
+        type: string
+    description:
+        type: string
+    url:
+        type: string
+    status:
+        type: string
+        enum:
+            - NEW
+            - PROCESSING
+            - NEED_MORE_INFO
+            - RESOLVED
+            - CLOSED
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

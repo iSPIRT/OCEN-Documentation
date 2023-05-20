@@ -1,0 +1,60 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Loan Acceptance BA to Lender
+  summary: Trigger Loan Acceptance Request
+  description: SMS Format for the OTP [#] {6Digit OTP} is the One Time Password (OTP) to complete the loan process with {Lender Name}. {appToken} >-
+               Eg- 467866 is the One Time Password (OTP) to complete the loan process with ABC Bank. \#0aBCD7DMr7s >-
+               This API is invoked by the BA when the user agrees to the terms of the agreement.The Asynchronous response for this API should include the lender sending an OTP to the borrower’s phone number
+  operationId: triggerLoanAcceptanceRequest
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+              - metadata
+              - requestId
+              - loanApplicationIds
+              - credBlock
+          properties:
+              metadata:
+                  $ref: '../../components/schemas/MetaData.yaml'
+              requestId:
+                  type: string
+              loanApplicationIds:
+                  type: array
+                  items:
+                      type: string
+              credBlock:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                          - OTP
+                    data:
+                      type: object
+                      properties:
+                        appToken:
+                          type: string
+                          examples:
+                            - '<token for auto-reading otp>'
+                    extensibleData:
+                      $ref: '../../components/schemas/ExtensibleData.yaml'
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

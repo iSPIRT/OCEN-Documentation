@@ -1,0 +1,43 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Loan Details BA to Lender
+  summary: Get Loan Request
+  description: This API is invoked by the BA when the BA wants to get the details of the loan.
+  operationId: getLoanRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - loanApplicationId
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  loanApplicationId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

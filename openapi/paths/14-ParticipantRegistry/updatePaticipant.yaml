@@ -1,0 +1,70 @@
+patch:
+  tags: [ Paticipant Registry ]
+  summary: update entity entry
+  operationId: updateEntity
+  description: API to update entry in the registry
+  parameters:
+    - $ref: '../../components/parameters/Signature.yaml#/Signature'
+    - $ref: '../../components/parameters/EntityType.yaml#/EntityType'
+    - $ref: '../../components/parameters/EntityId.yaml#/Id'
+  requestBody:
+    description: Request to update entity properties
+    content:
+      application/json:
+        schema:
+          type: object
+          anyOf:
+            - $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/UpdateEntityRequest'
+            - $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/UpdateDataProviderEntityRequest'
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/EntityAddDeleteResponse'
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+get:
+  tags: [ Paticipant Registry ]
+  summary: get entity by id
+  operationId: getEntity
+  description: API to get paricipant entity by id
+  parameters:
+    - $ref: '../../components/parameters/Signature.yaml#/Signature'
+    - $ref: '../../components/parameters/EntityType.yaml#/EntityType'
+    - $ref: '../../components/parameters/EntityId.yaml#/Id'
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      content:
+        application/json:
+          schema:
+            type: object
+            anyOf:
+              - $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/RegisteredEntity'
+              - $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/DataProviderEntity'
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+delete:
+  tags: [ Paticipant Registry ]
+  summary: delete entity by id
+  operationId: deleteEntity
+  parameters:
+    - $ref: '../../components/parameters/EntityType.yaml#/EntityType'
+    - $ref: '../../components/parameters/EntityId.yaml#/Id'
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/EntityAddDeleteResponse'
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

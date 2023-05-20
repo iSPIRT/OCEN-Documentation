@@ -1,0 +1,39 @@
+post:
+  operationId: notifyParticipants
+  tags:
+    - Product Registry
+  summary: Notify Product Participants.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  requestBody: 
+    content: 
+      application/json: 
+        schema: 
+          type: object
+          required: 
+            -  participants
+          properties:
+            participants:
+              type: array
+              description:	List of participants to notify
+              items: 
+                $ref: ../../components/schemas/ProductParticipants.yaml
+  responses:
+    '200':
+      description: Returns success or failure
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Response.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

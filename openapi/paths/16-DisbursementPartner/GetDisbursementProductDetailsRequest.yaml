@@ -1,0 +1,36 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Get Disbursement Product Details Request
+  summary: Get Disbursement Details Request
+  description: This endpoint can be initiated by BA / Lender on the disbursement partner to get the details of a specific product
+  operationId: GetDisbursementProductDetailsRequest
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - metadata
+            - requestId
+          properties:
+            metaData:
+              $ref: "../../components/schemas/MetaData.yaml"
+            requestId:
+              type: string
+            disbursementProductId:
+              type: string
+  responses:
+    "200":
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Ack.yaml"

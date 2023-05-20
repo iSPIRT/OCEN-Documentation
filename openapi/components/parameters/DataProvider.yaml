@@ -1,0 +1,18 @@
+DataProviderId:
+  name: id
+  in: path
+  description: identifier of registered data provider
+  schema:
+    type: string
+    format: uuid
+  example: "5ebd671b-762c-49b0-99ce-65642b113d7b"
+  required: true
+SchemaId:
+  name: schemaId
+  in: path
+  description: identifier of schema registered
+  schema:
+    type: string
+    format: uuid
+  example: "5ebd671b-762c-49b0-99ce-65642b113d7b"
+  required: true

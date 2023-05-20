@@ -1,0 +1,16 @@
+type: object
+required:
+    - id
+    - name
+    - description
+properties:
+    id:
+      type: string
+    name:
+      type: string
+    description:
+      type: string
+    partners:
+      type: array
+      items:
+        $ref: '../../components/schemas/ProductPartner.yaml'

@@ -1,0 +1,88 @@
+#TODO the APIs have major changes with the spec and word document. Likely the API is incorrect updating this as per the word document.
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Grant Loan Lender to BA
+  summary: Grant Loan Response
+  description: This method is called be the Lender when the Grant Loan processing is completed. This informs the borrower about the status of the loan in the lender system. Upon successful creation of a loan in the system, the lender returns all the details of the loan.
+  operationId: grantLoanResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - response
+                  - loanDetails
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  response:
+                    $ref: '../../components/schemas/Response.yaml'
+                  loanDetails:
+                    type: object
+                    properties:
+                      loanId: 
+                        type: string
+                      loanApplicationId:
+                        type: string
+                      loanStatus:
+                        type: string
+                        enum:
+                          - GRANTED
+                          - REJECTED
+                          - ACTIVE
+                          - DEFAULTED
+                          - OVERDUE
+                          - ACTION_REQUIRED
+                      createdDate:
+                        type: string
+                      startDate:
+                        type: string
+                      endDate:
+                        type: string
+                      productId:
+                        type: string
+                      borrower:
+                        $ref: '../../components/schemas/Borrower.yaml'
+                      documents:
+                        type: array
+                        items:
+                          $ref: '../../components/schemas/Document.yaml'
+                      guarantors:
+                        type: array
+                        items:  
+                          $ref: '../../components/schemas/Guarantor.yaml'
+                      applications:
+                        type: array
+                        items:
+                          $ref: '../../components/schemas/Applicant.yaml'
+                      terms:
+                        $ref: '../../components/schemas/LoanTerms.yaml'
+                      disbursement:
+                        $ref: '../../components/schemas/Disbursement.yaml'
+                      repayment:
+                        $ref: '../../components/schemas/Repayment.yaml'
+          
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

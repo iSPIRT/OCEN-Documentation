@@ -1,0 +1,44 @@
+consentHandleRequest:
+  post:
+    servers:
+    - url: https://ocenapis.lender.com
+    tags:
+    - Consent BA to Lender
+    summary: Consent Handle Request
+    description: Create consent handle with Account Aggregator |
+      This API is used to request the lenders to send a consent request for fetching the bank account statements, GST historical data. <br />
+      The lender (FIU) checks with the AA and creates a consent handle internally once this API is triggered
+    requestBody:
+      description: Request by BA to lender to get consent handle with Account Aggregator
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ConsentApis.yaml#/ConsentHandleRequest'
+    responses:
+      '200':
+        description: Acknowledgement by Lender to BA for Consent Handle Request
+        content:
+          application/json:
+            schema:
+              $ref: '../../components/schemas/Ack.yaml'
+consentHandleResponse:
+  post:
+    servers:
+    - url: https://ocenapis.borrowagent.com
+    tags:
+    - Consent Lender to BA
+    summary: Consent Handle Response
+    description: Invoked by lender to send consent handle created in Account Aggregator
+    requestBody:
+      description: Consent Handle Response
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ConsentApis.yaml#/ConsentHandleResponse'
+    responses:
+      '200':
+        description: Acknowledgement to consent Hanlde Response
+        content:
+          application/json:
+            schema:
+              $ref: '../../components/schemas/Ack.yaml'

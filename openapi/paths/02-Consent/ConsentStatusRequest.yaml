@@ -1,0 +1,20 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+  - Lender queries Consent handle status on BA
+  summary: Consent Status Request
+  description: Invoked by Lender to get consent handle status from BA
+  requestBody:
+    description: Consent Status Request
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/ConsentApis.yaml#/ConsentStatusRequest'
+  responses:
+    '200':
+      description: Acknowledgement to consent status request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

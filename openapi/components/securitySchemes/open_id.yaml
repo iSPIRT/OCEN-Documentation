@@ -1,0 +1,2 @@
+type: openIdConnect
+openIdConnectUrl: https://ocen.finarkein.com/auth/realms/gateway/.well-known/openid-configuration

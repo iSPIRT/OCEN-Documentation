@@ -1,0 +1,29 @@
+title: metrics
+type: object
+description: Metrics for OCEN analytics service
+required:
+  - timestamp
+properties:
+  timestamp:
+    type: string
+  metricsDateRange:
+    type: object
+    properties:
+      start:
+        type: string
+        format: date-time
+      end:
+        type: string
+        format: date-time
+  data:
+    type: array
+    items: 
+      type: object
+      example:
+        product_id: 872ee371-41a0-4d5a-b062-ccd3da1ee1dd
+        loan_applications_received: 500
+        loan_applications_processed: 340
+        consent_handles_created: 1000
+        consent_handles_approved: 300
+    description: Metrics data
+    

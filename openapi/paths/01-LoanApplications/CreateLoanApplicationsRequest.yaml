@@ -1,0 +1,38 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Create Loan Applications Request
+  summary: Create Loan Applications Request
+  description: Create Loan applications endpoint available on Lender to be used by BA
+  operationId: CreateLoanApplicationsRequest
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - metadata
+            - requestId
+          properties:
+            metaData:
+              $ref: "../../components/schemas/MetaData.yaml"
+            requestId:
+              type: string
+            loanApplications:
+              type: array
+              items:
+                $ref: "../../components/schemas/LoanApplicationRequest.yaml"
+  responses:
+    "200":
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Ack.yaml"

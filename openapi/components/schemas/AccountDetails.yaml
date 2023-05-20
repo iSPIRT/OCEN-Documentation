@@ -1,0 +1,27 @@
+type: object
+required:
+    - accountDataType
+    - data
+properties:
+    id:
+        type: string
+        examples:
+            - ''
+    description:
+        type: string
+        examples:
+            - ''
+    status:
+        type: string
+        enum:
+            - ACTIVE
+            - INACTIVE
+    accountDataType:
+        type: string
+        enum:
+            - ACCOUNT
+            - VPA
+    data:
+        $ref: './AccountDetailsData.yaml'
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

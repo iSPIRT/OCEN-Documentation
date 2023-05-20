@@ -1,0 +1,38 @@
+type: object
+properties:
+  consentFetchType:
+    type: string
+    default: ""
+    enum:
+      - ONETIME
+      - PERIODIC
+  vua:
+    type: string
+    default: ""
+    examples:
+      - user@aa.in
+  description:
+    type: string
+  isAggregationEnabled:
+    type: boolean
+    examples:
+      - true
+  consentAggregationId:
+    type: string
+    default: ""
+    examples:
+      - e8cc6822bd4bbb4eb1b9e1b4996fbff8acd
+  BAInfo:
+    $ref: "./BAInfo.yaml"
+  consentHandle:
+    type: string
+  consentStatus:
+    type: string
+    enum:
+      - READY
+      - PENDING
+      - FAILED
+  url:
+    type: string
+  extensibleData:
+    $ref: "./ExtensibleData.yaml"

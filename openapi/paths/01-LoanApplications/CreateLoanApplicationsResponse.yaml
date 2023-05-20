@@ -1,0 +1,50 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Create Loan Applications Response
+  summary: Create Loan Applications Response
+  description: This is the response for Create Loan Applications but invoked by the lender. No offers are rolled out as part of this API. If the lender system finds preliminary information sufficient for doing the loan processing, it will send “PROCESSING” as the status. Otherwise, it can reject the application citing a reason for the same. 
+  operationId: createLoanApplicationsResponse
+  requestBody:
+    description: Response by lender to BA for create bulk loan application request
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - metadata
+            - response
+            - requestId
+            - loanApplications
+          properties:
+            metadata:
+              $ref: ../../components/schemas/MetaData.yaml
+            response:
+              $ref: ../../components/schemas/Response.yaml
+            requestId:
+              type: string
+              description: UUID used to tie request and response and for idempotency
+            loanApplications:
+              type: array
+              description:	Array of LoanApplications
+              items: 
+                $ref: ../../components/schemas/LoanApplication.yaml
+  responses:
+      '200':
+        description: Acknowledgement of Response Received
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ack
+              properties:
+                ack:
+                  $ref: ../../components/schemas/Ack.yaml
+
+      '400':  
+        description: Invalid request
+      '404':
+        description: Not found
+

@@ -1,0 +1,28 @@
+post:
+  tags: [ Paticipant Registry ]
+  summary: register participant entity
+  operationId: registerEntity
+  description: API to register entity in the registry
+  parameters:
+    - $ref: '../../components/parameters/Signature.yaml#/Signature'
+    - $ref: '../../components/parameters/EntityType.yaml#/EntityType'
+  requestBody:
+    description: Request to register entity like BA, lender, data-provider
+    content:
+      application/json:
+        schema:
+          type: object
+          anyOf:
+            - $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/RegisterEntityRequest'
+            - $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/DataProviderEntity'
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/EntityAddDeleteResponse'
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

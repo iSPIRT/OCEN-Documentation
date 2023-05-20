@@ -1,0 +1,44 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Generate Offers Response
+  summary: Generate Offers Response
+  description: This API is invoked by the lender informing the borrower regarding the various loan offers that have been generated corresponding to each of the loan applications. This is a bulk API, where multiple loan offers can be sent to the borrower in one shot.
+  operationId: GenerateOffersResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - response
+                  - requestId
+                  - loanApplications
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  response:
+                      $ref: '../../components/schemas/Response.yaml'
+                  requestId:
+                      type: string
+                  #TODO the Word doc does not have actionRequired & rejectionDetails
+                  loanApplications:
+                      type: array
+                      items:
+                          $ref: '../../components/schemas/LoanApplicationWithOffer.yaml'
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

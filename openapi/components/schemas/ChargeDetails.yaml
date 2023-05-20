@@ -1,0 +1,34 @@
+type: object
+required:
+    - chargeType
+    - data
+properties:
+    chargeType:
+        type: string
+        enum:
+            - FIXED_AMOUNT
+            - RATE_BASED
+    data:
+        type: object
+        properties:
+            rate:
+                type: string
+                examples:
+                    - '6'
+            amount:
+                type: number
+            applicableParameter:
+                type: string
+                enum:
+                    - TOTAL_LOAN_AMOUNT
+                    - OUTSTANDING_PAYABLE_AMOUNT
+                    - EMI
+                    - REPAYMENT_PRINCIPAL
+            description:
+                type: string
+            url:
+                type: string
+    url:
+        type: string
+    extensibleData:
+        $ref: ./ExtensibleData.yaml

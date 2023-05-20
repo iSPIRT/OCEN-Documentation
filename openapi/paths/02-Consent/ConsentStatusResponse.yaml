@@ -1,0 +1,20 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - BA responds with consent status to lender
+  summary: Consent Status Response
+  description: Invoked by BA to send consent status to Lender
+  requestBody:
+    description: Consent Status Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/ConsentApis.yaml#/ConsentStatusResponse'
+  responses:
+    '200':
+      description: Acknowledgement to consent status response
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

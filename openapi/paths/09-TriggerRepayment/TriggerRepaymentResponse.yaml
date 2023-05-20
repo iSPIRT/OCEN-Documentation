@@ -1,0 +1,45 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Trigger Repayment Lender to BA
+  summary: Trigger Repayment Response
+  description: This API is invoked by the lender to the BA giving the lender payment page url from where the borrower can make the payment. Lender also generates an id for the payment which becomes the reference for BA to check the status of repayment.
+  operationId: triggerRepaymentResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - payment
+                  - response
+                  - loanId
+              properties:
+                  metadata:
+                    $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                    type: string
+                  response:
+                    $ref: '../../components/schemas/Response.yaml'
+                  payment:
+                    $ref: '../../components/schemas/Payment.yaml'
+                  loanId:
+                    type: string
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

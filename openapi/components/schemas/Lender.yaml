@@ -1,0 +1,44 @@
+type: object
+required:
+    - primaryId
+    - primaryIdType
+    - name
+    - category
+    - contactDetails
+    - documents
+properties:
+    primaryId:
+        examples:
+            - AWWPA7645M
+    primaryIdType:
+        type: string
+        enum:
+            - PAN
+            - MOBILE
+            - AADHAAR
+            - FIU
+    additionalIdentifiers:
+        type: array
+        items:
+            $ref: './AdditionalIdentifier.yaml'
+    name:
+        type: string
+        examples:
+            - ABC Bank
+    category:
+        type: string
+        enum:
+            - ORGANIZATION
+            - INDIVIDUAL
+    contactDetails:
+        type: array
+        items:
+            $ref: 'ContactDetails.yaml'
+    documents:
+        type: array
+        items:
+            $ref: './Document.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

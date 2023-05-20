@@ -1,0 +1,13 @@
+type: object
+required:
+    - duration
+    - unit
+properties:
+    duration:
+        type: string
+    unit:
+        type: string
+        enum:
+            - MONTH
+            - DAY
+            - YEAR

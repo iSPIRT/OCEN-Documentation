@@ -1,0 +1,33 @@
+delete:
+  operationId: removeUserAsAdmin
+  summary: Remove user as Admin
+  tags:
+    - Product Registry
+  description: This API is to remove Admin privileages for a user
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+    - name: user_id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: string     
+  responses:
+    '200':
+      description: Returns success or failure
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Response.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

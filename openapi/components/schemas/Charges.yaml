@@ -1,0 +1,10 @@
+type: object
+properties:
+    prepayment:
+        $ref: ./ChargeDetails.yaml
+    bounce:
+        $ref: ./ChargeDetails.yaml
+    latePayment:
+        $ref: ./ChargeDetails.yaml
+    processing:
+        $ref: ./ChargeDetails.yaml

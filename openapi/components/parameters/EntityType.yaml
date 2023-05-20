@@ -1,0 +1,12 @@
+EntityType:
+  name: type
+  in: path
+  description: Type of the entity e.g. Borrower Agent(BA), Lender, Data Provider
+  schema:
+    type: string
+    enum:
+      - BA
+      - lender
+      - data-provider
+  example: BA
+  required: true

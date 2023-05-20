@@ -1,0 +1,46 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Set Repayment Lender to BA
+  summary: Set Repayment Plan Status Response / Webhook
+  description: This API is used by lenders to inform BA about the status of a previously initiated set Repayment.The API returns the status of the repayment plan that the borrower has chosen. In case, the borrower has chosen e-mandate as the repayment method in payment page url, the status of the repayment plan becomes ACTIVE only after successful authorization of the e-mandate on the PSP by the borrower.
+  operationId: setRepaymentPlanStatusResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - response
+                  - requestId
+                  - plan
+                  - loanId
+              properties:
+                  metadata:
+                    $ref: '../../components/schemas/MetaData.yaml'
+                  response:
+                    $ref: '../../components/schemas/Response.yaml'
+                  #TODO loanId should be required
+                  loanId:
+                    type: string
+                  requestId:
+                    type: string
+                  plan:
+                    $ref: '../../components/schemas/PaymentPlan.yaml'
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

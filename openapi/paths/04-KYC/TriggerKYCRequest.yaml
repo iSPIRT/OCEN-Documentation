@@ -1,0 +1,52 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - KYC BA to Lender
+  summary: Trigger KYC Request
+  description: This  API is called by BA to initiate the KYC process of the borrower after successfully accepting the final offer. The lender is supposed to return the url, where the borrower will be completing the KYC process. 
+  operationId: TriggerKYCRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - loanApplicationId
+                  - kyc
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                  loanApplicationId:
+                      type: string
+                      examples:
+                        - t8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  #TODO this is not present in the word document but there in the original schema.
+                  kyc:
+                    type: object
+                    properties:
+                      individualKYC:
+                        $ref: '../../components/schemas/KYCDetails.yaml'
+                      entityKYC:
+                        $ref: '../../components/schemas/KYCDetails.yaml'
+                      extensibleData:
+                        $ref: '../../components/schemas/ExtensibleData.yaml'
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

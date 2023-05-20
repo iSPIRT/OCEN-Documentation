@@ -1,0 +1,23 @@
+type: object
+properties:
+    value:
+        type: string
+        examples:
+            - '20000'
+    currency:
+        type: string
+        examples:
+            - INR
+    date:
+        type: string
+    source:
+        type: string
+        enum:
+            - GSTN
+            - OTHERS
+    description:
+        type: string
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

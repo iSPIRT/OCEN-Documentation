@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Heartbeat API
+  summary: Heartbeat event push request
+  description: Heartbeat event Invoked by OCEN participant for a loan application
+  operationId: AnalyticsHeartbeatPushRequest
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - metadata
+            - requestId
+            - event
+          properties:
+            metaData:
+              $ref: "../../components/schemas/MetaData.yaml"
+            requestId:
+              type: string
+            event:
+              $ref: "../../components/schemas/AnalyticsEvent.yaml"
+  responses:
+    "200":
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Ack.yaml"

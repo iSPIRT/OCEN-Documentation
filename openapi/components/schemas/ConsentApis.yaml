@@ -1,0 +1,218 @@
+ConsentHandleRequest:
+  type: object
+  required:
+    - metadata
+    - loanApplicationIds
+    - requestId
+    - consent
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    loanApplicationIds:
+      type: array
+      items:
+        type: string
+        examples:
+          - f8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    requestId:
+      type: string
+      examples:
+        - g8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    consent:
+      $ref: "./Consent.yaml"
+ConsentHandleResponse:
+  type: object
+  required:
+    - metadata
+    - response
+    - requestId
+    - consent
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    response:
+      $ref: "./Response.yaml"
+    requestId:
+      type: string
+      examples:
+        - i8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    consent:
+      $ref: "./Consent.yaml"
+
+ConsentHandle:
+  type: object
+  required:
+    - metadata
+    - response
+    - requestId
+    - consentHandle
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    response:
+      $ref: "./Response.yaml"
+    requestId:
+      type: string
+      examples:
+        - i8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    loanApplicationIds:
+      type: array
+      items:
+        type: string
+    consentHandle:
+      type: string
+
+BAConsentHandleRequest:
+  type: object
+  required:
+    - metadata
+    - response
+    - requestId
+    - consentHandle
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    response:
+      $ref: "./Response.yaml"
+    requestId:
+      type: string
+      examples:
+        - i8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    consents:
+      type: object
+      properties:
+        lenderId:
+          type: string    
+        loanApplicationIds:
+          type: array
+          items:
+            type: string
+        consentHandle:
+          type: string
+
+ConsentStatusRequest:
+  type: object
+  required:
+    - metadata
+    - requestId
+    - consent
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    requestId:
+      type: string
+      examples:
+        - m8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    consent:
+      $ref: "./Consent.yaml"
+
+ConsentNotificationRequest:
+  type: object
+  description: Request object used by BA to share consent process completion update to Gateway
+  required:
+    - metadata
+    - requestId
+    - consents
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    requestId:
+      type: string
+      examples:
+        - m8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    consents:
+      type: array
+      items:
+        type: object
+        properties:
+          lenderId:
+            type: string
+            description: Lender identifier to whom the consentHandle belongs.
+          loanApplicationId:
+            type: string
+            format: uuid
+          consentAggregationId:
+            type: string
+            default: ""
+            examples:
+              - e8cc6822bd4bbb4eb1b9e1b4996fbff8acd
+          consentHandle:
+            type: string
+            description: Consent handle created during loan applications request processing
+          consentComplete:
+            type: boolean
+            description: Status flag to indicate whether the consent was provided by customer or not.
+
+LenderConsentNotificationRequest:
+  type: object
+  description: Request object used by Gateway to notify Lenders with final Consent journey state
+  required:
+    - metadata
+    - requestId
+    - consents
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    requestId:
+      type: string
+      examples:
+        - m8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    consents:
+      type: array
+      items:
+        type: object
+        properties:
+          loanApplicationId:
+            type: string
+            format: uuid
+          consentAggregationId:
+            type: string
+            default: ""
+            examples:
+              - e8cc6822bd4bbb4eb1b9e1b4996fbff8acd
+          consentHandle:
+            type: string
+            description: Consent handle created during loan applications request processing
+          consentComplete:
+            type: boolean
+            description: Status flag to indicate whether the consent was provided by customer or not.
+
+ConsentState:
+  type: object
+  properties:
+    loanApplicationIds:
+      type: array
+      description: Loan application identifiers related to this consent state notification
+      items:
+        type: string
+        format: uuid
+    consentAggregationId:
+      type: string
+      default: ""
+      examples:
+        - e8cc6822bd4bbb4eb1b9e1b4996fbff8acd
+    consentHandle:
+      type: string
+      description: Consent handle created during loan applications request processing
+    consentComplete:
+      type: boolean
+      description: Status flag to indicate whether the consent was provided by customer or not.
+
+ConsentStatusResponse:
+  type: object
+  required:
+    - metadata
+    - response
+    - requestId
+    - consent
+  properties:
+    metadata:
+      $ref: "./MetaData.yaml"
+    response:
+      $ref: "./Response.yaml"
+    requestId:
+      type: string
+      examples:
+        - p8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    consent:
+      $ref: "./Consent.yaml"

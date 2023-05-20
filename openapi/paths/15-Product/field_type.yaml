@@ -1,0 +1,34 @@
+get:
+  operationId: getFieldsByParticipantType
+  tags:
+    - Product Registry
+  summary: Get Fields By Participant Type.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+    - name: type
+      in: path
+      description: Type of participant
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/ProductField.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

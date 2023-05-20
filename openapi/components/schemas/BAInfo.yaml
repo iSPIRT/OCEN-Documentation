@@ -1,0 +1,20 @@
+type: object
+properties:
+    BAId:
+        type: string
+        examples:
+            - '<AA can identify the BA based on this>'
+    version:
+        type: string
+        examples:
+            - '<version of BA>'
+    appName:
+        type: string
+        examples:
+            - '<Package name of the app>'
+    url:
+        type: string
+        examples:
+            - 'https://abc-bank.com'
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

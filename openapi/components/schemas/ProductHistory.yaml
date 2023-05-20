@@ -1,0 +1,12 @@
+type: object
+required:
+    - name
+    - products
+    - metadata
+properties:
+    name:
+        type: string
+    products:
+        $ref: './Product.yaml'
+    metadata:
+        $ref: './MetaData.yaml'

@@ -1,0 +1,45 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - KYC BA to Lender
+  summary: KYC Status Request
+  description: This API is called by BA to get the KYC status. This API will be triggered just after the user completes the KYC process. 
+  operationId: KYCStatusRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - loanApplicationId
+                  - kyc
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                  loanApplicationId:
+                      type: string
+                  kyc:
+                    type: object
+                    properties:
+                      kycRefNo:
+                        type: string
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

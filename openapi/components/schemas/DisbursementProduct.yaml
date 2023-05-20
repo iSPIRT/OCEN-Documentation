@@ -1,0 +1,33 @@
+type: object
+required:
+    - id
+    - name
+    - description
+    - price
+    - currency
+    - accountDetails
+properties:
+    id:
+        type: string
+        examples:
+            - ''
+    name:
+      type: string
+      examples:
+          - 'Organic Vermicompost Fertilizer Manure 10 KG'
+    description:
+        type: string
+        examples:
+            - 'Using various species of worms, usually red wigglers, white worms, and other earthworms, to create a mixture of decomposing vegetable or food waste.'
+    price:
+        type: string
+        examples:
+          - "1000"
+    currency:
+        type: string
+        examples:
+          - "INR"
+    accountDetails:
+        $ref: './AccountDetails.yaml'
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

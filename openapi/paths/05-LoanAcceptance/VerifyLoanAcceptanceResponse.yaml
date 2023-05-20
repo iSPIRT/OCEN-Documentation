@@ -1,0 +1,61 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Loan Acceptance Lender to BA
+  summary: Verify Loan Acceptance Response
+  description: This API is invoked by the Lender  when the OTP entered by the user is shared through the BA. This API acknowledges the receipt of OTP and verifies if the user has entered the correct OTP that was shared by the lender on the mobile number associated with the disbursement account. 
+  operationId: verifyLoanAcceptanceResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - credBlock
+                  - response
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  response:
+                      $ref: '../../components/schemas/Response.yaml'
+                  loanApplicationIds:
+                    type: array
+                    items:
+                        type: string
+                  credBlock:
+                    type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          otpSessionKey:
+                            type: string
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - INVALID_SESSION
+                              - INCORRECT_OTP
+                      extensibleData:
+                        $ref: '../../components/schemas/ExtensibleData.yaml'
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

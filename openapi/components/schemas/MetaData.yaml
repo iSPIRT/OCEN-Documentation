@@ -1,0 +1,17 @@
+title: metadata
+type: object
+description: Metadata specific to each API request.
+required:
+    - version
+    - orgId
+    - timestamp
+    - traceId
+properties:
+    version:
+        type: string
+    orgId:
+        type: string
+    timestamp:
+        type: string
+    traceId:
+        type: string

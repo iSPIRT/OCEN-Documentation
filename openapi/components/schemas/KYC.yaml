@@ -1,0 +1,22 @@
+type: object
+properties:
+    verificationStatus:
+        type: string
+        enum:
+            - SUCCESS
+            - REJECTED
+            - PENDING
+            - ACTION_REQUIRED
+    kycRefNo:
+        type: string
+    url:
+        type: string
+    initiateCKYC:
+        type: boolean
+    #TODO Create separate KYC Details object for entity and individual & Conditionally send in API
+    individualKYC:
+        $ref: './KYCDetails.yaml'
+    entityKYC:
+        $ref: './KYCDetails.yaml'
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

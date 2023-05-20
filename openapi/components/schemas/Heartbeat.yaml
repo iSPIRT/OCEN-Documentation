@@ -1,0 +1,18 @@
+HeartbeatResponse:
+  type: object
+  required:
+    - ver
+    - timestamp
+    - Status
+  properties:
+    timestamp:
+      type: string
+      format: date-time
+      description: Creation timestamp of the message which will be updated at each leg
+      example: '2018-12-06T11:39:57.153Z'
+    status:
+      type: string
+      description: 'Status of the service'
+      enum:
+        - UP
+        - DOWN

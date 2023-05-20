@@ -1,0 +1,45 @@
+type: object
+required:
+    - collateralPrimaryId
+    - collateralPrimaryIdType
+    - additionalIdentifiers
+    - parties
+    - type
+    - documents
+properties:
+    collateralPrimaryId:
+        type: string
+        examples:
+            - 'INVOICE_<GSTIN>_<INVOICENUM>'
+    collateralPrimaryIdType:
+        type: string
+        enum:
+            - GST_INVOICE
+            - VIN
+            - '<OTHER VALID REGISTRY>'
+    additionalIdentifiers:
+        type: array
+        items:
+            $ref: './AdditionalIdentifier.yaml'
+    valuation:
+        $ref: './Valuation.yaml'
+    parties:
+        type: array
+        items:
+            $ref: './Party.yaml'
+    type:
+        type: string
+        enum:
+            - GST_INVOICE
+            - VEHICLE
+            - HOME
+    description:
+        type: string
+    documents:
+        type: array
+        items:
+            $ref: './Document.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

@@ -1,0 +1,14 @@
+type: object
+required:
+    - name
+    - description
+    - endpoint
+properties:
+    name:
+        type: string
+    description:
+        type: string
+    endpoint:
+        type: string
+        examples:
+            - 'https://abc-bank.com'

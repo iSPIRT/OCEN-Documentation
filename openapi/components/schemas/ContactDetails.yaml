@@ -1,0 +1,26 @@
+type: object
+required:
+    - type
+    - phone
+properties:
+    type:
+        type: string
+        enum:
+            - PRIMARY
+            - OTHER
+    desctiption:
+        type: string
+    phone:
+        type: string
+        examples:
+            - '7777777777'
+    email:
+        type: string
+        examples:
+            - johndoe@defenterprises
+    address:
+        $ref: './Address.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

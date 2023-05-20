@@ -1,0 +1,25 @@
+post:
+  tags: [ Paticipant Registry ]
+  summary: lookup query for entities
+  operationId: entityLookup
+  parameters:
+    - $ref: '../../components/parameters/Signature.yaml#/Signature'
+    - $ref: '../../components/parameters/EntityType.yaml#/EntityType'
+  requestBody:
+    description: Query BA, lender, data-provider using properties
+    content:
+      application/json:
+        schema:
+          type: object
+          $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/EntityLookupRequest'
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ParticipantRegistryEntity.yaml#/EntityLookupResponse'
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

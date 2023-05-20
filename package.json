@@ -11,7 +11,10 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "openapi-start": "openapi preview-docs",
+    "openapi-build": "openapi bundle ./openapi/openapi.yaml -o static/dist.json",
+    "openapi-lint": "openapi lint"
   },
   "dependencies": {
     "@docusaurus/core": "2.4.0",
@@ -26,7 +29,8 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.4.0"
+    "@docusaurus/module-type-aliases": "2.4.0",
+    "@redocly/cli": "^1.0.0-beta.126"
   },
   "browserslist": {
     "production": [

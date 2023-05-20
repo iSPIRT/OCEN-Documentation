@@ -1,0 +1,66 @@
+#TODO review this properly
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Loan Details Lender to BA
+  summary: List Loans Request
+  description: This API is invoked by the BA when the BA wants to get the details of the loan.
+  operationId: getLoanRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - response
+                  - loans
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                      default: ''
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  response:
+                      type: object
+                      required:
+                          - error
+                      properties:
+                          error:
+                              type: string
+                              default: ''
+                              examples:
+                                  - '0'
+                  loans:
+                      type: array
+                      items:
+                          type: object
+                          required:
+                              - loanId
+                              - terms
+                          properties:
+                              loanId:
+                                  type: string
+                                  examples:
+                                      - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                              terms:
+                                  $ref: '../../components/schemas/LoanTerms.yaml'
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

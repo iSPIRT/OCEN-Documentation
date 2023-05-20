@@ -1,0 +1,95 @@
+registerSchema:
+  post:
+    tags: [ Data Provider ]
+    summary: Register schema
+    operationId: registerDPSchema
+    parameters:
+    - $ref: '../../components/parameters/Signature.yaml#/Signature'
+    requestBody:
+      description: Schema registration endpoint for Dervied Data Provider
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: '../../components/schemas/DerivedDataProvider.yaml#/DPRegisterSchemaRequest'
+    responses:
+      '200':
+        description: lookup result
+        content:
+          application/json:
+            schema:
+              $ref: '../../components/schemas/DerivedDataProvider.yaml#/DPSchemaAddDeleteResponse'
+      '400':  
+          description: Invalid request
+      '404':
+          description: Not found
+getSchemaByDataProviderId:
+  get:
+    tags: [ Data Provider ]
+    summary: Get schemas supported by derived data provider id
+    operationId: getDPSchemas 
+    parameters:
+      - $ref: '../../components/parameters/Signature.yaml#/Signature'
+      - $ref: '../../components/parameters/DataProvider.yaml#/DataProviderId'
+    responses:
+      '200':
+        description: schemas supported by data provider
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataProviderId:
+                  type: string
+                  format: uuid
+                  example: 5ebd671b-762c-49b0-99ce-65642b113d7b
+                schemas:
+                  type: array
+                  items:
+                    $ref: '../../components/schemas/DerivedDataProvider.yaml#/RegisteredDPSchema'
+      '400':  
+          description: Invalid request
+      '404':
+          description: Not found
+schemaBySchemaId:
+  get:
+    tags: [ Data Provider ]
+    summary: Get schema by schema id
+    operationId: getSchema 
+    parameters:
+      - $ref: '../../components/parameters/Signature.yaml#/Signature'
+      - $ref: '../../components/parameters/DataProvider.yaml#/SchemaId'
+    responses:
+      '200':
+        description: schema
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                schemas:
+                  type: array
+                  items:
+                    $ref: '../../components/schemas/DerivedDataProvider.yaml#/RegisteredDPSchema'
+      '400':
+        description: Bad Request
+      '404':
+        description: Not Found
+  delete:
+    tags: [ Data Provider ]
+    summary: Delete schema by schema id
+    operationId: deleteSchema
+    parameters:
+      - $ref: '../../components/parameters/Signature.yaml#/Signature'
+      - $ref: '../../components/parameters/DataProvider.yaml#/SchemaId'
+    responses:
+      '200':
+        description: ""
+        content:
+          application/json:
+            schema:
+              $ref: '../../components/schemas/DerivedDataProvider.yaml#/DPSchemaAddDeleteResponse'
+      '400':
+        description: Bad Request
+      '404':
+        description: Not Found

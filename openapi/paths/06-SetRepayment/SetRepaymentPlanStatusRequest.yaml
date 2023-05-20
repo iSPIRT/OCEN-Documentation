@@ -1,0 +1,44 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Set Repayment BA to Lender
+  summary: Set Repayment Plan Status Request
+  description: This API is used by BA to check the status of a previously initiated set repayment plan request. This API is called once the payment page of the lender is loaded and the borrower choses a repayment method associated with the chosen repayment plan. 
+  operationId: setRepaymentPlanStatusRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - plan
+                  - loanId
+              properties:
+                  metadata:
+                    $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                    type: string
+                  plan:
+                    $ref: '../../components/schemas/PaymentPlan.yaml'
+                  paymentMethod:
+                    $ref: '../../components/schemas/PaymentMethod.yaml'
+                  loanId:
+                    type: string
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

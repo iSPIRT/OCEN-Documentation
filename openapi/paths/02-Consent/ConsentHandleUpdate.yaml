@@ -1,0 +1,22 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Lender shares consent handle to BA   
+  summary: Provide Consent Handle for a loan application
+  description: > 
+    Invoked by lender on BA to send consent handle created with Account Aggregator 
+    for loan applications processing
+  requestBody:
+    description: Consent Handle created with AA
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/ConsentApis.yaml#/ConsentHandle"
+  responses:
+    "200":
+      description: Acknowledgement for the consent Handle 
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Ack.yaml"

@@ -1,0 +1,111 @@
+type: object
+required:
+    - id
+    - name
+    - description
+    - status
+    - version
+properties:
+    id:
+        type: string
+    name:
+        type: string
+    type:
+        type: string
+    description:
+        type: string
+    creater:
+        type: string
+    is_enable:
+        type: boolean
+    is_private:
+        type: boolean
+    approved_at:
+        type: integer
+        format: int64
+    is_aa_required:
+        type: boolean
+    dedupe:
+        type: object
+        properties:
+            source:
+                type: object
+                properties:
+                    url:
+                        type: string
+    network:
+        $ref: './Network.yaml'
+    lender:
+        type: object
+        properties:
+            allowed:
+                type: boolean
+            partners:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductPartner.yaml'
+    loan_service:
+        type: object
+        properties:
+            allowed:
+                type: boolean
+            partners:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductPartner.yaml'
+    benchmark_data:
+        type: object
+        properties:
+            allowed:
+                type: boolean
+            partners:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductPartner.yaml'
+            fields:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductField.yaml'
+    disbursement:
+        type: object
+        properties:
+            allowed:
+                type: boolean
+            partners:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductPartnerWithData.yaml'
+            fields:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductField.yaml'
+    collection:
+        type: object
+        properties:
+            allowed:
+                type: boolean
+            partners:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductPartner.yaml'
+    collateral:
+        type: object
+        properties:
+            allowed:
+                type: boolean
+            partners:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductPartner.yaml'
+    monitoring:
+        type: object
+        properties:
+            allowed:
+                type: boolean
+            partners:
+                type: array
+                items:
+                    $ref: '../../components/schemas/ProductPartner.yaml'
+    
+
+

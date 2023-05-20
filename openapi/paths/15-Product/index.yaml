@@ -1,0 +1,52 @@
+get:
+  operationId: indexProduct
+  tags:
+    - Product Registry
+  summary: Product find by ID API.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Product.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+delete:
+  operationId: deleteProduct
+  tags:
+    - Product Registry
+  summary: Delete product by ID API.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Product.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
