@@ -1,0 +1,8 @@
+#TODO relocate this to better folder structure
+type: object
+description: Status of response. Whether success or has encountered error
+required:
+    - error
+properties:
+    error:
+        type: string

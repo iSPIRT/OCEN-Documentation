@@ -1,0 +1,74 @@
+type: object
+required:
+    - id
+    - automatic
+    - scheduleType
+    - noOfInstallments
+    - totalAmount
+properties:
+    id:
+        type: string
+    title:
+        type: string
+    shortDescription:
+        type: string
+    description:
+        type: string
+    paymentUrl:
+        type: string
+    payNowAllowed:
+        type: boolean
+        examples:
+            - false
+    editPlanAllowed:
+        type: boolean
+        examples:
+            - false
+    changeMethodAllowed:
+        type: boolean
+        examples:
+            - false
+    automatic:
+        type: boolean
+        examples:
+            - false
+    scheduleType:
+        type: string
+        enum:
+            - RECURRING
+            - ONE_TIME
+            - AS_PRESENTED
+    noOfInstallment:
+        type: string
+    frequency:
+        type: string
+        enum:
+            - MONTHLY
+            - WEEKLY
+            - QUARTERLY
+            - HALF_YEARLY
+            - YEARLY
+    tenure:
+        $ref: './LoanTenure.yaml'
+    totalAmount:
+        type: string
+    principal:
+        type: string
+    interestAmount:
+        type: string
+    penalty:
+        type: string
+    startDate:
+        type: string
+        examples:
+            - 18-12-2020
+    status:
+        type: string
+        enum:
+            - ACTIVE
+            - INACTIVE
+            - PENDING_AUTH
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

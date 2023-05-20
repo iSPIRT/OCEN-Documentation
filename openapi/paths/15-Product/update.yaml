@@ -1,0 +1,45 @@
+patch:
+  operationId: updateProduct
+  tags:
+    - Product Registry
+  summary: Update Product
+  requestBody:
+    description: This will be called from console to update product
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - description
+            - id
+          properties:
+            name:
+              type: string
+              format: 'Alphanumeric'
+              maxLength: 35
+              description: Name of product
+            description:
+              type: string
+              format: 'Alphanumeric'
+              maxLength: 35
+              description: Description of product. 
+            id:
+              type: string
+              format: 'Integer'
+              maxLength: 25
+              description: Id of the existing product.             
+  responses:
+    '200':
+      description: Returns updated product
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Product.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

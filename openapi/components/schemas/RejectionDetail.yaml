@@ -1,0 +1,20 @@
+type: object
+required:
+    - reason
+    - description
+properties:
+    reason:
+        type: string
+        enum:
+            - LOW_CREDIT_SCORE
+            - FRAUD
+            - DOC_IRREGULARITIES
+            - OTHERS
+    description:
+        type: string
+        examples:
+            - Credit score below 600
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

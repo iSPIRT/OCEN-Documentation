@@ -1,0 +1,12 @@
+type: object
+required:
+    - type
+    - data
+properties:
+    type:
+        type: string
+        enum:
+            - TEXT
+            - URL
+    data:
+        type: string

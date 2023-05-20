@@ -1,0 +1,49 @@
+#TODO there is no corresponding request in the Spec but the response is the the current API only breaking the pattern.
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Set Repayment Lender to BA
+  summary: Confirm Repayment Request
+  description: This API is used by lenders to inform BA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment).
+  operationId: confirmRepaymentRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - response
+                  - payment
+                  - loanId
+                  - paymentMethod
+              properties:
+                  metadata:
+                    $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                    type: string
+                  payment:
+                    $ref: '../../components/schemas/Payment.yaml'
+                  paymentMethod:
+                    $ref: '../../components/schemas/PaymentMethod.yaml'
+                  response:
+                    $ref: '../../components/schemas/Response.yaml'
+                  loanId:
+                    type: string 
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

@@ -1,0 +1,12 @@
+type: object
+required:
+    - interest
+    - tenure
+    - effectiveDate
+properties:
+    interest:
+        type: string
+    tenure:
+        $ref: './LoanTenure.yaml'
+    effectiveDate:
+        type: string

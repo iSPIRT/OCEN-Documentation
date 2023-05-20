@@ -1,0 +1,26 @@
+get:
+  operationId: getParticipantEndpoint
+  tags:
+    - Product Registry
+  summary: Get Product Participant
+  parameters:
+    - name: user_id
+      in: path
+      description: Participant ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns participant information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/ProductParticipants.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

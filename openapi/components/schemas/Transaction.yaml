@@ -1,0 +1,28 @@
+type: object
+required:
+    - date
+    - narration
+    - txnRefNo
+    - amount
+    - type
+    - closingBalance
+properties:
+    date:
+        type: string
+    narration:
+        type: string
+    txnRefNo:
+        type: string
+    amount:
+        type: string
+    type:
+        type: string
+        enum:
+            - DEPOSIT
+            - WITHDRAWL
+    closingBalance:
+        type: string
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

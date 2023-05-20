@@ -1,0 +1,51 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Set Offers Response
+  summary: Set Offers Response
+  description: This API is invoked by the lender and is the asynchronous response to Set Offer Request API. 
+  operationId: SetOffersResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - response
+                  - requestId
+                  - loanApplicationId
+                  - loanApplicationStatus
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  response:
+                      $ref: '../../components/schemas/Response.yaml'
+                  requestId:
+                      type: string
+                  loanApplicationId:
+                      type: string
+                  offer:
+                    type: object
+                    properties:
+                      type: string
+                      enum:
+                        - OFFER_ACCEPTED
+                        - OFFERED
+                        - GRANTED
+                        - REJECTED
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

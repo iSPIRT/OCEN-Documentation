@@ -1,0 +1,42 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Loan Acceptance BA to Lender
+  summary: Loan Agreement Request
+  description: Loan agreement request
+  operationId: loanAgreementRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - loanApplicationIds
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                  loanApplicationIds:
+                      type: array
+                      items:
+                          type: string
+
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

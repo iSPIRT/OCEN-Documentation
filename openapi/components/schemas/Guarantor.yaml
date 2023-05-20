@@ -1,0 +1,52 @@
+type: object
+required:
+    - primaryId
+    - primaryIdType
+    - category
+    - contactDetails
+    - documents
+properties:
+    primaryId:
+        type: string
+        examples:
+            - CPAA1234A
+    primaryIdType:
+        type: string
+        enum:
+            - PAN
+            - MOBILE
+            - AADHAAR
+    description:
+        type: string
+        examples:
+            - ''
+    additionalIdentifiers:
+        type: array
+        items:
+            $ref: './AdditionalIdentifier.yaml'
+    name:
+        type: string
+        examples:
+            - John doe
+    relationshipWithBorrower:
+        #TODO Should be an ENUM
+        type: string
+        examples:
+            - Father
+    category:
+        type: string
+        enum:
+            - ORGANIZATION
+            - INDIVIDUAL
+    contactDetails:
+        type: array
+        items:
+            $ref: 'ContactDetails.yaml'
+    documents:
+        type: array
+        items:
+            $ref: './Document.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

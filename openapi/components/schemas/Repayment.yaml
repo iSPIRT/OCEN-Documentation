@@ -1,0 +1,8 @@
+type: object
+required:
+    - plans
+properties:
+    plans:
+        type: array
+        items:
+            $ref: './PaymentPlan.yaml'

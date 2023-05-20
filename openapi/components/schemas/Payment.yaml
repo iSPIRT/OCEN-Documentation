@@ -1,0 +1,55 @@
+type: object
+required:
+    - id
+properties:
+    totalAmount:
+        type: string
+    date:
+        type: string
+    status:
+        type: string
+        enum:
+            - SUCCESS
+            - FAILURE
+            - PENDING_AUTH
+    installmentNumber:
+        type: string
+    txnRefNo:
+        type: string
+        examples:
+            - 004618602124
+    id:
+        type: string
+        examples:
+            - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    description:
+        type: string
+    principal:
+        type: string
+    interestAmount:
+        type: string
+    fee:
+        type: string
+    penalty:
+        type: string
+    useSavedPaymentOption:
+        type: boolean
+        examples:
+            - false
+    paymentMethodType:
+        type: string
+        default: ''
+        enum:
+            - UPI
+            - EMANDATE_UPI
+            - NETBANKING
+            - ENACH
+            - DEBIT_CARD
+    paymentUrl:
+        type: string
+        examples:
+            - 'https://abc-bank/payment'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

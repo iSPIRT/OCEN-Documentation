@@ -1,0 +1,70 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Disbursement Lender to BA
+  summary: Trigger Disbursement Response
+  description: This API is to be used when the borrower wants the money to be disbursed immediately. 
+  operationId: triggerDisbursementResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - loanId
+                  - requestId
+                  - payment
+                  - response
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  loanId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  requestId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  response:
+                      $ref: '../../components/schemas/Response.yaml'
+                  payment:
+                    type: object
+                    properties:
+                      id:
+                          type: string
+                          examples:
+                              - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                      amount:
+                          type: string
+                      date:
+                          type: string
+                      status:
+                          type: string
+                          enum:
+                              - SUCCESS
+                              - FAILURE
+                              - PENDING_AUTH
+                      installmentNumber:
+                          type: string
+                      txnRefNo:
+                          type: string
+                          examples:
+                              - 004618602124
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

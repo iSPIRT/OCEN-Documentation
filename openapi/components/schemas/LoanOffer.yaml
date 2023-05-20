@@ -1,0 +1,28 @@
+type: object
+required:
+    - loanApplicationId
+    - loanApplicationStatus
+properties:
+    loanApplicationId:
+        type: string
+    rejectionDetails:
+        type: array
+        items:
+            $ref: './RejectionDetail.yaml'
+    actionRequired:
+        type: array
+        items:
+            $ref: './ActionRequired.yaml'
+    offers:
+        type: array
+        items:
+            $ref: './Offer.yaml'
+    loanApplicationStatus:
+        type: string
+        enum:
+            - PROCESSING
+            - OFFERED
+            - OFFER_ACCEPTED
+            - GRANTED
+            - REJECTED
+            - ACTION REQUIRED

@@ -1,0 +1,13 @@
+type: object
+required:
+    - object
+    - value
+properties:
+    object:
+        type: string
+        examples:
+            - documents
+    value:
+        type: string
+        examples:
+            - INVOICE_GSTN_INV2011

@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Metrics API
+  summary: Metrics update push request
+  description: Invoked by OCEN participant to update the central OCEN Analytics service for better network observability
+  operationId: AnalyticsMetricsPushRequest
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - metadata
+            - requestId
+            - metrics
+          properties:
+            metaData:
+              $ref: "../../components/schemas/MetaData.yaml"
+            requestId:
+              type: string
+            metrics:
+              $ref: "../../components/schemas/AnalyticsMetrics.yaml"
+  responses:
+    "200":
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Ack.yaml"

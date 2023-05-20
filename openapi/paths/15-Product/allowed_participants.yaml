@@ -1,0 +1,52 @@
+get:
+  operationId: getAllowedParticipants
+  tags:
+    - Product Registry
+  summary: Product find by ID API.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product participants
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/ProductParticipants.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+post:
+  operationId: updateAllowedParticipants
+  tags:
+    - ProductParticipantAPIs
+  summary: Product find by ID API.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product participants
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/ProductParticipants.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

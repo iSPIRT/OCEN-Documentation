@@ -1,0 +1,47 @@
+type: object
+required:
+  - primaryId
+  - primaryIdType
+  - category
+  - contactDetails
+properties:
+  primaryId:
+    type: string
+    examples:
+      - CPAA1234A
+  primaryIdType:
+    type: string
+    enum:
+      - PAN
+      - MOBILE
+      - AADHAAR
+  additionalIdentifiers:
+    type: array
+    items:
+      $ref: ./AdditionalIdentifier.yaml
+  name:
+    type: string
+    examples:
+      - John doe
+  category:
+    type: string
+    enum:
+      - ORGANIZATION
+      - INDIVIDUAL
+  contactDetails:
+    type: array
+    items:
+      $ref: ./ContactDetails.yaml
+  documents:
+    type: array
+    items:
+      $ref: ./Document.yaml
+  url:
+    type: string
+  extensibleData:
+    $ref: ./ExtensibleData.yaml
+  #TODO - Review if adding AA Identifier here is okay [XXX]
+  aaIdentifier:
+    type: string
+    example: user@aa
+    description: For AA based flows, account aggregator identifier will be provided by the borrower

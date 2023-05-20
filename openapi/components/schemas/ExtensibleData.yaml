@@ -1,0 +1,2 @@
+type: object
+description: 'This API schema is for additional keys & values according to specific need. User can add JSON objects as per the requirements.'

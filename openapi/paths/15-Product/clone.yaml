@@ -1,0 +1,26 @@
+post:
+  operationId: productVersioningApIs
+  tags:
+    - Product Registry
+  summary: Clone a product.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns the cloned product
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Product.yaml      
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

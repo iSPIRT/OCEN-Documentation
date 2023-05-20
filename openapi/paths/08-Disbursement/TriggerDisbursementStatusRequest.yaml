@@ -1,0 +1,51 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Disbursement BA to Lender
+  summary: Trigger Disbursement Status Request
+  description: This API is to be used by BA to check the status of a previously initiated disbursement request. 
+  operationId: triggerDisbursementStatusRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - loanId
+                  - requestId
+                  - payment
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  loanId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  requestId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  payment:
+                    type: object
+                    properties:
+                      id:
+                          type: string
+                          examples:
+                              - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

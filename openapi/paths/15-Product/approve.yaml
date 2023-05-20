@@ -1,0 +1,26 @@
+post:
+  operationId: participantManagementApIs
+  tags:
+    - Product Registry
+  summary: Approve a product.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns approved or rejected
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Response.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

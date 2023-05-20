@@ -1,0 +1,9 @@
+Id:
+  name: id
+  in: path
+  description: identifier for entitiy registered
+  schema:
+    type: string
+    format: uuid
+  example: "5ebd671b-762c-49b0-99ce-65642b113d7b"
+  required: true

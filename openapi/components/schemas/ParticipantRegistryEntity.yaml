@@ -1,0 +1,217 @@
+DataProviderEntity:
+  type: object
+  allOf:
+    - $ref: '#/EntityAttributes'
+  properties:
+    schemaIds:
+      type: array
+      description: Supported schemaId and versions by Data-Provider
+      items:
+        $ref: '#/SupportedSchema'
+  required:
+    - version
+    - name
+    - baseUrl
+    - ips
+    - inboundPorts
+    - outboundPorts
+    - certificate
+    - schemaIds
+EntityAttributes:
+  type: object
+  properties:
+    version:
+      type: string
+    name:
+      type: string
+    baseUrl:
+      type: string
+      description: base url of the module in eco-system.
+          The typical format of a baseUrl is as follows.<br>
+          ``` <fqdn>.<extension>
+          ```
+          where, <br/>
+          <table> <thead>
+            <tr>
+              <td>Key</th>
+              <td>Description</th>
+            </tr>
+          </thead> <tbody>
+            <tr>
+              <td>fqdn</th>
+              <td>Fully qualified domain name</th>
+            </tr>
+            <tr>
+              <td>extn</td>
+              <td>Domain Extension</td>
+            </tr>
+          </tbody> </table>
+          The domain name of the subscriber must be an ```https``` domain with a TLD extension and a valid SSL certificate from a trusted certificate authority
+      example: https://BA.company.com
+    ips:
+      type: array
+      items:
+        type: string
+      example: ["203.34.12.3", "203.34.12.4"]
+    inboundPorts:
+      type: array
+      items:
+        type: string
+      example: ["80", "45"]
+    outboundPorts:
+      type: array
+      items:
+        type: string
+      example: ["80", "45"]
+    certificate:
+      type: object
+      $ref: './Certificate.yaml#/Certificate'
+
+SupportedSchema:
+  type: object
+  allOf: 
+    - $ref: '#/DPSchemaId'
+  properties:
+    versions:
+      type: array
+      items:
+        type: string
+      example: ["1.0.0", "1.0.2"]
+    # versionCondition:
+    #   type: string
+    #   description: to specify acceptable version ranges up to 1.0.4 use ~1.0.4. More about 
+    #   example: ~1.0.4
+DPSchemaId:
+  type: object
+  properties:
+    schemaId: 
+      type: string
+      format: uuid
+
+RegisterEntityRequest:
+  type: object
+  allOf:
+    - $ref: '#/EntityAttributes'
+  required:
+    - version
+    - name
+    - baseUrl
+    - ips
+    - inboundPorts
+    - outboundPorts
+    - cetrificate
+EntityAddDeleteResponse:
+  type: object
+  allOf:
+    - $ref: '#/Timestamp'
+    - $ref: '#/EntityIdentifier'
+    - $ref: '#/EntityType'
+  properties:
+    message: 
+      type: string
+Timestamp:
+  type: object
+  properties:
+    timestamp:
+      type: string
+      format: date-time
+      example: '2021-12-06T11:39:57.153Z'
+EntityIdentifier:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: id of the entity
+EntityType:
+  type: object
+  properties:
+    type:
+      type: string
+      description: type of the entity
+      enum:
+        - BA
+        - lender
+        - data-provider
+UpdateDataProviderEntityRequest:
+  type: object
+  allOf:
+    - $ref: '#/Status'
+    - $ref: '#/DataProviderEntity'
+UpdateEntityRequest:
+  type: object
+  allOf:
+    - $ref: '#/Status'
+    - $ref: '#/EntityAttributes'
+Status:
+  type: object
+  properties:
+    status:
+      type: string
+      enum:
+        - ACTIVE
+        - BLOCKED
+        - INACTIVE
+RegisteredEntity:
+  type: object
+  allOf:
+    - $ref: '#/EntityIdentifier'
+    - $ref: '#/EntityType'
+    - $ref: '#/Status'
+    - $ref: '#/EntityAttributes'
+  properties: 
+    createdOn:
+      type: string
+      format: timestamp
+    updatedOn:
+      type: string
+      format: timestamp
+EntityLookupRequest:
+  type: object
+  allOf:
+    - $ref: '#/EntityIdentifier'
+    - $ref: '#/Status'
+  properties:
+    name:
+      type: string
+    version:
+      type: string
+    baseUrl:
+      type: string
+    size: 
+      type: integer
+      example: 100
+      description: maximum number of elements in a page.
+    page:
+      type: integer
+      example: 0
+      description: page number, default is 0 
+EntityLookupResponse:
+  type: object
+  properties:
+    content:
+      anyOf:
+        - type: array
+          items:
+            $ref: '#/RegisteredEntity'
+        - type: array
+          items:
+            $ref: '#/DataProviderEntity'
+    number:
+      type: integer
+      description: index of page
+    size:
+      type: integer
+    totalElements:
+      type: integer
+      description: total number of elementes found for given query
+    totalPages:
+      type: integer
+    last:
+      type: boolean
+      description: true if this is last page
+    numberOfElements:
+      type: integer
+    first:
+      type: boolean
+      description: true if this is first page

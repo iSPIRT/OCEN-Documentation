@@ -1,0 +1,22 @@
+#TODO possibly merge this with Benchmark data
+type: object
+required:
+    - value
+    - sourceType
+    - source
+properties:
+    value:
+        type: string
+    source:
+        type: string
+        enum:
+            - BA
+            - PLATFORMS
+    sourceIdentifier:
+        type: string
+        examples:
+            - SWIGGY
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

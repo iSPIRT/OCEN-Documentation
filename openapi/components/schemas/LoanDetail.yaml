@@ -1,0 +1,11 @@
+type: object
+required:
+    - loanId
+    - terms
+properties:
+    loanId:
+        type: string
+        examples:
+            - ajaxbhbxijdxioj9snjnx
+    terms:
+        $ref: './LoanTerms.yaml'

@@ -1,0 +1,46 @@
+type: object
+required:
+    - requestedAmount
+    - currency
+properties:
+    requestedAmount:
+        type: string
+        examples:
+            - '50000.00'
+    currency:
+        type: string
+        examples:
+            - INR
+    sanctionedAmount:
+        type: string
+        examples:
+            - '5000.00'
+    interestType:
+        type: string
+        enum:
+            - FIXED
+            - FLOATING
+    interestRate:
+        type: string
+        examples:
+            - '6.50'
+    totalAmount:
+        type: string
+    interestAmount:
+        type: string
+    description:
+        type: string
+    tenure:
+        $ref: './LoanTenure.yaml'
+    legalAgreement:
+        $ref: './LoanAgreement.yaml'
+    documents:
+        type: array
+        items:
+            $ref: './Document.yaml'
+    charges:
+        $ref: './Charges.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

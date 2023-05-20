@@ -1,0 +1,50 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Disbursement Lender to BA
+  summary: Set Disbursement Account Response
+  description: This API is invoked by the lender to inform the BA regarding whether the lender has successfully set the disbursement account which was sent in SetDisbursementAccountRequest.
+  operationId: setDisbursementAccountResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - loanApplicationId
+                  - account
+                  - response
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  loanApplicationId:
+                      type: string
+                      examples:
+                          - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                  loanId:
+                      type: string
+                  response:
+                      $ref: '../../components/schemas/Response.yaml'
+                  account:
+                      $ref: '../../components/schemas/AccountDetails.yaml'
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

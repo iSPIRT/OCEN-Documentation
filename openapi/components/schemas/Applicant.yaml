@@ -1,0 +1,40 @@
+type: object
+required:
+    - primaryId
+    - primaryIdType
+properties:
+    primaryId:
+        type: string
+        examples:
+            - '<PAN NO.>'
+    primaryIdType:
+        type: string
+        enum:
+            - PAN
+            - MOBILE
+            - AADHAAR
+    additionalIdentifiers:
+        type: array
+        items:
+            $ref: './AdditionalIdentifier.yaml'
+    name:
+        type: string
+    category:
+        type: string
+        enum:
+            - ORGANIZATION
+            - INDIVIDUAL
+    relationshipWithBorrower:
+        type: string
+    contactDetails:
+        type: array
+        items:
+            $ref: 'ContactDetails.yaml'
+    documents:
+        type: array
+        items:
+            $ref: './Document.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

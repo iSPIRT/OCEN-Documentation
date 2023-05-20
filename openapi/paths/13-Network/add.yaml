@@ -1,0 +1,37 @@
+post:
+  operationId: addToNetwork
+  tags:
+    - NetworkAPIs
+  description: This API is add partner to network. 
+  requestBody:
+    description: This will be called from add partner to network
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - description
+          properties:
+            partner:
+              type: string
+              format: 'Alphanumeric'
+              maxLength: 35
+              description: Id of network
+
+  responses:
+    '200':
+      description: Acknowledgement of network creation
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../components/schemas/Network.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

@@ -1,0 +1,6 @@
+type: oauth2
+description: See https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/ for more details
+flows:
+  clientCredentials:
+    tokenUrl: https://ocen.finarkein.com/auth/realms/gateway/protocol/openid-connect/token
+    scopes: {} # no scopes for now

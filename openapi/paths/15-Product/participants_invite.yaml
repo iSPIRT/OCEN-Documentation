@@ -1,0 +1,39 @@
+post:
+  operationId: inviteParticipants
+  tags:
+    - Product Registry
+  summary: Invite participants to product.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  requestBody: 
+    content: 
+      application/json: 
+        schema: 
+          type: object
+          required: 
+            -  participants
+          properties:
+            participants:
+              type: array
+              description:	List of participants to invite
+              items: 
+                $ref: ../../components/schemas/ProductParticipants.yaml
+  responses:
+    '200':
+      description: Returns an invite for the product
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Response.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

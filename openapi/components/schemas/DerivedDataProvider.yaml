@@ -1,0 +1,88 @@
+DPRegisterSchemaRequest:
+  type: object
+  properties:
+    version: 
+      type: string
+      description: follow semantic version, ref https://semver.org/ |
+        <table> <thead>
+            <tr>
+              <td>Status</th>
+              <td>Stage</th>
+              <td>Rule</th>
+              <td>ExampleVersion</th>
+            </tr>
+          </thead> <tbody>
+            <tr>
+              <td>First release</th>
+              <td>New product</th>
+              <td>Start with 1.0.0</th>
+              <td>1.0.0</th>
+            </tr>
+            <tr>
+              <td>-</th>
+            </tr>
+            <tr>
+              <td>Backward compatible bug fixes</th>
+              <td>Patch release</th>
+              <td>Increment the third digit</th>
+              <td>1.0.1</th>
+            </tr>
+            <tr>
+              <td>-</th>
+            </tr>
+            <tr>
+              <td>Backward compatible new features</th>
+              <td>Minor release</th>
+              <td>Increment the middle digit and reset last digit to zero</th>
+              <td>1.1.0</th>
+            </tr>
+            <tr>
+              <td>-</th>
+            </tr>
+            <tr>
+              <td>Changes that break backward compatibility</th>
+              <td>Major release</th>
+              <td>Increment the first digit and reset middle and last digits to zero</th>
+              <td>2.0.0</th>
+            </tr>
+            <tr>
+              <td>-</th>
+            </tr>
+          </tbody> </table>
+    name: 
+      type: string
+    jsonSchema:
+      type: string
+      format: json 
+
+  required:
+    - version
+    - name
+    - jsonSchema
+
+DPSchemaId:
+  type: object
+  properties:
+    schemaId: 
+      type: string
+      format: uuid
+DPSchemaAddDeleteResponse:
+  type: object
+  allOf: 
+    - $ref: './ParticipantRegistryEntity.yaml#/Timestamp'
+    - $ref: '#/DPSchemaId'
+  properties:
+    message:
+      type: string
+      example: added successfully
+RegisteredDPSchema:
+  type: object
+  allOf:
+    - $ref: '#/DPSchemaId'
+    - $ref: '#/DPRegisterSchemaRequest'
+  properties:
+    createdOn:
+      type: string
+      format: date-time
+      description: Creation timestamp of the message which will be updated at each leg
+      example: '2018-12-06T11:39:57.153Z'

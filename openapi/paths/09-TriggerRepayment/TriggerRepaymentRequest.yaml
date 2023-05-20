@@ -1,0 +1,42 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Trigger Repayment BA to Lender
+  summary: Trigger Repayment Request
+  description: This API is invoked by the BA to inform the lender to trigger a repayment. This API will not be called when payment is routed to lender via collection agent.
+  operationId: triggerRepaymentRequest
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - payment
+                  - loanId
+              properties:
+                  metadata:
+                    $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                    type: string
+                  payment:
+                    $ref: '../../components/schemas/Payment.yaml'
+                  loanId:
+                    type: string
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

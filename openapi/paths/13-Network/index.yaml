@@ -1,0 +1,67 @@
+post:
+  operationId: createNetwork
+  tags:
+    - NetworkAPIs
+  description: This API is network create API. 
+  requestBody:
+    description: This will be called from console to create network
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - description
+          properties:
+            name:
+              type: string
+              format: 'Alphanumeric'
+              maxLength: 35
+              description: Name of network
+            description:
+              type: string
+              format: 'Alphanumeric'
+              maxLength: 35
+              description: Description of prodnetworkuct. 
+
+  responses:
+    '200':
+      description: Acknowledgement of network creation
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../components/schemas/Network.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+
+get:
+  operationId: listNetwork
+  tags:
+    - NetworkAPIs
+  description: This API is network create API. 
+  responses:
+    '200':
+      description: Acknowledgement of network list
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../components/schemas/Network.yaml
+                
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

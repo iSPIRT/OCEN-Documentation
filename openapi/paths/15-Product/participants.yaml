@@ -1,0 +1,71 @@
+get:
+  operationId: getParticipantsList
+  tags:
+    - Product Registry
+  summary: Get Product Participants List.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product participants
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/ProductParticipants.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+post:
+  operationId: participateInProduct
+  tags:
+    - ProductParticipantAPIs
+  summary: Add Product Participants List.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a product participants
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/ProductParticipants.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found
+delete:
+  operationId: unparticipateInProduct
+  summary: Unparticipate in product
+  tags:
+    - ProductParticipantAPIs
+  responses:
+    '200':
+      description: Returns a product participants
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/ProductParticipants.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

@@ -1,0 +1,18 @@
+type: object
+required:
+    - error
+    - traceId
+    - timestamp
+properties:
+    error:
+        type: string
+        examples:
+            - '0'
+    traceId:
+        type: string
+        examples:
+            - e8cc6822-d4bb-4eb1-9e1b-4996fbff8acb
+    timestamp:
+        type: string
+        examples:
+            - '2018-12-06T11:39:57.153Z'

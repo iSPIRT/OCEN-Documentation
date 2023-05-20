@@ -1,0 +1,18 @@
+type: object
+required:
+    - id
+    - type
+    - name
+    - status
+properties:
+    id:
+        type: string
+    type:
+        type: string
+    name:
+        type: string
+    status:
+        type: string
+    data:
+        type: object
+    

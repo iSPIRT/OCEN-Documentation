@@ -1,0 +1,22 @@
+post:
+  servers:
+    - url: https://ocenapis.lender.com
+  tags:
+    - Consent journey state notification BA to Gateway
+  summary: Share the consent journey status
+  description: Invoked by BA to inform Lenders of the consent journey state once the customer has interacted with Account Aggregator
+  requestBody:
+    description: Consent State update request
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: "../../components/schemas/ConsentApis.yaml#/ConsentNotificationRequest"
+  responses:
+    "200":
+      description: Acknowledgement to consent handle Response
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Ack.yaml"

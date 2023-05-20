@@ -1,0 +1,113 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - Loan Details Lender to BA
+  summary: Loan Summary Response
+  description: This API is invoked by the BA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.
+  operationId: loanSummaryResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+                type: object
+                required:
+                    - metadata
+                    - response
+                    - requestId
+                    - loanId
+                    - lenderAccount
+                    - loanStatus
+                    - createdDate
+                    - startDate
+                    - endDate
+                    #TODO the word document has a LoanSummary Object possibly create one in the core schema.
+                    - summary
+                properties:
+                    metadata:
+                        $ref: '../../components/schemas/MetaData.yaml'
+                    response:
+                        $ref: '../../components/schemas/Response.yaml'
+                    requestId:
+                        type: string
+                        examples:
+                            - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                    loanId:
+                        type: string
+                        examples:
+                            - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+                    lenderAccount:
+                        type: object
+                        required:
+                            - accountDataType
+                            - data
+                    loanStatus:
+                        type: string
+                        #TODO More statuses added from the document
+                        enum:
+                        - GRANTED
+                        - REJECTED
+                        - ACTIVE
+                        - DEFAULTED
+                        - OVERDUE
+                        - ACTION_REQUIRED
+                    createdDate:
+                        type: string
+                    startDate:
+                        type: string
+                    endDate:
+                        type: string
+                    summary:
+                        type: object
+                        required:
+                            - nextRepayment
+                            - currentRepayment
+                            - principalPaid
+                            - interestPaid
+                            - penaltyPaid
+                            - principalPending
+                            - interestPending
+                            - amountDisbursed
+                            - amountRepaid
+                            - tenure
+                            - description
+                        properties:
+                            nextRepayment:
+                                $ref: '../../components/schemas/Payment.yaml'
+                            currentRepayment:
+                                $ref: '../../components/schemas/Payment.yaml'
+                            principalPaid:
+                                type: string
+                            interestPaid:
+                                type: string
+                            penaltyPaid:
+                                type: string
+                            principalPending:
+                                type: string
+                            interestPending:
+                                type: string
+                            amountDisbursed:
+                                type: string
+                            amountRepaid:
+                                type: string
+                            tenure:
+                                $ref: '../../components/schemas/LoanTenure.yaml'
+                            description:
+                                type: string
+                                examples:
+                                    - short description for the loan
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

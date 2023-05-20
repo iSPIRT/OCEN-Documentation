@@ -1,0 +1,31 @@
+type: object
+required:
+    - id
+    - status
+properties:
+    id:
+        type: string
+    description:
+        type: string
+    type:
+        type: string
+        enum:
+            - EMANDATE_UPI
+            - ELIEN
+            - ENACH
+            - ANY
+    status:
+        type: string
+        enum:
+            - INACTIVE
+            - ACTIVE
+            - CANCELLED
+            - PAUSE
+    data:
+        type: object
+        description: 'Data for different type will be defined in later version of APIs. As of now, BA can define it as per their requirement'
+        $ref: './ExtensibleData.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

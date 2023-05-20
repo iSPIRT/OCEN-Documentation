@@ -1,0 +1,43 @@
+type: object
+required:
+  - createdDate
+  - loanApplicationId
+  - loanType
+  - borrower
+  - collaterals
+  - guarantors
+  - applicants
+  - terms
+properties:
+  createdDate:
+    type: string
+  loanApplicationId:
+    type: string
+  productId:
+    type: string
+  pledgedDocuments:
+    type: array
+    items:
+      $ref: "./Document.yaml"
+  borrower:
+    type: array
+    $ref: "./Borrower.yaml"
+  collaterals:
+    type: array
+    $ref: "./Collateral.yaml"
+  guarantors:
+    type: array
+    $ref: "./Guarantor.yaml"
+  applicants:
+    type: array
+    $ref: "./Applicant.yaml"
+  #TODO: Discuss to break this up into two objects one to be filled by Borrower & Lender
+  terms:
+    $ref: "./LoanTerms.yaml"
+  url:
+    type: string
+  disbursementProductId:
+    type: string
+  description:
+    type: string
+  extensibleData: "./ExtensibleData.yaml"

@@ -1,0 +1,24 @@
+type: object
+properties:
+    accountType:
+        type: string
+        enum:
+            - CURRENT
+            - SAVING
+            - OVERDRAFT
+    accountIFSC:
+        type: string
+        examples:
+            - ICK000856
+    accountNumber:
+        type: string
+        examples:
+            - '11250789101486249090'
+    vpa:
+        type: string
+        examples:
+            - ''
+    maskedAccountNumber:
+        type: string
+        examples:
+            - XXXXXXXXX9090

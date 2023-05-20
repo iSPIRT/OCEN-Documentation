@@ -1,0 +1,22 @@
+type: object
+required:
+    - actionType
+    - description
+    - reference
+properties:
+    actionType:
+        type: string
+        enum:
+            - ADD_DOCUMENT
+            - RESUBMIT_DOCUMENT
+            - OTHER
+    description:
+        type: string
+        examples:
+            - DL number not visible
+    reference:
+        $ref: './Reference.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'

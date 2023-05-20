@@ -1,0 +1,61 @@
+post:
+  servers:
+    - url: https://ocenapis.borrowagent.com
+  tags:
+    - KYC Lender to BA
+  summary: KYC Status Response
+  description: This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the BA about the action required for completing the KYC.
+  operationId: KYCStatusResponse
+  requestBody:
+    content:
+          application/json:
+            schema:
+              type: object
+              required:
+                  - metadata
+                  - requestId
+                  - loanApplicationId
+                  - kyc
+              properties:
+                  metadata:
+                      $ref: '../../components/schemas/MetaData.yaml'
+                  requestId:
+                      type: string
+                  loanApplicationId:
+                      type: string
+                  response:
+                    $ref: '../../components/schemas/Response.yaml'
+                  #TODO the request just requires the KYC Ref no should not include the full schema
+                  kyc:
+                    type: object
+                    properties:
+                      kycRefNo:
+                        type: string
+                      verificationStatus:
+                        type: string
+                        enum:
+                          - SUCCESS
+                          - REJECTED
+                          - PENDING
+                          - ACTION_REQUIRED
+                      individualKYC:
+                        $ref: '../../components/schemas/KYCDetails.yaml'
+                      entityKYC:
+                        $ref: '../../components/schemas/KYCDetails.yaml'
+                      extensibleData:
+                        $ref: '../../components/schemas/ExtensibleData.yaml'
+
+  responses:
+    '200':
+      description: Acknowledgement of Request Received
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Ack.yaml'

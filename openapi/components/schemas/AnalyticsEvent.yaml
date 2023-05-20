@@ -1,0 +1,22 @@
+title: OCEN Heartbeat
+type: object
+properties:
+  timestamp:
+    type: string
+    format: date-time
+  eventId:  
+    type: string
+    format: uuid
+  previousEventId:
+    type: string
+    format: uuid
+    description: Relevant previously sent heartbeat event identifier, if present, can be used to generate lineage graph
+  productId:
+    type: string
+  loanApplicationId:
+    type: string
+  eventType:
+    type: string
+  extensibleData:
+    desciption: Any extra metadata to be attached to the event
+    $ref: './ExtensibleData.yaml'

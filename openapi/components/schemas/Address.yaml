@@ -1,0 +1,62 @@
+#TODO: Change the title
+title: Root 
+type: object
+required:
+    - hba
+    - srl
+    - pinCode
+    - state
+    - country
+properties:
+    hba:
+        type: string
+        examples:
+            - '<House/Building/Apartment>'
+    srl:
+        type: string
+        examples:
+            - '<Street/Road/Lane>'
+    landmark:
+        type: string
+    als:
+        type: string
+        examples:
+            - '<Area/Locality/Sector>'
+    vtc:
+        type: string
+        examples:
+            - '<Village/Town/City>'
+    pinCode:
+        type: string
+        examples:
+            - ''
+    po:
+        type: string
+        examples:
+            - ''
+    district:
+        type: string
+        examples:
+            - ''
+    state:
+        type: string
+        examples:
+            - ''
+    country:
+        type: string
+        examples:
+            - ''
+    url:
+        type: string
+        examples:
+            - '<digital address>'
+    latitude:
+        type: string
+        examples:
+            - ''
+    longitude:
+        type: string
+        examples:
+            - ''
+    extensibleData:
+        $ref: ./ExtensibleData.yaml

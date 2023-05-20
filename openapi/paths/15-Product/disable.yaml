@@ -1,0 +1,26 @@
+post:
+  operationId: disableProduct
+  tags:
+    - Product Registry
+  summary: Disable product API.
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Acknowledgement of product delete
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/Product.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

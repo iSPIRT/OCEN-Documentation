@@ -1,0 +1,26 @@
+get:
+  operationId: productHistory
+  tags:
+    - Product Registry
+  summary: This API will return the list of changes on the product
+  parameters:
+    - name: id
+      in: path
+      description: Product ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns a list of product history
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/schemas/ProductHistory.yaml
+    '400':  
+        description: Invalid request
+    '404':
+        description: Not found

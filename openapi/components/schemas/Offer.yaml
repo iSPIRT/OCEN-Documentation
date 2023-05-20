@@ -1,0 +1,30 @@
+type: object
+required:
+    - id
+    - validTill
+    - terms
+    - disbursement
+    - repayment
+properties:
+    id:
+        type: string
+        examples:
+            - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
+    validTill:
+        type: string
+    terms:
+        $ref: './LoanTerms.yaml'
+    disbursement:
+        $ref: './Disbursement.yaml'
+    repayment:
+        $ref: './Repayment.yaml'
+    description:
+        type: string
+    documents:
+        type: array
+        items:
+            $ref: './Document.yaml'
+    url:
+        type: string
+    extensibleData:
+        $ref: './ExtensibleData.yaml'
