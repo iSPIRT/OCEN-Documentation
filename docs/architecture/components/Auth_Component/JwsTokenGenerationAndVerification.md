@@ -12,7 +12,7 @@ The following Java Spring Webflux code demonstrates the ReactiveResponseSigner c
 public class ReactiveResponseSigner extends ServerHttpResponseDecorator {
 
     public ReactiveResponseSigner(ServerHttpResponse response) {
-        super(response);r;
+        super(response);
     }
 
     // Override the writeWith method to sign the payload before writing the response
