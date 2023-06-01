@@ -56,13 +56,15 @@ const config = {
             'https://github.com/iSPIRT/OCEN-Documentation/tree/main/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       }),
     ]
   ],
 
-  plugins: [],
+  plugins: [
+    'docusaurus-plugin-sass',
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
