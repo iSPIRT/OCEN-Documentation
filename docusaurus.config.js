@@ -31,7 +31,7 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  
   presets: [
     [
       'docusaurus-preset-openapi',
@@ -62,7 +62,16 @@ const config = {
     ]
   ],
 
-  plugins: [],
+  plugins: [
+    [
+      "docusaurus-plugin-openapi",
+      {
+        id: "multi-spec",
+        path: "apis",
+        routeBasePath: "apis",
+      },
+    ],
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -83,7 +92,7 @@ const config = {
             label: 'Docs',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
-          { to: '/api', label: 'API', position: 'left' },
+          { to: '/apis', label: 'API', position: 'left' },
         ],
       },
       footer: {
