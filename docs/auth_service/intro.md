@@ -1,8 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 ---
+# Auth Service Overview
 
-# Auth Service
 The Auth service addresses two main concerns in the ecosystem:
 1. Identity of the entity accessing an endpoint
 2. Integrity and non-repudiation so entities cannot deny their actions after performing any operation
@@ -25,7 +25,7 @@ Following sections provide detailed information about the endpoints that the Aut
 
 ### Digital Signature
 
-![Detached JWS](./_images/detached_jws.png "Detached Json Web Signature")
+![Detached JWS](../_images/detached_jws.png "Detached Json Web Signature")
 
 ### Detached JWS
 
@@ -39,4 +39,4 @@ Other advantages of detached signatures are:
 
 As shown in following diagram, **Detached JWS** is supplied in the HTTP header **Signature**.
 
-![Detached JWS in Header](./_images/detached_jws_http.png "Detached JWS in HTTP header")
+![Detached JWS in Header](../_images/detached_jws_http.png "Detached JWS in HTTP header")

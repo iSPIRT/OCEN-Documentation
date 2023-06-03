@@ -11,7 +11,7 @@ Apart from the API specification for the participants to communicate with each o
 3. Participant Registry
 
 ## Auth Service
-The [Auth service](./auth_component) addresses two main concerns in the ecosystem:
+The [Auth service](./auth_service/intro.md) addresses two main concerns in the ecosystem:
 1. Identity of the entity accessing an endpoint
 2. Integrity and non-repudiation so entities cannot deny their actions after performing any operation
 
