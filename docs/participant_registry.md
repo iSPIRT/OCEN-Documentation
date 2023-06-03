@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Participant Registry
 The Participant Registry component of the OCEN 4.0 ecosystem is designed to facilitate the efficient management of participant information. It enables the storage, retrieval, and modification of participant details, ensuring seamless interactions between various parties involved in the lending process.
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 6
 ---
 
 # Auth Service
@@ -25,7 +25,7 @@ Following sections provide detailed information about the endpoints that the Aut
 
 ### Digital Signature
 
-![Detached JWS](../_images/detached_jws.png "Detached Json Web Signature")
+![Detached JWS](./_images/detached_jws.png "Detached Json Web Signature")
 
 ### Detached JWS
 
@@ -39,4 +39,4 @@ Other advantages of detached signatures are:
 
 As shown in following diagram, **Detached JWS** is supplied in the HTTP header **Signature**.
 
-![Detached JWS in Header](../_images/detached_jws_http.png "Detached JWS in HTTP header")
+![Detached JWS in Header](./_images/detached_jws_http.png "Detached JWS in HTTP header")

@@ -1,14 +1,20 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Intro
+# Security
 All participants must follow the security requirements while transmitting data over API calls. On a high level, these are the security aspects that need to be ensured.
 
 1. HTTPS - All API calls must be done securely over HTTPS
 2. Two-way TLS -  The system should use Two-way TLS to ensure that both parties can send the information securely
 3. Digital Signature - All communication between the participants should be digitally signed as per the JSON Web Signature Specification
 4. Post participant registration with the Participant Registry, the private / public keys for authentication will be available in the portal
+
+## What is two-way TLS/SSL
+
+The credit system that we are building is an asynchronous system and we need to ensure that both systems follow Transport Layer Security (TLS) Protocol to communicate with each other. In Normal TLS, the client first checks the authenticity of the server. However, the server does not try to identify the client. Since, in our case, we need to verify the identities of both the systems involved, “Two Way SSL” needs to be used. "Two-Way SSL" is usually called TLS/SSL with client certificate authentication because both parties authenticate each other.
+
+## Making secure API Calls
 
 Every OCEN participant may be an API provider or an API client. In these roles:
 
@@ -19,7 +25,7 @@ Every OCEN participant may be an API provider or an API client. In these roles:
 
 Following is a sample interaction between a Lender and a Borrower Agent(BA), following the security guidelines mentioned here:
 
-![Secure interaction sample between Borrower Agent(BA) & Lender](./images/secure-interaction-flow.png "Secure Interaction Flow")
+![Secure interaction sample between Borrower Agent(BA) & Lender](./_images/secure-interaction-flow.png "Secure Interaction Flow")
 
 1. Borrower Agent(BA) obtains an access token from Auth Service
     1. Uses the access token to fetch endpoint location of the lender(s).
