@@ -14,16 +14,3 @@ The OCEN model has been being built incrementally in phases, with reinforced lea
 3. **Product Groups:** OCEN 4.0 introduces the notion of a Product Group for serving a product. The Product Group enables a group of different participants to come together to serve a particular Product to a set of borrowers via a Borrower Agent. BAs will create & manage Product Groups while Lenders will create the Products. All participants can browse the Products and Product Groups on the Product Registry and collaborate using Product Groups. 
 
 4. **OCEN 4.0 APIs:** The previous sepcification is also updated such that the APIs across various products, actions and roles require minimal integration effort. The APIs across all participants are standardized so that a one-time integration can unlock future collaborations with new parties to serve new products.
-
-## Participant Roles
-
-OCEN 4.0 supports the following different roles for participants:
-
-| Role                        | Description |
-| :---                        | :-----      |
-| Lender                      | Creates and owns the product. |
-| Borrower Agent (BA) | Creates a Product Group and serves as the agent of the borrower. |
-| Derived Data Provider (DDP) | Enables better underwriting for lender by providing additional data about the borrower or about the market of the product. |
-| Disbursement Agent (DA)     | Enables disbursement of the loan. |
-| Collections Agent (CA)      | Enables monitoring and collections post disbursement. |
-
