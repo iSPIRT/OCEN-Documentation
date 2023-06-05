@@ -2,23 +2,11 @@
   "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
-    "title": "ispirt.in/",
+    "title": "Paticipant Registry",
     "contact": {
       "email": "community@ispirt.in",
       "url": "https://ispirt.in/"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "x-logo": {
-      "url": "./images/logo.svg"
-    },
-    "description": "Participant Registry APIs"
-  },
-  "externalDocs": {
-    "description": "Find out how to create a GitHub repo for your OpenAPI definition.",
-    "url": "https://github.com/iSPIRT/OCEN-Specs"
+    }
   },
   "paths": {
     "/participantRegistry/{type}": {
