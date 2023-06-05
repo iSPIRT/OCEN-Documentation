@@ -62,7 +62,7 @@ const config = {
     ]
   ],
 
-  plugins: [],
+  plugins: ['my-loaders', 'tailwind-loader'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

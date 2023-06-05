@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Bootstrap",
+    "image": "img/logos/bootstrap.svg",
+    "href": "https://getbootstrap.com/docs/5.2/getting-started/introduction/"
+  },
+  {
+    "name": "MUI",
+    "image": "img/logos/mui.svg",
+    "href": "https://mui.com"
+  },
+  {
+    "name": "Babel",
+    "image": "img/logos/babel.jpg",
+    "href": "https://babeljs.io/docs/en/"
+  },
+  {
+    "name": "GraphQL",
+    "image": "img/logos/graphql.jpg",
+    "href": "https://graphql.org/learn/"
+  }
+]
