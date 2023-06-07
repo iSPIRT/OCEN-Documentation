@@ -1,0 +1,70 @@
+
+frame Onboarding Phase
+
+title Participant registration
+
+participant #lightgreen Participant Registry #lightgreen
+
+participant Lender
+participant Borrower Agent
+participant Derived Data Provider
+participant Disbursement Agent
+participant Collections Agent
+
+Lender-->Participant Registry: register
+Borrower Agent-->Participant Registry: register
+Derived Data Provider-->Participant Registry: register
+Disbursement Agent-->Participant Registry: register
+Collections Agent-->Participant Registry: register
+
+====
+
+frame Onboarding Phase
+
+title Product Creation
+
+participant #lightgreen Participant Registry #lightgreen
+participant #lightgreen Product Registry #lightgreen
+
+participant Lender
+participant Borrower Agent
+participant Derived Data Provider
+participant Disbursement Agent
+participant Collections Agent
+
+Borrower Agent<-->Lender: product details
+Lender-->Product Registry: create product
+
+===
+
+title Onboarding Phase
+
+participant #lightgreen Participant Registry #lightgreen
+participant #lightgreen Product Registry #lightgreen
+
+lifelinestyle Participant Registry #green
+lifelinestyle Product Registry #green
+
+participant Collections Agent
+participant Disbursement Agent
+participant Derived Data Provider
+participant Lender
+participant Borrower Agent
+
+group #lightblue Participant registration
+Borrower Agent-->Participant Registry: register
+Lender-->Participant Registry: register
+Derived Data Provider-->Participant Registry: register
+Disbursement Agent-->Participant Registry: register
+Collections Agent-->Participant Registry: register
+end 
+
+group #lightblue Product Creation
+participant Derived Data Provider
+Borrower Agent<-->Lender: share product details
+Lender-->Product Registry: create product
+end 
+
+group #lightblue Product Group Creation
+Borrower Agent-->Product Registry: create product group
+end
