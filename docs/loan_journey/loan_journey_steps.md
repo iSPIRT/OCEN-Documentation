@@ -10,9 +10,9 @@ The steps in the lending jounery for a borrower can be categorized into three st
 
 In the onboarding phase, all participants register themselves with OCEN, the lending product is created and the network of participants that will be serving the product gets setup.
 
-1. **Participant Registration**: All participants register in the [Participant Registry](./components/participant_registry).
-2. **Product Creation**: Lender creates a product and registers it in the [Product Registry](./components/product_registry).
-3. **Product Group Creation**: BA creates a product group in the [Product Registry](./components/product_registry).
+1. **Participant Registration**: All participants register in the [Participant Registry](../components/participant_registry).
+2. **Product Creation**: Lender creates a product and registers it in the [Product Registry](../components/product_registry).
+3. **Product Group Creation**: BA creates a product group in the [Product Registry](../components/product_registry).
 4. **Analytics:** Heartbeat events invoked by all participants for all their actions.
 
 For more details, see the [components](../components/components_overview) section.
