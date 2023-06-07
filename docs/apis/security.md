@@ -25,7 +25,7 @@ Every OCEN participant may be an API provider or an API client. In these roles:
 
 Following is a sample interaction between a Lender and a Borrower Agent(BA), following the security guidelines mentioned here:
 
-![Secure interaction sample between Borrower Agent(BA) & Lender](./_images/secure-interaction-flow.png "Secure Interaction Flow")
+![Secure interaction sample between Borrower Agent(BA) & Lender](../_images/secure-interaction-flow.png "Secure Interaction Flow")
 
 1. Borrower Agent(BA) obtains an access token from Auth Service
     1. Uses the access token to fetch endpoint location of the lender(s).

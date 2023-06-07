@@ -1,17 +1,21 @@
 ---
-sidebar_position: 9
+sidebar_position: 4
 ---
 
-# Lending Journey
-The stages of the end-to-end lending journey is described below.
+# High Level Architecture
+
+The following is a high-level sequence diagram of the lending flow for the initial phases from Product creation through loan granting that highlights the role of the above components. 
+
+**TODO:** Add the high level diagram for the OCEN 4.0 network with different participants and the steps. 
+
 
 ## Onboarding
 
 | Step | Description |
 | :----- | :-----      |
-| Participant Registration | All participants register in the [Participant Registry](./participant_registry).|
-| Product Creation | Lender creates a product and registers it in the [Product Registry](./product_registry).|
-| Product Group Creation | BA creates a product group in the [Product Registry](./product_registry).|
+| Participant Registration | All participants register in the [Participant Registry](./components/participant_registry).|
+| Product Creation | Lender creates a product and registers it in the [Product Registry](./components/product_registry).|
+| Product Group Creation | BA creates a product group in the [Product Registry](./components/product_registry).|
 
 ## Application Processing
 
