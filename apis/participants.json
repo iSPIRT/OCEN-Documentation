@@ -1,0 +1,666 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.0.0",
+    "title": "Paticipant Registry",
+    "contact": {
+      "email": "community@ispirt.in",
+      "url": "https://ispirt.in/"
+    }
+  },
+  "paths": {
+    "/participantRegistry/{type}": {
+      "post": {
+        "tags": [
+          "Paticipant Registry"
+        ],
+        "summary": "register participant entity",
+        "operationId": "registerEntity",
+        "description": "API to register entity in the registry",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Signature"
+          },
+          {
+            "$ref": "#/components/parameters/EntityType"
+          }
+        ],
+        "requestBody": {
+          "description": "Request to register entity like BA, lender, data-provider",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/RegisterEntityRequest"
+                  },
+                  {
+                    "$ref": "#/components/schemas/DataProviderEntity"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityAddDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/participantRegistry/{type}/{id}": {
+      "patch": {
+        "tags": [
+          "Paticipant Registry"
+        ],
+        "summary": "update entity entry",
+        "operationId": "updateEntity",
+        "description": "API to update entry in the registry",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Signature"
+          },
+          {
+            "$ref": "#/components/parameters/EntityType"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "description": "Request to update entity properties",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateEntityRequest"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UpdateDataProviderEntityRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityAddDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Paticipant Registry"
+        ],
+        "summary": "get entity by id",
+        "operationId": "getEntity",
+        "description": "API to get paricipant entity by id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Signature"
+          },
+          {
+            "$ref": "#/components/parameters/EntityType"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/RegisteredEntity"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DataProviderEntity"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Paticipant Registry"
+        ],
+        "summary": "delete entity by id",
+        "operationId": "deleteEntity",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/EntityType"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityAddDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/participantRegistry/{type}/lookup": {
+      "post": {
+        "tags": [
+          "Paticipant Registry"
+        ],
+        "summary": "lookup query for entities",
+        "operationId": "entityLookup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Signature"
+          },
+          {
+            "$ref": "#/components/parameters/EntityType"
+          }
+        ],
+        "requestBody": {
+          "description": "Query BA, lender, data-provider using properties",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/EntityLookupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityLookupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "oAuth2Client": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://ocen.com/auth/oauth2/token/",
+            "scopes": {}
+          }
+        }
+      }
+    },
+    "parameters": {
+      "Signature": {
+        "name": "Signature",
+        "in": "header",
+        "required": true,
+        "description": "Detached JWS of the body. This is the digital signature of the request body signed using the signing private key of the caller. For bodyless request JWS of path should be provided, <br />e.g. for API ```GET /v1/{type}/{id}```, JWS of ```/{type}/{id}```",
+        "schema": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "EntityType": {
+        "name": "type",
+        "in": "path",
+        "description": "Type of the entity e.g. Borrower Agent(BA), Lender, Data Provider",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "BA",
+            "lender",
+            "data-provider"
+          ]
+        },
+        "example": "BA",
+        "required": true
+      },
+      "Id": {
+        "name": "id",
+        "in": "path",
+        "description": "identifier for entitiy registered",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "example": "5ebd671b-762c-49b0-99ce-65642b113d7b",
+        "required": true
+      }
+    },
+    "schemas": {
+      "Certificate": {
+        "type": "object",
+        "description": "Public certificate of the entity in UHI eco-system",
+        "properties": {
+          "kty": {
+            "type": "string",
+            "example": "RSA",
+            "description": "Key Type Parameter"
+          },
+          "kid": {
+            "type": "string",
+            "example": "5ebd671b-762c-49b0-99ce-65642b113d7b",
+            "description": "Public Key Use Parameter"
+          },
+          "use": {
+            "type": "string",
+            "example": "sig",
+            "description": "The use member identifies the intended use of the key"
+          },
+          "alg": {
+            "type": "string",
+            "example": "RS256",
+            "description": "algorithm"
+          },
+          "n": {
+            "type": "string",
+            "example": "gU8PDUSzaHtMOYJd9NDLJ-2dAE1lXUCgZK-N6y9vRDCurscfQlTHKZliBbhiEsMCk70_nbDie6YKXWavJKj0X4nzoa1H7jrRjKa7R80BlqtSKl95TuynUChrHvvsvcjDSXp4d4PCNZ0Hdp7j0K-QSiR4OHGb3Irm9vgv3tPdh00ijPwqFJRFSkofFiUSRp-7BXWQXvnnH0sEIMvGjCxj4hAz3J35X5KPfRaax5MCQPr1-WkOgGYvpNPaDjSjsvhtOZQMcmvy_AaoRk6FADHkIRJU14dzw9alI4dp5Yp52CRg-bPDYReQe4e3j4I8DP3i0JTkV_fJOgDKPnFpRDmDNw",
+            "description": "The modulus of key datas"
+          },
+          "e": {
+            "type": "string",
+            "example": "AQAB",
+            "description": "The public exponent of key data"
+          }
+        }
+      },
+      "EntityAttributes": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "baseUrl": {
+            "type": "string",
+            "description": "base url of the module in eco-system. The typical format of a baseUrl is as follows.<br /> ``` <fqdn>.<extension> ``` where, <br/> <table> <thead> <tr> <td>Key</th> <td>Description</th> </tr> </thead> <tbody> <tr> <td>fqdn</th> <td>Fully qualified domain name</th> </tr> <tr> <td>extn</td> <td>Domain Extension</td> </tr> </tbody> </table> The domain name of the subscriber must be an ```https``` domain with a TLD extension and a valid SSL certificate from a trusted certificate authority",
+            "example": "https://BA.company.com"
+          },
+          "ips": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "203.34.12.3",
+              "203.34.12.4"
+            ]
+          },
+          "inboundPorts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "80",
+              "45"
+            ]
+          },
+          "outboundPorts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "80",
+              "45"
+            ]
+          },
+          "certificate": {
+            "type": "object",
+            "$ref": "#/components/schemas/Certificate"
+          }
+        }
+      },
+      "RegisterEntityRequest": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityAttributes"
+          }
+        ],
+        "required": [
+          "version",
+          "name",
+          "baseUrl",
+          "ips",
+          "inboundPorts",
+          "outboundPorts",
+          "cetrificate"
+        ]
+      },
+      "DPSchemaId": {
+        "type": "object",
+        "properties": {
+          "schemaId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "SupportedSchema": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DPSchemaId"
+          }
+        ],
+        "properties": {
+          "versions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "1.0.0",
+              "1.0.2"
+            ]
+          }
+        }
+      },
+      "DataProviderEntity": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityAttributes"
+          }
+        ],
+        "properties": {
+          "schemaIds": {
+            "type": "array",
+            "description": "Supported schemaId and versions by Data-Provider",
+            "items": {
+              "$ref": "#/components/schemas/SupportedSchema"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "name",
+          "baseUrl",
+          "ips",
+          "inboundPorts",
+          "outboundPorts",
+          "certificate",
+          "schemaIds"
+        ]
+      },
+      "Timestamp": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2021-12-06T11:39:57.153Z"
+          }
+        }
+      },
+      "EntityIdentifier": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "id of the entity"
+          }
+        }
+      },
+      "EntityType": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "type of the entity",
+            "enum": [
+              "BA",
+              "lender",
+              "data-provider"
+            ]
+          }
+        }
+      },
+      "EntityAddDeleteResponse": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Timestamp"
+          },
+          {
+            "$ref": "#/components/schemas/EntityIdentifier"
+          },
+          {
+            "$ref": "#/components/schemas/EntityType"
+          }
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "BLOCKED",
+              "INACTIVE"
+            ]
+          }
+        }
+      },
+      "RegisteredEntity": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityIdentifier"
+          },
+          {
+            "$ref": "#/components/schemas/EntityType"
+          },
+          {
+            "$ref": "#/components/schemas/Status"
+          },
+          {
+            "$ref": "#/components/schemas/EntityAttributes"
+          }
+        ],
+        "properties": {
+          "createdOn": {
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedOn": {
+            "type": "string",
+            "format": "timestamp"
+          }
+        }
+      },
+      "UpdateEntityRequest": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Status"
+          },
+          {
+            "$ref": "#/components/schemas/EntityAttributes"
+          }
+        ]
+      },
+      "UpdateDataProviderEntityRequest": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Status"
+          },
+          {
+            "$ref": "#/components/schemas/DataProviderEntity"
+          }
+        ]
+      },
+      "EntityLookupRequest": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityIdentifier"
+          },
+          {
+            "$ref": "#/components/schemas/Status"
+          }
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "baseUrl": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "example": 100,
+            "description": "maximum number of elements in a page."
+          },
+          "page": {
+            "type": "integer",
+            "example": 0,
+            "description": "page number, default is 0"
+          }
+        }
+      },
+      "EntityLookupResponse": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RegisteredEntity"
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DataProviderEntity"
+                }
+              }
+            ]
+          },
+          "number": {
+            "type": "integer",
+            "description": "index of page"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "totalElements": {
+            "type": "integer",
+            "description": "total number of elementes found for given query"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "last": {
+            "type": "boolean",
+            "description": "true if this is last page"
+          },
+          "numberOfElements": {
+            "type": "integer"
+          },
+          "first": {
+            "type": "boolean",
+            "description": "true if this is first page"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    },
+    {
+      "oAuth2Client": []
+    }
+  ]
+}
