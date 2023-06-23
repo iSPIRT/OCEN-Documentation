@@ -29,14 +29,14 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplications": {
                     "type": "array",
@@ -94,7 +94,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "loanApplications"
                 ],
                 "properties": {
@@ -104,9 +104,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "description": "UUID used to tie request and response and for idempotency"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplications": {
                     "type": "array",
@@ -387,15 +386,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationIds"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationIds": {
                     "type": "array",
@@ -455,7 +454,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "loanApplications"
                 ],
                 "properties": {
@@ -465,8 +464,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplications": {
                     "type": "array",
@@ -522,7 +521,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "offer"
                 ],
@@ -530,8 +529,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string"
@@ -588,7 +587,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "loanApplicationStatus"
                 ],
@@ -599,8 +598,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string"
@@ -665,7 +664,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "kyc"
                 ],
@@ -673,8 +672,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string",
@@ -745,7 +744,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "kyc"
                 ],
@@ -756,8 +755,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string",
@@ -830,7 +829,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "kyc"
                 ],
@@ -838,8 +837,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string"
@@ -900,7 +899,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "kyc"
                 ],
@@ -908,8 +907,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string"
@@ -991,7 +990,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationIds",
                   "credBlock"
                 ],
@@ -999,8 +998,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationIds": {
                     "type": "array",
@@ -1081,7 +1080,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "response",
                   "credBlock"
                 ],
@@ -1089,8 +1088,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -1171,17 +1170,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "credBlock"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationIds": {
                     "type": "array",
@@ -1259,7 +1256,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "credBlock",
                   "response"
                 ],
@@ -1267,10 +1264,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -1353,15 +1348,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationIds"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationIds": {
                     "type": "array",
@@ -1417,7 +1412,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationIds",
                   "response"
                 ],
@@ -1428,8 +1423,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationIds": {
                     "type": "array",
@@ -1486,7 +1481,7 @@
                 "required": [
                   "metadata",
                   "loanApplicationId",
-                  "requestId",
+                  "productData",
                   "plan",
                   "paymentMethod"
                 ],
@@ -1500,8 +1495,8 @@
                   "loanId": {
                     "type": "string"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "plan": {
                     "$ref": "#/components/schemas/PaymentPlan"
@@ -1559,7 +1554,7 @@
                   "metadata",
                   "loanApplicationId",
                   "response",
-                  "requestId",
+                  "productData",
                   "useCollectionSupport",
                   "plan",
                   "paymentMethod"
@@ -1577,8 +1572,8 @@
                   "loanId": {
                     "type": "string"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "plan": {
                     "$ref": "#/components/schemas/PaymentPlan"
@@ -1634,7 +1629,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "plan",
                   "loanId"
                 ],
@@ -1642,8 +1637,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "plan": {
                     "$ref": "#/components/schemas/PaymentPlan"
@@ -1703,7 +1698,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "plan",
                   "loanId"
                 ],
@@ -1717,8 +1712,8 @@
                   "loanId": {
                     "type": "string"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "plan": {
                     "$ref": "#/components/schemas/PaymentPlan"
@@ -1771,18 +1766,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string",
@@ -1838,7 +1830,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "response",
                   "loanDetails"
                 ],
@@ -1846,11 +1838,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -1967,7 +1956,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "account"
                 ],
@@ -1975,11 +1964,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string",
@@ -2041,7 +2027,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId",
                   "account",
                   "response"
@@ -2050,11 +2036,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string",
@@ -2120,7 +2103,7 @@
                 "required": [
                   "metadata",
                   "loanId",
-                  "requestId",
+                  "productData",
                   "payment"
                 ],
                 "properties": {
@@ -2133,11 +2116,8 @@
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                     ]
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "type": "object",
@@ -2196,7 +2176,7 @@
                 "required": [
                   "metadata",
                   "loanId",
-                  "requestId",
+                  "productData",
                   "payment",
                   "response"
                 ],
@@ -2210,11 +2190,8 @@
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                     ]
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "roductData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -2302,7 +2279,7 @@
                 "required": [
                   "metadata",
                   "loanId",
-                  "requestId",
+                  "productData",
                   "payment"
                 ],
                 "properties": {
@@ -2315,11 +2292,8 @@
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                     ]
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "type": "object",
@@ -2381,7 +2355,7 @@
                 "required": [
                   "metadata",
                   "loanId",
-                  "requestId",
+                  "productData",
                   "payment",
                   "response"
                 ],
@@ -2395,11 +2369,8 @@
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                     ]
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -2486,7 +2457,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "loanId"
                 ],
@@ -2494,8 +2465,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "$ref": "#/components/schemas/Payment"
@@ -2551,7 +2522,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "response",
                   "loanId"
@@ -2560,8 +2531,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -2620,7 +2591,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "loanId"
                 ],
@@ -2628,8 +2599,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "$ref": "#/components/schemas/Payment"
@@ -2685,7 +2656,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "response",
                   "loanId"
@@ -2694,8 +2665,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "$ref": "#/components/schemas/Payment"
@@ -2754,7 +2725,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "response",
                   "payment",
                   "loanId",
@@ -2764,8 +2735,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "$ref": "#/components/schemas/Payment"
@@ -2827,18 +2798,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string",
@@ -2895,7 +2863,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "loanId",
                   "lenderAccount",
                   "loanStatus",
@@ -2911,11 +2879,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanId": {
                     "type": "string",
@@ -3052,15 +3017,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "borrower"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "borrower": {
                     "$ref": "#/components/schemas/Borrower"
@@ -3122,7 +3087,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "response",
                   "loans"
                 ],
@@ -3130,12 +3095,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "default": "",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "type": "object",
@@ -3221,15 +3182,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanId"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanId": {
                     "type": "string"
@@ -3289,7 +3250,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "loanId",
                   "accountStatement"
                 ],
@@ -3300,8 +3261,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanId": {
                     "type": "string"
@@ -3360,18 +3321,15 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "loanApplicationId"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanApplicationId": {
                     "type": "string",
@@ -3428,7 +3386,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId",
+                  "productData",
                   "loanId",
                   "lenderAccount",
                   "loanStatus",
@@ -3444,11 +3402,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "loanId": {
                     "type": "string",
@@ -3585,17 +3540,19 @@
                 "type": "object",
                 "required": [
                   "metadata",
+                  "productData",
                   "schemaId"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "schemaId": [
-                    {
-                      "$ref": "../../components/schemas/DerivedDataProvider.yaml#/DPSchemaId"
-                    }
-                  ]
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -3646,7 +3603,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metadata": {
@@ -3655,9 +3612,11 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "description": "UUID used to tie request and response and for idempotency"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "schemaId": {
+                    "type": "string"
                   },
                   "schema": {
                     "type": "object",
@@ -3716,7 +3675,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "schemaId",
                   "dataIdentifier"
                 ],
@@ -3724,14 +3683,12 @@
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "schemaId": {
                     "type": "string"
                   },
-                  "schemaId": [
-                    {
-                      "$ref": "../../components/schemas/DerivedDataProvider.yaml#/DPSchemaId"
-                    }
-                  ],
                   "dataIdentifier": {
                     "type": "object"
                   }
@@ -3785,7 +3742,7 @@
                 "required": [
                   "metadata",
                   "response",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metadata": {
@@ -3794,9 +3751,11 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "requestId": {
-                    "type": "string",
-                    "description": "UUID used to tie request and response and for idempotency"
+                  "productData": {
+                    "ref": "../../components/schemas/ProductData.yaml"
+                  },
+                  "schemaId": {
+                    "type": "string"
                   },
                   "dataIdentifier": {
                     "type": "object"
@@ -3857,14 +3816,14 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "productId": {
                     "type": "string"
@@ -3917,14 +3876,14 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "productId": {
                     "type": "string"
@@ -3983,14 +3942,14 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "disbursementProductId": {
                     "type": "string"
@@ -4043,14 +4002,14 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "disbursementProductId": {
                     "type": "string"
@@ -4106,7 +4065,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "loanId"
                 ],
@@ -4114,8 +4073,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "$ref": "#/components/schemas/Payment"
@@ -4171,7 +4130,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "response",
                   "loanId"
@@ -4180,8 +4139,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "$ref": "#/components/schemas/Payment"
@@ -4240,14 +4199,14 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "productId": {
                     "type": "string"
@@ -4300,14 +4259,14 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId"
+                  "productData"
                 ],
                 "properties": {
                   "metaData": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "productId": {
                     "type": "string"
@@ -4366,7 +4325,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "loanId"
                 ],
@@ -4374,8 +4333,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
                     "$ref": "#/components/schemas/Payment"
@@ -4434,7 +4393,7 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "requestId",
+                  "productData",
                   "payment",
                   "response",
                   "loanId"
@@ -4443,8 +4402,8 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "requestId": {
-                    "type": "string"
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -4510,7 +4469,8 @@
           "version",
           "orgId",
           "timestamp",
-          "traceId"
+          "traceId",
+          "requestId"
         ],
         "properties": {
           "version": {
@@ -4523,6 +4483,27 @@
             "type": "string"
           },
           "traceId": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "UUID used to tie request and response and for idempotency"
+          }
+        }
+      },
+      "ProductData": {
+        "title": "productData",
+        "type": "object",
+        "description": "Product Metadata specific to each API request.",
+        "required": [
+          "networkId",
+          "productId"
+        ],
+        "properties": {
+          "productId": {
+            "type": "string"
+          },
+          "networkId": {
             "type": "string"
           }
         }
@@ -5853,12 +5834,15 @@
         "required": [
           "metadata",
           "loanApplicationIds",
-          "requestId",
+          "productData",
           "consent"
         ],
         "properties": {
           "metadata": {
             "$ref": "#/components/schemas/MetaData"
+          },
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
           },
           "loanApplicationIds": {
             "type": "array",
@@ -5868,12 +5852,6 @@
                 "f8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
               ]
             }
-          },
-          "requestId": {
-            "type": "string",
-            "examples": [
-              "g8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-            ]
           },
           "consent": {
             "$ref": "#/components/schemas/Consent"
@@ -5885,7 +5863,7 @@
         "required": [
           "metadata",
           "response",
-          "requestId",
+          "productData",
           "consent"
         ],
         "properties": {
@@ -5895,11 +5873,8 @@
           "response": {
             "$ref": "#/components/schemas/Response"
           },
-          "requestId": {
-            "type": "string",
-            "examples": [
-              "i8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-            ]
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
           },
           "consent": {
             "$ref": "#/components/schemas/Consent"
@@ -5911,7 +5886,7 @@
         "required": [
           "metadata",
           "response",
-          "requestId",
+          "productData",
           "consentHandle"
         ],
         "properties": {
@@ -5921,11 +5896,8 @@
           "response": {
             "$ref": "#/components/schemas/Response"
           },
-          "requestId": {
-            "type": "string",
-            "examples": [
-              "i8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-            ]
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
           },
           "loanApplicationIds": {
             "type": "array",
@@ -5943,18 +5915,15 @@
         "description": "Request object used by BA to share consent process completion update to Gateway",
         "required": [
           "metadata",
-          "requestId",
+          "productData",
           "consents"
         ],
         "properties": {
           "metadata": {
             "$ref": "#/components/schemas/MetaData"
           },
-          "requestId": {
-            "type": "string",
-            "examples": [
-              "m8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-            ]
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
           },
           "consents": {
             "type": "array",
@@ -5993,18 +5962,15 @@
         "type": "object",
         "required": [
           "metadata",
-          "requestId",
+          "productData",
           "consent"
         ],
         "properties": {
           "metadata": {
             "$ref": "#/components/schemas/MetaData"
           },
-          "requestId": {
-            "type": "string",
-            "examples": [
-              "m8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-            ]
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
           },
           "consent": {
             "$ref": "#/components/schemas/Consent"
@@ -6016,7 +5982,7 @@
         "required": [
           "metadata",
           "response",
-          "requestId",
+          "productData",
           "consent"
         ],
         "properties": {
@@ -6026,11 +5992,8 @@
           "response": {
             "$ref": "#/components/schemas/Response"
           },
-          "requestId": {
-            "type": "string",
-            "examples": [
-              "p8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-            ]
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
           },
           "consent": {
             "$ref": "#/components/schemas/Consent"
