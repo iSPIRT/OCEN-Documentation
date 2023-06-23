@@ -5,53 +5,52 @@ authors: maverick
 tags: [intro, lending]
 ---
 
-This is the summary of a very long blog post,
+OCEN provides a API framework for allowing lenders, loan service providers (LSP), and other network participants to seamlessly allow borrowers to avail short-tenure, small credit loans.
 
 <!--truncate-->
 
 The launch of the Open Credit Enablement Network, or OCEN, was the definitive step for India to move towards democratization of credit and financial inclusion. But OCEN isn’t a product or a service. It is a set of standards. It needs effective implementation to show results. Technology companies are building according to the standard and are adding the necessary functionality required to actualize OCEN’s vision. That’s where Embedded Finance comes in. Embedded Finance enables the implementation of OCEN in the real world.
 
-
-What is the Open Credit Enablement Network? 
-
+What is the Open Credit Enablement Network?
 
 “India needs to go that extra mile in offering credit to the most deserving, smallest businesses and individuals. With most credit directed to large companies in large volumes, smaller companies and micro enterprises are left in the lurch with little or no access to credit at all which is a huge concern for the next growth phase of the industry”
+
 - Nandan Nilekani, Global FinTech Festival, 2020
 
 ## OCEN represents the next stage in the evolution of IndiaStack
 
-IndiaStack refers to a set of open APIs that allows governments, businesses, startups, and developers to utilize digital infrastructure. 
+IndiaStack refers to a set of open APIs that allows governments, businesses, startups, and developers to utilize digital infrastructure.
 
 IndiaStack was launched in 2009 with the creation of UIDAI, and represented the first major disruption in India’s FinTech space. It offers open APIs as public infrastructure such as UPI, BharatPay, BBPS, Aadhar, AEPS, eKYC, eSign, DigiLocker, FASTag, and the GSTN platform.
 
 IndiaStack APIs allow governments, businesses, startups, and developers to utilize digital infrastructure in order to facilitate presence-less, paperless, and cashless service delivery.
 
-OCEN, launched as part of IndiaStack in July 2020, aims to change the way credit is distributed to the end-user by introducing new touchpoints for the distribution of financial services. It empowers new players (such as digital platforms) to play crucial roles in the lending value chain. It is a complete reimagination of the credit ecosystem in India. 
+OCEN, launched as part of IndiaStack in July 2020, aims to change the way credit is distributed to the end-user by introducing new touchpoints for the distribution of financial services. It empowers new players (such as digital platforms) to play crucial roles in the lending value chain. It is a complete reimagination of the credit ecosystem in India.
 
 ## What does OCEN mean for the lending ecosystem?
 
-OCEN is a common language. A credit protocol infrastructure. It is a strictly defined spec of APIs that acts as a standardizing middle layer between lenders and digital platforms. 
+OCEN is a common language. A credit protocol infrastructure. It is a strictly defined spec of APIs that acts as a standardizing middle layer between lenders and digital platforms.
 
 ![Flow](./flow.webp)
 
 OCEN contains an API for each step of the lending lifecycle. Digital platforms, which until now had a very high barrier to entry for offering financial services, can now seamlessly integrate these APIs as defined in the spec and integrate with multiple lenders, digitize the entire lending life cycle and offer credit on their platform. Similarly, lenders can now open their financial infrastructure to multiple digital platforms to source new pools of borrowers.
 
 The different stakeholders in the OCEN ecosystem are:
+
 1. Loan Service Provider (LSP)
 2. Technology Service Provider (TSP)
 3. Lender
 4. Borrower
 
-Loan Service Provider (LSP) - Any customer-facing digital platform that can source borrowers. A digital platform could be a web app or an android app that already has a core offering and a customer base. They can augment their product offering by originating and enabling credit on their platform itself. 
+Loan Service Provider (LSP) - Any customer-facing digital platform that can source borrowers. A digital platform could be a web app or an android app that already has a core offering and a customer base. They can augment their product offering by originating and enabling credit on their platform itself.
 
 Technology Service Provider (TSP) - FinTech companies that work with both lenders and platforms to successfully onboard onto the OCEN protocol and use it to roll out tailored credit programs. Embedded Finance providers are a type of TSP.
 
 Lender - Banks/NBFCs/small finance banks provide capital and access to core banking networks for the Embedded Finance Infrastructure company to build on.
 
-Borrowers - MSMEs or individual consumers who will leverage credit options available within the LSP’s platform through a secure digital process. 
+Borrowers - MSMEs or individual consumers who will leverage credit options available within the LSP’s platform through a secure digital process.
 
-
-## Embedded Finance is the missing link between OCEN and financial inclusion 
+## Embedded Finance is the missing link between OCEN and financial inclusion
 
 “Many of the lenders are willing to adopt this protocol. Now we need marketplaces, or loan service providers to also adopt this protocol, which then allows them to embed loans in their daily working. For example, if you are a small company that provides tax uploading facilities to its customers, you can also provide credit to them. And you can embed the details using the protocol, and offer it to the lenders. The lenders will use their automated underwriting tools and give a loan. So you can actually go to a model where you can give short high-value loans in real-time with good underwriting and instant credit to the bank account of the borrower.”
 
@@ -68,6 +67,7 @@ Once the loan is disbursed, our CollectX product helps craft a tailored borrower
 In short, Embedded Finance companies help digital platforms and lenders come together and implement OCEN.
 
 Here is what this implementation entails:
+
 - Modifying the business processes and tech stack of digital lenders and digital platforms as per the OCEN protocol
 - Developing a digital acquisition channel with end-to-end loan application journey
 - Building FinTech partnerships with multiple lenders, platforms, credit enablement ecosystem (eNACH, PAN verification etc)
@@ -82,12 +82,12 @@ The Impact of OCEN and Embedded Finance
 Effective collaboration between lenders and LSPs can improve customer acquisition, underwriting, collections, monitoring, and overall ROI for all parties involved. This makes a self-enforcing flywheel.
 
 “Just like UPI created a common language between debit and credit and so on, and allowed us to create this huge ecosystem, OCEN protocol also enables that. This is something that is going to have a big impact. For the first time, we can truly democratize credit, and make sure credit reaches all the small companies and street vendors and so on.”
+
 - Nandan Nilekani, Global FinTech Festival, 2020
 
 ### Democratization of credit
 
 Embedded Finance and OCEN democratize credit data and the ability to offer credit services. This encourages new players to play crucial roles in the delivery of credit. Digital platforms can now leverage their positions to distribute credit to their customers and technology players can make meaningful additions to the lending value chain to make it effective and inclusive.
-
 
 ### Financial Inclusion
 
@@ -99,7 +99,6 @@ OCEN and Embedded Finance help evolve this system. The entities closest to borro
 
 Embedded Finance is our best shot at driving financial inclusion. People across socio-economic layers of society will get access to cheaper and improved financial services.
 
-
 ### New Credit Products
 
 OCEN facilitates easier and effective partnerships, resulting in digital platforms with a deep understanding of their customers being able to do what is known as specialized origination. They can provide in-context, tailored credit products with favorable terms by collaborating with lenders that work for all parties involved (especially borrowers).
@@ -107,4 +106,3 @@ OCEN facilitates easier and effective partnerships, resulting in digital platfor
 In summary
 
 Embedded Finance Infrastructure allows both the lender and LSP to play to their strengths - enabling increased customer and data access for the former, and improved customer acquisition for the latter. The end result? Seamless and tailored financial products for those who need it the most.
-
