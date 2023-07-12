@@ -2639,105 +2639,93 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Ack'
-  /derivedDataProvider/schema:
+  /ddp/versions:
+    get:
+      tags:
+        - Data Provider    
+      summary: Get a list of supported versions by the DDP
+      operationId: getDDPVersions      
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DerivedDataVersion'
+  /ddp/{version}/dataRequestSchema:
+    get:
+      tags:
+        - Data Provider        
+      summary: Get the Schema for the Data Request object of a specific version
+      operationId: getDataRequestSchema      
+      parameters:
+        - in: path
+          name: version
+          required: true
+          description: DDP data version
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Json Schema object describing the structure of the Data Request object
+          content:
+            application/json:
+              schema:
+                type: object
+  /ddp/{version}/dataSchema:
+    get:
+      tags:
+        - Data Provider       
+      summary: Get the data schema for a specific version
+      operationId: getDataSchema      
+      parameters:
+        - in: path
+          name: version
+          required: true
+          description: DDP data version
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Json Schema object describing the structure of the data that can be returned by fetchData API
+          content:
+            application/json:
+              schema:
+                type: object 
+  /ddp/{version}/fetchData:
     post:
       tags:
-        - Data Provider
-      summary: Register schema
-      operationId: registerDPSchema
+        - Data Provider     
+      summary: Fetch data from the DDP for a specific version
+      operationId: fetchDDPData        
       parameters:
-        - $ref: '#/components/parameters/Signature'
+        - in: path
+          name: version
+          required: true
+          description: DDP data version
+          schema:
+            type: string
       requestBody:
-        description: Schema registration endpoint for Dervied Data Provider
+        description: Data Request object
+        required: true
         content:
           application/json:
             schema:
               type: object
-              $ref: '#/components/schemas/DPRegisterSchemaRequest'
       responses:
         '200':
-          description: lookup result
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DPSchemaAddDeleteResponse'
-        '400':
-          description: Invalid request
-        '404':
-          description: Not found
-  /derivedDataProvider/schema/byDataProvider/{id}:
-    get:
-      tags:
-        - Data Provider
-      summary: Get schemas supported by derived data provider id
-      operationId: getDPSchemas
-      parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/DataProviderId'
-      responses:
-        '200':
-          description: schemas supported by data provider
+          description: Successful operation
           content:
             application/json:
               schema:
                 type: object
-                properties:
-                  dataProviderId:
-                    type: string
-                    format: uuid
-                    example: 5ebd671b-762c-49b0-99ce-65642b113d7b
-                  schemas:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/RegisteredDPSchema'
         '400':
           description: Invalid request
         '404':
-          description: Not found
-  /derivedDataProvider/schema/{schemaId}:
-    get:
-      tags:
-        - Data Provider
-      summary: Get schema by schema id
-      operationId: getSchema
-      parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/SchemaId'
-      responses:
-        '200':
-          description: schema
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  schemas:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/RegisteredDPSchema'
-        '400':
-          description: Bad Request
-        '404':
-          description: Not Found
-    delete:
-      tags:
-        - Data Provider
-      summary: Delete schema by schema id
-      operationId: deleteSchema
-      parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/SchemaId'
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DPSchemaAddDeleteResponse'
-        '400':
-          description: Bad Request
-        '404':
-          description: Not Found
+          description: Not found                
+
   /networks:
     post:
       operationId: createNetwork
@@ -5577,13 +5565,15 @@ components:
         extensibleData:
           desciption: Any extra metadata to be attached to the event
           $ref: '#/components/schemas/ExtensibleData'
-    DPRegisterSchemaRequest:
+    DerivedDataVersion:
       type: object
       properties:
         version:
           type: string
           description: follow semantic version, ref https://semver.org/ | <table> <thead> <tr> <td>Status</th> <td>Stage</th> <td>Rule</th> <td>ExampleVersion</th> </tr> </thead> <tbody> <tr> <td>First release</th> <td>New product</th> <td>Start with 1.0.0</th> <td>1.0.0</th> </tr> <tr> <td>-</th> </tr> <tr> <td>Backward compatible bug fixes</th> <td>Patch release</th> <td>Increment the third digit</th> <td>1.0.1</th> </tr> <tr> <td>-</th> </tr> <tr> <td>Backward compatible new features</th> <td>Minor release</th> <td>Increment the middle digit and reset last digit to zero</th> <td>1.1.0</th> </tr> <tr> <td>-</th> </tr> <tr> <td>Changes that break backward compatibility</th> <td>Major release</th> <td>Increment the first digit and reset middle and last digits to zero</th> <td>2.0.0</th> </tr> <tr> <td>-</th> </tr> </tbody> </table>
         name:
+          type: string
+        description:
           type: string
         jsonSchema:
           type: string
@@ -5599,32 +5589,7 @@ components:
           type: string
           format: date-time
           example: '2021-12-06T11:39:57.153Z'
-    DPSchemaId:
-      type: object
-      properties:
-        schemaId:
-          type: string
-          format: uuid
-    DPSchemaAddDeleteResponse:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/Timestamp'
-        - $ref: '#/components/schemas/DPSchemaId'
-      properties:
-        message:
-          type: string
-          example: added successfully
-    RegisteredDPSchema:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/DPSchemaId'
-        - $ref: '#/components/schemas/DPRegisterSchemaRequest'
-      properties:
-        createdOn:
-          type: string
-          format: date-time
-          description: Creation timestamp of the message which will be updated at each leg
-          example: '2018-12-06T11:39:57.153Z'
+    
     ProductPartner:
       type: object
       required:
