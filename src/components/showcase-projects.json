@@ -48,5 +48,10 @@
     "name": "Leanding Kart",
     "image": "img/logos/lendingkart.jpeg",
     "href": "https://www.lendingkart.com/"
+  },
+  {
+    "name": "Aditya Birla Capital",
+    "image": "img/logos/adityabirlacapital.jpg",
+    "href": "https://www.adityabirlacapital.com/"
   }
 ]
