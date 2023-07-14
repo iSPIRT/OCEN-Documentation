@@ -101,7 +101,7 @@ function Partners() {
         </div>
       </div>
       <Spacer height={60} />
-      <div className="mt-10 grid grid-cols-4 gap-0.5 md:grid-cols-6 lg:mt-0 lg:grid-cols-10">
+      <div className="flex flex-row flex-wrap gap-10 mt-10 justify-center">
         {showcaseProjects.map(({ name, href, image }) => (
           <div
             key={href}
@@ -111,16 +111,11 @@ function Partners() {
               href={href}
               rel="noreferrer"
               target="_blank"
-              alt={`Discover DocSearch on the ${name} documentation`}
             >
               <img
-                className="inline-block w-20"
+                className="inline-block w-28"
                 src={withBaseUrl(image)}
-                alt={`Discover DocSearch on the ${name} documentation`}
               />
-              <div className="text-description uppercase text-xs py-2 font-semibold">
-                {name}
-              </div>
             </a>
           </div>
         ))}
