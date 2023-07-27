@@ -14,7 +14,7 @@
         "tags": [
           "Paticipant Registry"
         ],
-        "summary": "lookup query for entities",
+        "summary": "Lookup Query For Entities",
         "operationId": "entityLookup",
         "parameters": [
           {

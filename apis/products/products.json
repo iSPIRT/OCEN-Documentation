@@ -9,6 +9,148 @@
     }
   },
   "paths": {
+    "/products": {
+      "post": {
+        "operationId": "createProduct",
+        "tags": [
+          "Product Registry"
+        ],
+        "summary": "Product create API.",
+        "requestBody": {
+          "description": "This will be called from console to create product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "description"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "Alphanumeric",
+                    "maxLength": 35,
+                    "description": "Name of product"
+                  },
+                  "description": {
+                    "type": "string",
+                    "format": "Alphanumeric",
+                    "maxLength": 35,
+                    "description": "Description of product."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of product creation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Product"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "get": {
+        "operationId": "listProduct",
+        "tags": [
+          "Product Registry"
+        ],
+        "summary": "List product API",
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of product creation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Product"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/products/{id}/disable": {
+      "post": {
+        "operationId": "disableProduct",
+        "tags": [
+          "Product Registry"
+        ],
+        "summary": "Disable product API.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of product delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Product"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/products/{id}/metadata": {
       "get": {
         "operationId": "getProductMetadata",
@@ -37,6 +179,204 @@
                   "properties": {
                     "data": {
                       "$ref": "#/components/schemas/Product"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/products/{id}/allowed_participants": {
+      "get": {
+        "operationId": "getAllowedParticipants",
+        "tags": [
+          "Product Registry"
+        ],
+        "summary": "Product find by ID API.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a product participants",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/ProductParticipants"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "operationId": "updateAllowedParticipants",
+        "tags": [
+          "ProductParticipantAPIs"
+        ],
+        "summary": "Product find by ID API.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a product participants",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/ProductParticipants"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/products/{id}/participants": {
+      "get": {
+        "operationId": "getParticipantsList",
+        "tags": [
+          "Product Registry"
+        ],
+        "summary": "Get Product Participants List.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a product participants",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/ProductParticipants"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "operationId": "participateInProduct",
+        "tags": [
+          "ProductParticipantAPIs"
+        ],
+        "summary": "Add Product Participants List.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a product participants",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/ProductParticipants"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unparticipateInProduct",
+        "summary": "Unparticipate in product",
+        "tags": [
+          "ProductParticipantAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a product participants",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/ProductParticipants"
                     }
                   }
                 }
@@ -107,6 +447,58 @@
         }
       }
     },
+    "/products/{id}/participants/{participant_product_id}/disable": {
+      "post": {
+        "operationId": "disableProductParticipant",
+        "tags": [
+          "Product Registry"
+        ],
+        "summary": "Disable Product Participant API.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "participant_product_id",
+            "in": "path",
+            "description": "Participant Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of product delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Product"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/products/{user_id}/participants/endpoint": {
       "get": {
         "operationId": "getParticipantEndpoint",
@@ -135,6 +527,73 @@
                   "properties": {
                     "data": {
                       "$ref": "#/components/schemas/ProductParticipants"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/products/{id}/update": {
+      "patch": {
+        "operationId": "updateProduct",
+        "tags": [
+          "Product Registry"
+        ],
+        "summary": "Update Product",
+        "requestBody": {
+          "description": "This will be called from console to update product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "description",
+                  "id"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "Alphanumeric",
+                    "maxLength": 35,
+                    "description": "Name of product"
+                  },
+                  "description": {
+                    "type": "string",
+                    "format": "Alphanumeric",
+                    "maxLength": 35,
+                    "description": "Description of product."
+                  },
+                  "id": {
+                    "type": "string",
+                    "format": "Integer",
+                    "maxLength": 25,
+                    "description": "Id of the existing product."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns updated product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Product"
                     }
                   }
                 }
