@@ -100,7 +100,15 @@ function Partners() {
           </h2>
         </div>
       </div>
-      <Spacer height={60} />
+      <Spacer height={10} />
+      <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-xl leading-9 font-bold md:text-2xl md:leading-10">
+            GEM Sahay Partners
+          </h2>
+        </div>
+      </div>
+      <Spacer height={30} />
       <div className="flex flex-row flex-wrap gap-10 mt-10 justify-center">
         {showcaseProjects.map(({ name, href, image }) => (
           <div
@@ -215,11 +223,6 @@ function Home() {
                     <h4 className="text-lg leading-6 font-medium">
                       Short tenures & small ticket loans
                     </h4>
-                    {/* <p className="mt-2 text-base leading-6 text-description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    </p> */}
                   </div>
                 </div>
               </li>
@@ -246,11 +249,6 @@ function Home() {
                     <h4 className="text-lg leading-6 font-medium">
                       Allow remote lenders to operate in distant geographies
                     </h4>
-                    {/* <p className="mt-2 text-base leading-6 text-description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    </p> */}
                   </div>
                 </div>
               </li>
@@ -277,11 +275,6 @@ function Home() {
                     <h4 className="text-lg leading-6 font-medium">
                       Allow consented access of alternate sources of data
                     </h4>
-                    {/* <p className="mt-2 text-base leading-6 text-description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    </p> */}
                   </div>
                 </div>
               </li>

@@ -23,13 +23,13 @@ info:
 
     Sourcing, identity verification, underwriting, disbursement, recollections and dispute management are few of the many responsibilities managed by a lender today. Historically, the best lenders have had to excel at each of these skills in order to maximize their profit pools and serve the larger and larger markets.
 
-    OCEN is an initiative to unbundle lending and enable the creation of specialized entities, each specialized at one part of the job. Therefore, we envision the future of lending to be a partnership between multiple firms individually focused on sourcing/distribution, identity verification, underwriting, capital arrangement, recollections, etc. The entities like marketplaces who have high business-connect with their customers (businesses or individuals), can embed credit offerings in their applications now. These entities are referred to as ‘Borrower Agents’ (BAs) and were previously referred to as  'Loan Service Providers' (LSPs).
+    OCEN is an initiative to unbundle lending and enable the creation of specialized entities, each specialized at one part of the job. Therefore, we envision the future of lending to be a partnership between multiple firms individually focused on sourcing/distribution, identity verification, underwriting, capital arrangement, recollections, etc. The entities like marketplaces who have high business-connect with their customers (businesses or individuals), can embed credit offerings in their applications now. These entities are referred to as ‘Loan Agents’ (LAs) and were previously referred to as  'Loan Service Providers' (LSPs).
 
-    BA is a departure from the Direct Sourcing Agent (DSA) model and is an 'agent of the borrower'. BA explains to borrowers their 'bill of rights' ensuring transparency and safeguarding of borrower interests. It educates them about the various credit product offerings, pricing and more details. It helps them get access to formal, affordable credit at low interest rates and collaborates with lenders to create more tailored offerings for borrowers.
+    LA is a departure from the Direct Sourcing Agent (DSA) model and is an 'agent of the borrower'. LA explains to borrowers their 'bill of rights' ensuring transparency and safeguarding of borrower interests. It educates them about the various credit product offerings, pricing and more details. It helps them get access to formal, affordable credit at low interest rates and collaborates with lenders to create more tailored offerings for borrowers.
 
-    A reference pilot was created to showcase the power of the above idea in the GST SAHAY pilot project that used the OCEN 3.3 APIs. In its simplest form, it's a loan marketplace that enables SMEs to compare loan offers from multiple lenders and choose the best one. In its more advanced version, this BA would be akin to a borrower’s financial advisor, looking after their interests, fetching the best offers and advising the customer to make good decisions.
+    A reference pilot was created to showcase the power of the above idea in the GST SAHAY pilot project that used the OCEN 3.3 APIs. In its simplest form, it's a loan marketplace that enables SMEs to compare loan offers from multiple lenders and choose the best one. In its more advanced version, this LA would be akin to a borrower’s financial advisor, looking after their interests, fetching the best offers and advising the customer to make good decisions.
 
-    In the longer run, it is envisioned that many more BAs (with apps) will be created. Each of these would focus on distinct borrower pools and build the specialized experiences suited to their customers. This would allow lenders to focus purely on their underwriting and collections logic and cater to diverse collaborations with the BAs.
+    In the longer run, it is envisioned that many more LAs (with apps) will be created. Each of these would focus on distinct borrower pools and build the specialized experiences suited to their customers. This would allow lenders to focus purely on their underwriting and collections logic and cater to diverse collaborations with the LAs.
 
     This is a manifestation of our efforts to democratise credit.
 
@@ -40,8 +40,8 @@ info:
     | Acronym | Expansion |
     | --- | --- |
     | AA | Account Aggregator |
-    | BA | Borrower Agent |
-    | LSP | Loan Service Provider (see BA) |
+    | LA | Loan Agent |
+    | LSP | Loan Service Provider (see LA) |
     | OCEN | Open Credit Enablement Network |
 
     # Changes in Version 4.0
@@ -56,7 +56,7 @@ info:
 
     OCEN 4.0 supports the following different roles for participants:
     - Lender - Creates and owns the product 
-    - Borrower Agent (BA) - Creates a Product Group - the network of participants needed to fulfil all the needs to the product such as collections partner, disbursement partner, etc and serves as the agent of the borrower by surfacing the offers and enabling the loan application process  
+    - Loan Agent (LA) - Creates a Product Group - the network of participants needed to fulfil all the needs to the product such as collections partner, disbursement partner, etc and serves as the agent of the borrower by surfacing the offers and enabling the loan application process  
     - Derived Data Provider (DDP) - Enables better underwriting for the lender by providing additional data about the borrower or about the market of the product 
     - Disbursement Agent (DA) - Enables disbursement of the loan
     - Collections Agent (CA) - Enables monitoring and collections post disbursement
@@ -78,7 +78,7 @@ info:
 
     ## Product Registry
 
-    Web portal where Lenders in the OCEN ecosystem register their products. Once a product is created, participants such as BAs registered in the Participant registry will be able to view and subscribe to these products. The Product Registry allows BAs and other participants to easily discover new products for their borrowers from different lenders. The Product Registry also enables Lenders to reach new borrowers via the BAs that subscribe to the products. 
+    Web portal where Lenders in the OCEN ecosystem register their products. Once a product is created, participants such as LAs registered in the Participant registry will be able to view and subscribe to these products. The Product Registry allows LAs and other participants to easily discover new products for their borrowers from different lenders. The Product Registry also enables Lenders to reach new borrowers via the LAs that subscribe to the products. 
 
     ## Participant Registry
 
@@ -113,12 +113,12 @@ info:
 
     The Lender will serve as the OWNER of the product and is the only participant who can change the product attributes subsequently.
 
-    Post product-creation, Lenders get added to Product Groups by Borrower Agents to serve borrowers in their network. They then start receiving Loan Application requests.
+    Post product-creation, Lenders get added to Product Groups by Loan Agents to serve borrowers in their network. They then start receiving Loan Application requests.
 
     *There are no API calls and implementation in this phase.*
 
     ### Loan Application and Processing Phase
-    Lenders receive Loan Application requests from the Borrower Agent, request Consent from the borrower and initiate the loan Offer. Upon acceptance of the Offer, the Lender performs the borrower KYC, confirms the loan disbursement and repayment terms with the borrower and then grants the loan. 
+    Lenders receive Loan Application requests from the Loan Agent, request Consent from the borrower and initiate the loan Offer. Upon acceptance of the Offer, the Lender performs the borrower KYC, confirms the loan disbursement and repayment terms with the borrower and then grants the loan. 
 
     The handshake and the steps in this phase follow the APIs defined in the APIs list. 
 
@@ -128,37 +128,37 @@ info:
     ### Metadata APIs
     In addition to the above, the Lender will maintain a Heartbeat API (see APIs list) to indicate the health status of their systems to the rest of the network.
 
-    ## BA Overview
-    Below is the overview of the end-to-end flow from the perspective of a Borrower Agent participant across the 3 phases of the OCEN 4.0 flow.
+    ## LA Overview
+    Below is the overview of the end-to-end flow from the perspective of a Loan Agent participant across the 3 phases of the OCEN 4.0 flow.
 
     ### Onboarding Phase
-    BAs first need to be onboarded onto the Participant Registry with their basic data. Once approved, they can use the API access key from the Participant Registry portal for making the API calls.
+    LAs first need to be onboarded onto the Participant Registry with their basic data. Once approved, they can use the API access key from the Participant Registry portal for making the API calls.
 
-    Borrower Agents in the ecosystem will then be able to drive the product life cycle by inviting other necessary participants needed in the product’s loan workflow. Once registered in the portal, BAs can create a Product Group and invite other participants (Collections, Disbursement partners and Derived Data Providers) for a particular product.
+    Loan Agents in the ecosystem will then be able to drive the product life cycle by inviting other necessary participants needed in the product’s loan workflow. Once registered in the portal, LAs can create a Product Group and invite other participants (Collections, Disbursement partners and Derived Data Providers) for a particular product.
 
-    BAs also need to select an SRO who will manage any dispute resolution issues for them and will serve as the guardrails against bad actors in the ecosystem.
+    LAs also need to select an SRO who will manage any dispute resolution issues for them and will serve as the guardrails against bad actors in the ecosystem.
 
     There are no API calls and implementation in this phase.
 
     ### Loan Application and Processing Phase
-    BAs forward the Loan Application requests to the Lender. They then drive the Loan Application process with the lender by enabling the Lender to get Consent from the borrower and then to provide the loan Offer. Upon acceptance of the Offer by the borrower, the BA enables the Lender to perform the borrower KYC, confirm the loan disbursement and repayment terms with the borrower and then to grant the loan. 
+    LAs forward the Loan Application requests to the Lender. They then drive the Loan Application process with the lender by enabling the Lender to get Consent from the borrower and then to provide the loan Offer. Upon acceptance of the Offer by the borrower, the LA enables the Lender to perform the borrower KYC, confirm the loan disbursement and repayment terms with the borrower and then to grant the loan. 
 
     The handshake and the steps in this phase follow the APIs defined in the APIs list. 
 
     ### Post-Disbursement Phase
-    Post-disbursement of the loan, any disputes from the borrower are forwarded to the Lender by the BA via the Loan Dispute APIs (see APIs list).
+    Post-disbursement of the loan, any disputes from the borrower are forwarded to the Lender by the LA via the Loan Dispute APIs (see APIs list).
 
     ### Metadata APIs
-    In addition to the above, the BA will maintain a Heartbeat API (see APIs list) to indicate the health status of their systems to the rest of the network.
+    In addition to the above, the LA will maintain a Heartbeat API (see APIs list) to indicate the health status of their systems to the rest of the network.
 
     # API Design Principles
 
     ## Async design
-    By design, all APIs are designed to enable end-to-end flows asynchronously. All requests use the requestId field for the purposes for mapping responses to their respective requests. And each request generates a standard acknowledgement from the other end while the callee (typically Lender) processes the request. API callers (typically BA) can poll for the status of the operation using a webhook. Thus each operation will have two separate APIs - one from the caller to submit the request and another async response back from the callee when the operation has completed. 
+    By design, all APIs are designed to enable end-to-end flows asynchronously. All requests use the requestId field for the purposes for mapping responses to their respective requests. And each request generates a standard acknowledgement from the other end while the callee (typically Lender) processes the request. API callers (typically LA) can poll for the status of the operation using a webhook. Thus each operation will have two separate APIs - one from the caller to submit the request and another async response back from the callee when the operation has completed. 
 
     For example: Create Loan Application operation has the following 2 APIs:
-    - CreateLoanApplicationRequest -> Request sent by BA to the Lender
-    - CreateLoanApplicationResponse -> Async Response sent by Lender to BA
+    - CreateLoanApplicationRequest -> Request sent by LA to the Lender
+    - CreateLoanApplicationResponse -> Async Response sent by Lender to LA
 
     ## Idempotency
     All request calls should be idempotent on the requestId field i.e. two calls to CreateLoanApplication with the same requestId shouldn’t result in two applications to be created. Callees are expected to return the same response as sent earlier for a duplicate request.
@@ -187,96 +187,96 @@ info:
     ## Loan Application APIs
     | API Name | Caller | Callee | Description |
     | ---- | ---- | ---- | ---- | 
-    | Create Loan Applications Request | BA | Lender | Create Loan applications endpoint available on Lender to be used by BA | 
-    | Create Loan Applications Response | Lender | BA | This is the response for Create Loan Applications but invoked by the lender. No offers are rolled out as part of this API. If the lender system finds preliminary information sufficient for doing the loan processing, it will send “PROCESSING” as the status. Otherwise, it can reject the application citing a reason for the same. | 
+    | Create Loan Applications Request | LA | Lender | Create Loan applications endpoint available on Lender to be used by LA | 
+    | Create Loan Applications Response | Lender | LA | This is the response for Create Loan Applications but invoked by the lender. No offers are rolled out as part of this API. If the lender system finds preliminary information sufficient for doing the loan processing, it will send “PROCESSING” as the status. Otherwise, it can reject the application citing a reason for the same. | 
 
     ## Consent APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Consent Handle Request | BA | Lender | Create consent handle with Account Aggregator. This API is used to request the lenders to send a consent request for fetching the bank account statements, GST historical data. The lender (FIU) checks with the AA and creates a consent handle internally once this API is triggered | 
-    | Consent Handle Response | Lender | BA | Invoked by lender to send consent handle created in Account Aggregator. | 
-    | Consent State Update Request | BA | Lender | Invoked by BA to inform Lenders of the consent journey state once the customer has interacted with Account Aggregator | 
-    | Consent Status Request | Lender | BA | Invoked by Lender to get consent handle status from BA | 
-    | Consent Status Response | BA | Lender | Invoked by BA to send consent status to Lender | 
+    | Consent Handle Request | LA | Lender | Create consent handle with Account Aggregator. This API is used to request the lenders to send a consent request for fetching the bank account statements, GST historical data. The lender (FIU) checks with the AA and creates a consent handle internally once this API is triggered | 
+    | Consent Handle Response | Lender | LA | Invoked by lender to send consent handle created in Account Aggregator. | 
+    | Consent State Update Request | LA | Lender | Invoked by LA to inform Lenders of the consent journey state once the customer has interacted with Account Aggregator | 
+    | Consent Status Request | Lender | LA | Invoked by Lender to get consent handle status from LA | 
+    | Consent Status Response | LA | Lender | Invoked by LA to send consent status to Lender | 
 
     ## Offers APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    |Generate Offers Request | BA | Lender | The BA sends this request to the lender to get the list of offers that the lender is willing to provide for the loan applications already shared. | 
-    | Generate Offers Response | Lender | BA | This API is invoked by the lender informing the borrower regarding the various loan offers that have been generated corresponding to each of the loan applications. This is a bulk API, where multiple loan offers can be sent to the borrower in one shot. | 
-    | Set Offer Request | BA | Lender | This API is invoked by the BA to inform the lender about the offer that the borrower has chosen for a particular loan application. | 
-    | Set Offer Response | Lender | BA | This API is invoked by the lender and is the asynchronous response to Set Offer Request API. | 
+    |Generate Offers Request | LA | Lender | The LA sends this request to the lender to get the list of offers that the lender is willing to provide for the loan applications already shared. | 
+    | Generate Offers Response | Lender | LA | This API is invoked by the lender informing the borrower regarding the various loan offers that have been generated corresponding to each of the loan applications. This is a bulk API, where multiple loan offers can be sent to the borrower in one shot. | 
+    | Set Offer Request | LA | Lender | This API is invoked by the LA to inform the lender about the offer that the borrower has chosen for a particular loan application. | 
+    | Set Offer Response | Lender | LA | This API is invoked by the lender and is the asynchronous response to Set Offer Request API. | 
 
     ## KYC APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Trigger KYC Request | BA | Lender | Request by BA to initiate the KYC process of the borrower after successfully accepting the final offer. (OKYC if applicable and Udyam) | 
-    | Trigger KYC Response | Lender | BA | Response sent by Lender with the url for KYC details submission.  | 
-    | KYC Status Request | BA | Lender | Request sent by BA to get the KYC status. This API will be triggered just after the user completes the KYC process. The lender is supposed to provide a reference number in the first call. This method can be called later to know the status of KYC. | 
-    | KYC Status Response | Lender | BA | This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the BA about the action required for | completing the KYC. | 
+    | Trigger KYC Request | LA | Lender | Request by LA to initiate the KYC process of the borrower after successfully accepting the final offer. (OKYC if applicable and Udyam) | 
+    | Trigger KYC Response | Lender | LA | Response sent by Lender with the url for KYC details submission.  | 
+    | KYC Status Request | LA | Lender | Request sent by LA to get the KYC status. This API will be triggered just after the user completes the KYC process. The lender is supposed to provide a reference number in the first call. This method can be called later to know the status of KYC. | 
+    | KYC Status Response | Lender | LA | This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the LA about the action required for | completing the KYC. | 
 
     ## Loan Acceptance APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Loan Agreement Request | BA | Lender | Request sent by BA to lender to initiate the loan acceptance steps beginning with asking for the loan agreement |
-    | Loan Agreement Response | Lender | BA | Response given by the lender with the loan agreement for the borrower | 
-    | Trigger Loan Acceptance Request | BA | Lender | Request sent by BA to lender to send an OTP to phone number associated with verified by individual KYC | 
-    | Trigger Loan Acceptance Response | Lender | BA | Response given by the lender for TriggerOTPRequest | 
-    | Verify Loan Acceptance Request | BA | Lender | This API is invoked by the BA when the user enters the OTP received on the mobile number and agrees to the terms of the agreement. The asynchronous response for this API should include the lender acknowledging the receipt of OTP and verifying if the user has entered the correct OTP that was shared by the lender. | 
-    | Verify Loan Acceptance Response | Lender | BA | This API is invoked by the Lender  when the OTP entered by the user is shared through the BA. This API acknowledges the receipt of OTP and verifies if the user has entered the correct OTP that was shared by the lender on the mobile number associated with the disbursement account. | 
+    | Loan Agreement Request | LA | Lender | Request sent by LA to lender to initiate the loan acceptance steps beginning with asking for the loan agreement |
+    | Loan Agreement Response | Lender | LA | Response given by the lender with the loan agreement for the borrower | 
+    | Trigger Loan Acceptance Request | LA | Lender | Request sent by LA to lender to send an OTP to phone number associated with verified by individual KYC | 
+    | Trigger Loan Acceptance Response | Lender | LA | Response given by the lender for TriggerOTPRequest | 
+    | Verify Loan Acceptance Request | LA | Lender | This API is invoked by the LA when the user enters the OTP received on the mobile number and agrees to the terms of the agreement. The asynchronous response for this API should include the lender acknowledging the receipt of OTP and verifying if the user has entered the correct OTP that was shared by the lender. | 
+    | Verify Loan Acceptance Response | Lender | LA | This API is invoked by the Lender  when the OTP entered by the user is shared through the LA. This API acknowledges the receipt of OTP and verifies if the user has entered the correct OTP that was shared by the lender on the mobile number associated with the disbursement account. | 
 
     ## Repayment Plan APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Set Repayment Plan Request | BA | Lender | This API is invoked by the BA to inform the lender system about the details of the repayment plan that will be used by the borrower. | 
-    | Set Repayment Plan Response | Lender | BA | This API is invoked by the lender to the BA giving the payment url where he can enter details of repayment. | 
-    | Set Repayment Plan Status Request | BA | Lender | This API is used by BA to check the status of a previously initiated set repayment plan request. This API is called once the payment page of the lender is loaded and the borrower choses a repayment method associated with the chosen repayment plan. | 
-    | Set Repayment Plan Status Response | Lender | BA | This API is used by lenders to inform BA about the status of a previously initiated set Repayment.The API returns the status of the repayment plan that the borrower has chosen. In case, the borrower has chosen e-mandate as the repayment method in payment page url, the status of the repayment plan becomes ACTIVE only after successful authorization of the e-mandate on the PSP by the borrower. | 
-    | Confirm Repayment Request | Lender | BA | This API is used by lenders to inform BA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment). |
+    | Set Repayment Plan Request | LA | Lender | This API is invoked by the LA to inform the lender system about the details of the repayment plan that will be used by the borrower. | 
+    | Set Repayment Plan Response | Lender | LA | This API is invoked by the lender to the LA giving the payment url where he can enter details of repayment. | 
+    | Set Repayment Plan Status Request | LA | Lender | This API is used by LA to check the status of a previously initiated set repayment plan request. This API is called once the payment page of the lender is loaded and the borrower choses a repayment method associated with the chosen repayment plan. | 
+    | Set Repayment Plan Status Response | Lender | LA | This API is used by lenders to inform LA about the status of a previously initiated set Repayment.The API returns the status of the repayment plan that the borrower has chosen. In case, the borrower has chosen e-mandate as the repayment method in payment page url, the status of the repayment plan becomes ACTIVE only after successful authorization of the e-mandate on the PSP by the borrower. | 
+    | Confirm Repayment Request | Lender | LA | This API is used by lenders to inform LA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment). |
 
     ## Grant Loan APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Grant Loan Request | BA | Lender | This API is invoked by the BA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system. | 
-    | Grant Loan Response | Lender | BA | This method is called be the Lender when the Grant Loan processing is completed. This informs the borrower about the status of the loan in the lender system. Upon successful creation of a loan in the system, the lender returns all the details of the loan. | 
+    | Grant Loan Request | LA | Lender | This API is invoked by the LA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system. | 
+    | Grant Loan Response | Lender | LA | This method is called be the Lender when the Grant Loan processing is completed. This informs the borrower about the status of the loan in the lender system. Upon successful creation of a loan in the system, the lender returns all the details of the loan. | 
 
     ## Disbursement APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Set Disbursement Account Request | BA | Lender | This API is invoked by the BA to inform the lender about the disbursement account that the borrower has chosen. | 
-    | Set Disbursement Account Response | Lender | BA | This API is invoked by the lender to inform the BA regarding whether the lender has successfully set the disbursement account which was sent in SetDisbursementAccountRequest. |
-    | Trigger Disbursement Request | BA | Lender | This API is to be used when the borrower wants the money to be disbursed immediately. |
-    | Trigger Disbursement Response | Lender | BA | Response given by the lender for TriggerDisbursement |
-    | Trigger Disbursement Status Request | BA | Lender | This API is to be used by BA to check the status of a previously initiated disbursement request. |
-    | Trigger Disbursement Status Response | Lender | BA | Response given by lender for  a trigger Disbursement Status Request. |
+    | Set Disbursement Account Request | LA | Lender | This API is invoked by the LA to inform the lender about the disbursement account that the borrower has chosen. | 
+    | Set Disbursement Account Response | Lender | LA | This API is invoked by the lender to inform the LA regarding whether the lender has successfully set the disbursement account which was sent in SetDisbursementAccountRequest. |
+    | Trigger Disbursement Request | LA | Lender | This API is to be used when the borrower wants the money to be disbursed immediately. |
+    | Trigger Disbursement Response | Lender | LA | Response given by the lender for TriggerDisbursement |
+    | Trigger Disbursement Status Request | LA | Lender | This API is to be used by LA to check the status of a previously initiated disbursement request. |
+    | Trigger Disbursement Status Response | Lender | LA | Response given by lender for  a trigger Disbursement Status Request. |
 
     ## Trigger Repayment APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Trigger Repayment Request | BA | Lender | This API is invoked by the BA to inform the lender to trigger a repayment. This API will not be called when payment is routed to lender via collection agent. | 
-    | Trigger Repayment Response | Lender | BA | This API is invoked by the lender to the BA giving the lender payment page url from where the borrower can make the payment. Lender also generates an id for the payment which becomes the reference for BA to check the status of repayment. | 
-    | Trigger Repayment Status Request | BA | Lender | This API is used by BA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the BA receives payment confirmation (including transaction reference number) from the Collection Management System, BA will send a request to the lender to check if a payment has been credited against the transaction Reference Number. | 
-    | Trigger Repayment Status Response | Lender | BA | This API is used by BA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the BA receives payment confirmation (including transaction reference number) from the Collection Management System, BA will send a request to the lender to check if a payment has been credited against the transaction Reference Number. | 
+    | Trigger Repayment Request | LA | Lender | This API is invoked by the LA to inform the lender to trigger a repayment. This API will not be called when payment is routed to lender via collection agent. | 
+    | Trigger Repayment Response | Lender | LA | This API is invoked by the lender to the LA giving the lender payment page url from where the borrower can make the payment. Lender also generates an id for the payment which becomes the reference for LA to check the status of repayment. | 
+    | Trigger Repayment Status Request | LA | Lender | This API is used by LA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the LA receives payment confirmation (including transaction reference number) from the Collection Management System, LA will send a request to the lender to check if a payment has been credited against the transaction Reference Number. | 
+    | Trigger Repayment Status Response | Lender | LA | This API is used by LA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the LA receives payment confirmation (including transaction reference number) from the Collection Management System, LA will send a request to the lender to check if a payment has been credited against the transaction Reference Number. | 
 
     ## Loan Details APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Get Loan Request | BA | Lender | This API is invoked by the BA when the BA wants to get the details of the loan. | 
-    | Get Loan Response | Lender | BA | This method is called by the Lender and it returns all the details of the loan. | 
-    | Loan Summary Request | BA | Lender | Request raised by the BA to get the current summary of the loan | 
-    | Loan Summary Response | Lender | BA | Response given by lender for LoanSummary Request | 
-    | Loan Statement Request | BA | Lender | Request raised for getting the current loan account statement | 
-    | Loan Statement Response | Lender | BA | Response giving the Loan account statement | 
-    | List Loans Request | BA | Lender | This API is invoked by BA to get the list of loans given by lender for a borrower | 
-    | List Loans Response | Lender | BA | This API gives get the list of loans given by lender for a borrower | 
+    | Get Loan Request | LA | Lender | This API is invoked by the LA when the LA wants to get the details of the loan. | 
+    | Get Loan Response | Lender | LA | This method is called by the Lender and it returns all the details of the loan. | 
+    | Loan Summary Request | LA | Lender | Request raised by the LA to get the current summary of the loan | 
+    | Loan Summary Response | Lender | LA | Response given by lender for LoanSummary Request | 
+    | Loan Statement Request | LA | Lender | Request raised for getting the current loan account statement | 
+    | Loan Statement Response | Lender | LA | Response giving the Loan account statement | 
+    | List Loans Request | LA | Lender | This API is invoked by LA to get the list of loans given by lender for a borrower | 
+    | List Loans Response | Lender | LA | This API gives get the list of loans given by lender for a borrower | 
 
     ## Dispute APIs
     | API Name | Caller | Callee | Description | 
     | ---- | ---- | ---- | ---- | 
-    | Raise Dispute Request | BA | Lender | Request raised by BA to create a dispute in lender system |
-    | Raise Dispute Response | Lender | BA | Response given to BA by lender post RaiseDisputeRequest |
-    | Dispute Status Request | BA | Lender | This API is invoked by the BA to get the status of a dispute |
-    | Dispute Status Response | Lender | BA | This API is invoked by the Lender to send the status of a dispute |
+    | Raise Dispute Request | LA | Lender | Request raised by LA to create a dispute in lender system |
+    | Raise Dispute Response | Lender | LA | Response given to LA by lender post RaiseDisputeRequest |
+    | Dispute Status Request | LA | Lender | This API is invoked by the LA to get the status of a dispute |
+    | Dispute Status Response | Lender | LA | This API is invoked by the Lender to send the status of a dispute |
 
     ## Analytics APIs
     | API Name | Caller | Callee | Description | 
@@ -304,7 +304,7 @@ paths:
       tags:
         - Create Loan Applications Request
       summary: Create Loan Applications Request
-      description: Create Loan applications endpoint available on Lender to be used by BA
+      description: Create Loan applications endpoint available on Lender to be used by LA
       operationId: CreateLoanApplicationsRequest
       requestBody:
         content:
@@ -316,15 +316,15 @@ paths:
                 - requestId
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplications:
                   type: array
                   items:
-                    $ref: '#/components/schemas/LoanApplicationRequest'
+                    $ref: "#/components/schemas/LoanApplicationRequest"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -335,7 +335,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanApplications/createLoanResponse:
     post:
       servers:
@@ -346,7 +346,7 @@ paths:
       description: This is the response for Create Loan Applications but invoked by the lender. No offers are rolled out as part of this API. If the lender system finds preliminary information sufficient for doing the loan processing, it will send “PROCESSING” as the status. Otherwise, it can reject the application citing a reason for the same.
       operationId: createLoanApplicationsResponse
       requestBody:
-        description: Response by lender to BA for create bulk loan application request
+        description: Response by lender to LA for create bulk loan application request
         content:
           application/json:
             schema:
@@ -358,9 +358,9 @@ paths:
                 - loanApplications
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                   description: UUID used to tie request and response and for idempotency
@@ -368,9 +368,9 @@ paths:
                   type: array
                   description: Array of LoanApplications
                   items:
-                    $ref: '#/components/schemas/LoanApplication'
+                    $ref: "#/components/schemas/LoanApplication"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Response Received
           content:
             application/json:
@@ -380,38 +380,38 @@ paths:
                   - ack
                 properties:
                   ack:
-                    $ref: '#/components/schemas/Ack'
-        '400':
+                    $ref: "#/components/schemas/Ack"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /v4.0.0alpha/consent/consentHandleRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Consent BA to Lender
+        - Consent LA to Lender
       summary: Consent Handle Request
       description: Create consent handle with Account Aggregator | This API is used to request the lenders to send a consent request for fetching the bank account statements, GST historical data. <br> The lender (FIU) checks with the AA and creates a consent handle internally once this API is triggered
       requestBody:
-        description: Request by BA to lender to get consent handle with Account Aggregator
+        description: Request by LA to lender to get consent handle with Account Aggregator
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConsentHandleRequest'
+              $ref: "#/components/schemas/ConsentHandleRequest"
       responses:
-        '200':
-          description: Acknowledgement by Lender to BA for Consent Handle Request
+        "200":
+          description: Acknowledgement by Lender to LA for Consent Handle Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/consent/consentHandleResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Consent Lender to BA
+        - Consent Lender to LA
       summary: Consent Handle Response
       description: Invoked by lender to send consent handle created in Account Aggregator
       requestBody:
@@ -419,44 +419,44 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConsentHandleResponse'
+              $ref: "#/components/schemas/ConsentHandleResponse"
       responses:
-        '200':
+        "200":
           description: Acknowledgement to consent Hanlde Response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/ba/onConsentHandle:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Lender shares consent handle to BA
+        - Lender shares consent handle to LA
       summary: Provide Consent Handle for a loan application
       description: |
-        Invoked by lender on BA to send consent handle created with Account Aggregator  for loan applications processing
+        Invoked by lender on LA to send consent handle created with Account Aggregator  for loan applications processing
       requestBody:
         description: Consent Handle created with AA
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConsentHandle'
+              $ref: "#/components/schemas/ConsentHandle"
       responses:
-        '200':
+        "200":
           description: Acknowledgement for the consent Handle
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/lender/consent/notify:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Consent journey state notification BA to Gateway
+        - Consent journey state notification LA to Gateway
       summary: Share the consent journey status
-      description: Invoked by BA to inform Lenders of the consent journey state once the customer has interacted with Account Aggregator
+      description: Invoked by LA to inform Lenders of the consent journey state once the customer has interacted with Account Aggregator
       requestBody:
         description: Consent State update request
         content:
@@ -464,56 +464,56 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/ConsentNotificationRequest'
+                $ref: "#/components/schemas/ConsentNotificationRequest"
       responses:
-        '200':
+        "200":
           description: Acknowledgement to consent handle Response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/ba/consentStatusRequest:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Lender queries Consent handle status on BA
+        - Lender queries Consent handle status on LA
       summary: Consent Status Request
-      description: Invoked by Lender to get consent handle status from BA
+      description: Invoked by Lender to get consent handle status from LA
       requestBody:
         description: Consent Status Request
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConsentStatusRequest'
+              $ref: "#/components/schemas/ConsentStatusRequest"
       responses:
-        '200':
+        "200":
           description: Acknowledgement to consent status request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/lender/consentStatusResponse:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - BA responds with consent status to lender
+        - LA responds with consent status to lender
       summary: Consent Status Response
-      description: Invoked by BA to send consent status to Lender
+      description: Invoked by LA to send consent status to Lender
       requestBody:
         description: Consent Status Response
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ConsentStatusResponse'
+              $ref: "#/components/schemas/ConsentStatusResponse"
       responses:
-        '200':
+        "200":
           description: Acknowledgement to consent status response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/generateOffersRequest:
     post:
       servers:
@@ -521,7 +521,7 @@ paths:
       tags:
         - Generate Offers Request
       summary: Generate Offers Request
-      description: The BA sends this request to the lender to get the list of offers that the lender is willing to provide for the loan applications already shared.
+      description: The LA sends this request to the lender to get the list of offers that the lender is willing to provide for the loan applications already shared.
       operationId: GenerateOffersRequest
       requestBody:
         content:
@@ -534,7 +534,7 @@ paths:
                 - loanApplicationIds
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplicationIds:
@@ -544,7 +544,7 @@ paths:
                     examples:
                       - t8cc6822bd4bbb4eb1b9e1b4996fbff8acb
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -555,7 +555,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/generateOffersResponse:
     post:
       servers:
@@ -577,17 +577,17 @@ paths:
                 - loanApplications
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                 loanApplications:
                   type: array
                   items:
-                    $ref: '#/components/schemas/LoanApplicationWithOffer'
+                    $ref: "#/components/schemas/LoanApplicationWithOffer"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -598,7 +598,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/setOffersRequest:
     post:
       servers:
@@ -606,7 +606,7 @@ paths:
       tags:
         - Set Offer Request
       summary: Set Offers Request
-      description: This API is invoked by the BA to inform the lender about the offer that the borrower has chosen for a particular loan application.
+      description: This API is invoked by the LA to inform the lender about the offer that the borrower has chosen for a particular loan application.
       operationId: SetOffersRequest
       requestBody:
         content:
@@ -620,15 +620,15 @@ paths:
                 - offer
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplicationId:
                   type: string
                 offer:
-                  $ref: '#/components/schemas/Offer'
+                  $ref: "#/components/schemas/Offer"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -639,7 +639,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/setOffersResponse:
     post:
       servers:
@@ -662,9 +662,9 @@ paths:
                 - loanApplicationStatus
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                 loanApplicationId:
@@ -679,7 +679,7 @@ paths:
                       - GRANTED
                       - REJECTED
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -690,15 +690,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/triggerKycRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - KYC BA to Lender
+        - KYC LA to Lender
       summary: Trigger KYC Request
-      description: This  API is called by BA to initiate the KYC process of the borrower after successfully accepting the final offer. The lender is supposed to return the url, where the borrower will be completing the KYC process.
+      description: This  API is called by LA to initiate the KYC process of the borrower after successfully accepting the final offer. The lender is supposed to return the url, where the borrower will be completing the KYC process.
       operationId: TriggerKYCRequest
       requestBody:
         content:
@@ -712,7 +712,7 @@ paths:
                 - kyc
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplicationId:
@@ -723,13 +723,13 @@ paths:
                   type: object
                   properties:
                     individualKYC:
-                      $ref: '#/components/schemas/KYCDetails'
+                      $ref: "#/components/schemas/KYCDetails"
                     entityKYC:
-                      $ref: '#/components/schemas/KYCDetails'
+                      $ref: "#/components/schemas/KYCDetails"
                     extensibleData:
-                      $ref: '#/components/schemas/ExtensibleData'
+                      $ref: "#/components/schemas/ExtensibleData"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -740,13 +740,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/triggerKycResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - KYC Lender to BA
+        - KYC Lender to LA
       summary: Trigger KYC Response
       description: This API is called by the lender in response to trigger KYC requests. The lender returns the url for KYC details submission. The KYC process will be carried out on the lender server.
       operationId: TriggerKYCResponse
@@ -763,9 +763,9 @@ paths:
                 - kyc
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                 loanApplicationId:
@@ -778,13 +778,13 @@ paths:
                     kycRefNo:
                       type: string
                     individualKYC:
-                      $ref: '#/components/schemas/KYCDetails'
+                      $ref: "#/components/schemas/KYCDetails"
                     entityKYC:
-                      $ref: '#/components/schemas/KYCDetails'
+                      $ref: "#/components/schemas/KYCDetails"
                     extensibleData:
-                      $ref: '#/components/schemas/ExtensibleData'
+                      $ref: "#/components/schemas/ExtensibleData"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -795,15 +795,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/kycStatusRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - KYC BA to Lender
+        - KYC LA to Lender
       summary: KYC Status Request
-      description: This API is called by BA to get the KYC status. This API will be triggered just after the user completes the KYC process.
+      description: This API is called by LA to get the KYC status. This API will be triggered just after the user completes the KYC process.
       operationId: KYCStatusRequest
       requestBody:
         content:
@@ -817,7 +817,7 @@ paths:
                 - kyc
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplicationId:
@@ -828,7 +828,7 @@ paths:
                     kycRefNo:
                       type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -839,15 +839,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/offers/kycStatusResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - KYC Lender to BA
+        - KYC Lender to LA
       summary: KYC Status Response
-      description: This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the BA about the action required for completing the KYC.
+      description: This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the LA about the action required for completing the KYC.
       operationId: KYCStatusResponse
       requestBody:
         content:
@@ -861,13 +861,13 @@ paths:
                 - kyc
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplicationId:
                   type: string
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 kyc:
                   type: object
                   properties:
@@ -881,13 +881,13 @@ paths:
                         - PENDING
                         - ACTION_REQUIRED
                     individualKYC:
-                      $ref: '#/components/schemas/KYCDetails'
+                      $ref: "#/components/schemas/KYCDetails"
                     entityKYC:
-                      $ref: '#/components/schemas/KYCDetails'
+                      $ref: "#/components/schemas/KYCDetails"
                     extensibleData:
-                      $ref: '#/components/schemas/ExtensibleData'
+                      $ref: "#/components/schemas/ExtensibleData"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -898,15 +898,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanAcceptance/triggerLoanAcceptanceRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Loan Acceptance BA to Lender
+        - Loan Acceptance LA to Lender
       summary: Trigger Loan Acceptance Request
-      description: SMS Format for the OTP [#] {6Digit OTP} is the One Time Password (OTP) to complete the loan process with {Lender Name}. {appToken} >- Eg- 467866 is the One Time Password (OTP) to complete the loan process with ABC Bank. \#0aBCD7DMr7s >- This API is invoked by the BA when the user agrees to the terms of the agreement.The Asynchronous response for this API should include the lender sending an OTP to the borrower’s phone number
+      description: SMS Format for the OTP [#] {6Digit OTP} is the One Time Password (OTP) to complete the loan process with {Lender Name}. {appToken} >- Eg- 467866 is the One Time Password (OTP) to complete the loan process with ABC Bank. \#0aBCD7DMr7s >- This API is invoked by the LA when the user agrees to the terms of the agreement.The Asynchronous response for this API should include the lender sending an OTP to the borrower’s phone number
       operationId: triggerLoanAcceptanceRequest
       requestBody:
         content:
@@ -920,7 +920,7 @@ paths:
                 - credBlock
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplicationIds:
@@ -942,9 +942,9 @@ paths:
                           examples:
                             - <token for auto-reading otp>
                     extensibleData:
-                      $ref: '#/components/schemas/ExtensibleData'
+                      $ref: "#/components/schemas/ExtensibleData"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -955,13 +955,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanAcceptance/triggerLoanAcceptanceResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Loan Acceptance Lender to BA
+        - Loan Acceptance Lender to LA
       summary: Trigger Loan Acceptance Response
       description: SMS Format for the OTP [#] {6Digit OTP} is the One Time Password (OTP) to complete the loan process with {Lender Name}. {appToken} >- Eg- 467866 is the One Time Password (OTP) to complete the loan process with ABC Bank. \#0aBCD7DMr7s >- This API is invoked by the Lender when the Lender triggers the credential verification process from the borrower.
       operationId: triggerLoanAcceptanceResponse
@@ -977,11 +977,11 @@ paths:
                 - credBlock
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanApplicationIds:
                   type: array
                   items:
@@ -999,9 +999,9 @@ paths:
                           examples:
                             - XXXXXXX775
                     extensibleData:
-                      $ref: '#/components/schemas/ExtensibleData'
+                      $ref: "#/components/schemas/ExtensibleData"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1012,15 +1012,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanAcceptance/verifyLoanAcceptanceRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Loan Acceptance BA to Lender
+        - Loan Acceptance LA to Lender
       summary: Verify Loan Acceptance Request
-      description: This API is invoked by the BA when the user enters the OTP received on the mobile number and agrees to the terms of the agreement. The asynchronous response for this API should include the lender acknowledging the receipt of OTP and verifying if the user has entered the correct OTP that was shared by the lender.
+      description: This API is invoked by the LA when the user enters the OTP received on the mobile number and agrees to the terms of the agreement. The asynchronous response for this API should include the lender acknowledging the receipt of OTP and verifying if the user has entered the correct OTP that was shared by the lender.
       operationId: verifyLoanAcceptanceRequest
       requestBody:
         content:
@@ -1033,7 +1033,7 @@ paths:
                 - credBlock
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
@@ -1052,11 +1052,11 @@ paths:
                         otp:
                           type: number
                           examples:
-                            - '856429'
+                            - "856429"
                     extensibleData:
-                      $ref: '#/components/schemas/ExtensibleData'
+                      $ref: "#/components/schemas/ExtensibleData"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1067,15 +1067,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanAcceptance/verifyLoanAcceptanceResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Loan Acceptance Lender to BA
+        - Loan Acceptance Lender to LA
       summary: Verify Loan Acceptance Response
-      description: This API is invoked by the Lender  when the OTP entered by the user is shared through the BA. This API acknowledges the receipt of OTP and verifies if the user has entered the correct OTP that was shared by the lender on the mobile number associated with the disbursement account.
+      description: This API is invoked by the Lender  when the OTP entered by the user is shared through the LA. This API acknowledges the receipt of OTP and verifies if the user has entered the correct OTP that was shared by the lender on the mobile number associated with the disbursement account.
       operationId: verifyLoanAcceptanceResponse
       requestBody:
         content:
@@ -1089,12 +1089,12 @@ paths:
                 - response
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanApplicationIds:
                   type: array
                   items:
@@ -1114,9 +1114,9 @@ paths:
                             - INVALID_SESSION
                             - INCORRECT_OTP
                     extensibleData:
-                      $ref: '#/components/schemas/ExtensibleData'
+                      $ref: "#/components/schemas/ExtensibleData"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1127,13 +1127,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanAcceptance/loanAgreementRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Loan Acceptance BA to Lender
+        - Loan Acceptance LA to Lender
       summary: Loan Agreement Request
       description: Loan agreement request
       operationId: loanAgreementRequest
@@ -1148,7 +1148,7 @@ paths:
                 - loanApplicationIds
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanApplicationIds:
@@ -1156,7 +1156,7 @@ paths:
                   items:
                     type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1167,13 +1167,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanAcceptance/LoanAgreementResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Loan Acceptance Lender to BA
+        - Loan Acceptance Lender to LA
       summary: Loan Agreement Response
       description: Loan agreement Response
       operationId: loanAgreementResponse
@@ -1189,9 +1189,9 @@ paths:
                 - response
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                 loanApplicationIds:
@@ -1199,7 +1199,7 @@ paths:
                   items:
                     type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1210,15 +1210,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/setRepaymentPlanRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Set Repayment BA to Lender
+        - Set Repayment LA to Lender
       summary: Set Repayment Plan Request
-      description: This API is invoked by the BA to inform the lender system about the details of the repayment plan that will be used by the borrower.
+      description: This API is invoked by the LA to inform the lender system about the details of the repayment plan that will be used by the borrower.
       operationId: setRepaymentPlanRequest
       requestBody:
         content:
@@ -1233,7 +1233,7 @@ paths:
                 - paymentMethod
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 loanApplicationId:
                   type: string
                 loanId:
@@ -1241,11 +1241,11 @@ paths:
                 requestId:
                   type: string
                 plan:
-                  $ref: '#/components/schemas/PaymentPlan'
+                  $ref: "#/components/schemas/PaymentPlan"
                 paymentMethod:
-                  $ref: '#/components/schemas/PaymentMethod'
+                  $ref: "#/components/schemas/PaymentMethod"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1256,15 +1256,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/setRepaymentPlanResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Set Repayment Lender to BA
+        - Set Repayment Lender to LA
       summary: Set Repayment Plan Response
-      description: This API is invoked by the lender to the BA giving the payment url where he can enter details of repayment.
+      description: This API is invoked by the lender to the LA giving the payment url where he can enter details of repayment.
       operationId: setRepaymentPlanResponse
       requestBody:
         content:
@@ -1281,9 +1281,9 @@ paths:
                 - paymentMethod
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanApplicationId:
                   type: string
                 loanId:
@@ -1291,11 +1291,11 @@ paths:
                 requestId:
                   type: string
                 plan:
-                  $ref: '#/components/schemas/PaymentPlan'
+                  $ref: "#/components/schemas/PaymentPlan"
                 paymentMethod:
-                  $ref: '#/components/schemas/PaymentMethod'
+                  $ref: "#/components/schemas/PaymentMethod"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1306,15 +1306,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/setRepaymentPlanStatusRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Set Repayment BA to Lender
+        - Set Repayment LA to Lender
       summary: Set Repayment Plan Status Request
-      description: This API is used by BA to check the status of a previously initiated set repayment plan request. This API is called once the payment page of the lender is loaded and the borrower choses a repayment method associated with the chosen repayment plan.
+      description: This API is used by LA to check the status of a previously initiated set repayment plan request. This API is called once the payment page of the lender is loaded and the borrower choses a repayment method associated with the chosen repayment plan.
       operationId: setRepaymentPlanStatusRequest
       requestBody:
         content:
@@ -1328,17 +1328,17 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 plan:
-                  $ref: '#/components/schemas/PaymentPlan'
+                  $ref: "#/components/schemas/PaymentPlan"
                 paymentMethod:
-                  $ref: '#/components/schemas/PaymentMethod'
+                  $ref: "#/components/schemas/PaymentMethod"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1349,15 +1349,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/setRepaymentPlanStatusResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Set Repayment Lender to BA
+        - Set Repayment Lender to LA
       summary: Set Repayment Plan Status Response / Webhook
-      description: This API is used by lenders to inform BA about the status of a previously initiated set Repayment.The API returns the status of the repayment plan that the borrower has chosen. In case, the borrower has chosen e-mandate as the repayment method in payment page url, the status of the repayment plan becomes ACTIVE only after successful authorization of the e-mandate on the PSP by the borrower.
+      description: This API is used by lenders to inform LA about the status of a previously initiated set Repayment.The API returns the status of the repayment plan that the borrower has chosen. In case, the borrower has chosen e-mandate as the repayment method in payment page url, the status of the repayment plan becomes ACTIVE only after successful authorization of the e-mandate on the PSP by the borrower.
       operationId: setRepaymentPlanStatusResponse
       requestBody:
         content:
@@ -1372,17 +1372,17 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanId:
                   type: string
                 requestId:
                   type: string
                 plan:
-                  $ref: '#/components/schemas/PaymentPlan'
+                  $ref: "#/components/schemas/PaymentPlan"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1393,15 +1393,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/grantLoan/grantLoanRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Grant Loan BA to Lender
+        - Grant Loan LA to Lender
       summary: Grant Loan Request
-      description: This API is invoked by the BA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.
+      description: This API is invoked by the LA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.
       operationId: grantLoanRequest
       requestBody:
         content:
@@ -1414,7 +1414,7 @@ paths:
                 - loanApplicationId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                   examples:
@@ -1424,7 +1424,7 @@ paths:
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1435,13 +1435,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/grantLoan/grantLoanResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Grant Loan Lender to BA
+        - Grant Loan Lender to LA
       summary: Grant Loan Response
       description: This method is called be the Lender when the Grant Loan processing is completed. This informs the borrower about the status of the loan in the lender system. Upon successful creation of a loan in the system, the lender returns all the details of the loan.
       operationId: grantLoanResponse
@@ -1457,13 +1457,13 @@ paths:
                 - loanDetails
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanDetails:
                   type: object
                   loanId:
@@ -1505,7 +1505,7 @@ paths:
                   repayment:
                     $ref: ../../components/schemas/Repayment.yaml
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1516,15 +1516,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/setDisbursementAccountRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Disbursement BA to Lender
+        - Disbursement LA to Lender
       summary: Set Disbursement Account Request
-      description: This API is invoked by the BA to inform the lender about the disbursement account that the borrower has chosen.
+      description: This API is invoked by the LA to inform the lender about the disbursement account that the borrower has chosen.
       operationId: setDisbursementAccountRequest
       requestBody:
         content:
@@ -1538,7 +1538,7 @@ paths:
                 - account
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                   examples:
@@ -1550,9 +1550,9 @@ paths:
                 loanId:
                   type: string
                 account:
-                  $ref: '#/components/schemas/AccountDetails'
+                  $ref: "#/components/schemas/AccountDetails"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1563,15 +1563,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/setDisbursementAccountResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Disbursement Lender to BA
+        - Disbursement Lender to LA
       summary: Set Disbursement Account Response
-      description: This API is invoked by the lender to inform the BA regarding whether the lender has successfully set the disbursement account which was sent in SetDisbursementAccountRequest.
+      description: This API is invoked by the lender to inform the LA regarding whether the lender has successfully set the disbursement account which was sent in SetDisbursementAccountRequest.
       operationId: setDisbursementAccountResponse
       requestBody:
         content:
@@ -1586,7 +1586,7 @@ paths:
                 - response
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                   examples:
@@ -1598,11 +1598,11 @@ paths:
                 loanId:
                   type: string
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 account:
-                  $ref: '#/components/schemas/AccountDetails'
+                  $ref: "#/components/schemas/AccountDetails"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1613,13 +1613,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/triggerDisbursementRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Disbursement BA to Lender
+        - Disbursement LA to Lender
       summary: Trigger Disbursement Request
       description: This API is to be used when the borrower wants the money to be disbursed immediately.
       operationId: triggerDisbursementRequest
@@ -1635,7 +1635,7 @@ paths:
                 - payment
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 loanId:
                   type: string
                   examples:
@@ -1650,7 +1650,7 @@ paths:
                     amount:
                       type: number
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1661,13 +1661,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/triggerDisbursementResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Disbursement Lender to BA
+        - Disbursement Lender to LA
       summary: Trigger Disbursement Response
       description: This API is to be used when the borrower wants the money to be disbursed immediately.
       operationId: triggerDisbursementResponse
@@ -1684,7 +1684,7 @@ paths:
                 - response
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 loanId:
                   type: string
                   examples:
@@ -1694,7 +1694,7 @@ paths:
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 payment:
                   type: object
                   properties:
@@ -1719,7 +1719,7 @@ paths:
                       examples:
                         - 4618602124
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1730,15 +1730,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/triggerDisbursementStatusRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Disbursement BA to Lender
+        - Disbursement LA to Lender
       summary: Trigger Disbursement Status Request
-      description: This API is to be used by BA to check the status of a previously initiated disbursement request.
+      description: This API is to be used by LA to check the status of a previously initiated disbursement request.
       operationId: triggerDisbursementStatusRequest
       requestBody:
         content:
@@ -1752,7 +1752,7 @@ paths:
                 - payment
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 loanId:
                   type: string
                   examples:
@@ -1769,7 +1769,7 @@ paths:
                       examples:
                         - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1780,13 +1780,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursement/triggerDisbursementStatusResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Disbursement Lender to BA
+        - Disbursement Lender to LA
       summary: Trigger Disbursement Status Response
       description: This API is the response given by lender for  a trigger Disbursement Status Request.
       operationId: triggerDisbursementStatusResponse
@@ -1803,7 +1803,7 @@ paths:
                 - response
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 loanId:
                   type: string
                   examples:
@@ -1813,7 +1813,7 @@ paths:
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 payment:
                   type: object
                   properties:
@@ -1838,7 +1838,7 @@ paths:
                       examples:
                         - 4618602124
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1849,15 +1849,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/repayment/triggerRepaymentRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Trigger Repayment BA to Lender
+        - Trigger Repayment LA to Lender
       summary: Trigger Repayment Request
-      description: This API is invoked by the BA to inform the lender to trigger a repayment. This API will not be called when payment is routed to lender via collection agent.
+      description: This API is invoked by the LA to inform the lender to trigger a repayment. This API will not be called when payment is routed to lender via collection agent.
       operationId: triggerRepaymentRequest
       requestBody:
         content:
@@ -1871,15 +1871,15 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1890,15 +1890,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/repayment/triggerRepaymentResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Trigger Repayment Lender to BA
+        - Trigger Repayment Lender to LA
       summary: Trigger Repayment Response
-      description: This API is invoked by the lender to the BA giving the lender payment page url from where the borrower can make the payment. Lender also generates an id for the payment which becomes the reference for BA to check the status of repayment.
+      description: This API is invoked by the lender to the LA giving the lender payment page url from where the borrower can make the payment. Lender also generates an id for the payment which becomes the reference for LA to check the status of repayment.
       operationId: triggerRepaymentResponse
       requestBody:
         content:
@@ -1913,17 +1913,17 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1934,15 +1934,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/repayment/triggerRepaymentStatusRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Trigger Repayment BA to Lender
+        - Trigger Repayment LA to Lender
       summary: Trigger Repayment Status Request
-      description: This API is used by BA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the BA receives payment confirmation (including transaction reference number) from the Collection Management System, BA will send a request to the lender to check if a payment has been credited against the transaction Reference Number.
+      description: This API is used by LA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the LA receives payment confirmation (including transaction reference number) from the Collection Management System, LA will send a request to the lender to check if a payment has been credited against the transaction Reference Number.
       operationId: triggerRepaymentStatusRequest
       requestBody:
         content:
@@ -1956,15 +1956,15 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -1975,15 +1975,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/repayment/triggerRepaymentStatusResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Trigger Repayment Lender to BA
+        - Trigger Repayment Lender to LA
       summary: Trigger Repayment Status Request
-      description: This API is used by BA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the BA receives payment confirmation (including transaction reference number) from the Collection Management System, BA will send a request to the lender to check if a payment has been credited against the transaction Reference Number.
+      description: This API is used by LA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the LA receives payment confirmation (including transaction reference number) from the Collection Management System, LA will send a request to the lender to check if a payment has been credited against the transaction Reference Number.
       operationId: triggerRepaymentStatusRequest
       requestBody:
         content:
@@ -1998,17 +1998,17 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2019,15 +2019,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/repayment/confirmRepaymentRequest:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Set Repayment Lender to BA
+        - Set Repayment Lender to LA
       summary: Confirm Repayment Request
-      description: This API is used by lenders to inform BA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment).
+      description: This API is used by lenders to inform LA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment).
       operationId: confirmRepaymentRequest
       requestBody:
         content:
@@ -2043,19 +2043,19 @@ paths:
                 - paymentMethod
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 paymentMethod:
-                  $ref: '#/components/schemas/PaymentMethod'
+                  $ref: "#/components/schemas/PaymentMethod"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2066,15 +2066,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/getloanRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Loan Details BA to Lender
+        - Loan Details LA to Lender
       summary: Get Loan Request
-      description: This API is invoked by the BA when the BA wants to get the details of the loan.
+      description: This API is invoked by the LA when the LA wants to get the details of the loan.
       operationId: getLoanRequest
       requestBody:
         content:
@@ -2087,7 +2087,7 @@ paths:
                 - loanApplicationId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                   examples:
@@ -2097,7 +2097,7 @@ paths:
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2108,13 +2108,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/getloanResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Loan Details Lender to BA
+        - Loan Details Lender to LA
       summary: Get Loan Response
       description: This method is called by the Lender and it returns all the details of the loan.
       operationId: getLoanResponse
@@ -2136,9 +2136,9 @@ paths:
                 - summary
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                   examples:
@@ -2183,9 +2183,9 @@ paths:
                     - description
                   properties:
                     nextRepayment:
-                      $ref: '#/components/schemas/Payment'
+                      $ref: "#/components/schemas/Payment"
                     currentRepayment:
-                      $ref: '#/components/schemas/Payment'
+                      $ref: "#/components/schemas/Payment"
                     principalPaid:
                       type: string
                     interestPaid:
@@ -2201,13 +2201,13 @@ paths:
                     amountRepaid:
                       type: string
                     tenure:
-                      $ref: '#/components/schemas/LoanTenure'
+                      $ref: "#/components/schemas/LoanTenure"
                     description:
                       type: string
                       examples:
                         - short description for the loan
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2218,15 +2218,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/listloansRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Loan Details BA to Lender
+        - Loan Details LA to Lender
       summary: List Loans Request
-      description: This API is invoked by the BA when the BA wants to get the details of the loan.
+      description: This API is invoked by the LA when the LA wants to get the details of the loan.
       operationId: getLoanRequest
       requestBody:
         content:
@@ -2239,19 +2239,19 @@ paths:
                 - borrower
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 borrower:
-                  $ref: '#/components/schemas/Borrower'
+                  $ref: "#/components/schemas/Borrower"
                 collateral:
-                  $ref: '#/components/schemas/Collateral'
+                  $ref: "#/components/schemas/Collateral"
                 startDate:
                   type: string
                 endDate:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2262,15 +2262,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/listLoansResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Loan Details Lender to BA
+        - Loan Details Lender to LA
       summary: List Loans Request
-      description: This API is invoked by the BA when the BA wants to get the details of the loan.
+      description: This API is invoked by the LA when the LA wants to get the details of the loan.
       operationId: getLoanRequest
       requestBody:
         content:
@@ -2284,10 +2284,10 @@ paths:
                 - loans
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
-                  default: ''
+                  default: ""
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
                 response:
@@ -2297,9 +2297,9 @@ paths:
                   properties:
                     error:
                       type: string
-                      default: ''
+                      default: ""
                       examples:
-                        - '0'
+                        - "0"
                 loans:
                   type: array
                   items:
@@ -2313,9 +2313,9 @@ paths:
                         examples:
                           - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
                       terms:
-                        $ref: '#/components/schemas/LoanTerms'
+                        $ref: "#/components/schemas/LoanTerms"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2326,15 +2326,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/loanStatementRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Loan Details BA to Lender
+        - Loan Details LA to Lender
       summary: Loan Statement Request
-      description: This method is called by the BA to get the account statement for the loan for a specified period. If the start and end dates are blank, it will return the entire Loan Statement.
+      description: This method is called by the LA to get the account statement for the loan for a specified period. If the start and end dates are blank, it will return the entire Loan Statement.
       operationId: loanStatementRequest
       requestBody:
         content:
@@ -2347,7 +2347,7 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 loanId:
@@ -2357,7 +2357,7 @@ paths:
                 endDate:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2368,15 +2368,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/loanStatementResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Loan Details Lender to BA
+        - Loan Details Lender to LA
       summary: Loan Statement Request
-      description: This method is called by the BA to get the account statement for the loan for a specified period. If the start and end dates are blank, it will return the entire Loan Statement.
+      description: This method is called by the LA to get the account statement for the loan for a specified period. If the start and end dates are blank, it will return the entire Loan Statement.
       operationId: loanStatementRequest
       requestBody:
         content:
@@ -2391,9 +2391,9 @@ paths:
                 - accountStatement
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                 loanId:
@@ -2401,9 +2401,9 @@ paths:
                 accountStatement:
                   type: array
                   items:
-                    $ref: '#/components/schemas/Transaction'
+                    $ref: "#/components/schemas/Transaction"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2414,15 +2414,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/loanStatementSummaryRequest:
     post:
       servers:
         - url: https://ocenapis.lender.com
       tags:
-        - Loan Details BA to Lender
+        - Loan Details LA to Lender
       summary: Loan Summary Request
-      description: This API is invoked by the BA to get the summary of the loan as of the current date.
+      description: This API is invoked by the LA to get the summary of the loan as of the current date.
       operationId: loanSummaryRequest
       requestBody:
         content:
@@ -2435,7 +2435,7 @@ paths:
                 - loanApplicationId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                   examples:
@@ -2445,7 +2445,7 @@ paths:
                   examples:
                     - e8cc6822bd4bbb4eb1b9e1b4996fbff8acb
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2456,15 +2456,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/loanDetails/loanStatementSummaryResponse:
     post:
       servers:
         - url: https://ocenapis.borrowagent.com
       tags:
-        - Loan Details Lender to BA
+        - Loan Details Lender to LA
       summary: Loan Summary Response
-      description: This API is invoked by the BA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.
+      description: This API is invoked by the LA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.
       operationId: loanSummaryResponse
       requestBody:
         content:
@@ -2484,9 +2484,9 @@ paths:
                 - summary
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 requestId:
                   type: string
                   examples:
@@ -2531,9 +2531,9 @@ paths:
                     - description
                   properties:
                     nextRepayment:
-                      $ref: '#/components/schemas/Payment'
+                      $ref: "#/components/schemas/Payment"
                     currentRepayment:
-                      $ref: '#/components/schemas/Payment'
+                      $ref: "#/components/schemas/Payment"
                     principalPaid:
                       type: string
                     interestPaid:
@@ -2549,13 +2549,13 @@ paths:
                     amountRepaid:
                       type: string
                     tenure:
-                      $ref: '#/components/schemas/LoanTenure'
+                      $ref: "#/components/schemas/LoanTenure"
                     description:
                       type: string
                       examples:
                         - short description for the loan
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2566,7 +2566,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v1/metrics/report:
     post:
       tags:
@@ -2585,13 +2585,13 @@ paths:
                 - metrics
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 metrics:
-                  $ref: '#/components/schemas/AnalyticsMetrics'
+                  $ref: "#/components/schemas/AnalyticsMetrics"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2602,7 +2602,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v1/heartbeat/event:
     post:
       tags:
@@ -2621,13 +2621,13 @@ paths:
                 - event
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 event:
-                  $ref: '#/components/schemas/AnalyticsEvent'
+                  $ref: "#/components/schemas/AnalyticsEvent"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -2638,7 +2638,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /derivedDataProvider/schema:
     post:
       tags:
@@ -2646,24 +2646,24 @@ paths:
       summary: Register schema
       operationId: registerDPSchema
       parameters:
-        - $ref: '#/components/parameters/Signature'
+        - $ref: "#/components/parameters/Signature"
       requestBody:
         description: Schema registration endpoint for Dervied Data Provider
         content:
           application/json:
             schema:
               type: object
-              $ref: '#/components/schemas/DPRegisterSchemaRequest'
+              $ref: "#/components/schemas/DPRegisterSchemaRequest"
       responses:
-        '200':
+        "200":
           description: lookup result
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DPSchemaAddDeleteResponse'
-        '400':
+                $ref: "#/components/schemas/DPSchemaAddDeleteResponse"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /derivedDataProvider/schema/byDataProvider/{id}:
     get:
@@ -2672,10 +2672,10 @@ paths:
       summary: Get schemas supported by derived data provider id
       operationId: getDPSchemas
       parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/DataProviderId'
+        - $ref: "#/components/parameters/Signature"
+        - $ref: "#/components/parameters/DataProviderId"
       responses:
-        '200':
+        "200":
           description: schemas supported by data provider
           content:
             application/json:
@@ -2689,10 +2689,10 @@ paths:
                   schemas:
                     type: array
                     items:
-                      $ref: '#/components/schemas/RegisteredDPSchema'
-        '400':
+                      $ref: "#/components/schemas/RegisteredDPSchema"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /derivedDataProvider/schema/{schemaId}:
     get:
@@ -2701,10 +2701,10 @@ paths:
       summary: Get schema by schema id
       operationId: getSchema
       parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/SchemaId'
+        - $ref: "#/components/parameters/Signature"
+        - $ref: "#/components/parameters/SchemaId"
       responses:
-        '200':
+        "200":
           description: schema
           content:
             application/json:
@@ -2714,10 +2714,10 @@ paths:
                   schemas:
                     type: array
                     items:
-                      $ref: '#/components/schemas/RegisteredDPSchema'
-        '400':
+                      $ref: "#/components/schemas/RegisteredDPSchema"
+        "400":
           description: Bad Request
-        '404':
+        "404":
           description: Not Found
     delete:
       tags:
@@ -2725,18 +2725,18 @@ paths:
       summary: Delete schema by schema id
       operationId: deleteSchema
       parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/SchemaId'
+        - $ref: "#/components/parameters/Signature"
+        - $ref: "#/components/parameters/SchemaId"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DPSchemaAddDeleteResponse'
-        '400':
+                $ref: "#/components/schemas/DPSchemaAddDeleteResponse"
+        "400":
           description: Bad Request
-        '404':
+        "404":
           description: Not Found
   /networks:
     post:
@@ -2765,7 +2765,7 @@ paths:
                   maxLength: 35
                   description: Description of prodnetworkuct.
       responses:
-        '200':
+        "200":
           description: Acknowledgement of network creation
           content:
             application/json:
@@ -2775,10 +2775,10 @@ paths:
                   - data
                 properties:
                   data:
-                    $ref: '#/components/schemas/Network'
-        '400':
+                    $ref: "#/components/schemas/Network"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     get:
       operationId: listNetwork
@@ -2786,7 +2786,7 @@ paths:
         - NetworkAPIs
       description: This API is network create API.
       responses:
-        '200':
+        "200":
           description: Acknowledgement of network list
           content:
             application/json:
@@ -2798,10 +2798,10 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Network'
-        '400':
+                      $ref: "#/components/schemas/Network"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /networks/{id}/add:
     post:
@@ -2825,7 +2825,7 @@ paths:
                   maxLength: 35
                   description: Id of network
       responses:
-        '200':
+        "200":
           description: Acknowledgement of network creation
           content:
             application/json:
@@ -2835,10 +2835,10 @@ paths:
                   - data
                 properties:
                   data:
-                    $ref: '#/components/schemas/Network'
-        '400':
+                    $ref: "#/components/schemas/Network"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /networks/{id}/delete:
     post:
@@ -2862,7 +2862,7 @@ paths:
                   maxLength: 35
                   description: Id of network
       responses:
-        '200':
+        "200":
           description: Acknowledgement of network creation
           content:
             application/json:
@@ -2872,10 +2872,10 @@ paths:
                   - data
                 properties:
                   data:
-                    $ref: '#/components/schemas/Network'
-        '400':
+                    $ref: "#/components/schemas/Network"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /participantRegistry/{type}:
     post:
@@ -2885,27 +2885,27 @@ paths:
       operationId: registerEntity
       description: API to register entity in the registry
       parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/EntityType'
+        - $ref: "#/components/parameters/Signature"
+        - $ref: "#/components/parameters/EntityType"
       requestBody:
-        description: Request to register entity like BA, lender, data-provider
+        description: Request to register entity like LA, lender, data-provider
         content:
           application/json:
             schema:
               type: object
               anyOf:
-                - $ref: '#/components/schemas/RegisterEntityRequest'
-                - $ref: '#/components/schemas/DataProviderEntity'
+                - $ref: "#/components/schemas/RegisterEntityRequest"
+                - $ref: "#/components/schemas/DataProviderEntity"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityAddDeleteResponse'
-        '400':
+                $ref: "#/components/schemas/EntityAddDeleteResponse"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /participantRegistry/{type}/{id}:
     patch:
@@ -2915,9 +2915,9 @@ paths:
       operationId: updateEntity
       description: API to update entry in the registry
       parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/EntityType'
-        - $ref: '#/components/parameters/Id'
+        - $ref: "#/components/parameters/Signature"
+        - $ref: "#/components/parameters/EntityType"
+        - $ref: "#/components/parameters/Id"
       requestBody:
         description: Request to update entity properties
         content:
@@ -2925,18 +2925,18 @@ paths:
             schema:
               type: object
               anyOf:
-                - $ref: '#/components/schemas/UpdateEntityRequest'
-                - $ref: '#/components/schemas/UpdateDataProviderEntityRequest'
+                - $ref: "#/components/schemas/UpdateEntityRequest"
+                - $ref: "#/components/schemas/UpdateDataProviderEntityRequest"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityAddDeleteResponse'
-        '400':
+                $ref: "#/components/schemas/EntityAddDeleteResponse"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     get:
       tags:
@@ -2945,22 +2945,22 @@ paths:
       operationId: getEntity
       description: API to get paricipant entity by id
       parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/EntityType'
-        - $ref: '#/components/parameters/Id'
+        - $ref: "#/components/parameters/Signature"
+        - $ref: "#/components/parameters/EntityType"
+        - $ref: "#/components/parameters/Id"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           content:
             application/json:
               schema:
                 type: object
                 anyOf:
-                  - $ref: '#/components/schemas/RegisteredEntity'
-                  - $ref: '#/components/schemas/DataProviderEntity'
-        '400':
+                  - $ref: "#/components/schemas/RegisteredEntity"
+                  - $ref: "#/components/schemas/DataProviderEntity"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     delete:
       tags:
@@ -2968,18 +2968,18 @@ paths:
       summary: delete entity by id
       operationId: deleteEntity
       parameters:
-        - $ref: '#/components/parameters/EntityType'
-        - $ref: '#/components/parameters/Id'
+        - $ref: "#/components/parameters/EntityType"
+        - $ref: "#/components/parameters/Id"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityAddDeleteResponse'
-        '400':
+                $ref: "#/components/schemas/EntityAddDeleteResponse"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /participantRegistry/{type}/lookup:
     post:
@@ -2988,25 +2988,25 @@ paths:
       summary: lookup query for entities
       operationId: entityLookup
       parameters:
-        - $ref: '#/components/parameters/Signature'
-        - $ref: '#/components/parameters/EntityType'
+        - $ref: "#/components/parameters/Signature"
+        - $ref: "#/components/parameters/EntityType"
       requestBody:
-        description: Query BA, lender, data-provider using properties
+        description: Query LA, lender, data-provider using properties
         content:
           application/json:
             schema:
               type: object
-              $ref: '#/components/schemas/EntityLookupRequest'
+              $ref: "#/components/schemas/EntityLookupRequest"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityLookupResponse'
-        '400':
+                $ref: "#/components/schemas/EntityLookupResponse"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products:
     post:
@@ -3035,7 +3035,7 @@ paths:
                   maxLength: 35
                   description: Description of product.
       responses:
-        '200':
+        "200":
           description: Acknowledgement of product creation
           content:
             application/json:
@@ -3045,10 +3045,10 @@ paths:
                   - data
                 properties:
                   data:
-                    $ref: '#/components/schemas/Product'
-        '400':
+                    $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     get:
       operationId: listProduct
@@ -3056,7 +3056,7 @@ paths:
         - Product Registry
       summary: List product API
       responses:
-        '200':
+        "200":
           description: Acknowledgement of product creation
           content:
             application/json:
@@ -3068,10 +3068,10 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Product'
-        '400':
+                      $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}:
     get:
@@ -3087,7 +3087,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product
           content:
             application/json:
@@ -3095,10 +3095,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Product'
-        '400':
+                    $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     delete:
       operationId: deleteProduct
@@ -3113,7 +3113,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product
           content:
             application/json:
@@ -3121,10 +3121,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Product'
-        '400':
+                    $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/disable:
     post:
@@ -3140,7 +3140,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of product delete
           content:
             application/json:
@@ -3148,10 +3148,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Product'
-        '400':
+                    $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/metadata:
     get:
@@ -3167,7 +3167,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product
           content:
             application/json:
@@ -3175,10 +3175,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Product'
-        '400':
+                    $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/allowed_participants:
     get:
@@ -3194,7 +3194,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product participants
           content:
             application/json:
@@ -3202,10 +3202,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/ProductParticipants'
-        '400':
+                    $ref: "#/components/schemas/ProductParticipants"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     post:
       operationId: updateAllowedParticipants
@@ -3220,7 +3220,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product participants
           content:
             application/json:
@@ -3228,10 +3228,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/ProductParticipants'
-        '400':
+                    $ref: "#/components/schemas/ProductParticipants"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/participants:
     get:
@@ -3247,7 +3247,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product participants
           content:
             application/json:
@@ -3255,10 +3255,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/ProductParticipants'
-        '400':
+                    $ref: "#/components/schemas/ProductParticipants"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     post:
       operationId: participateInProduct
@@ -3273,7 +3273,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product participants
           content:
             application/json:
@@ -3281,10 +3281,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/ProductParticipants'
-        '400':
+                    $ref: "#/components/schemas/ProductParticipants"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
     delete:
       operationId: unparticipateInProduct
@@ -3292,7 +3292,7 @@ paths:
       tags:
         - ProductParticipantAPIs
       responses:
-        '200':
+        "200":
           description: Returns a product participants
           content:
             application/json:
@@ -3300,10 +3300,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/ProductParticipants'
-        '400':
+                    $ref: "#/components/schemas/ProductParticipants"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/participants/{type}/fields:
     get:
@@ -3325,7 +3325,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns a product
           content:
             application/json:
@@ -3335,10 +3335,10 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/ProductField'
-        '400':
+                      $ref: "#/components/schemas/ProductField"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/participants/{participant_product_id}/disable:
     post:
@@ -3360,7 +3360,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of product delete
           content:
             application/json:
@@ -3368,10 +3368,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Product'
-        '400':
+                    $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/participants/invite:
     post:
@@ -3398,9 +3398,9 @@ paths:
                   type: array
                   description: List of participants to invite
                   items:
-                    $ref: '#/components/schemas/ProductParticipants'
+                    $ref: "#/components/schemas/ProductParticipants"
       responses:
-        '200':
+        "200":
           description: Returns an invite for the product
           content:
             application/json:
@@ -3408,10 +3408,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Response'
-        '400':
+                    $ref: "#/components/schemas/Response"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/approve:
     post:
@@ -3427,7 +3427,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns approved or rejected
           content:
             application/json:
@@ -3435,10 +3435,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Response'
-        '400':
+                    $ref: "#/components/schemas/Response"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/admin/{user_id}/make:
     post:
@@ -3461,7 +3461,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns success or failure
           content:
             application/json:
@@ -3469,10 +3469,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Response'
-        '400':
+                    $ref: "#/components/schemas/Response"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/admin/{user_id}:
     delete:
@@ -3495,7 +3495,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns success or failure
           content:
             application/json:
@@ -3503,10 +3503,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Response'
-        '400':
+                    $ref: "#/components/schemas/Response"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{user_id}/participants/endpoint:
     get:
@@ -3522,7 +3522,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Returns participant information
           content:
             application/json:
@@ -3530,10 +3530,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/ProductParticipants'
-        '400':
+                    $ref: "#/components/schemas/ProductParticipants"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/update:
     patch:
@@ -3568,7 +3568,7 @@ paths:
                   maxLength: 25
                   description: Id of the existing product.
       responses:
-        '200':
+        "200":
           description: Returns updated product
           content:
             application/json:
@@ -3576,10 +3576,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Product'
-        '400':
+                    $ref: "#/components/schemas/Product"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/notify:
     post:
@@ -3606,9 +3606,9 @@ paths:
                   type: array
                   description: List of participants to notify
                   items:
-                    $ref: '#/components/schemas/ProductParticipants'
+                    $ref: "#/components/schemas/ProductParticipants"
       responses:
-        '200':
+        "200":
           description: Returns success or failure
           content:
             application/json:
@@ -3616,10 +3616,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Response'
-        '400':
+                    $ref: "#/components/schemas/Response"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /products/{id}/notice_notify:
     post:
@@ -3646,9 +3646,9 @@ paths:
                   type: array
                   description: List of participants to notify
                   items:
-                    $ref: '#/components/schemas/ProductParticipants'
+                    $ref: "#/components/schemas/ProductParticipants"
       responses:
-        '200':
+        "200":
           description: Returns success or failure
           content:
             application/json:
@@ -3656,10 +3656,10 @@ paths:
                 type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/Response'
-        '400':
+                    $ref: "#/components/schemas/Response"
+        "400":
           description: Invalid request
-        '404':
+        "404":
           description: Not found
   /v4.0.0alpha/disbursementPartner/getDisbursementOptionsRequest:
     post:
@@ -3668,7 +3668,7 @@ paths:
       tags:
         - Get Disbursement Options Request
       summary: Get Disbursement Options Request
-      description: This endpoint is initiated by the BA on the Disbursement partner to get all the products available for the borrower.
+      description: This endpoint is initiated by the LA on the Disbursement partner to get all the products available for the borrower.
       operationId: GetDisbursementOptionsRequest
       requestBody:
         content:
@@ -3680,13 +3680,13 @@ paths:
                 - requestId
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 productId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3697,7 +3697,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursementPartner/getDisbursementOptionsResponse:
     post:
       servers:
@@ -3705,7 +3705,7 @@ paths:
       tags:
         - Get Disbursement Options Response
       summary: Get Disbursement Options Response
-      description: This endpoint is initiated by the Disbursement partner on the BA as a response to Get Disbursement Options returning all Disbursement Products available.
+      description: This endpoint is initiated by the Disbursement partner on the LA as a response to Get Disbursement Options returning all Disbursement Products available.
       operationId: GetDisbursementOptionsResponse
       requestBody:
         content:
@@ -3717,7 +3717,7 @@ paths:
                 - requestId
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 productId:
@@ -3725,9 +3725,9 @@ paths:
                 disbursementProducts:
                   type: array
                   items:
-                    $ref: '#/components/schemas/DisbursementProduct'
+                    $ref: "#/components/schemas/DisbursementProduct"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3738,7 +3738,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursementPartner/getDisbursementProductDetailsRequest:
     post:
       servers:
@@ -3746,7 +3746,7 @@ paths:
       tags:
         - Get Disbursement Product Details Request
       summary: Get Disbursement Details Request
-      description: This endpoint can be initiated by BA / Lender on the disbursement partner to get the details of a specific product
+      description: This endpoint can be initiated by LA / Lender on the disbursement partner to get the details of a specific product
       operationId: GetDisbursementProductDetailsRequest
       requestBody:
         content:
@@ -3758,13 +3758,13 @@ paths:
                 - requestId
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 disbursementProductId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3775,7 +3775,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/disbursementPartner/getDisbursementProductDetailsResponse:
     post:
       servers:
@@ -3795,15 +3795,15 @@ paths:
                 - requestId
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 disbursementProductId:
                   type: string
                 disbursementProducts:
-                  $ref: '#/components/schemas/DisbursementProduct'
+                  $ref: "#/components/schemas/DisbursementProduct"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3814,7 +3814,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/collectionsPartner/getCollectionsStatusRequest:
     post:
       servers:
@@ -3836,15 +3836,15 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3855,7 +3855,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/collectionsPartner/getCollectionsStatusResponse:
     post:
       servers:
@@ -3878,17 +3878,17 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3899,7 +3899,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/collectionsPartner/getPaymentMethodsRequest:
     post:
       servers:
@@ -3907,7 +3907,7 @@ paths:
       tags:
         - Get Payment Methods Request
       summary: Get Payment Methods Request
-      description: This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.
+      description: This endpoint is initiated by the LA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.
       operationId: Get
       requestBody:
         content:
@@ -3919,13 +3919,13 @@ paths:
                 - requestId
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 productId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3936,7 +3936,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/collectionsPartner/getPaymentMethodsResponse:
     post:
       servers:
@@ -3944,7 +3944,7 @@ paths:
       tags:
         - Get Payment Methods Response
       summary: Get Payment Methods Response
-      description: This endpoint is initiated by the Collections partner on the BA as a response to Get Payment Methods returning all Collection Options available.
+      description: This endpoint is initiated by the Collections partner on the LA as a response to Get Payment Methods returning all Collection Options available.
       operationId: GetPaymentMethodsResponse
       requestBody:
         content:
@@ -3956,7 +3956,7 @@ paths:
                 - requestId
               properties:
                 metaData:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 productId:
@@ -3964,9 +3964,9 @@ paths:
                 paymentMethods:
                   type: array
                   items:
-                    $ref: '#/components/schemas/PaymentMethod'
+                    $ref: "#/components/schemas/PaymentMethod"
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -3977,7 +3977,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/collectionsPartner/triggerCollectionsRequest:
     post:
       servers:
@@ -3999,17 +3999,17 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 paymentMethod:
-                  $ref: '#/components/schemas/PaymentMethod'
+                  $ref: "#/components/schemas/PaymentMethod"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -4020,7 +4020,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
   /v4.0.0alpha/collectionsPartner/triggerCollectionsResponse:
     post:
       servers:
@@ -4043,17 +4043,17 @@ paths:
                 - loanId
               properties:
                 metadata:
-                  $ref: '#/components/schemas/MetaData'
+                  $ref: "#/components/schemas/MetaData"
                 requestId:
                   type: string
                 response:
-                  $ref: '#/components/schemas/Response'
+                  $ref: "#/components/schemas/Response"
                 payment:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: "#/components/schemas/Payment"
                 loanId:
                   type: string
       responses:
-        '200':
+        "200":
           description: Acknowledgement of Request Received
           headers:
             X-Rate-Limit:
@@ -4064,7 +4064,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ack'
+                $ref: "#/components/schemas/Ack"
 components:
   securitySchemes:
     bearerAuth:
@@ -4109,7 +4109,7 @@ components:
       properties:
         source:
           type: string
-          default: ''
+          default: ""
           enum:
             - GSTN
             - AA
@@ -4167,7 +4167,7 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Address:
       title: Root
       type: object
@@ -4199,23 +4199,23 @@ components:
         pinCode:
           type: string
           examples:
-            - ''
+            - ""
         po:
           type: string
           examples:
-            - ''
+            - ""
         district:
           type: string
           examples:
-            - ''
+            - ""
         state:
           type: string
           examples:
-            - ''
+            - ""
         country:
           type: string
           examples:
-            - ''
+            - ""
         url:
           type: string
           examples:
@@ -4223,13 +4223,13 @@ components:
         latitude:
           type: string
           examples:
-            - ''
+            - ""
         longitude:
           type: string
           examples:
-            - ''
+            - ""
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     ContactDetails:
       type: object
       required:
@@ -4246,17 +4246,17 @@ components:
         phone:
           type: string
           examples:
-            - '7777777777'
+            - "7777777777"
         email:
           type: string
           examples:
             - johndoe@defenterprises
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Borrower:
       type: object
       required:
@@ -4278,7 +4278,7 @@ components:
         additionalIdentifiers:
           type: array
           items:
-            $ref: '#/components/schemas/AdditionalIdentifier'
+            $ref: "#/components/schemas/AdditionalIdentifier"
         name:
           type: string
           examples:
@@ -4291,15 +4291,15 @@ components:
         contactDetails:
           type: array
           items:
-            $ref: '#/components/schemas/ContactDetails'
+            $ref: "#/components/schemas/ContactDetails"
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
         aaIdentifier:
           type: string
           example: user@aa
@@ -4310,7 +4310,7 @@ components:
         value:
           type: string
           examples:
-            - '20000'
+            - "20000"
         currency:
           type: string
           examples:
@@ -4327,7 +4327,7 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Party:
       type: object
       required:
@@ -4355,7 +4355,7 @@ components:
         additionalIdentifiers:
           type: array
           items:
-            $ref: '#/components/schemas/AdditionalIdentifier'
+            $ref: "#/components/schemas/AdditionalIdentifier"
         name:
           type: string
         category:
@@ -4368,15 +4368,15 @@ components:
         contactDetails:
           type: array
           items:
-            $ref: '#/components/schemas/ContactDetails'
+            $ref: "#/components/schemas/ContactDetails"
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Collateral:
       type: object
       required:
@@ -4400,13 +4400,13 @@ components:
         additionalIdentifiers:
           type: array
           items:
-            $ref: '#/components/schemas/AdditionalIdentifier'
+            $ref: "#/components/schemas/AdditionalIdentifier"
         valuation:
-          $ref: '#/components/schemas/Valuation'
+          $ref: "#/components/schemas/Valuation"
         parties:
           type: array
           items:
-            $ref: '#/components/schemas/Party'
+            $ref: "#/components/schemas/Party"
         type:
           type: string
           enum:
@@ -4418,11 +4418,11 @@ components:
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Guarantor:
       type: object
       required:
@@ -4445,11 +4445,11 @@ components:
         description:
           type: string
           examples:
-            - ''
+            - ""
         additionalIdentifiers:
           type: array
           items:
-            $ref: '#/components/schemas/AdditionalIdentifier'
+            $ref: "#/components/schemas/AdditionalIdentifier"
         name:
           type: string
           examples:
@@ -4466,15 +4466,15 @@ components:
         contactDetails:
           type: array
           items:
-            $ref: '#/components/schemas/ContactDetails'
+            $ref: "#/components/schemas/ContactDetails"
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Applicant:
       type: object
       required:
@@ -4494,7 +4494,7 @@ components:
         additionalIdentifiers:
           type: array
           items:
-            $ref: '#/components/schemas/AdditionalIdentifier'
+            $ref: "#/components/schemas/AdditionalIdentifier"
         name:
           type: string
         category:
@@ -4507,15 +4507,15 @@ components:
         contactDetails:
           type: array
           items:
-            $ref: '#/components/schemas/ContactDetails'
+            $ref: "#/components/schemas/ContactDetails"
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     LoanTenure:
       type: object
       required:
@@ -4560,7 +4560,7 @@ components:
             rate:
               type: string
               examples:
-                - '6'
+                - "6"
             amount:
               type: number
             applicableParameter:
@@ -4577,18 +4577,18 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Charges:
       type: object
       properties:
         prepayment:
-          $ref: '#/components/schemas/ChargeDetails'
+          $ref: "#/components/schemas/ChargeDetails"
         bounce:
-          $ref: '#/components/schemas/ChargeDetails'
+          $ref: "#/components/schemas/ChargeDetails"
         latePayment:
-          $ref: '#/components/schemas/ChargeDetails'
+          $ref: "#/components/schemas/ChargeDetails"
         processing:
-          $ref: '#/components/schemas/ChargeDetails'
+          $ref: "#/components/schemas/ChargeDetails"
     LoanTerms:
       type: object
       required:
@@ -4598,7 +4598,7 @@ components:
         requestedAmount:
           type: string
           examples:
-            - '50000.00'
+            - "50000.00"
         currency:
           type: string
           examples:
@@ -4606,7 +4606,7 @@ components:
         sanctionedAmount:
           type: string
           examples:
-            - '5000.00'
+            - "5000.00"
         interestType:
           type: string
           enum:
@@ -4615,7 +4615,7 @@ components:
         interestRate:
           type: string
           examples:
-            - '6.50'
+            - "6.50"
         totalAmount:
           type: string
         interestAmount:
@@ -4623,19 +4623,19 @@ components:
         description:
           type: string
         tenure:
-          $ref: '#/components/schemas/LoanTenure'
+          $ref: "#/components/schemas/LoanTenure"
         legalAgreement:
-          $ref: '#/components/schemas/LoanAgreement'
+          $ref: "#/components/schemas/LoanAgreement"
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         charges:
-          $ref: '#/components/schemas/Charges'
+          $ref: "#/components/schemas/Charges"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     LoanApplicationRequest:
       type: object
       required:
@@ -4657,21 +4657,21 @@ components:
         pledgedDocuments:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         borrower:
           type: array
-          $ref: '#/components/schemas/Borrower'
+          $ref: "#/components/schemas/Borrower"
         collaterals:
           type: array
-          $ref: '#/components/schemas/Collateral'
+          $ref: "#/components/schemas/Collateral"
         guarantors:
           type: array
-          $ref: '#/components/schemas/Guarantor'
+          $ref: "#/components/schemas/Guarantor"
         applicants:
           type: array
-          $ref: '#/components/schemas/Applicant'
+          $ref: "#/components/schemas/Applicant"
         terms:
-          $ref: '#/components/schemas/LoanTerms'
+          $ref: "#/components/schemas/LoanTerms"
         url:
           type: string
         disbursementProductId:
@@ -4689,7 +4689,7 @@ components:
         error:
           type: string
           examples:
-            - '0'
+            - "0"
         traceId:
           type: string
           examples:
@@ -4697,7 +4697,7 @@ components:
         timestamp:
           type: string
           examples:
-            - '2018-12-06T11:39:57.153Z'
+            - "2018-12-06T11:39:57.153Z"
     Response:
       type: object
       description: Status of response. Whether success or has encountered error
@@ -4729,7 +4729,7 @@ components:
         additionalIdentifiers:
           type: array
           items:
-            $ref: '#/components/schemas/AdditionalIdentifier'
+            $ref: "#/components/schemas/AdditionalIdentifier"
         name:
           type: string
           examples:
@@ -4742,15 +4742,15 @@ components:
         contactDetails:
           type: array
           items:
-            $ref: '#/components/schemas/ContactDetails'
+            $ref: "#/components/schemas/ContactDetails"
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     KYCDetails:
       type: object
       properties:
@@ -4800,13 +4800,13 @@ components:
         udyamRegistrationDate:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
         fullName:
           type: string
         dob:
           type: string
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
     KYC:
       type: object
       properties:
@@ -4824,11 +4824,11 @@ components:
         initiateCKYC:
           type: boolean
         individualKYC:
-          $ref: '#/components/schemas/KYCDetails'
+          $ref: "#/components/schemas/KYCDetails"
         entityKYC:
-          $ref: '#/components/schemas/KYCDetails'
+          $ref: "#/components/schemas/KYCDetails"
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     RejectionDetail:
       type: object
       required:
@@ -4849,7 +4849,7 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Reference:
       type: object
       required:
@@ -4882,11 +4882,11 @@ components:
           examples:
             - DL number not visible
         reference:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     LoanApplication:
       type: object
       required:
@@ -4897,7 +4897,7 @@ components:
           description: The time when the loan application was created
         loanApplicationId:
           type: string
-          description: UUID for the loan application. Generated by BA
+          description: UUID for the loan application. Generated by LA
         productId:
           type: string
           description: Specific loan product within the product type
@@ -4915,28 +4915,28 @@ components:
             - REJECTED
             - ACTION_REQUIRED
         borrower:
-          $ref: '#/components/schemas/Borrower'
+          $ref: "#/components/schemas/Borrower"
           description: Details of the Borrower
         collaterals:
           type: array
           description: Details of the instruments against which the user wishes to take a loan. If no data is there to be sent, an empty array block can be passed.
           items:
-            $ref: '#/components/schemas/Collateral'
+            $ref: "#/components/schemas/Collateral"
         guarantors:
           type: array
           description: List of guarantors that the borrowers have for the loan. If no data is there to be sent, an empty array block can be passed.
           items:
-            $ref: '#/components/schemas/Guarantor'
+            $ref: "#/components/schemas/Guarantor"
         applicants:
           type: array
           description: List of applicants for the loan.  If no data is there to be sent, an empty array block can be passed
           items:
-            $ref: '#/components/schemas/Applicant'
+            $ref: "#/components/schemas/Applicant"
         lender:
-          $ref: '#/components/schemas/Lender'
+          $ref: "#/components/schemas/Lender"
           description: Lender details
         kyc:
-          $ref: '#/components/schemas/KYC'
+          $ref: "#/components/schemas/KYC"
           description: KYC details
         description:
           type: string
@@ -4947,29 +4947,29 @@ components:
           maxLength: 1000
           description: For any additional data  that needs to be passed as a link
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
           description: For any additional data that needs to be added
         rejectionDetails:
           type: array
           items:
-            $ref: '#/components/schemas/RejectionDetail'
+            $ref: "#/components/schemas/RejectionDetail"
           description: To be filled if the status of the loan is REJECTED. This object will have the details of why the loan application was rejected
         actionRequired:
           type: array
           items:
-            $ref: '#/components/schemas/ActionRequired'
+            $ref: "#/components/schemas/ActionRequired"
           description: To be filled if the status of the loan is ACTION_REQUIRED. This object captures the details of any action that the lender wants the borrower to do
-    BAInfo:
+    LAInfo:
       type: object
       properties:
-        BAId:
+        LAId:
           type: string
           examples:
-            - <AA can identify the BA based on this>
+            - <AA can identify the LA based on this>
         version:
           type: string
           examples:
-            - <version of BA>
+            - <version of LA>
         appName:
           type: string
           examples:
@@ -4979,19 +4979,19 @@ components:
           examples:
             - https://abc-bank.com
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Consent:
       type: object
       properties:
         consentFetchType:
           type: string
-          default: ''
+          default: ""
           enum:
             - ONETIME
             - PERIODIC
         vua:
           type: string
-          default: ''
+          default: ""
           examples:
             - user@aa.in
         description:
@@ -5002,11 +5002,11 @@ components:
             - true
         consentAggregationId:
           type: string
-          default: ''
+          default: ""
           examples:
             - e8cc6822bd4bbb4eb1b9e1b4996fbff8acd
-        BAInfo:
-          $ref: '#/components/schemas/BAInfo'
+        LAInfo:
+          $ref: "#/components/schemas/LAInfo"
         consentHandle:
           type: string
         consentStatus:
@@ -5018,7 +5018,7 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     ConsentHandleRequest:
       type: object
       required:
@@ -5028,7 +5028,7 @@ components:
         - consent
       properties:
         metadata:
-          $ref: '#/components/schemas/MetaData'
+          $ref: "#/components/schemas/MetaData"
         loanApplicationIds:
           type: array
           items:
@@ -5040,7 +5040,7 @@ components:
           examples:
             - g8cc6822bd4bbb4eb1b9e1b4996fbff8acb
         consent:
-          $ref: '#/components/schemas/Consent'
+          $ref: "#/components/schemas/Consent"
     ConsentHandleResponse:
       type: object
       required:
@@ -5050,15 +5050,15 @@ components:
         - consent
       properties:
         metadata:
-          $ref: '#/components/schemas/MetaData'
+          $ref: "#/components/schemas/MetaData"
         response:
-          $ref: '#/components/schemas/Response'
+          $ref: "#/components/schemas/Response"
         requestId:
           type: string
           examples:
             - i8cc6822bd4bbb4eb1b9e1b4996fbff8acb
         consent:
-          $ref: '#/components/schemas/Consent'
+          $ref: "#/components/schemas/Consent"
     ConsentHandle:
       type: object
       required:
@@ -5068,9 +5068,9 @@ components:
         - consentHandle
       properties:
         metadata:
-          $ref: '#/components/schemas/MetaData'
+          $ref: "#/components/schemas/MetaData"
         response:
-          $ref: '#/components/schemas/Response'
+          $ref: "#/components/schemas/Response"
         requestId:
           type: string
           examples:
@@ -5083,14 +5083,14 @@ components:
           type: string
     ConsentNotificationRequest:
       type: object
-      description: Request object used by BA to share consent process completion update to Gateway
+      description: Request object used by LA to share consent process completion update to Gateway
       required:
         - metadata
         - requestId
         - consents
       properties:
         metadata:
-          $ref: '#/components/schemas/MetaData'
+          $ref: "#/components/schemas/MetaData"
         requestId:
           type: string
           examples:
@@ -5108,7 +5108,7 @@ components:
                 format: uuid
               consentAggregationId:
                 type: string
-                default: ''
+                default: ""
                 examples:
                   - e8cc6822bd4bbb4eb1b9e1b4996fbff8acd
               consentHandle:
@@ -5125,13 +5125,13 @@ components:
         - consent
       properties:
         metadata:
-          $ref: '#/components/schemas/MetaData'
+          $ref: "#/components/schemas/MetaData"
         requestId:
           type: string
           examples:
             - m8cc6822bd4bbb4eb1b9e1b4996fbff8acb
         consent:
-          $ref: '#/components/schemas/Consent'
+          $ref: "#/components/schemas/Consent"
     ConsentStatusResponse:
       type: object
       required:
@@ -5141,15 +5141,15 @@ components:
         - consent
       properties:
         metadata:
-          $ref: '#/components/schemas/MetaData'
+          $ref: "#/components/schemas/MetaData"
         response:
-          $ref: '#/components/schemas/Response'
+          $ref: "#/components/schemas/Response"
         requestId:
           type: string
           examples:
             - p8cc6822bd4bbb4eb1b9e1b4996fbff8acb
         consent:
-          $ref: '#/components/schemas/Consent'
+          $ref: "#/components/schemas/Consent"
     PaymentPlan:
       type: object
       required:
@@ -5202,7 +5202,7 @@ components:
             - HALF_YEARLY
             - YEARLY
         tenure:
-          $ref: '#/components/schemas/LoanTenure'
+          $ref: "#/components/schemas/LoanTenure"
         totalAmount:
           type: string
         principal:
@@ -5224,7 +5224,7 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     AccountDetailsData:
       type: object
       properties:
@@ -5241,11 +5241,11 @@ components:
         accountNumber:
           type: string
           examples:
-            - '11250789101486249090'
+            - "11250789101486249090"
         vpa:
           type: string
           examples:
-            - ''
+            - ""
         maskedAccountNumber:
           type: string
           examples:
@@ -5259,11 +5259,11 @@ components:
         id:
           type: string
           examples:
-            - ''
+            - ""
         description:
           type: string
           examples:
-            - ''
+            - ""
         status:
           type: string
           enum:
@@ -5275,9 +5275,9 @@ components:
             - ACCOUNT
             - VPA
         data:
-          $ref: '#/components/schemas/AccountDetailsData'
+          $ref: "#/components/schemas/AccountDetailsData"
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Disbursement:
       type: object
       required:
@@ -5286,11 +5286,11 @@ components:
         plans:
           type: array
           items:
-            $ref: '#/components/schemas/PaymentPlan'
+            $ref: "#/components/schemas/PaymentPlan"
         accountDetails:
           type: array
           items:
-            $ref: '#/components/schemas/AccountDetails'
+            $ref: "#/components/schemas/AccountDetails"
     Repayment:
       type: object
       required:
@@ -5299,7 +5299,7 @@ components:
         plans:
           type: array
           items:
-            $ref: '#/components/schemas/PaymentPlan'
+            $ref: "#/components/schemas/PaymentPlan"
     Offer:
       type: object
       required:
@@ -5316,21 +5316,21 @@ components:
         validTill:
           type: string
         terms:
-          $ref: '#/components/schemas/LoanTerms'
+          $ref: "#/components/schemas/LoanTerms"
         disbursement:
-          $ref: '#/components/schemas/Disbursement'
+          $ref: "#/components/schemas/Disbursement"
         repayment:
-          $ref: '#/components/schemas/Repayment'
+          $ref: "#/components/schemas/Repayment"
         description:
           type: string
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/Document'
+            $ref: "#/components/schemas/Document"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     LoanApplicationWithOffer:
       type: object
       required:
@@ -5341,7 +5341,7 @@ components:
           description: The time when the loan application was created
         loanApplicationId:
           type: string
-          description: UUID for the loan application. Generated by BA
+          description: UUID for the loan application. Generated by LA
         productId:
           type: string
           description: Specific loan product within the product type
@@ -5352,7 +5352,7 @@ components:
           type: array
           description: Offers given by lender for a loan application
           items:
-            $ref: '#/components/schemas/Offer'
+            $ref: "#/components/schemas/Offer"
         loanApplicationStatus:
           type: string
           description: Current status of the loan application.
@@ -5364,28 +5364,28 @@ components:
             - REJECTED
             - ACTION_REQUIRED
         borrower:
-          $ref: '#/components/schemas/Borrower'
+          $ref: "#/components/schemas/Borrower"
           description: Details of the Borrower
         collaterals:
           type: array
           description: Details of the instruments against which the user wishes to take a loan. If no data is there to be sent, an empty array block can be passed.
           items:
-            $ref: '#/components/schemas/Collateral'
+            $ref: "#/components/schemas/Collateral"
         guarantors:
           type: array
           description: List of guarantors that the borrowers have for the loan. If no data is there to be sent, an empty array block can be passed.
           items:
-            $ref: '#/components/schemas/Guarantor'
+            $ref: "#/components/schemas/Guarantor"
         applicants:
           type: array
           description: List of applicants for the loan.  If no data is there to be sent, an empty array block can be passed
           items:
-            $ref: '#/components/schemas/Applicant'
+            $ref: "#/components/schemas/Applicant"
         lender:
-          $ref: '#/components/schemas/Lender'
+          $ref: "#/components/schemas/Lender"
           description: Lender details
         kyc:
-          $ref: '#/components/schemas/KYC'
+          $ref: "#/components/schemas/KYC"
           description: KYC details
         description:
           type: string
@@ -5396,17 +5396,17 @@ components:
           maxLength: 1000
           description: For any additional data  that needs to be passed as a link
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
           description: For any additional data that needs to be added
         rejectionDetails:
           type: array
           items:
-            $ref: '#/components/schemas/RejectionDetail'
+            $ref: "#/components/schemas/RejectionDetail"
           description: To be filled if the status of the loan is REJECTED. This object will have the details of why the loan application was rejected
         actionRequired:
           type: array
           items:
-            $ref: '#/components/schemas/ActionRequired'
+            $ref: "#/components/schemas/ActionRequired"
           description: To be filled if the status of the loan is ACTION_REQUIRED. This object captures the details of any action that the lender wants the borrower to do
     PaymentMethod:
       type: object
@@ -5434,12 +5434,12 @@ components:
             - PAUSE
         data:
           type: object
-          description: Data for different type will be defined in later version of APIs. As of now, BA can define it as per their requirement
-          $ref: '#/components/schemas/ExtensibleData'
+          description: Data for different type will be defined in later version of APIs. As of now, LA can define it as per their requirement
+          $ref: "#/components/schemas/ExtensibleData"
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Payment:
       type: object
       required:
@@ -5481,7 +5481,7 @@ components:
             - false
         paymentMethodType:
           type: string
-          default: ''
+          default: ""
           enum:
             - UPI
             - EMANDATE_UPI
@@ -5495,7 +5495,7 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     Transaction:
       type: object
       required:
@@ -5524,7 +5524,7 @@ components:
         url:
           type: string
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     AnalyticsMetrics:
       title: metrics
       type: object
@@ -5576,7 +5576,7 @@ components:
           type: string
         extensibleData:
           desciption: Any extra metadata to be attached to the event
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
     DPRegisterSchemaRequest:
       type: object
       properties:
@@ -5598,7 +5598,7 @@ components:
         timestamp:
           type: string
           format: date-time
-          example: '2021-12-06T11:39:57.153Z'
+          example: "2021-12-06T11:39:57.153Z"
     DPSchemaId:
       type: object
       properties:
@@ -5608,8 +5608,8 @@ components:
     DPSchemaAddDeleteResponse:
       type: object
       allOf:
-        - $ref: '#/components/schemas/Timestamp'
-        - $ref: '#/components/schemas/DPSchemaId'
+        - $ref: "#/components/schemas/Timestamp"
+        - $ref: "#/components/schemas/DPSchemaId"
       properties:
         message:
           type: string
@@ -5617,14 +5617,14 @@ components:
     RegisteredDPSchema:
       type: object
       allOf:
-        - $ref: '#/components/schemas/DPSchemaId'
-        - $ref: '#/components/schemas/DPRegisterSchemaRequest'
+        - $ref: "#/components/schemas/DPSchemaId"
+        - $ref: "#/components/schemas/DPRegisterSchemaRequest"
       properties:
         createdOn:
           type: string
           format: date-time
           description: Creation timestamp of the message which will be updated at each leg
-          example: '2018-12-06T11:39:57.153Z'
+          example: "2018-12-06T11:39:57.153Z"
     ProductPartner:
       type: object
       required:
@@ -5657,7 +5657,7 @@ components:
         partners:
           type: array
           items:
-            $ref: '#/components/schemas/ProductPartner'
+            $ref: "#/components/schemas/ProductPartner"
     Certificate:
       type: object
       description: Public certificate of the entity in UHI eco-system
@@ -5678,7 +5678,7 @@ components:
           type: string
           example: RS256
           description: algorithm
-        'n':
+        "n":
           type: string
           example: gU8PDUSzaHtMOYJd9NDLJ-2dAE1lXUCgZK-N6y9vRDCurscfQlTHKZliBbhiEsMCk70_nbDie6YKXWavJKj0X4nzoa1H7jrRjKa7R80BlqtSKl95TuynUChrHvvsvcjDSXp4d4PCNZ0Hdp7j0K-QSiR4OHGb3Irm9vgv3tPdh00ijPwqFJRFSkofFiUSRp-7BXWQXvnnH0sEIMvGjCxj4hAz3J35X5KPfRaax5MCQPr1-WkOgGYvpNPaDjSjsvhtOZQMcmvy_AaoRk6FADHkIRJU14dzw9alI4dp5Yp52CRg-bPDYReQe4e3j4I8DP3i0JTkV_fJOgDKPnFpRDmDNw
           description: The modulus of key datas
@@ -5696,7 +5696,7 @@ components:
         baseUrl:
           type: string
           description: base url of the module in eco-system. The typical format of a baseUrl is as follows.<br> ``` <fqdn>.<extension> ``` where, <br/> <table> <thead> <tr> <td>Key</th> <td>Description</th> </tr> </thead> <tbody> <tr> <td>fqdn</th> <td>Fully qualified domain name</th> </tr> <tr> <td>extn</td> <td>Domain Extension</td> </tr> </tbody> </table> The domain name of the subscriber must be an ```https``` domain with a TLD extension and a valid SSL certificate from a trusted certificate authority
-          example: https://BA.company.com
+          example: https://LA.company.com
         ips:
           type: array
           items:
@@ -5709,22 +5709,22 @@ components:
           items:
             type: string
           example:
-            - '80'
-            - '45'
+            - "80"
+            - "45"
         outboundPorts:
           type: array
           items:
             type: string
           example:
-            - '80'
-            - '45'
+            - "80"
+            - "45"
         certificate:
           type: object
-          $ref: '#/components/schemas/Certificate'
+          $ref: "#/components/schemas/Certificate"
     RegisterEntityRequest:
       type: object
       allOf:
-        - $ref: '#/components/schemas/EntityAttributes'
+        - $ref: "#/components/schemas/EntityAttributes"
       required:
         - version
         - name
@@ -5736,7 +5736,7 @@ components:
     SupportedSchema:
       type: object
       allOf:
-        - $ref: '#/components/schemas/DPSchemaId'
+        - $ref: "#/components/schemas/DPSchemaId"
       properties:
         versions:
           type: array
@@ -5748,13 +5748,13 @@ components:
     DataProviderEntity:
       type: object
       allOf:
-        - $ref: '#/components/schemas/EntityAttributes'
+        - $ref: "#/components/schemas/EntityAttributes"
       properties:
         schemaIds:
           type: array
           description: Supported schemaId and versions by Data-Provider
           items:
-            $ref: '#/components/schemas/SupportedSchema'
+            $ref: "#/components/schemas/SupportedSchema"
       required:
         - version
         - name
@@ -5778,15 +5778,15 @@ components:
           type: string
           description: type of the entity
           enum:
-            - BA
+            - LA
             - lender
             - data-provider
     EntityAddDeleteResponse:
       type: object
       allOf:
-        - $ref: '#/components/schemas/Timestamp'
-        - $ref: '#/components/schemas/EntityIdentifier'
-        - $ref: '#/components/schemas/EntityType'
+        - $ref: "#/components/schemas/Timestamp"
+        - $ref: "#/components/schemas/EntityIdentifier"
+        - $ref: "#/components/schemas/EntityType"
       properties:
         message:
           type: string
@@ -5802,10 +5802,10 @@ components:
     RegisteredEntity:
       type: object
       allOf:
-        - $ref: '#/components/schemas/EntityIdentifier'
-        - $ref: '#/components/schemas/EntityType'
-        - $ref: '#/components/schemas/Status'
-        - $ref: '#/components/schemas/EntityAttributes'
+        - $ref: "#/components/schemas/EntityIdentifier"
+        - $ref: "#/components/schemas/EntityType"
+        - $ref: "#/components/schemas/Status"
+        - $ref: "#/components/schemas/EntityAttributes"
       properties:
         createdOn:
           type: string
@@ -5816,18 +5816,18 @@ components:
     UpdateEntityRequest:
       type: object
       allOf:
-        - $ref: '#/components/schemas/Status'
-        - $ref: '#/components/schemas/EntityAttributes'
+        - $ref: "#/components/schemas/Status"
+        - $ref: "#/components/schemas/EntityAttributes"
     UpdateDataProviderEntityRequest:
       type: object
       allOf:
-        - $ref: '#/components/schemas/Status'
-        - $ref: '#/components/schemas/DataProviderEntity'
+        - $ref: "#/components/schemas/Status"
+        - $ref: "#/components/schemas/DataProviderEntity"
     EntityLookupRequest:
       type: object
       allOf:
-        - $ref: '#/components/schemas/EntityIdentifier'
-        - $ref: '#/components/schemas/Status'
+        - $ref: "#/components/schemas/EntityIdentifier"
+        - $ref: "#/components/schemas/Status"
       properties:
         name:
           type: string
@@ -5850,10 +5850,10 @@ components:
           anyOf:
             - type: array
               items:
-                $ref: '#/components/schemas/RegisteredEntity'
+                $ref: "#/components/schemas/RegisteredEntity"
             - type: array
               items:
-                $ref: '#/components/schemas/DataProviderEntity'
+                $ref: "#/components/schemas/DataProviderEntity"
         number:
           type: integer
           description: index of page
@@ -5937,7 +5937,7 @@ components:
                 url:
                   type: string
         network:
-          $ref: '#/components/schemas/Network'
+          $ref: "#/components/schemas/Network"
         lender:
           type: object
           properties:
@@ -5946,7 +5946,7 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/ProductPartner'
+                $ref: "#/components/schemas/ProductPartner"
         loan_service:
           type: object
           properties:
@@ -5955,7 +5955,7 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/ProductPartner'
+                $ref: "#/components/schemas/ProductPartner"
         benchmark_data:
           type: object
           properties:
@@ -5964,11 +5964,11 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/ProductPartner'
+                $ref: "#/components/schemas/ProductPartner"
             fields:
               type: array
               items:
-                $ref: '#/components/schemas/ProductField'
+                $ref: "#/components/schemas/ProductField"
         disbursement:
           type: object
           properties:
@@ -5977,11 +5977,11 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/ProductPartnerWithData'
+                $ref: "#/components/schemas/ProductPartnerWithData"
             fields:
               type: array
               items:
-                $ref: '#/components/schemas/ProductField'
+                $ref: "#/components/schemas/ProductField"
         collection:
           type: object
           properties:
@@ -5990,7 +5990,7 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/ProductPartner'
+                $ref: "#/components/schemas/ProductPartner"
         collateral:
           type: object
           properties:
@@ -5999,7 +5999,7 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/ProductPartner'
+                $ref: "#/components/schemas/ProductPartner"
         monitoring:
           type: object
           properties:
@@ -6008,7 +6008,7 @@ components:
             partners:
               type: array
               items:
-                $ref: '#/components/schemas/ProductPartner'
+                $ref: "#/components/schemas/ProductPartner"
     ProductParticipants:
       type: object
       required:
@@ -6037,7 +6037,7 @@ components:
         id:
           type: string
           examples:
-            - ''
+            - ""
         name:
           type: string
           examples:
@@ -6049,15 +6049,15 @@ components:
         price:
           type: string
           examples:
-            - '1000'
+            - "1000"
         currency:
           type: string
           examples:
             - INR
         accountDetails:
-          $ref: '#/components/schemas/AccountDetails'
+          $ref: "#/components/schemas/AccountDetails"
         extensibleData:
-          $ref: '#/components/schemas/ExtensibleData'
+          $ref: "#/components/schemas/ExtensibleData"
   parameters:
     Signature:
       name: Signature
@@ -6088,14 +6088,14 @@ components:
     EntityType:
       name: type
       in: path
-      description: Type of the entity e.g. Borrower Agent(BA), Lender, Data Provider
+      description: Type of the entity e.g. Loan Agent(LA), Lender, Data Provider
       schema:
         type: string
         enum:
-          - BA
+          - LA
           - lender
           - data-provider
-      example: BA
+      example: LA
       required: true
     Id:
       name: id
