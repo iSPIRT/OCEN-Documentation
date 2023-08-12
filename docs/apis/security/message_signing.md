@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Message Signing
 
 While the authentication mechanism of associating an incoming request with a set of identifying credentials 

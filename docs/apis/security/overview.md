@@ -1,18 +1,24 @@
+---
+sidebar_position: 1
+---
+
 # Overview
 
 The OCEN ecosystem depends on all participants being able to seamlessly connect to each other for it’s smooth functioning. Seamless connection is enabled through a set of standards and protocols that guarantee interoperability amongst participants.
 
 Participant Registry & Auth Service, combined together represent the OCEN ecosystem's infrastructure layer. They provide following features to ensure interoperability across the ecosystem:
+
 - Registry of all participants’s API endpoints in the ecosystem.
 - Public Key of each ecosystem participant to verify digitally signed requests and responses.
 - A dynamic & short-lived [access token](./access_token.md), to authorize the API calls amongst the ecosystem participants.
 
 These features are mapped to Participant Registry & Auth Service as follows:
-| Feature                                  | Service      |
-| ---------------------------------------- | ------------ |
-| Registry of all module’s API endpoints   | Participant Registry      |
-| Public Key of each ecosystem participant | Participant Registry      |
-| A dynamic & short-lived access token     | Auth         |
+
+| Feature                                  | Service              |
+| ---------------------------------------- | -------------------- |
+| Registry of all module’s API endpoints   | Participant Registry |
+| Public Key of each ecosystem participant | Participant Registry |
+| A dynamic & short-lived access token     | Auth Service         |
 
 To enable these features, all participants must register with Auth Service as client, as well as on Participant Registry with their API endpoints & public key. The identifier assigned to each module must be the same on both Auth Service (client) & Gateway (in it’s registries and mappings).
 
@@ -29,25 +35,25 @@ Participant Registry & Auth Service together facilitate easy, secure availabilit
 
 # Onboarding/Offboarding
 
-As mentioned above, in order to ensure interoperability between modules across the OCEN ecosystem. All modules (ecosystem participants) are required to register with both Auth Service & Participant Registry. 
+As mentioned above, in order to ensure interoperability between modules across the OCEN ecosystem. All modules (ecosystem participants) are required to register with both Auth Service & Participant Registry.
 
 ## Onboarding
 
 1. Reach out to Participant Registry administrators using an established channel (email, slack etc.) to get on boarded onto the OCEN ecosystem with following required details:
-    - Participant Type
-    - API Endpoint
-    - Public Certificate Key
-2. __Client Id & Secret__ are issued as final output of this process using the Authentication Service.
+   - Participant Type
+   - API Endpoint
+   - Public Certificate Key
+2. **Client Id & Secret** are issued as final output of this process using the Authentication Service.
 3. Participant Registry is updated with participants details (API endpoint, Public key).
 
 ## Offboarding
 
 1. Using an established channel (email, slack etc.) notify Participant Registry administrators to trigger the offboarding process.
-2. Client Id & Secret are deactivated and removed from the authentication service. 
+2. Client Id & Secret are deactivated and removed from the authentication service.
 3. Module API endpoint & public key entries are removed from Participant Registry.
 4. All resource mappings are removed.
 
-# Auth Service 
+# Auth Service
 
 Auth Service is a standards-compliant OAuth 2.0 authorization server, as well as, a OpenID Connect protocol implementation.
 
@@ -57,11 +63,11 @@ Following sections provide detailed information about the endpoints that the Aut
 
 ## Endpoints Summary
 
-| Endpoint Name | URI | Use |
-| ------------- | --- | ----------- |
-| Token Endpoint | `/token` | Obtain an access and/or ID token by presenting an [authorization grant](#authorization-grants) or refresh token. |
-| Json Web Key Set Endpoint | `/certs` | Get public keys / certificates used to sign Auth Service responses (including tokens).
-| OpenID Connect Well Known Configuration Endpoint | `/.well-known/openid-configuration` | Get OpenID Connect metadata related to the authorization server.
+| Endpoint Name                                    | URI                                 | Use                                                                                                              |
+| ------------------------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Token Endpoint                                   | `/token`                            | Obtain an access and/or ID token by presenting an [authorization grant](#authorization-grants) or refresh token. |
+| Json Web Key Set Endpoint                        | `/certs`                            | Get public keys / certificates used to sign Auth Service responses (including tokens).                           |
+| OpenID Connect Well Known Configuration Endpoint | `/.well-known/openid-configuration` | Get OpenID Connect metadata related to the authorization server.                                                 |
 
 ## /token
 
@@ -73,35 +79,35 @@ This endpoint returns access tokens, ID tokens, and refresh tokens depending on 
 
 ### Request Parameters
 
-The following parameters can be posted as a part of the __URL-encoded form values__ to the API.
+The following parameters can be posted as a part of the **URL-encoded form values** to the API.
 
-Parameter | Type | Required    | Description 
---------- | ---- | ----------- | -----------
-grant_type | String | Yes | Can be one of: `client_credentials` or `authorization_code`. Determines the mechanism Auth Service uses to authorize the minting of the tokens.
-scope | String | No | List of scopes to be included in the access token
-code | String | Maybe | Required if `grant_type` is `authorization_code`. The value is what was returned from the [`/auth`](#auth) endpoint. The code has a lifetime of 300 seconds.
-code_verifier | String | Maybe | Required if `grant_type` is `authorization_code` & `code_challenge` was specified in the original [`/auth`](#auth) request. This value is the code verifier for PKCE.
+| Parameter     | Type   | Required | Description                                                                                                                                                           |
+| ------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| grant_type    | String | Yes      | Can be one of: `client_credentials` or `authorization_code`. Determines the mechanism Auth Service uses to authorize the minting of the tokens.                       |
+| scope         | String | No       | List of scopes to be included in the access token                                                                                                                     |
+| code          | String | Maybe    | Required if `grant_type` is `authorization_code`. The value is what was returned from the [`/auth`](#auth) endpoint. The code has a lifetime of 300 seconds.          |
+| code_verifier | String | Maybe    | Required if `grant_type` is `authorization_code` & `code_challenge` was specified in the original [`/auth`](#auth) request. This value is the code verifier for PKCE. |
 
 ### Response Properties
 
-Property | Type | Required | Description
--------- | ---- | -------- | -----------
-access_token | String | Yes | An access token
-token_type | String | No | Type of token issued. E.g. Bearer
-expires_in | Integer | No | The expiration time of the access token in seconds.
-scope | String | No | The scopes contained in the access token.
+| Property     | Type    | Required | Description                                         |
+| ------------ | ------- | -------- | --------------------------------------------------- |
+| access_token | String  | Yes      | An access token                                     |
+| token_type   | String  | No       | Type of token issued. E.g. Bearer                   |
+| expires_in   | Integer | No       | The expiration time of the access token in seconds. |
+| scope        | String  | No       | The scopes contained in the access token.           |
 
 ### Errors
 
-Error Id | Description
--------- | -----------
-invalid_client | The specified `client_id` isn't found
-invalid_request | The request structure is invalid. For example, the basic authentication header is malformed, both header and form parameters are used for authentication, no authentication information is provided, or the request contains duplicate parameters.
-invalid_scope | The scopes list contains an invalid or unsupported value.
+| Error Id        | Description                                                                                                                                                                                                                                        |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| invalid_client  | The specified `client_id` isn't found                                                                                                                                                                                                              |
+| invalid_request | The request structure is invalid. For example, the basic authentication header is malformed, both header and form parameters are used for authentication, no authentication information is provided, or the request contains duplicate parameters. |
+| invalid_scope   | The scopes list contains an invalid or unsupported value.                                                                                                                                                                                          |
 
 ### Response Samples
 
-#### Success response 
+#### Success response
 
 ```sh
 HTTP/1.1 200 OK
@@ -137,15 +143,15 @@ This is a starting point for browser-based OpenID Connect flows such as the impl
 
 ### Request Parameters
 
-Parameter | Type | Required    | Description 
---------- | ---- | ----------- | -----------
-client_id | String | Yes | Obtained during OCEN participant registration
-response_type | String | Yes | `code`,  indicates that your server expects to receive an authorization code
-redirect_uri | String | Yes | Indicates the URI to return the user to after authorization is complete
-scope | String | Yes | List of scopes to be included in the access token
-state | String | Yes | A random string generated by your application, which you'll verify later
-code_challenge | String | Yes | This is a base64-encoded version of the sha256 hash of the code verifier string
-code_challenge_method | String | Yes | Eg. `S256` - Indicates the hashing method used to compute the challenge, in this case, sha256.
+| Parameter             | Type   | Required | Description                                                                                    |
+| --------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+| client_id             | String | Yes      | Obtained during OCEN participant registration                                                  |
+| response_type         | String | Yes      | `code`, indicates that your server expects to receive an authorization code                    |
+| redirect_uri          | String | Yes      | Indicates the URI to return the user to after authorization is complete                        |
+| scope                 | String | Yes      | List of scopes to be included in the access token                                              |
+| state                 | String | Yes      | A random string generated by your application, which you'll verify later                       |
+| code_challenge        | String | Yes      | This is a base64-encoded version of the sha256 hash of the code verifier string                |
+| code_challenge_method | String | Yes      | Eg. `S256` - Indicates the hashing method used to compute the challenge, in this case, sha256. |
 
 # Appendix
 
@@ -153,7 +159,7 @@ code_challenge_method | String | Yes | Eg. `S256` - Indicates the hashing method
 
 ### Client Credentials grant
 
-Following image depicts access token generation using client credentials grant flow. 
+Following image depicts access token generation using client credentials grant flow.
 
 ![Alt text](./img/auth_access_token_generation.png "Client Credentials Flow")
 
@@ -165,7 +171,6 @@ At a high-level, this flow has the following steps:
 2. If the credentials are accurate, Auth Service responds with an access token.
 3. Your app uses the access token to make authorized requests to the API providers.
 4. The API provider validates the token before responding to the request. See [Validate access token](./access_token.md#verify-access-token).
-
 
 ### References
 
@@ -179,7 +184,7 @@ Some auth service endpoints may require client authentication. To make requests 
 
 ### Send as Basic Auth Header
 
-Provide the `client_id` and `client_secret` values in the Authorization header as a [Basic auth](https://datatracker.ietf.org/doc/html/rfc7617) base64-encoded string with the __POST__ request. 
+Provide the `client_id` and `client_secret` values in the Authorization header as a [Basic auth](https://datatracker.ietf.org/doc/html/rfc7617) base64-encoded string with the **POST** request.
 
 > Authorization: Basic ${Base64(<client_id>:<client_secret>)}
 
@@ -187,7 +192,7 @@ Provide the `client_id` and `client_secret` values in the Authorization header a
 POST /token HTTP/1.1
 Host: OCEN.auth.com
 Authorization: Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
- 
+
 grant_type=client_credentials
 ```
 
@@ -198,7 +203,7 @@ Provide the `client_id` and `client_secret` as additional parameters in the POST
 ```sh
 POST /token HTTP/1.1
 Host: OCEN.auth.com
- 
+
 grant_type=client_credentials
 &client_id=xxxxxxxxxx
 &client_secret=xxxxxxxxxx
