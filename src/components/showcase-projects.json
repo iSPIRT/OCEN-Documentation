@@ -1,0 +1,57 @@
+[
+  {
+    "name": "SIDBI",
+    "image": "img/logos/sidbi.png",
+    "href": "https://www.sidbi.in/en"
+  },
+  {
+    "name": "GeM",
+    "image": "img/logos/gem.png",
+    "href": "https://gem.gov.in/"
+  },
+  {
+    "name": "UGRO Capital",
+    "image": "img/logos/ugro.png",
+    "href": "https://www.ugrocapital.com/"
+  },
+  {
+    "name": "ICICI Bank",
+    "image": "img/logos/ICICI.png",
+    "href": "https://www.icicibank.com/"
+  },
+  {
+    "name": "121 Finance",
+    "image": "img/logos/121.png",
+    "href": "https://121finance.com/"
+  },
+  {
+    "name": "TATA Capital",
+    "image": "img/logos/tata.jpeg",
+    "href": "https://www.tatacapital.com/"
+  },
+  {
+    "name": "Kotak",
+    "image": "img/logos/kotak.png",
+    "href": "https://www.kotak.com/en/home.html"
+  },
+  {
+    "name": "OXYZO",
+    "image": "img/logos/oxyzo.png",
+    "href": "https://www.oxyzo.in/"
+  },
+  {
+    "name": "CREDABLE",
+    "image": "img/logos/credable.png",
+    "href": "https://www.credable.in/"
+  },
+  {
+    "name": "Leanding Kart",
+    "image": "img/logos/lendingkart.jpeg",
+    "href": "https://www.lendingkart.com/"
+  },
+  {
+    "name": "Aditya Birla Capital",
+    "image": "img/logos/adityabirlacapital.jpg",
+    "href": "https://www.adityabirlacapital.com/"
+  }
+]

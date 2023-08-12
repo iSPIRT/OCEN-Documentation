@@ -1,8 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -31,7 +29,7 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  
   presets: [
     [
       'docusaurus-preset-openapi',
@@ -62,13 +60,24 @@ const config = {
     ]
   ],
 
-  plugins: [],
+  plugins: [
+    [
+      "docusaurus-plugin-openapi",
+      {
+        id: "multi-spec",
+        path: "apis",
+        routeBasePath: "apis",
+      },
+    ],
+    'my-loaders',
+    'tailwind-loader',
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/ocen-splash-screen.png',
       navbar: {
         title: 'OCEN',
         logo: {
@@ -83,7 +92,7 @@ const config = {
             label: 'Docs',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
-          { to: '/api', label: 'API', position: 'left' },
+          { to: '/apis', label: 'API', position: 'left' },
         ],
       },
       footer: {
@@ -126,10 +135,6 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} iSpirt`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
       },
     }),
 };
