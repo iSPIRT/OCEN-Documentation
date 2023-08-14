@@ -41,7 +41,7 @@
                   "loanApplications": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/LoanApplicationRequest"
+                      "$ref": "#/components/schemas/LoanApplication"
                     }
                   }
                 }
@@ -164,7 +164,33 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConsentHandleRequest"
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "loanApplicationIds",
+                  "productData",
+                  "consent"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "examples": [
+                        "f8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                      ]
+                    }
+                  },
+                  "consent": {
+                    "$ref": "#/components/schemas/Consent"
+                  }
+                }
               }
             }
           }
@@ -200,50 +226,43 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConsentHandleResponse"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement to consent Hanlde Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "consent"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "examples": [
+                        "f8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                      ]
+                    }
+                  },
+                  "consent": {
+                    "$ref": "#/components/schemas/Consent"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  }
                 }
               }
             }
           }
-        }
-      }
-    },
-    "/v4.0.0alpha/ba/onConsentHandle": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
-        "tags": [
-          "Consent"
-        ],
-        "summary": "Provide Consent Handle for a loan application",
-        "description": "Invoked by lender on BA to send consent handle created with Account Aggregator  for loan applications processing\n",
-        "requestBody": {
-          "description": "Consent Handle created with AA",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ConsentHandle"
-              }
-            }
-          }
         },
         "responses": {
           "200": {
-            "description": "Acknowledgement for the consent Handle",
+            "description": "Acknowledgement to consent Handle Response",
             "content": {
               "application/json": {
                 "schema": {
@@ -272,9 +291,32 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ConsentNotificationRequest"
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "loanApplicationIds",
+                  "productData",
+                  "consent"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "examples": [
+                        "f8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                      ]
+                    }
+                  },
+                  "consent": {
+                    "$ref": "#/components/schemas/Consent"
+                  }
                 }
               }
             }
@@ -311,7 +353,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConsentStatusRequest"
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "consentHandle"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "consentHandle": {
+                    "type": "string",
+                    "description": "Consent handle created during loan applications request processing"
+                  }
+                }
               }
             }
           }
@@ -347,7 +406,36 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConsentStatusResponse"
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "consent"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "examples": [
+                        "f8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                      ]
+                    }
+                  },
+                  "consent": {
+                    "$ref": "#/components/schemas/Consent"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  }
+                }
               }
             }
           }
@@ -446,6 +534,158 @@
         "summary": "Generate Offers Response",
         "description": "This API is invoked by the lender informing the borrower regarding the various loan offers that have been generated corresponding to each of the loan applications. This is a bulk API, where multiple loan offers can be sent to the borrower in one shot.",
         "operationId": "GenerateOffersResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplications"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplications": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/LoanApplicationWithOffer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/offers/sendAdditionalDocumentsRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "Offers"
+        ],
+        "summary": "Send Additional Documents Request",
+        "description": "This API is invoked by the BA informing the lender regarding the additional documents that are required to be submitted by the borrower for a particular loan application with the Action Required status in the Generate Offers Response API.",
+        "operationId": "SendAdditionalDocumentsRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationIds"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplications": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "loanApplicationId",
+                        "documents"
+                      ],
+                      "properties": {
+                        "loanApplicationId": {
+                          "type": "string",
+                          "description": "UUID for the loan application.",
+                          "examples": [
+                            "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                          ]
+                        },
+                        "additionalDocuments": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Document",
+                            "description": "Documents that are required to be submitted by the borrower"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/offers/sendAdditionalDocumentsResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.borrowagent.com"
+          }
+        ],
+        "tags": [
+          "Offers"
+        ],
+        "summary": "Send Additional Documents Response",
+        "description": "This API is invoked by returning an offer if the documents suffice the requirement or the lender can return another action required for any additional information required.",
+        "operationId": "SendAdditionalDocumentsResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -604,17 +844,11 @@
                   "loanApplicationId": {
                     "type": "string"
                   },
-                  "offer": {
-                    "type": "object",
-                    "properties": {
-                      "type": "string",
-                      "enum": [
-                        "OFFER_ACCEPTED",
-                        "OFFERED",
-                        "GRANTED",
-                        "REJECTED"
-                      ]
-                    }
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
+                  },
+                  "extensibleData": {
+                    "$ref": "#/components/schemas/ExtensibleData"
                   }
                 }
               }
@@ -682,18 +916,7 @@
                     ]
                   },
                   "kyc": {
-                    "type": "object",
-                    "properties": {
-                      "individualKYC": {
-                        "$ref": "#/components/schemas/KYCDetails"
-                      },
-                      "entityKYC": {
-                        "$ref": "#/components/schemas/KYCDetails"
-                      },
-                      "extensibleData": {
-                        "$ref": "#/components/schemas/ExtensibleData"
-                      }
-                    }
+                    "$ref": "#/components/schemas/KYCDetailsRequest"
                   }
                 }
               }
@@ -765,20 +988,150 @@
                     ]
                   },
                   "kyc": {
-                    "type": "object",
-                    "properties": {
-                      "kycRefNo": {
-                        "type": "string"
-                      },
-                      "individualKYC": {
-                        "$ref": "#/components/schemas/KYCDetails"
-                      },
-                      "entityKYC": {
-                        "$ref": "#/components/schemas/KYCDetails"
-                      },
-                      "extensibleData": {
-                        "$ref": "#/components/schemas/ExtensibleData"
-                      }
+                    "$ref": "#/components/schemas/KYCDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/offers/KYCPartnerRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "KYC"
+        ],
+        "summary": "KYC Partner Request",
+        "description": "This Api is called by the Lender on the KYC Partner to initiate KYC.",
+        "operationId": "KYCPartnerRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCDetailsRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/offers/KYCPartnerResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "KYC"
+        ],
+        "summary": "KYC Partner Response",
+        "description": "This Api is called by the the KYC Partner on the Lender. This response may contain additional documents collected by the KYC Partner on behalf of the Lender.",
+        "operationId": "KYCPartnerResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCDetailsRequest"
+                  },
+                  "additionalDocuments": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Document",
+                      "description": "Additional documents collected by the KYC Partner on behalf of the Lender."
                     }
                   }
                 }
@@ -917,29 +1270,288 @@
                     "$ref": "#/components/schemas/Response"
                   },
                   "kyc": {
+                    "$ref": "#/components/schemas/KYCDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/offers/kycPartnerStatusRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "KYC"
+        ],
+        "summary": "KYC Partner Status Request",
+        "description": "This API is called by Lender on the KYC Partner to get the KYC status.",
+        "operationId": "KYCPartnerStatusRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "kyc": {
                     "type": "object",
                     "properties": {
                       "kycRefNo": {
                         "type": "string"
-                      },
-                      "verificationStatus": {
-                        "type": "string",
-                        "enum": [
-                          "SUCCESS",
-                          "REJECTED",
-                          "PENDING",
-                          "ACTION_REQUIRED"
-                        ]
-                      },
-                      "individualKYC": {
-                        "$ref": "#/components/schemas/KYCDetails"
-                      },
-                      "entityKYC": {
-                        "$ref": "#/components/schemas/KYCDetails"
-                      },
-                      "extensibleData": {
-                        "$ref": "#/components/schemas/ExtensibleData"
                       }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/offers/kycPartnerStatusResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.borrowagent.com"
+          }
+        ],
+        "tags": [
+          "KYC"
+        ],
+        "summary": "KYC Partner Status Response",
+        "description": "This API is called by the KYC Partner on the Lender to inform the status of the KYC process.",
+        "operationId": "KYCPartnerStatusResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/loanAcceptance/loanAgreementRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "Loan Acceptance"
+        ],
+        "summary": "Loan Agreement Request",
+        "description": "Loan agreement request",
+        "operationId": "loanAgreementRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationIds"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/loanAcceptance/LoanAgreementResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.borrowagent.com"
+          }
+        ],
+        "tags": [
+          "Loan Acceptance"
+        ],
+        "summary": "Loan Agreement Response",
+        "description": "Loan agreement Response",
+        "operationId": "loanAgreementResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationIds",
+                  "response",
+                  "loanAgreementStatus",
+                  "loanAgreement"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "loanAgreement": {
+                    "$ref": "#/components/schemas/LoanAgreement"
+                  },
+                  "loanAgreementStatus": {
+                    "type": "string",
+                    "enum": [
+                      "AGREEMENT_READY",
+                      "ACTION_REQUIRED"
+                    ]
+                  },
+                  "actionRequired": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ActionRequired"
                     }
                   }
                 }
@@ -1001,11 +1613,8 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "loanApplicationIds": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "loanApplicationId": {
+                    "type": "string"
                   },
                   "credBlock": {
                     "type": "object",
@@ -1094,11 +1703,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "loanApplicationIds": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "loanApplicationId": {
+                    "type": "string"
                   },
                   "credBlock": {
                     "type": "object",
@@ -1180,11 +1786,8 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "loanApplicationIds": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "loanApplicationId": {
+                    "type": "string"
                   },
                   "credBlock": {
                     "type": "object",
@@ -1270,11 +1873,8 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "loanApplicationIds": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "loanApplicationId": {
+                    "type": "string"
                   },
                   "credBlock": {
                     "type": "object",
@@ -1299,424 +1899,6 @@
                         "$ref": "#/components/schemas/ExtensibleData"
                       }
                     }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/loanAcceptance/loanAgreementRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "Loan Acceptance"
-        ],
-        "summary": "Loan Agreement Request",
-        "description": "Loan agreement request",
-        "operationId": "loanAgreementRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanApplicationIds"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationIds": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/loanAcceptance/LoanAgreementResponse": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
-        "tags": [
-          "Loan Acceptance"
-        ],
-        "summary": "Loan Agreement Response",
-        "description": "Loan agreement Response",
-        "operationId": "loanAgreementResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanApplicationIds",
-                  "response"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationIds": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/disbursement/setRepaymentPlanRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "Set Repayment"
-        ],
-        "summary": "Set Repayment Plan Request",
-        "description": "This API is invoked by the BA to inform the lender system about the details of the repayment plan that will be used by the borrower.",
-        "operationId": "setRepaymentPlanRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "loanApplicationId",
-                  "productData",
-                  "plan",
-                  "paymentMethod"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "plan": {
-                    "$ref": "#/components/schemas/PaymentPlan"
-                  },
-                  "paymentMethod": {
-                    "$ref": "#/components/schemas/PaymentMethod"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/disbursement/setRepaymentPlanResponse": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
-        "tags": [
-          "Set Repayment"
-        ],
-        "summary": "Set Repayment Plan Response",
-        "description": "This API is invoked by the lender to the BA giving the payment url where he can enter details of repayment.",
-        "operationId": "setRepaymentPlanResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "loanApplicationId",
-                  "response",
-                  "productData",
-                  "useCollectionSupport",
-                  "plan",
-                  "paymentMethod"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "loanApplicationId": {
-                    "type": "string"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "plan": {
-                    "$ref": "#/components/schemas/PaymentPlan"
-                  },
-                  "paymentMethod": {
-                    "$ref": "#/components/schemas/PaymentMethod"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/disbursement/setRepaymentPlanStatusRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "Set Repayment"
-        ],
-        "summary": "Set Repayment Plan Status Request",
-        "description": "This API is used by BA to check the status of a previously initiated set repayment plan request. This API is called once the payment page of the lender is loaded and the borrower choses a repayment method associated with the chosen repayment plan.",
-        "operationId": "setRepaymentPlanStatusRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "plan",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "plan": {
-                    "$ref": "#/components/schemas/PaymentPlan"
-                  },
-                  "paymentMethod": {
-                    "$ref": "#/components/schemas/PaymentMethod"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/disbursement/setRepaymentPlanStatusResponse": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
-        "tags": [
-          "Set Repayment"
-        ],
-        "summary": "Set Repayment Plan Status Response / Webhook",
-        "description": "This API is used by lenders to inform BA about the status of a previously initiated set Repayment.The API returns the status of the repayment plan that the borrower has chosen. In case, the borrower has chosen e-mandate as the repayment method in payment page url, the status of the repayment plan becomes ACTIVE only after successful authorization of the e-mandate on the PSP by the borrower.",
-        "operationId": "setRepaymentPlanStatusResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData",
-                  "plan",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "plan": {
-                    "$ref": "#/components/schemas/PaymentPlan"
                   }
                 }
               }
@@ -1810,7 +1992,7 @@
         }
       }
     },
-    "/v4.0.0alpha/grantLoan/grantLoanResponse": {
+    "/v4.0.0alpha/gra6tLoan/grantLoanResponse": {
       "post": {
         "servers": [
           {
@@ -1873,9 +2055,6 @@
                       "endDate": {
                         "type": "string"
                       },
-                      "productId": {
-                        "type": "string"
-                      },
                       "borrower": {
                         "$ref": "#/components/schemas/Borrower"
                       },
@@ -1897,16 +2076,317 @@
                           "$ref": "#/components/schemas/Applicant"
                         }
                       },
-                      "terms": {
-                        "$ref": "#/components/schemas/LoanTerms"
-                      },
-                      "disbursement": {
-                        "$ref": "#/components/schemas/Disbursement"
-                      },
-                      "repayment": {
-                        "$ref": "#/components/schemas/Repayment"
+                      "offer": {
+                        "$ref": "#/components/schemas/Offer"
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/disbursement/setRepaymentPlanRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "Set Repayment"
+        ],
+        "summary": "Set Repayment Plan Request",
+        "description": "This API is invoked by the BA to inform the lender system about the details of the repayment plan that will be used by the borrower.",
+        "operationId": "setRepaymentPlanRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "loanApplicationId",
+                  "loanId",
+                  "productData",
+                  "plan",
+                  "hasCollectionSupport"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "plan": {
+                    "$ref": "#/components/schemas/PaymentPlan"
+                  },
+                  "hasCollectionSupport": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/dis7ursement/setRepaymentPlanResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.borrowagent.com"
+          }
+        ],
+        "tags": [
+          "Set Repayment"
+        ],
+        "summary": "Set Repayment Plan Response",
+        "description": "This API is invoked by the lender to the BA giving the payment url where he can enter details of repayment.",
+        "operationId": "setRepaymentPlanResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "response",
+                  "loanApplicationId",
+                  "loanId",
+                  "plan",
+                  "paymentMethod",
+                  "useCollectionSupport"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "plan": {
+                    "$ref": "#/components/schemas/PaymentPlan"
+                  },
+                  "paymentMethod": {
+                    "$ref": "#/components/schemas/PaymentMethod"
+                  },
+                  "useCollectionSupport": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/dis7ursement/setRepaymentPlanStatusRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "Set Repayment"
+        ],
+        "summary": "Set Repayment Plan Status Request",
+        "description": "This API is used by BA to check the status of a previously initiated set repayment plan request. This API is called once the payment page of the lender is loaded and the borrower choses a repayment method associated with the chosen repayment plan.",
+        "operationId": "setRepaymentPlanStatusRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "response",
+                  "loanApplicationId",
+                  "loanId",
+                  "plan",
+                  "paymentMethod"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "plan": {
+                    "$ref": "#/components/schemas/PaymentPlan"
+                  },
+                  "paymentMethod": {
+                    "$ref": "#/components/schemas/PaymentMethod"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/dis7ursement/setRepaymentPlanStatusResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.borrowagent.com"
+          }
+        ],
+        "tags": [
+          "Set Repayment"
+        ],
+        "summary": "Set Repayment Plan Status Response / Webhook",
+        "description": "This API is used by lenders to inform BA about the status of a previously initiated set Repayment.The API returns the status of the repayment plan that the borrower has chosen. In case, the borrower has chosen e-mandate as the repayment method in payment page url, the status of the repayment plan becomes ACTIVE only after successful authorization of the e-mandate on the PSP by the borrower.",
+        "operationId": "setRepaymentPlanStatusResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "response",
+                  "loanApplicationId",
+                  "loanId",
+                  "plan",
+                  "paymentMethod",
+                  "useCollectionSupport"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "plan": {
+                    "$ref": "#/components/schemas/PaymentPlan"
+                  },
+                  "paymentMethod": {
+                    "$ref": "#/components/schemas/PaymentMethod"
+                  },
+                  "useCollectionSupport": {
+                    "type": "boolean"
                   }
                 }
               }
@@ -1957,7 +2437,7 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "loanApplicationId",
+                  "loanId",
                   "account"
                 ],
                 "properties": {
@@ -1966,12 +2446,6 @@
                   },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
                   },
                   "loanId": {
                     "type": "string"
@@ -2028,9 +2502,13 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "loanApplicationId",
+                  "loanId",
                   "account",
-                  "response"
+                  "response",
+                  "isWorkingCapitalUndertakingDone",
+                  "hasOtherWorkingCapitalAccount",
+                  "isWorkingCapitalAccount",
+                  "otherWorkingCapitalAccounts"
                 ],
                 "properties": {
                   "metadata": {
@@ -2038,12 +2516,6 @@
                   },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
                   },
                   "loanId": {
                     "type": "string"
@@ -2053,6 +2525,21 @@
                   },
                   "account": {
                     "$ref": "#/components/schemas/AccountDetails"
+                  },
+                  "isWorkingCapitalUndertakingDone": {
+                    "type": "boolean"
+                  },
+                  "hasOtherWorkingCapitalAccount": {
+                    "type": "boolean"
+                  },
+                  "isWorkingCapitalAccount": {
+                    "type": "boolean"
+                  },
+                  "otherWorkingCapitalAccounts": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AccountDetailsData"
+                    }
                   }
                 }
               }
@@ -2110,22 +2597,17 @@
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
                   "loanId": {
                     "type": "string",
                     "examples": [
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                     ]
                   },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
                   "payment": {
-                    "type": "object",
-                    "properties": {
-                      "amount": {
-                        "type": "number"
-                      }
-                    }
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               }
@@ -2175,14 +2657,20 @@
                 "type": "object",
                 "required": [
                   "metadata",
-                  "loanId",
                   "productData",
-                  "payment",
-                  "response"
+                  "response",
+                  "loanId",
+                  "payment"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
                   },
                   "loanId": {
                     "type": "string",
@@ -2190,45 +2678,8 @@
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                     ]
                   },
-                  "roductData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
                   "payment": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "examples": [
-                          "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                        ]
-                      },
-                      "amount": {
-                        "type": "string"
-                      },
-                      "date": {
-                        "type": "string"
-                      },
-                      "status": {
-                        "type": "string",
-                        "enum": [
-                          "SUCCESS",
-                          "FAILURE",
-                          "PENDING_AUTH"
-                        ]
-                      },
-                      "installmentNumber": {
-                        "type": "string"
-                      },
-                      "txnRefNo": {
-                        "type": "string",
-                        "examples": [
-                          4618602124
-                        ]
-                      }
-                    }
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               }
@@ -2296,15 +2747,7 @@
                     "$ref": "#/components/schemas/ProductData"
                   },
                   "payment": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "examples": [
-                          "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                        ]
-                      }
-                    }
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               }
@@ -2376,38 +2819,7 @@
                     "$ref": "#/components/schemas/Response"
                   },
                   "payment": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "examples": [
-                          "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                        ]
-                      },
-                      "amount": {
-                        "type": "string"
-                      },
-                      "date": {
-                        "type": "string"
-                      },
-                      "status": {
-                        "type": "string",
-                        "enum": [
-                          "SUCCESS",
-                          "FAILURE",
-                          "PENDING_AUTH"
-                        ]
-                      },
-                      "installmentNumber": {
-                        "type": "string"
-                      },
-                      "txnRefNo": {
-                        "type": "string",
-                        "examples": [
-                          4618602124
-                        ]
-                      }
-                    }
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               }
@@ -2646,9 +3058,9 @@
         "tags": [
           "Trigger Repayment"
         ],
-        "summary": "Trigger Repayment Status Request",
+        "summary": "Trigger Repayment Status Response",
         "description": "This API is used by BA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the BA receives payment confirmation (including transaction reference number) from the Collection Management System, BA will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
-        "operationId": "triggerRepaymentStatusRequest",
+        "operationId": "triggerRepaymentStatusResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2713,7 +3125,7 @@
           }
         ],
         "tags": [
-          "Set Repayment"
+          "Trigger Repayment"
         ],
         "summary": "Confirm Repayment Request",
         "description": "This API is used by lenders to inform BA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment).",
@@ -2799,7 +3211,7 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "loanApplicationId"
+                  "loanId"
                 ],
                 "properties": {
                   "metadata": {
@@ -2808,7 +3220,7 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "loanApplicationId": {
+                  "loanId": {
                     "type": "string",
                     "examples": [
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
@@ -3030,9 +3442,6 @@
                   "borrower": {
                     "$ref": "#/components/schemas/Borrower"
                   },
-                  "collateral": {
-                    "$ref": "#/components/schemas/Collateral"
-                  },
                   "startDate": {
                     "type": "string"
                   },
@@ -3239,9 +3648,9 @@
         "tags": [
           "Loan Details"
         ],
-        "summary": "Loan Statement Request",
+        "summary": "Loan Statement Response",
         "description": "This method is called by the BA to get the account statement for the loan for a specified period. If the start and end dates are blank, it will return the entire Loan Statement.",
-        "operationId": "loanStatementRequest",
+        "operationId": "LoanStatementResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3322,7 +3731,7 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "loanApplicationId"
+                  "loanId"
                 ],
                 "properties": {
                   "metadata": {
@@ -3331,7 +3740,7 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "loanApplicationId": {
+                  "loanId": {
                     "type": "string",
                     "examples": [
                       "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
@@ -3516,282 +3925,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getSchemaByIdRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.deriveddataprovider.com"
-          }
-        ],
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Get Derived Data Schema by schema id",
-        "description": "Accepts a get Derived Data Schema Request to be used called by the Lender",
-        "operationId": "getSchema",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "schemaId"
-                ],
-                "properties": {
-                  "metaData": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "schemaId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getSchemaByIdResponse": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Get Derived Data Schema response",
-        "description": "This api returns the expected schema from the derived data provider to the lender",
-        "operationId": "getSchemaBySchemaIdResponse",
-        "requestBody": {
-          "description": "Response by Derived Data Provider to Lender containing the requested Schema",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "schemaId": {
-                    "type": "string"
-                  },
-                  "schema": {
-                    "type": "object",
-                    "description": "The schema object defining the data schema and identifier schema"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Response Received",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ack"
-                  ],
-                  "properties": {
-                    "ack": {
-                      "$ref": "#/components/schemas/Ack"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request"
-          },
-          "404": {
-            "description": "Not found"
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getDataRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.deriveddataprovider.com"
-          }
-        ],
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Start Fetch of Derived Data by identifiers and schema id",
-        "description": "Accepts a Fetch request for Derived Data with the help of Schema Id and identifiers sent in the request. This api will be called by the lender on the Derived Data Provider.",
-        "operationId": "getDerivedData",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "schemaId",
-                  "dataIdentifier"
-                ],
-                "properties": {
-                  "metaData": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "schemaId": {
-                    "type": "string"
-                  },
-                  "dataIdentifier": {
-                    "type": "object"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getDataResponse": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Get Derived Data Response",
-        "description": "This api returns the expected data from the derived data provider to the lender",
-        "operationId": "getDerivedDataResponse",
-        "requestBody": {
-          "description": "Response by Derived Data Provider to Lender containing the requested derived data",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "productData": {
-                    "ref": "../../components/schemas/ProductData.yaml"
-                  },
-                  "schemaId": {
-                    "type": "string"
-                  },
-                  "dataIdentifier": {
-                    "type": "object"
-                  },
-                  "data": {
-                    "type": "object"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Response Received",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ack"
-                  ],
-                  "properties": {
-                    "ack": {
-                      "$ref": "#/components/schemas/Ack"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request"
-          },
-          "404": {
-            "description": "Not found"
           }
         }
       }
@@ -4441,6 +4574,636 @@
           }
         }
       }
+    },
+    "/v4.0.0alpha/kycPartner/initiateKYCRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.kycpartner.com"
+          }
+        ],
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "Initiate KYC Request",
+        "description": "This API is called by lender to KYC partner initiate the KYC process of the borrower after successfully accepting the final offer.",
+        "operationId": "InitiateKYCRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCPartnerDetailsRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/initiateKYCResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "Initiate KYC Response",
+        "description": "This API is called by the KYS partnet in response to initiate KYC requests. The partner returns the next step for KYC details submission. The KYC process will be carried out by the partner.",
+        "operationId": "InitiateKYCResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCPartnerDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/completeKYCRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "KYC Complete Request",
+        "description": "This API is called by the KYC partner in response to complete KYC response.",
+        "operationId": "StatusKYCResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCPartnerDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/statusKYCRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "KYC Status Request",
+        "description": "This API is called by Lender to get the KYC status from partner. This API will be triggered just after the user completes the KYC process.",
+        "operationId": "KYCStatusRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "kyc": {
+                    "type": "object",
+                    "properties": {
+                      "kycRefNo": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/statusKYCResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "KYC Status Response",
+        "description": "This API is called by the KYC partnet in response to initiate KYC response.",
+        "operationId": "StatusKYCResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCPartnerDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedData/getSchemaByIdRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.deriveddataprovider.com"
+          }
+        ],
+        "tags": [
+          "Data Provider"
+        ],
+        "summary": "Get Derived Data Schema by schema id",
+        "description": "Accepts a get Derived Data Schema Request to be used called by the Lender",
+        "operationId": "getSchema",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "schemaId"
+                ],
+                "properties": {
+                  "metaData": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedData/getSchemaByIdResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "Data Provider"
+        ],
+        "summary": "Get Derived Data Schema response",
+        "description": "This api returns the expected schema from the derived data provider to the lender",
+        "operationId": "getSchemaBySchemaIdResponse",
+        "requestBody": {
+          "description": "Response by Derived Data Provider to Lender containing the requested Schema",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "object",
+                    "description": "The schema object defining the data schema and identifier schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Response Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ack"
+                  ],
+                  "properties": {
+                    "ack": {
+                      "$ref": "#/components/schemas/Ack"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedData/getDataRequest": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.deriveddataprovider.com"
+          }
+        ],
+        "tags": [
+          "Data Provider"
+        ],
+        "summary": "Start Fetch of Derived Data by identifiers and schema id",
+        "description": "Accepts a Fetch request for Derived Data with the help of Schema Id and identifiers sent in the request. This api will be called by the lender on the Derived Data Provider.",
+        "operationId": "getDerivedData",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "schemaId",
+                  "dataIdentifier"
+                ],
+                "properties": {
+                  "metaData": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  },
+                  "dataIdentifier": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedData/getDataResponse": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://ocenapis.lender.com"
+          }
+        ],
+        "tags": [
+          "Data Provider"
+        ],
+        "summary": "Get Derived Data Response",
+        "description": "This api returns the expected data from the derived data provider to the lender",
+        "operationId": "getDerivedDataResponse",
+        "requestBody": {
+          "description": "Response by Derived Data Provider to Lender containing the requested derived data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "ref": "../../components/schemas/ProductData.yaml"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  },
+                  "dataIdentifier": {
+                    "type": "object"
+                  },
+                  "data": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Response Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ack"
+                  ],
+                  "properties": {
+                    "ack": {
+                      "$ref": "#/components/schemas/Ack"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -4470,14 +5233,20 @@
           "orgId",
           "timestamp",
           "traceId",
-          "requestId"
+          "requestId",
+          "participantId"
         ],
         "properties": {
           "version": {
             "type": "string"
           },
-          "orgId": {
-            "type": "string"
+          "originatorOrgId": {
+            "type": "string",
+            "description": "The organisation id on the Participant Registry."
+          },
+          "originatorParticipantId": {
+            "type": "string",
+            "description": "The participant id on the Participant Registry. This will be different for every role under the same organisation."
           },
           "timestamp": {
             "type": "string"
@@ -4501,12 +5270,27 @@
         ],
         "properties": {
           "productId": {
-            "type": "string"
+            "type": "string",
+            "description": "The product id on the Product Registry."
           },
-          "networkId": {
-            "type": "string"
+          "productNetworkId": {
+            "type": "string",
+            "description": "The product network id on the Product Registry."
           }
         }
+      },
+      "LoanApplicationStatus": {
+        "type": "string",
+        "enum": [
+          "CREATED",
+          "PROCESSING",
+          "OFFERED",
+          "OFFER_ACCEPTED",
+          "GRANTED",
+          "REJECTED",
+          "ACTION_REQUIRED",
+          "DISBURSED"
+        ]
       },
       "Document": {
         "type": "object",
@@ -4803,176 +5587,6 @@
           }
         }
       },
-      "Valuation": {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "examples": [
-              "20000"
-            ]
-          },
-          "currency": {
-            "type": "string",
-            "examples": [
-              "INR"
-            ]
-          },
-          "date": {
-            "type": "string"
-          },
-          "source": {
-            "type": "string",
-            "enum": [
-              "GSTN",
-              "OTHERS"
-            ]
-          },
-          "description": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "Party": {
-        "type": "object",
-        "required": [
-          "primaryId",
-          "primaryIdType",
-          "name",
-          "category",
-          "relationshipWithCollateral",
-          "contactDetails",
-          "documents"
-        ],
-        "properties": {
-          "primaryId": {
-            "type": "string",
-            "examples": [
-              "<PAN NO.>"
-            ]
-          },
-          "primaryIdType": {
-            "type": "string",
-            "enum": [
-              "PAN",
-              "MOBILE",
-              "AADHAAR",
-              "FIU"
-            ]
-          },
-          "description": {
-            "type": "string"
-          },
-          "additionalIdentifiers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AdditionalIdentifier"
-            }
-          },
-          "name": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string",
-            "enum": [
-              "INDIVIDUAL",
-              "ORGANIZATION"
-            ]
-          },
-          "relationshipWithCollateral": {
-            "type": "string"
-          },
-          "contactDetails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContactDetails"
-            }
-          },
-          "documents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Document"
-            }
-          },
-          "url": {
-            "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "Collateral": {
-        "type": "object",
-        "required": [
-          "collateralPrimaryId",
-          "collateralPrimaryIdType",
-          "additionalIdentifiers",
-          "parties",
-          "type",
-          "documents"
-        ],
-        "properties": {
-          "collateralPrimaryId": {
-            "type": "string",
-            "examples": [
-              "INVOICE_<GSTIN>_<INVOICENUM>"
-            ]
-          },
-          "collateralPrimaryIdType": {
-            "type": "string",
-            "enum": [
-              "GST_INVOICE",
-              "VIN",
-              "<OTHER VALID REGISTRY>"
-            ]
-          },
-          "additionalIdentifiers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AdditionalIdentifier"
-            }
-          },
-          "valuation": {
-            "$ref": "#/components/schemas/Valuation"
-          },
-          "parties": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Party"
-            }
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "GST_INVOICE",
-              "VEHICLE",
-              "HOME"
-            ]
-          },
-          "description": {
-            "type": "string"
-          },
-          "documents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Document"
-            }
-          },
-          "url": {
-            "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
       "Guarantor": {
         "type": "object",
         "required": [
@@ -5116,7 +5730,7 @@
         ],
         "properties": {
           "duration": {
-            "type": "string"
+            "type": "number"
           },
           "unit": {
             "type": "string",
@@ -5165,13 +5779,15 @@
             "type": "object",
             "properties": {
               "rate": {
-                "type": "string",
+                "type": "number",
+                "format": "float",
                 "examples": [
                   "6"
                 ]
               },
               "amount": {
-                "type": "number"
+                "type": "number",
+                "format": "float"
               },
               "applicableParameter": {
                 "type": "string",
@@ -5212,6 +5828,9 @@
           },
           "processing": {
             "$ref": "#/components/schemas/ChargeDetails"
+          },
+          "other": {
+            "$ref": "#/components/schemas/ChargeDetails"
           }
         }
       },
@@ -5223,7 +5842,8 @@
         ],
         "properties": {
           "requestedAmount": {
-            "type": "string",
+            "type": "number",
+            "format": "float",
             "examples": [
               "50000.00"
             ]
@@ -5235,7 +5855,15 @@
             ]
           },
           "sanctionedAmount": {
-            "type": "string",
+            "type": "number",
+            "format": "float",
+            "examples": [
+              "5000.00"
+            ]
+          },
+          "netDisbursedAmount": {
+            "type": "number",
+            "format": "float",
             "examples": [
               "5000.00"
             ]
@@ -5248,16 +5876,29 @@
             ]
           },
           "interestRate": {
-            "type": "string",
+            "type": "number",
+            "format": "float",
             "examples": [
               "6.50"
             ]
           },
-          "totalAmount": {
-            "type": "string"
+          "annualPercentageRate": {
+            "type": "number",
+            "format": "float",
+            "examples": [
+              "6.50"
+            ]
+          },
+          "coolingOffPeriod": {
+            "$ref": "#/components/schemas/LoanTenure"
+          },
+          "totalRepayableAmount": {
+            "type": "number",
+            "format": "float"
           },
           "interestAmount": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "description": {
             "type": "string"
@@ -5285,27 +5926,28 @@
           }
         }
       },
-      "LoanApplicationRequest": {
+      "LoanApplication": {
         "type": "object",
         "required": [
           "createdDate",
           "loanApplicationId",
           "loanType",
           "borrower",
-          "collaterals",
+          "pledgedDocuments",
           "guarantors",
           "applicants",
           "terms"
         ],
         "properties": {
           "createdDate": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "loanApplicationId": {
             "type": "string"
           },
-          "productId": {
-            "type": "string"
+          "loanApplicationStatus": {
+            "$ref": "#/components/schemas/LoanApplicationStatus"
           },
           "pledgedDocuments": {
             "type": "array",
@@ -5314,22 +5956,22 @@
             }
           },
           "borrower": {
-            "type": "array",
             "$ref": "#/components/schemas/Borrower"
-          },
-          "collaterals": {
-            "type": "array",
-            "$ref": "#/components/schemas/Collateral"
           },
           "guarantors": {
             "type": "array",
-            "$ref": "#/components/schemas/Guarantor"
+            "items": {
+              "$ref": "#/components/schemas/Guarantor"
+            }
           },
           "applicants": {
             "type": "array",
-            "$ref": "#/components/schemas/Applicant"
+            "items": {
+              "$ref": "#/components/schemas/Applicant"
+            }
           },
           "terms": {
+            "type": "object",
             "$ref": "#/components/schemas/LoanTerms"
           },
           "url": {
@@ -5376,69 +6018,62 @@
         "type": "object",
         "description": "Status of response. Whether success or has encountered error",
         "required": [
-          "error"
+          "status"
         ],
         "properties": {
-          "error": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "SUCCESS",
+              "ERROR"
+            ]
+          },
+          "responseDetail": {
             "type": "string"
           }
         }
       },
-      "Lender": {
+      "Consent": {
         "type": "object",
-        "required": [
-          "primaryId",
-          "primaryIdType",
-          "name",
-          "category",
-          "contactDetails",
-          "documents"
-        ],
         "properties": {
-          "primaryId": {
-            "examples": [
-              "AWWPA7645M"
-            ]
-          },
-          "primaryIdType": {
+          "consentFetchType": {
             "type": "string",
             "enum": [
-              "PAN",
-              "MOBILE",
-              "AADHAAR",
-              "FIU"
+              "ONETIME",
+              "PERIODIC"
             ]
           },
-          "additionalIdentifiers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AdditionalIdentifier"
-            }
-          },
-          "name": {
+          "vua": {
             "type": "string",
             "examples": [
-              "ABC Bank"
+              "user@aa.in"
             ]
           },
-          "category": {
+          "description": {
+            "type": "string"
+          },
+          "isAggregationEnabled": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "consentAggregationId": {
+            "type": "string",
+            "examples": [
+              "e8cc6822bd4bbb4eb1b9e1b4996fbff8acd"
+            ]
+          },
+          "consentHandle": {
+            "type": "string"
+          },
+          "consentStatus": {
             "type": "string",
             "enum": [
-              "ORGANIZATION",
-              "INDIVIDUAL"
+              "READY",
+              "PENDING",
+              "FAILED"
             ]
-          },
-          "contactDetails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContactDetails"
-            }
-          },
-          "documents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Document"
-            }
           },
           "url": {
             "type": "string"
@@ -5451,9 +6086,6 @@
       "KYCDetails": {
         "type": "object",
         "properties": {
-          "kycRefNo": {
-            "type": "string"
-          },
           "type": {
             "type": "string",
             "enum": [
@@ -5462,7 +6094,17 @@
               "OFFLINE_AADHAAR"
             ]
           },
+          "kycType": {
+            "type": "string",
+            "enum": [
+              "INDIVIDUAL",
+              "CORPORATE"
+            ]
+          },
           "url": {
+            "type": "string"
+          },
+          "kycRefNo": {
             "type": "string"
           },
           "status": {
@@ -5506,16 +6148,16 @@
             "type": "string"
           },
           "incorporationDate": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "businessCommencementDate": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "udyamRegistrationDate": {
-            "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
+            "type": "string",
+            "format": "date"
           },
           "fullName": {
             "type": "string"
@@ -5525,478 +6167,9 @@
           },
           "address": {
             "$ref": "#/components/schemas/Address"
-          }
-        }
-      },
-      "KYC": {
-        "type": "object",
-        "properties": {
-          "verificationStatus": {
-            "type": "string",
-            "enum": [
-              "SUCCESS",
-              "REJECTED",
-              "PENDING",
-              "ACTION_REQUIRED"
-            ]
-          },
-          "kycRefNo": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          },
-          "initiateCKYC": {
-            "type": "boolean"
-          },
-          "individualKYC": {
-            "$ref": "#/components/schemas/KYCDetails"
-          },
-          "entityKYC": {
-            "$ref": "#/components/schemas/KYCDetails"
           },
           "extensibleData": {
             "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "RejectionDetail": {
-        "type": "object",
-        "required": [
-          "reason",
-          "description"
-        ],
-        "properties": {
-          "reason": {
-            "type": "string",
-            "enum": [
-              "LOW_CREDIT_SCORE",
-              "FRAUD",
-              "DOC_IRREGULARITIES",
-              "OTHERS"
-            ]
-          },
-          "description": {
-            "type": "string",
-            "examples": [
-              "Credit score below 600"
-            ]
-          },
-          "url": {
-            "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "Reference": {
-        "type": "object",
-        "required": [
-          "object",
-          "value"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "examples": [
-              "documents"
-            ]
-          },
-          "value": {
-            "type": "string",
-            "examples": [
-              "INVOICE_GSTN_INV2011"
-            ]
-          }
-        }
-      },
-      "ActionRequired": {
-        "type": "object",
-        "required": [
-          "actionType",
-          "description",
-          "reference"
-        ],
-        "properties": {
-          "actionType": {
-            "type": "string",
-            "enum": [
-              "ADD_DOCUMENT",
-              "RESUBMIT_DOCUMENT",
-              "OTHER"
-            ]
-          },
-          "description": {
-            "type": "string",
-            "examples": [
-              "DL number not visible"
-            ]
-          },
-          "reference": {
-            "$ref": "#/components/schemas/Reference"
-          },
-          "url": {
-            "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "LoanApplication": {
-        "type": "object",
-        "required": [
-          "loanApplicationId"
-        ],
-        "properties": {
-          "createdDate": {
-            "type": "string",
-            "description": "The time when the loan application was created"
-          },
-          "loanApplicationId": {
-            "type": "string",
-            "description": "UUID for the loan application. Generated by BA"
-          },
-          "productId": {
-            "type": "string",
-            "description": "Specific loan product within the product type",
-            "enum": [
-              "PURCHASE_ORDER_FINANCING",
-              "INVOICE_FINANCING"
-            ]
-          },
-          "loanApplicationStatus": {
-            "type": "string",
-            "description": "Current status of the loan application.",
-            "enum": [
-              "PROCESSING",
-              "OFFERED",
-              "OFFER_ACCEPTED",
-              "GRANTED",
-              "REJECTED",
-              "ACTION_REQUIRED"
-            ]
-          },
-          "borrower": {
-            "$ref": "#/components/schemas/Borrower",
-            "description": "Details of the Borrower"
-          },
-          "collaterals": {
-            "type": "array",
-            "description": "Details of the instruments against which the user wishes to take a loan. If no data is there to be sent, an empty array block can be passed.",
-            "items": {
-              "$ref": "#/components/schemas/Collateral"
-            }
-          },
-          "guarantors": {
-            "type": "array",
-            "description": "List of guarantors that the borrowers have for the loan. If no data is there to be sent, an empty array block can be passed.",
-            "items": {
-              "$ref": "#/components/schemas/Guarantor"
-            }
-          },
-          "applicants": {
-            "type": "array",
-            "description": "List of applicants for the loan.  If no data is there to be sent, an empty array block can be passed",
-            "items": {
-              "$ref": "#/components/schemas/Applicant"
-            }
-          },
-          "lender": {
-            "$ref": "#/components/schemas/Lender",
-            "description": "Lender details"
-          },
-          "kyc": {
-            "$ref": "#/components/schemas/KYC",
-            "description": "KYC details"
-          },
-          "description": {
-            "type": "string",
-            "maxLength": 1000,
-            "description": "A short description of the loan application"
-          },
-          "url": {
-            "type": "string",
-            "maxLength": 1000,
-            "description": "For any additional data  that needs to be passed as a link"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData",
-            "description": "For any additional data that needs to be added"
-          },
-          "rejectionDetails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RejectionDetail"
-            },
-            "description": "To be filled if the status of the loan is REJECTED. This object will have the details of why the loan application was rejected"
-          },
-          "actionRequired": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActionRequired"
-            },
-            "description": "To be filled if the status of the loan is ACTION_REQUIRED. This object captures the details of any action that the lender wants the borrower to do"
-          }
-        }
-      },
-      "BAInfo": {
-        "type": "object",
-        "properties": {
-          "BAId": {
-            "type": "string",
-            "examples": [
-              "<AA can identify the BA based on this>"
-            ]
-          },
-          "version": {
-            "type": "string",
-            "examples": [
-              "<version of BA>"
-            ]
-          },
-          "appName": {
-            "type": "string",
-            "examples": [
-              "<Package name of the app>"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "examples": [
-              "https://abc-bank.com"
-            ]
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "Consent": {
-        "type": "object",
-        "properties": {
-          "consentFetchType": {
-            "type": "string",
-            "default": "",
-            "enum": [
-              "ONETIME",
-              "PERIODIC"
-            ]
-          },
-          "vua": {
-            "type": "string",
-            "default": "",
-            "examples": [
-              "user@aa.in"
-            ]
-          },
-          "description": {
-            "type": "string"
-          },
-          "isAggregationEnabled": {
-            "type": "boolean",
-            "examples": [
-              true
-            ]
-          },
-          "consentAggregationId": {
-            "type": "string",
-            "default": "",
-            "examples": [
-              "e8cc6822bd4bbb4eb1b9e1b4996fbff8acd"
-            ]
-          },
-          "BAInfo": {
-            "$ref": "#/components/schemas/BAInfo"
-          },
-          "consentHandle": {
-            "type": "string"
-          },
-          "consentStatus": {
-            "type": "string",
-            "enum": [
-              "READY",
-              "PENDING",
-              "FAILED"
-            ]
-          },
-          "url": {
-            "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "ConsentHandleRequest": {
-        "type": "object",
-        "required": [
-          "metadata",
-          "loanApplicationIds",
-          "productData",
-          "consent"
-        ],
-        "properties": {
-          "metadata": {
-            "$ref": "#/components/schemas/MetaData"
-          },
-          "productData": {
-            "$ref": "#/components/schemas/ProductData"
-          },
-          "loanApplicationIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "examples": [
-                "f8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-              ]
-            }
-          },
-          "consent": {
-            "$ref": "#/components/schemas/Consent"
-          }
-        }
-      },
-      "ConsentHandleResponse": {
-        "type": "object",
-        "required": [
-          "metadata",
-          "response",
-          "productData",
-          "consent"
-        ],
-        "properties": {
-          "metadata": {
-            "$ref": "#/components/schemas/MetaData"
-          },
-          "response": {
-            "$ref": "#/components/schemas/Response"
-          },
-          "productData": {
-            "$ref": "#/components/schemas/ProductData"
-          },
-          "consent": {
-            "$ref": "#/components/schemas/Consent"
-          }
-        }
-      },
-      "ConsentHandle": {
-        "type": "object",
-        "required": [
-          "metadata",
-          "response",
-          "productData",
-          "consentHandle"
-        ],
-        "properties": {
-          "metadata": {
-            "$ref": "#/components/schemas/MetaData"
-          },
-          "response": {
-            "$ref": "#/components/schemas/Response"
-          },
-          "productData": {
-            "$ref": "#/components/schemas/ProductData"
-          },
-          "loanApplicationIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "consentHandle": {
-            "type": "string"
-          }
-        }
-      },
-      "ConsentNotificationRequest": {
-        "type": "object",
-        "description": "Request object used by BA to share consent process completion update to Gateway",
-        "required": [
-          "metadata",
-          "productData",
-          "consents"
-        ],
-        "properties": {
-          "metadata": {
-            "$ref": "#/components/schemas/MetaData"
-          },
-          "productData": {
-            "$ref": "#/components/schemas/ProductData"
-          },
-          "consents": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "lenderId": {
-                  "type": "string",
-                  "description": "Lender identifier to whom the consentHandle belongs."
-                },
-                "loanApplicationId": {
-                  "type": "string",
-                  "format": "uuid"
-                },
-                "consentAggregationId": {
-                  "type": "string",
-                  "default": "",
-                  "examples": [
-                    "e8cc6822bd4bbb4eb1b9e1b4996fbff8acd"
-                  ]
-                },
-                "consentHandle": {
-                  "type": "string",
-                  "description": "Consent handle created during loan applications request processing"
-                },
-                "consentComplete": {
-                  "type": "boolean",
-                  "description": "Status flag to indicate whether the consent was provided by customer or not."
-                }
-              }
-            }
-          }
-        }
-      },
-      "ConsentStatusRequest": {
-        "type": "object",
-        "required": [
-          "metadata",
-          "productData",
-          "consent"
-        ],
-        "properties": {
-          "metadata": {
-            "$ref": "#/components/schemas/MetaData"
-          },
-          "productData": {
-            "$ref": "#/components/schemas/ProductData"
-          },
-          "consent": {
-            "$ref": "#/components/schemas/Consent"
-          }
-        }
-      },
-      "ConsentStatusResponse": {
-        "type": "object",
-        "required": [
-          "metadata",
-          "response",
-          "productData",
-          "consent"
-        ],
-        "properties": {
-          "metadata": {
-            "$ref": "#/components/schemas/MetaData"
-          },
-          "response": {
-            "$ref": "#/components/schemas/Response"
-          },
-          "productData": {
-            "$ref": "#/components/schemas/ProductData"
-          },
-          "consent": {
-            "$ref": "#/components/schemas/Consent"
           }
         }
       },
@@ -6058,7 +6231,7 @@
             ]
           },
           "noOfInstallment": {
-            "type": "string"
+            "type": "number"
           },
           "frequency": {
             "type": "string",
@@ -6074,19 +6247,24 @@
             "$ref": "#/components/schemas/LoanTenure"
           },
           "totalAmount": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "principal": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "interestAmount": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "penalty": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "startDate": {
             "type": "string",
+            "format": "date",
             "examples": [
               "18-12-2020"
             ]
@@ -6140,6 +6318,15 @@
             "type": "string",
             "examples": [
               "XXXXXXXXX9090"
+            ]
+          },
+          "accountHolderName": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "examples": [
+              ""
             ]
           }
         }
@@ -6236,7 +6423,8 @@
             ]
           },
           "validTill": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "terms": {
             "$ref": "#/components/schemas/LoanTerms"
@@ -6264,27 +6452,118 @@
           }
         }
       },
+      "RejectionDetail": {
+        "type": "object",
+        "required": [
+          "reason",
+          "description"
+        ],
+        "properties": {
+          "reason": {
+            "type": "string",
+            "enum": [
+              "LOW_CREDIT_SCORE",
+              "FRAUD",
+              "DOC_IRREGULARITIES",
+              "OTHERS",
+              "AA_FAILED"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "examples": [
+              "Credit score below 600"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "extensibleData": {
+            "$ref": "#/components/schemas/ExtensibleData"
+          }
+        }
+      },
+      "Reference": {
+        "type": "object",
+        "required": [
+          "object",
+          "value"
+        ],
+        "properties": {
+          "object": {
+            "type": "string",
+            "examples": [
+              "documents"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "examples": [
+              "INVOICE_GSTN_INV2011"
+            ]
+          }
+        }
+      },
+      "ActionRequired": {
+        "type": "object",
+        "required": [
+          "actionType",
+          "description",
+          "reference"
+        ],
+        "properties": {
+          "actionType": {
+            "type": "string",
+            "enum": [
+              "ADD_DOCUMENT",
+              "RESUBMIT_DOCUMENT",
+              "ADDITIONAL_DATA",
+              "OTHER"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "examples": [
+              "DL number not visible"
+            ]
+          },
+          "reference": {
+            "$ref": "#/components/schemas/Reference"
+          },
+          "url": {
+            "type": "string"
+          },
+          "extensibleData": {
+            "$ref": "#/components/schemas/ExtensibleData"
+          }
+        }
+      },
       "LoanApplicationWithOffer": {
         "type": "object",
         "required": [
-          "loanApplicationId"
+          "loanApplicationId",
+          "loanApplicationStatus",
+          "kyc",
+          "offers"
         ],
         "properties": {
           "createdDate": {
             "type": "string",
+            "format": "date",
             "description": "The time when the loan application was created"
           },
           "loanApplicationId": {
             "type": "string",
             "description": "UUID for the loan application. Generated by BA"
           },
-          "productId": {
-            "type": "string",
-            "description": "Specific loan product within the product type",
-            "enum": [
-              "PURCHASE_ORDER_FINANCING",
-              "INVOICE_FINANCING"
-            ]
+          "loanApplicationStatus": {
+            "$ref": "#/components/schemas/LoanApplicationStatus"
+          },
+          "kyc": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KYCDetails"
+            }
           },
           "offers": {
             "type": "array",
@@ -6292,51 +6571,6 @@
             "items": {
               "$ref": "#/components/schemas/Offer"
             }
-          },
-          "loanApplicationStatus": {
-            "type": "string",
-            "description": "Current status of the loan application.",
-            "enum": [
-              "PROCESSING",
-              "OFFERED",
-              "OFFER_ACCEPTED",
-              "GRANTED",
-              "REJECTED",
-              "ACTION_REQUIRED"
-            ]
-          },
-          "borrower": {
-            "$ref": "#/components/schemas/Borrower",
-            "description": "Details of the Borrower"
-          },
-          "collaterals": {
-            "type": "array",
-            "description": "Details of the instruments against which the user wishes to take a loan. If no data is there to be sent, an empty array block can be passed.",
-            "items": {
-              "$ref": "#/components/schemas/Collateral"
-            }
-          },
-          "guarantors": {
-            "type": "array",
-            "description": "List of guarantors that the borrowers have for the loan. If no data is there to be sent, an empty array block can be passed.",
-            "items": {
-              "$ref": "#/components/schemas/Guarantor"
-            }
-          },
-          "applicants": {
-            "type": "array",
-            "description": "List of applicants for the loan.  If no data is there to be sent, an empty array block can be passed",
-            "items": {
-              "$ref": "#/components/schemas/Applicant"
-            }
-          },
-          "lender": {
-            "$ref": "#/components/schemas/Lender",
-            "description": "Lender details"
-          },
-          "kyc": {
-            "$ref": "#/components/schemas/KYC",
-            "description": "KYC details"
           },
           "description": {
             "type": "string",
@@ -6365,6 +6599,81 @@
               "$ref": "#/components/schemas/ActionRequired"
             },
             "description": "To be filled if the status of the loan is ACTION_REQUIRED. This object captures the details of any action that the lender wants the borrower to do"
+          }
+        }
+      },
+      "KYCDetailsRequest": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "CKYC",
+              "UDYAM",
+              "OFFLINE_AADHAAR"
+            ]
+          },
+          "kycType": {
+            "type": "string",
+            "enum": [
+              "INDIVIDUAL",
+              "CORPORATE"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "udyamRegistrationNumber": {
+            "type": "string"
+          },
+          "businessType": {
+            "type": "string",
+            "enum": [
+              "MICRO",
+              "SMALL",
+              "MEDIUM"
+            ]
+          },
+          "businessCategory": {
+            "type": "string",
+            "enum": [
+              "SERVICE",
+              "MANUFACTURING"
+            ]
+          },
+          "businessName": {
+            "type": "string"
+          },
+          "businessAddress": {},
+          "businessEmail": {
+            "type": "string"
+          },
+          "businessPhoneNumber": {
+            "type": "string"
+          },
+          "incorporationDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "businessCommencementDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "udyamRegistrationDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "extensibleData": {
+            "$ref": "#/components/schemas/ExtensibleData"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "dob": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
           }
         }
       },
@@ -6415,14 +6724,19 @@
       "Payment": {
         "type": "object",
         "required": [
-          "id"
+          "id",
+          "totalAmount",
+          "status",
+          "paymentMethodType"
         ],
         "properties": {
           "totalAmount": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "date": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "status": {
             "type": "string",
@@ -6433,7 +6747,7 @@
             ]
           },
           "installmentNumber": {
-            "type": "string"
+            "type": "number"
           },
           "txnRefNo": {
             "type": "string",
@@ -6451,16 +6765,20 @@
             "type": "string"
           },
           "principal": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "interestAmount": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "fee": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "penalty": {
-            "type": "string"
+            "type": "number",
+            "format": "float"
           },
           "useSavedPaymentOption": {
             "type": "boolean",
@@ -6505,7 +6823,8 @@
         ],
         "properties": {
           "date": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "narration": {
             "type": "string"
@@ -6577,6 +6896,235 @@
           },
           "accountDetails": {
             "$ref": "#/components/schemas/AccountDetails"
+          },
+          "extensibleData": {
+            "$ref": "#/components/schemas/ExtensibleData"
+          }
+        }
+      },
+      "KYCPartnerDetailsRequest": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "CKYC",
+              "UDYAM",
+              "OFFLINE_AADHAAR"
+            ]
+          },
+          "kycType": {
+            "type": "string",
+            "enum": [
+              "INDIVIDUAL",
+              "CORPORATE"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "business": {
+            "type": "object",
+            "properties": {
+              "scale": {
+                "type": "string",
+                "enum": [
+                  "MICRO",
+                  "SMALL",
+                  "MEDIUM"
+                ]
+              },
+              "category": {
+                "type": "string",
+                "enum": [
+                  "SERVICE",
+                  "MANUFACTURING"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "incorporationDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "commencementDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "udyam": {
+                "type": "object",
+                "properties": {
+                  "registrationNumber": {
+                    "type": "string"
+                  },
+                  "registrationDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "extensibleData": {
+                    "$ref": "#/components/schemas/ExtensibleData"
+                  }
+                }
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
+          },
+          "individual": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "dob": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
+          },
+          "extensibleData": {
+            "$ref": "#/components/schemas/ExtensibleData"
+          }
+        }
+      },
+      "KYCPartnerDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "CKYC",
+              "UDYAM",
+              "OFFLINE_AADHAAR"
+            ]
+          },
+          "kycType": {
+            "type": "string",
+            "enum": [
+              "INDIVIDUAL",
+              "CORPORATE"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "next": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "OTP",
+                  "REDIRECT"
+                ]
+              },
+              "data": {
+                "type": "object"
+              }
+            }
+          },
+          "kycRefNo": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "SUCCESS",
+              "REJECTED",
+              "PENDING",
+              "ACTION_REQUIRED"
+            ]
+          },
+          "business": {
+            "type": "object",
+            "properties": {
+              "scale": {
+                "type": "string",
+                "enum": [
+                  "MICRO",
+                  "SMALL",
+                  "MEDIUM"
+                ]
+              },
+              "category": {
+                "type": "string",
+                "enum": [
+                  "SERVICE",
+                  "MANUFACTURING"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "incorporationDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "commencementDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "udyam": {
+                "type": "object",
+                "properties": {
+                  "registrationNumber": {
+                    "type": "string"
+                  },
+                  "registrationDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "extensibleData": {
+                    "$ref": "#/components/schemas/ExtensibleData"
+                  }
+                }
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
+          },
+          "individual": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "dob": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
           },
           "extensibleData": {
             "$ref": "#/components/schemas/ExtensibleData"
