@@ -19,12 +19,12 @@ Once a product has been created and added to the portal, all participants will b
 
 The Lender will serve as the OWNER of the product and is the only participant who can change the product attributes subsequently.
 
-Post product-creation, Lenders get added to Product Groups by Borrower Agents to serve borrowers in their network. They then start receiving Loan Application requests.
+Post product-creation, Lenders get added to Product Groups by Loan Agents to serve borrowers in their network. They then start receiving Loan Application requests.
 
 There are no API calls and implementation in this phase.
 
 ## Loan Application and Processing Phase
-Lenders receive Loan Application requests from the Borrower Agent, request Consent from the borrower and initiate the loan Offer. Upon acceptance of the Offer, the Lender performs the borrower KYC, confirms the loan disbursement and repayment terms with the borrower and then grants the loan.
+Lenders receive Loan Application requests from the Loan Agent, request Consent from the borrower and initiate the loan Offer. Upon acceptance of the Offer, the Lender performs the borrower KYC, confirms the loan disbursement and repayment terms with the borrower and then grants the loan.
 
 The handshake and the steps in this phase follow the APIs defined in the APIs list.
 

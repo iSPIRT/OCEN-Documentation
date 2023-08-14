@@ -10,10 +10,10 @@ participant Collections Agent
 participant Disbursement Agent
 participant Derived Data Provider
 participant Lender
-participant Borrower Agent
+participant Loan Agent
 
 group #lightblue Participant registration
-Borrower Agent-->Participant Registry: register
+Loan Agent-->Participant Registry: register
 Lender-->Participant Registry: register
 Derived Data Provider-->Participant Registry: register
 Disbursement Agent-->Participant Registry: register
@@ -22,12 +22,12 @@ end
 
 group #lightblue Product Creation
 participant Derived Data Provider
-Borrower Agent<-->Lender: share product details
+Loan Agent<-->Lender: share product details
 Lender-->Product Registry: create product
 end 
 
 group #lightblue Product Group Creation
-Borrower Agent-->Product Registry: create product group
+Loan Agent-->Product Registry: create product group
 Lender-->Product Registry: add to product group
 Derived Data Provider-->Product Registry: add to product group
 Disbursement Agent-->Product Registry: add to product group
@@ -40,7 +40,7 @@ entryspacing 0.4
 frame Application Processing Phase ( 1 of 2 )
 
 actor Borrower
-participant Borrower Agent
+participant Loan Agent
 participant Lender
 participant #lightgreen AA #lightgreen
 participant Derived Data Provider
@@ -48,18 +48,18 @@ participant Derived Data Provider
 lifelinestyle AA
 
 group #lightblue Initiate Loan Application
-Borrower --> Borrower Agent:Loan Application
-Borrower Agent --> Lender:Create Loan Applications Request
-Lender --> Borrower Agent:Create Loan Applications Response
+Borrower --> Loan Agent:Loan Application
+Loan Agent --> Lender:Create Loan Applications Request
+Lender --> Loan Agent:Create Loan Applications Response
 end 
 
 group #lightblue User Consent
-Borrower Agent --> Lender:Consent Handle Request
-Lender --> Borrower Agent:Consent Handle Response
-Borrower Agent --> Borrower: initiate consent
+Loan Agent --> Lender:Consent Handle Request
+Lender --> Loan Agent:Consent Handle Response
+Loan Agent --> Borrower: initiate consent
 AA <--> Borrower: acquire consent
-Lender --> Borrower Agent:Consent Status Request
-Borrower Agent --> Lender:Consent Status Response
+Lender --> Loan Agent:Consent Status Request
+Loan Agent --> Lender:Consent Status Response
 end 
 
 group #lightblue User Data Fetch and Underwriting
@@ -68,11 +68,11 @@ Lender --> Derived Data Provider: Fetch data from DDP
 end 
 
 group #lightblue Loan Offer
-Borrower Agent --> Lender:Generate Offers Request
-Lender --> Borrower Agent:Generate Offers Response
-Borrower Agent <--> Borrower: share and select offer
-Borrower Agent --> Lender:Set Offer Request
-Lender --> Borrower Agent:Set Offer Response
+Loan Agent --> Lender:Generate Offers Request
+Lender --> Loan Agent:Generate Offers Response
+Loan Agent <--> Borrower: share and select offer
+Loan Agent --> Lender:Set Offer Request
+Lender --> Loan Agent:Set Offer Response
 end 
 
 ======
@@ -81,48 +81,48 @@ entryspacing 0.4
 frame Application Processing Phase ( 2 of 2 )
 
 actor Borrower
-participant Borrower Agent
+participant Loan Agent
 participant Lender
 
 group #lightblue KYC
-Borrower Agent --> Lender:Trigger KYC Request
-Lender --> Borrower Agent:Trigger KYC Response
+Loan Agent --> Lender:Trigger KYC Request
+Lender --> Loan Agent:Trigger KYC Response
 Borrower <--> Lender: Borrower KYC process
-Borrower Agent --> Lender:KYC Status Request
-Lender --> Borrower Agent:KYC Status Response
+Loan Agent --> Lender:KYC Status Request
+Lender --> Loan Agent:KYC Status Response
 end 
 
 group #lightblue Loan Acceptance
-Borrower Agent --> Lender:Loan Agreement Request
-Lender --> Borrower Agent:Loan Agreement Response
-Borrower Agent <--> Borrower: initiate loan acceptance
-Borrower Agent --> Lender:Trigger Loan Acceptance Request
-Lender --> Borrower Agent: Trigger Loan Acceptance Response
-Borrower Agent <--> Borrower: OTP authentication
-Borrower Agent --> Lender:Verify Loan Acceptance Request
-Lender --> Borrower Agent: Verify Loan Acceptance Response
+Loan Agent --> Lender:Loan Agreement Request
+Lender --> Loan Agent:Loan Agreement Response
+Loan Agent <--> Borrower: initiate loan acceptance
+Loan Agent --> Lender:Trigger Loan Acceptance Request
+Lender --> Loan Agent: Trigger Loan Acceptance Response
+Loan Agent <--> Borrower: OTP authentication
+Loan Agent --> Lender:Verify Loan Acceptance Request
+Lender --> Loan Agent: Verify Loan Acceptance Response
 end 
 
 group #lightblue Repayment Plan
-Borrower --> Borrower Agent: select repayment plan
-Borrower Agent --> Lender:Set Repayment Plan Request
-Lender --> Borrower Agent:Set Repayment Plan Response
-Lender --> Borrower Agent:Confirm Repayment Request
+Borrower --> Loan Agent: select repayment plan
+Loan Agent --> Lender:Set Repayment Plan Request
+Lender --> Loan Agent:Set Repayment Plan Response
+Lender --> Loan Agent:Confirm Repayment Request
 end 
 
 group #lightblue Grant Loan
-Borrower Agent --> Lender:Grant Loan Request
-Lender --> Borrower Agent:Grant Loan Response
-Borrower <-- Borrower Agent: share loan details
+Loan Agent --> Lender:Grant Loan Request
+Lender --> Loan Agent:Grant Loan Response
+Borrower <-- Loan Agent: share loan details
 end 
 
 group #lightblue Loan Disbursement
-Borrower <--> Borrower Agent: disbursement details
-Borrower Agent --> Lender: Set Disbursement Account Request
-Lender --> Borrower Agent: Set Disbursement Account Response
-Borrower --> Borrower Agent: approve disbursement 
-Borrower Agent --> Lender: Trigger Disbursement Request
-Lender --> Borrower Agent: Trigger Disbursement Response
+Borrower <--> Loan Agent: disbursement details
+Loan Agent --> Lender: Set Disbursement Account Request
+Lender --> Loan Agent: Set Disbursement Account Response
+Borrower --> Loan Agent: approve disbursement 
+Loan Agent --> Lender: Trigger Disbursement Request
+Lender --> Loan Agent: Trigger Disbursement Response
 end 
 
 ======
@@ -131,32 +131,32 @@ entryspacing 0.4
 frame Post-Disbursement Phase
 
 actor Borrower
-participant Borrower Agent
+participant Loan Agent
 participant Lender
 
 group #lightblue Repayment
-Borrower --> Borrower Agent: repayment
-Borrower Agent --> Lender:Trigger Repayment Request
-Lender --> Borrower Agent:Trigger Repayment Response
+Borrower --> Loan Agent: repayment
+Loan Agent --> Lender:Trigger Repayment Request
+Lender --> Loan Agent:Trigger Repayment Response
 end 
 
 group #lightblue Loan Details
-Borrower --> Borrower Agent: view loan details
-Borrower Agent --> Lender:Get Loan Request
-Lender --> Borrower Agent:Get Loan Response
-Borrower Agent --> Lender:Loan Summary Request
-Lender --> Borrower Agent:Loan Summary Response
-Borrower Agent --> Lender:Loan Statement Request
-Lender --> Borrower Agent:Loan Statement Response
-Borrower Agent --> Lender:List Loans Request
-Lender --> Borrower Agent:List Loans Response
+Borrower --> Loan Agent: view loan details
+Loan Agent --> Lender:Get Loan Request
+Lender --> Loan Agent:Get Loan Response
+Loan Agent --> Lender:Loan Summary Request
+Lender --> Loan Agent:Loan Summary Response
+Loan Agent --> Lender:Loan Statement Request
+Lender --> Loan Agent:Loan Statement Response
+Loan Agent --> Lender:List Loans Request
+Lender --> Loan Agent:List Loans Response
 end 
 
 group #lightblue Issues and Disputes
-Borrower --> Borrower Agent: initiate dispute
-Borrower Agent --> Lender:Raise Dispute Request
-Lender --> Borrower Agent:Raise Dispute Response
-Borrower Agent --> Lender:Dispute Status Request
-Lender --> Borrower Agent:Dispute Status Response
+Borrower --> Loan Agent: initiate dispute
+Loan Agent --> Lender:Raise Dispute Request
+Lender --> Loan Agent:Raise Dispute Response
+Loan Agent --> Lender:Dispute Status Request
+Lender --> Loan Agent:Dispute Status Response
 end 
 

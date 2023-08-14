@@ -20,7 +20,7 @@
           "Create Loan Applications"
         ],
         "summary": "Create Loan Applications Request",
-        "description": "Create Loan applications endpoint available on Lender to be used by BA",
+        "description": "Create Loan applications endpoint available on Lender to be used by LA",
         "operationId": "CreateLoanApplicationsRequest",
         "requestBody": {
           "content": {
@@ -86,7 +86,7 @@
         "description": "This is the response for Create Loan Applications but invoked by the lender. No offers are rolled out as part of this API. If the lender system finds preliminary information sufficient for doing the loan processing, it will send “PROCESSING” as the status. Otherwise, it can reject the application citing a reason for the same.",
         "operationId": "createLoanApplicationsResponse",
         "requestBody": {
-          "description": "Response by lender to BA for create bulk loan application request",
+          "description": "Response by lender to LA for create bulk loan application request",
           "content": {
             "application/json": {
               "schema": {
@@ -160,7 +160,7 @@
         "summary": "Consent Handle Request",
         "description": "Create consent handle with Account Aggregator | This API is used to request the lenders to send a consent request for fetching the bank account statements, GST historical data. <br /> The lender (FIU) checks with the AA and creates a consent handle internally once this API is triggered",
         "requestBody": {
-          "description": "Request by BA to lender to get consent handle with Account Aggregator",
+          "description": "Request by LA to lender to get consent handle with Account Aggregator",
           "content": {
             "application/json": {
               "schema": {
@@ -197,7 +197,7 @@
         },
         "responses": {
           "200": {
-            "description": "Acknowledgement by Lender to BA for Consent Handle Request",
+            "description": "Acknowledgement by Lender to LA for Consent Handle Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -285,7 +285,7 @@
           "Consent"
         ],
         "summary": "Share the consent journey status",
-        "description": "Invoked by BA to inform Lenders of the consent journey state once the customer has interacted with Account Aggregator",
+        "description": "Invoked by LA to inform Lenders of the consent journey state once the customer has interacted with Account Aggregator",
         "requestBody": {
           "description": "Consent State update request",
           "content": {
@@ -347,7 +347,7 @@
           "Consent"
         ],
         "summary": "Consent Status Request",
-        "description": "Invoked by Lender to get consent handle status from BA",
+        "description": "Invoked by Lender to get consent handle status from LA",
         "requestBody": {
           "description": "Consent Status Request",
           "content": {
@@ -400,7 +400,7 @@
           "Consent"
         ],
         "summary": "Consent Status Response",
-        "description": "Invoked by BA to send consent status to Lender",
+        "description": "Invoked by LA to send consent status to Lender",
         "requestBody": {
           "description": "Consent Status Response",
           "content": {
@@ -465,7 +465,7 @@
           "Offers"
         ],
         "summary": "Generate Offers Request",
-        "description": "The BA sends this request to the lender to get the list of offers that the lender is willing to provide for the loan applications already shared.",
+        "description": "The LA sends this request to the lender to get the list of offers that the lender is willing to provide for the loan applications already shared.",
         "operationId": "GenerateOffersRequest",
         "requestBody": {
           "content": {
@@ -752,7 +752,7 @@
           "Offers"
         ],
         "summary": "Set Offers Request",
-        "description": "This API is invoked by the BA to inform the lender about the offer that the borrower has chosen for a particular loan application.",
+        "description": "This API is invoked by the LA to inform the lender about the offer that the borrower has chosen for a particular loan application.",
         "operationId": "SetOffersRequest",
         "requestBody": {
           "content": {
@@ -889,7 +889,7 @@
           "KYC"
         ],
         "summary": "Trigger KYC Request",
-        "description": "This  API is called by BA to initiate the KYC process of the borrower after successfully accepting the final offer. The lender is supposed to return the url, where the borrower will be completing the KYC process.",
+        "description": "This  API is called by LA to initiate the KYC process of the borrower after successfully accepting the final offer. The lender is supposed to return the url, where the borrower will be completing the KYC process.",
         "operationId": "TriggerKYCRequest",
         "requestBody": {
           "content": {
@@ -1173,7 +1173,7 @@
           "KYC"
         ],
         "summary": "KYC Status Request",
-        "description": "This API is called by BA to get the KYC status. This API will be triggered just after the user completes the KYC process.",
+        "description": "This API is called by LA to get the KYC status. This API will be triggered just after the user completes the KYC process.",
         "operationId": "KYCStatusRequest",
         "requestBody": {
           "content": {
@@ -1243,7 +1243,7 @@
           "KYC"
         ],
         "summary": "KYC Status Response",
-        "description": "This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the BA about the action required for completing the KYC.",
+        "description": "This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the LA about the action required for completing the KYC.",
         "operationId": "KYCStatusResponse",
         "requestBody": {
           "content": {
@@ -1593,7 +1593,7 @@
           "Loan Acceptance"
         ],
         "summary": "Trigger Loan Acceptance Request",
-        "description": "SMS Format for the OTP [#] {6Digit OTP} is the One Time Password (OTP) to complete the loan process with {Lender Name}. {appToken} >- Eg- 467866 is the One Time Password (OTP) to complete the loan process with ABC Bank. \\#0aBCD7DMr7s >- This API is invoked by the BA when the user agrees to the terms of the agreement.The Asynchronous response for this API should include the lender sending an OTP to the borrower’s phone number",
+        "description": "SMS Format for the OTP [#] {6Digit OTP} is the One Time Password (OTP) to complete the loan process with {Lender Name}. {appToken} >- Eg- 467866 is the One Time Password (OTP) to complete the loan process with ABC Bank. \\#0aBCD7DMr7s >- This API is invoked by the LA when the user agrees to the terms of the agreement.The Asynchronous response for this API should include the lender sending an OTP to the borrower’s phone number",
         "operationId": "triggerLoanAcceptanceRequest",
         "requestBody": {
           "content": {
@@ -1767,7 +1767,7 @@
           "Loan Acceptance"
         ],
         "summary": "Verify Loan Acceptance Request",
-        "description": "This API is invoked by the BA when the user enters the OTP received on the mobile number and agrees to the terms of the agreement. The asynchronous response for this API should include the lender acknowledging the receipt of OTP and verifying if the user has entered the correct OTP that was shared by the lender.",
+        "description": "This API is invoked by the LA when the user enters the OTP received on the mobile number and agrees to the terms of the agreement. The asynchronous response for this API should include the lender acknowledging the receipt of OTP and verifying if the user has entered the correct OTP that was shared by the lender.",
         "operationId": "verifyLoanAcceptanceRequest",
         "requestBody": {
           "content": {
@@ -1850,7 +1850,7 @@
           "Loan Acceptance"
         ],
         "summary": "Verify Loan Acceptance Response",
-        "description": "This API is invoked by the Lender  when the OTP entered by the user is shared through the BA. This API acknowledges the receipt of OTP and verifies if the user has entered the correct OTP that was shared by the lender on the mobile number associated with the disbursement account.",
+        "description": "This API is invoked by the Lender  when the OTP entered by the user is shared through the LA. This API acknowledges the receipt of OTP and verifies if the user has entered the correct OTP that was shared by the lender on the mobile number associated with the disbursement account.",
         "operationId": "verifyLoanAcceptanceResponse",
         "requestBody": {
           "content": {
@@ -1939,7 +1939,7 @@
           "Grant Loan"
         ],
         "summary": "Grant Loan Request",
-        "description": "This API is invoked by the BA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.",
+        "description": "This API is invoked by the LA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.",
         "operationId": "grantLoanRequest",
         "requestBody": {
           "content": {
@@ -2427,7 +2427,7 @@
           "Disbursement"
         ],
         "summary": "Set Disbursement Account Request",
-        "description": "This API is invoked by the BA to inform the lender about the disbursement account that the borrower has chosen.",
+        "description": "This API is invoked by the LA to inform the lender about the disbursement account that the borrower has chosen.",
         "operationId": "setDisbursementAccountRequest",
         "requestBody": {
           "content": {
@@ -2492,7 +2492,7 @@
           "Disbursement"
         ],
         "summary": "Set Disbursement Account Response",
-        "description": "This API is invoked by the lender to inform the BA regarding whether the lender has successfully set the disbursement account which was sent in SetDisbursementAccountRequest.",
+        "description": "This API is invoked by the lender to inform the LA regarding whether the lender has successfully set the disbursement account which was sent in SetDisbursementAccountRequest.",
         "operationId": "setDisbursementAccountResponse",
         "requestBody": {
           "content": {
@@ -2720,7 +2720,7 @@
           "Disbursement"
         ],
         "summary": "Trigger Disbursement Status Request",
-        "description": "This API is to be used by BA to check the status of a previously initiated disbursement request.",
+        "description": "This API is to be used by LA to check the status of a previously initiated disbursement request.",
         "operationId": "triggerDisbursementStatusRequest",
         "requestBody": {
           "content": {
@@ -2860,7 +2860,7 @@
           "Trigger Repayment"
         ],
         "summary": "Trigger Repayment Request",
-        "description": "This API is invoked by the BA to inform the lender to trigger a repayment. This API will not be called when payment is routed to lender via collection agent.",
+        "description": "This API is invoked by the LA to inform the lender to trigger a repayment. This API will not be called when payment is routed to lender via collection agent.",
         "operationId": "triggerRepaymentRequest",
         "requestBody": {
           "content": {
@@ -2925,7 +2925,7 @@
           "Trigger Repayment"
         ],
         "summary": "Trigger Repayment Response",
-        "description": "This API is invoked by the lender to the BA giving the lender payment page url from where the borrower can make the payment. Lender also generates an id for the payment which becomes the reference for BA to check the status of repayment.",
+        "description": "This API is invoked by the lender to the LA giving the lender payment page url from where the borrower can make the payment. Lender also generates an id for the payment which becomes the reference for LA to check the status of repayment.",
         "operationId": "triggerRepaymentResponse",
         "requestBody": {
           "content": {
@@ -2994,7 +2994,7 @@
           "Trigger Repayment"
         ],
         "summary": "Trigger Repayment Status Request",
-        "description": "This API is used by BA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the BA receives payment confirmation (including transaction reference number) from the Collection Management System, BA will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
+        "description": "This API is used by LA to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the LA receives payment confirmation (including transaction reference number) from the Collection Management System, LA will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
         "operationId": "triggerRepaymentStatusRequest",
         "requestBody": {
           "content": {
@@ -3128,7 +3128,7 @@
           "Trigger Repayment"
         ],
         "summary": "Confirm Repayment Request",
-        "description": "This API is used by lenders to inform BA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment).",
+        "description": "This API is used by lenders to inform LA about the status of a repayment handled directly by the lender (Triggered on Lender side - Payment on the branch or auto E-Mandate repayment).",
         "operationId": "confirmRepaymentRequest",
         "requestBody": {
           "content": {
@@ -3201,7 +3201,7 @@
           "Loan Details"
         ],
         "summary": "Get Loan Request",
-        "description": "This API is invoked by the BA when the BA wants to get the details of the loan.",
+        "description": "This API is invoked by the LA when the LA wants to get the details of the loan.",
         "operationId": "getLoanRequest",
         "requestBody": {
           "content": {
@@ -3420,7 +3420,7 @@
           "Loan Details"
         ],
         "summary": "List Loans Request",
-        "description": "This API is invoked by the BA when the BA wants to get the details of the loan.",
+        "description": "This API is invoked by the LA when the LA wants to get the details of the loan.",
         "operationId": "getLoanRequest",
         "requestBody": {
           "content": {
@@ -3487,7 +3487,7 @@
           "Loan Details"
         ],
         "summary": "List Loans Request",
-        "description": "This API is invoked by the BA when the BA wants to get the details of the loan.",
+        "description": "This API is invoked by the LA when the LA wants to get the details of the loan.",
         "operationId": "getLoanRequest",
         "requestBody": {
           "content": {
@@ -3582,7 +3582,7 @@
           "Loan Details"
         ],
         "summary": "Loan Statement Request",
-        "description": "This method is called by the BA to get the account statement for the loan for a specified period. If the start and end dates are blank, it will return the entire Loan Statement.",
+        "description": "This method is called by the LA to get the account statement for the loan for a specified period. If the start and end dates are blank, it will return the entire Loan Statement.",
         "operationId": "loanStatementRequest",
         "requestBody": {
           "content": {
@@ -3721,7 +3721,7 @@
           "Loan Details"
         ],
         "summary": "Loan Summary Request",
-        "description": "This API is invoked by the BA to get the summary of the loan as of the current date.",
+        "description": "This API is invoked by the LA to get the summary of the loan as of the current date.",
         "operationId": "loanSummaryRequest",
         "requestBody": {
           "content": {
@@ -3785,7 +3785,7 @@
           "Loan Details"
         ],
         "summary": "Loan Summary Response",
-        "description": "This API is invoked by the BA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.",
+        "description": "This API is invoked by the LA once the borrower completes successful signing of the loan agreement to create the actual loan in the lender’s system.",
         "operationId": "loanSummaryResponse",
         "requestBody": {
           "content": {
@@ -3940,7 +3940,7 @@
           "Disbursement Partner"
         ],
         "summary": "Get Disbursement Options Request",
-        "description": "This endpoint is initiated by the BA on the Disbursement partner to get all the products available for the borrower.",
+        "description": "This endpoint is initiated by the LA on the Disbursement partner to get all the products available for the borrower.",
         "operationId": "GetDisbursementOptionsRequest",
         "requestBody": {
           "content": {
@@ -4000,7 +4000,7 @@
           "Disbursement Partner"
         ],
         "summary": "Get Disbursement Options Response",
-        "description": "This endpoint is initiated by the Disbursement partner on the BA as a response to Get Disbursement Options returning all Disbursement Products available.",
+        "description": "This endpoint is initiated by the Disbursement partner on the LA as a response to Get Disbursement Options returning all Disbursement Products available.",
         "operationId": "GetDisbursementOptionsResponse",
         "requestBody": {
           "content": {
@@ -4066,7 +4066,7 @@
           "Disbursement Partner"
         ],
         "summary": "Get Disbursement Details Request",
-        "description": "This endpoint can be initiated by BA / Lender on the disbursement partner to get the details of a specific product",
+        "description": "This endpoint can be initiated by LA / Lender on the disbursement partner to get the details of a specific product",
         "operationId": "GetDisbursementProductDetailsRequest",
         "requestBody": {
           "content": {
@@ -4323,7 +4323,7 @@
           "Collections"
         ],
         "summary": "Get Payment Methods Request",
-        "description": "This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
+        "description": "This endpoint is initiated by the LA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
         "operationId": "Get",
         "requestBody": {
           "content": {
@@ -4383,7 +4383,7 @@
           "Collections"
         ],
         "summary": "Get Payment Methods Response",
-        "description": "This endpoint is initiated by the Collections partner on the BA as a response to Get Payment Methods returning all Collection Options available.",
+        "description": "This endpoint is initiated by the Collections partner on the LA as a response to Get Payment Methods returning all Collection Options available.",
         "operationId": "GetPaymentMethodsResponse",
         "requestBody": {
           "content": {
@@ -6554,7 +6554,7 @@
           },
           "loanApplicationId": {
             "type": "string",
-            "description": "UUID for the loan application. Generated by BA"
+            "description": "UUID for the loan application. Generated by LA"
           },
           "loanApplicationStatus": {
             "$ref": "#/components/schemas/LoanApplicationStatus"
@@ -6710,7 +6710,7 @@
           },
           "data": {
             "type": "object",
-            "description": "Data for different type will be defined in later version of APIs. As of now, BA can define it as per their requirement",
+            "description": "Data for different type will be defined in later version of APIs. As of now, LA can define it as per their requirement",
             "$ref": "#/components/schemas/ExtensibleData"
           },
           "url": {
