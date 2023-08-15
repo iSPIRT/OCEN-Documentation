@@ -274,7 +274,7 @@
         }
       }
     },
-    "/v4.0.0alpha/lender/consent/notify": {
+    "/v4.0.0alpha/consent/journeyNotify": {
       "post": {
         "servers": [
           {
@@ -336,7 +336,7 @@
         }
       }
     },
-    "/v4.0.0alpha/ba/consentStatusRequest": {
+    "/v4.0.0alpha/consent/statusRequest": {
       "post": {
         "servers": [
           {
@@ -389,7 +389,7 @@
         }
       }
     },
-    "/v4.0.0alpha/lender/consentStatusResponse": {
+    "/v4.0.0alpha/consent/statusResponse": {
       "post": {
         "servers": [
           {
@@ -878,7 +878,7 @@
         }
       }
     },
-    "/v4.0.0alpha/offers/triggerKycRequest": {
+    "/v4.0.0alpha/kyc/triggerKycRequest": {
       "post": {
         "servers": [
           {
@@ -946,7 +946,7 @@
         }
       }
     },
-    "/v4.0.0alpha/offers/triggerKycResponse": {
+    "/v4.0.0alpha/kyc/triggerKycResponse": {
       "post": {
         "servers": [
           {
@@ -1018,151 +1018,7 @@
         }
       }
     },
-    "/v4.0.0alpha/offers/KYCPartnerRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "KYC"
-        ],
-        "summary": "KYC Partner Request",
-        "description": "This Api is called by the Lender on the KYC Partner to initiate KYC.",
-        "operationId": "KYCPartnerRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
-                  },
-                  "kyc": {
-                    "$ref": "#/components/schemas/KYCDetailsRequest"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/offers/KYCPartnerResponse": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "KYC"
-        ],
-        "summary": "KYC Partner Response",
-        "description": "This Api is called by the the KYC Partner on the Lender. This response may contain additional documents collected by the KYC Partner on behalf of the Lender.",
-        "operationId": "KYCPartnerResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
-                  },
-                  "kyc": {
-                    "$ref": "#/components/schemas/KYCDetailsRequest"
-                  },
-                  "additionalDocuments": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Document",
-                      "description": "Additional documents collected by the KYC Partner on behalf of the Lender."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/offers/kycStatusRequest": {
+    "/v4.0.0alpha/kyc/kycStatusRequest": {
       "post": {
         "servers": [
           {
@@ -1232,7 +1088,7 @@
         }
       }
     },
-    "/v4.0.0alpha/offers/kycStatusResponse": {
+    "/v4.0.0alpha/kyc/kycStatusResponse": {
       "post": {
         "servers": [
           {
@@ -1245,144 +1101,6 @@
         "summary": "KYC Status Response",
         "description": "This API is called by the lender to inform the status of the KYC process. Lender is also supposed to inform the BA about the action required for completing the KYC.",
         "operationId": "KYCStatusResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "kyc": {
-                    "$ref": "#/components/schemas/KYCDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/offers/kycPartnerStatusRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "KYC"
-        ],
-        "summary": "KYC Partner Status Request",
-        "description": "This API is called by Lender on the KYC Partner to get the KYC status.",
-        "operationId": "KYCPartnerStatusRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string"
-                  },
-                  "kyc": {
-                    "type": "object",
-                    "properties": {
-                      "kycRefNo": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/offers/kycPartnerStatusResponse": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
-        "tags": [
-          "KYC"
-        ],
-        "summary": "KYC Partner Status Response",
-        "description": "This API is called by the KYC Partner on the Lender to inform the status of the KYC process.",
-        "operationId": "KYCPartnerStatusResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1520,9 +1238,8 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "loanApplicationIds",
+                  "loanApplicationId",
                   "response",
-                  "loanAgreementStatus",
                   "loanAgreement"
                 ],
                 "properties": {
@@ -1539,19 +1256,24 @@
                     "type": "string"
                   },
                   "loanAgreement": {
-                    "$ref": "#/components/schemas/LoanAgreement"
-                  },
-                  "loanAgreementStatus": {
-                    "type": "string",
-                    "enum": [
-                      "AGREEMENT_READY",
-                      "ACTION_REQUIRED"
-                    ]
-                  },
-                  "actionRequired": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ActionRequired"
+                    "type": "object",
+                    "properties": {
+                      "legalDocument": {
+                        "$ref": "#/components/schemas/LoanAgreement"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "AGREEMENT_READY",
+                          "ACTION_REQUIRED"
+                        ]
+                      },
+                      "actionRequired": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/ActionRequired"
+                        }
+                      }
                     }
                   }
                 }
@@ -1992,7 +1714,7 @@
         }
       }
     },
-    "/v4.0.0alpha/gra6tLoan/grantLoanResponse": {
+    "/v4.0.0alpha/grantLoan/grantLoanResponse": {
       "post": {
         "servers": [
           {
@@ -2183,7 +1905,7 @@
         }
       }
     },
-    "/v4.0.0alpha/dis7ursement/setRepaymentPlanResponse": {
+    "/v4.0.0alpha/disbursement/setRepaymentPlanResponse": {
       "post": {
         "servers": [
           {
@@ -2264,7 +1986,7 @@
         }
       }
     },
-    "/v4.0.0alpha/dis7ursement/setRepaymentPlanStatusRequest": {
+    "/v4.0.0alpha/disbursement/setRepaymentPlanStatusRequest": {
       "post": {
         "servers": [
           {
@@ -2335,7 +2057,7 @@
         }
       }
     },
-    "/v4.0.0alpha/dis7ursement/setRepaymentPlanStatusResponse": {
+    "/v4.0.0alpha/disbursement/setRepaymentPlanStatusResponse": {
       "post": {
         "servers": [
           {
@@ -3929,19 +3651,19 @@
         }
       }
     },
-    "/v4.0.0alpha/disbursementPartner/getDisbursementOptionsRequest": {
+    "/v4.0.0alpha/disbursementPartner/getCatalogueRequest": {
       "post": {
         "servers": [
           {
-            "url": "https://ocenapis.lender.com"
+            "url": "https://ocenapis.disbursementpartner.com"
           }
         ],
         "tags": [
           "Disbursement Partner"
         ],
-        "summary": "Get Disbursement Options Request",
+        "summary": "Get Catalogue Request",
         "description": "This endpoint is initiated by the BA on the Disbursement partner to get all the products available for the borrower.",
-        "operationId": "GetDisbursementOptionsRequest",
+        "operationId": "GetCatalogueRequest",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3958,8 +3680,19 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "productId": {
-                    "type": "string"
+                  "filters": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "filterName": {
+                          "type": "string"
+                        },
+                        "filterValue": {
+                          "type": "string"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -3989,7 +3722,7 @@
         }
       }
     },
-    "/v4.0.0alpha/disbursementPartner/getDisbursementOptionsResponse": {
+    "/v4.0.0alpha/disbursementPartner/getCatalogueResponse": {
       "post": {
         "servers": [
           {
@@ -4024,7 +3757,7 @@
                   "disbursementProducts": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/DisbursementProduct"
+                      "$ref": "#/components/schemas/CommerceProduct"
                     }
                   }
                 }
@@ -4055,19 +3788,19 @@
         }
       }
     },
-    "/v4.0.0alpha/disbursementPartner/getDisbursementProductDetailsRequest": {
+    "/v4.0.0alpha/disbursementPartner/finaliseOrderRequest": {
       "post": {
         "servers": [
           {
-            "url": "https://ocenapis.lender.com"
+            "url": "https://ocenapis.disbursementpartner.com"
           }
         ],
         "tags": [
           "Disbursement Partner"
         ],
-        "summary": "Get Disbursement Details Request",
+        "summary": "Finalise Order Request",
         "description": "This endpoint can be initiated by BA / Lender on the disbursement partner to get the details of a specific product",
-        "operationId": "GetDisbursementProductDetailsRequest",
+        "operationId": "FinaliseOrderRequest",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4084,8 +3817,14 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "disbursementProductId": {
-                    "type": "string"
+                  "cart": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CommerceProduct"
+                    }
+                  },
+                  "shippingDetails": {
+                    "$ref": "#/components/schemas/ContactDetails"
                   }
                 }
               }
@@ -4115,7 +3854,7 @@
         }
       }
     },
-    "/v4.0.0alpha/disbursementPartner/getDisbursementProductDetailsResponse": {
+    "/v4.0.0alpha/disbursementPartner/finaliseOrderResponse": {
       "post": {
         "servers": [
           {
@@ -4125,9 +3864,9 @@
         "tags": [
           "Disbursement Partner"
         ],
-        "summary": "Get Disbursement Product Detail Response",
+        "summary": "Finalise Order Response",
         "description": "This endpoint is initiated by the DisbursementPartner in response to GetDisbursementProductDetailsRequest providing the details of a specific product.",
-        "operationId": "GetDisbursementProductDetailResponse",
+        "operationId": "FinaliseOrderResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4144,11 +3883,35 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "disbursementProductId": {
-                    "type": "string"
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
                   },
-                  "disbursementProducts": {
-                    "$ref": "#/components/schemas/DisbursementProduct"
+                  "orderId": {
+                    "type": "string",
+                    "description": "The unique identifier for the order"
+                  },
+                  "orderStatus": {
+                    "type": "string",
+                    "enum": [
+                      "SUCESS",
+                      "FAILED"
+                    ],
+                    "description": "The status of the order"
+                  },
+                  "orderStatusMessage": {
+                    "type": "string",
+                    "description": "The message against the order status"
+                  },
+                  "performaInvoice": {
+                    "$ref": "#/components/schemas/Document"
+                  },
+                  "orderTotalAmount": {
+                    "type": "number",
+                    "description": "The total amount of the order that will be come the loan application amount"
+                  },
+                  "payeeAccountDetails": {
+                    "$ref": "#/components/schemas/AccountDetails",
+                    "description": "The entity to which the amount is payable"
                   }
                 }
               }
@@ -4182,7 +3945,7 @@
       "post": {
         "servers": [
           {
-            "url": "https://ocenapis.lender.com"
+            "url": "https://ocenapis.collectionspartner.com"
           }
         ],
         "tags": [
@@ -4316,7 +4079,7 @@
       "post": {
         "servers": [
           {
-            "url": "https://ocenapis.lender.com"
+            "url": "https://ocenapis.collectionspartner.com"
           }
         ],
         "tags": [
@@ -4442,7 +4205,7 @@
       "post": {
         "servers": [
           {
-            "url": "https://ocenapis.lender.com"
+            "url": "https://ocenapis.collectionspartner.com"
           }
         ],
         "tags": [
@@ -4585,7 +4348,7 @@
         "tags": [
           "KYC Partner"
         ],
-        "summary": "Initiate KYC Request",
+        "summary": "Initiate KYC Partner Request",
         "description": "This API is called by lender to KYC partner initiate the KYC process of the borrower after successfully accepting the final offer.",
         "operationId": "InitiateKYCRequest",
         "requestBody": {
@@ -4653,81 +4416,9 @@
         "tags": [
           "KYC Partner"
         ],
-        "summary": "Initiate KYC Response",
+        "summary": "Initiate KYC Partner Response",
         "description": "This API is called by the KYS partnet in response to initiate KYC requests. The partner returns the next step for KYC details submission. The KYC process will be carried out by the partner.",
         "operationId": "InitiateKYCResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
-                  },
-                  "kyc": {
-                    "$ref": "#/components/schemas/KYCPartnerDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/kycPartner/completeKYCRequest": {
-      "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
-        "tags": [
-          "KYC Partner"
-        ],
-        "summary": "KYC Complete Request",
-        "description": "This API is called by the KYC partner in response to complete KYC response.",
-        "operationId": "StatusKYCResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4791,13 +4482,13 @@
       "post": {
         "servers": [
           {
-            "url": "https://ocenapis.lender.com"
+            "url": "https://ocenapis.kycpartner.com"
           }
         ],
         "tags": [
           "KYC Partner"
         ],
-        "summary": "KYC Status Request",
+        "summary": "KYC Partner Status Request",
         "description": "This API is called by Lender to get the KYC status from partner. This API will be triggered just after the user completes the KYC process.",
         "operationId": "KYCStatusRequest",
         "requestBody": {
@@ -4867,7 +4558,7 @@
         "tags": [
           "KYC Partner"
         ],
-        "summary": "KYC Status Response",
+        "summary": "KYC Partner Status Response",
         "description": "This API is called by the KYC partnet in response to initiate KYC response.",
         "operationId": "StatusKYCResponse",
         "requestBody": {
@@ -5977,9 +5668,6 @@
           "url": {
             "type": "string"
           },
-          "disbursementProductId": {
-            "type": "string"
-          },
           "description": {
             "type": "string"
           },
@@ -6853,7 +6541,27 @@
           }
         }
       },
-      "DisbursementProduct": {
+      "CommerceProductQuantity": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "examples": [
+              "100"
+            ]
+          },
+          "unit": {
+            "type": "string",
+            "examples": [
+              "KG"
+            ]
+          }
+        },
+        "extensibleData": {
+          "$ref": "./ExtensibleData.yaml"
+        }
+      },
+      "CommerceProduct": {
         "type": "object",
         "required": [
           "id",
@@ -6888,17 +6596,44 @@
               "1000"
             ]
           },
+          "thumbnail": {
+            "type": "string",
+            "examples": [
+              "http://www.example.com/images/1.jpg"
+            ]
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "http://www.example.com/images/1.jpg"
+              ]
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "Organic",
+                "Fertilizer",
+                "Manure"
+              ]
+            }
+          },
           "currency": {
             "type": "string",
             "examples": [
               "INR"
             ]
           },
-          "accountDetails": {
-            "$ref": "#/components/schemas/AccountDetails"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
+          "quantity": {
+            "$ref": "#/components/schemas/CommerceProductQuantity",
+            "examples": [
+              "Will be available quantity as a part of the Catalogue Request",
+              "Will be ordered quantity as a part of the Finalise Order Request"
+            ]
           }
         }
       },
