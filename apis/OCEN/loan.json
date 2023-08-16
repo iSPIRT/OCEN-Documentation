@@ -32,7 +32,7 @@
                   "productData"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
@@ -3674,7 +3674,7 @@
                   "productData"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
@@ -3745,7 +3745,7 @@
                   "productData"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
@@ -3811,20 +3811,25 @@
                   "productData"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
                   "cart": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/CommerceProduct"
+                    "type": "object",
+                    "properties": {
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/CommerceProduct"
+                        }
+                      },
+                      "shippingDetails": {
+                        "$ref": "#/components/schemas/ContactDetails"
+                      }
                     }
-                  },
-                  "shippingDetails": {
-                    "$ref": "#/components/schemas/ContactDetails"
                   }
                 }
               }
@@ -3877,7 +3882,7 @@
                   "productData"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
@@ -3886,32 +3891,46 @@
                   "response": {
                     "$ref": "#/components/schemas/Response"
                   },
-                  "orderId": {
-                    "type": "string",
-                    "description": "The unique identifier for the order"
-                  },
-                  "orderStatus": {
-                    "type": "string",
-                    "enum": [
-                      "SUCESS",
-                      "FAILED"
-                    ],
-                    "description": "The status of the order"
-                  },
-                  "orderStatusMessage": {
-                    "type": "string",
-                    "description": "The message against the order status"
-                  },
-                  "performaInvoice": {
-                    "$ref": "#/components/schemas/Document"
-                  },
-                  "orderTotalAmount": {
-                    "type": "number",
-                    "description": "The total amount of the order that will be come the loan application amount"
-                  },
-                  "payeeAccountDetails": {
-                    "$ref": "#/components/schemas/AccountDetails",
-                    "description": "The entity to which the amount is payable"
+                  "order": {
+                    "type": "object",
+                    "properties": {
+                      "orderId": {
+                        "type": "string",
+                        "description": "The unique identifier for the order"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "SUCESS",
+                          "FAILED"
+                        ],
+                        "description": "The status of the order"
+                      },
+                      "statusMessage": {
+                        "type": "string",
+                        "description": "The message against the order status"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/CommerceProduct"
+                        }
+                      },
+                      "shippingDetails": {
+                        "$ref": "#/components/schemas/ContactDetails"
+                      },
+                      "totalAmount": {
+                        "type": "number",
+                        "description": "The total amount of the order that will be come the loan application amount"
+                      },
+                      "performaInvoice": {
+                        "$ref": "#/components/schemas/Document"
+                      },
+                      "payeeAccountDetails": {
+                        "$ref": "#/components/schemas/AccountDetails",
+                        "description": "The entity to which the amount is payable"
+                      }
+                    }
                   }
                 }
               }
@@ -3951,7 +3970,7 @@
         "tags": [
           "Collections"
         ],
-        "summary": "Get Collections Status Request",
+        "summary": "Trigger Repayment Status Request",
         "description": "This API is used by Lender on the Collections Partner to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Agent receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
         "operationId": "triggerRepaymentStatusRequest",
         "requestBody": {
@@ -4018,7 +4037,7 @@
         ],
         "summary": "Trigger Repayment Status Response",
         "description": "This API is used by Collections Partner on the Lender to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Partner receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
-        "operationId": "triggerRepaymentStatusRequest",
+        "operationId": "triggerRepaymentStatusResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4087,7 +4106,7 @@
         ],
         "summary": "Get Payment Methods Request",
         "description": "This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
-        "operationId": "Get",
+        "operationId": "GetPaymentMethodsRequest",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4098,14 +4117,11 @@
                   "productData"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
-                  },
-                  "productId": {
-                    "type": "string"
                   }
                 }
               }
@@ -4158,14 +4174,11 @@
                   "productData"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
-                  },
-                  "productId": {
-                    "type": "string"
                   },
                   "paymentMethods": {
                     "type": "array",
@@ -4620,7 +4633,7 @@
         }
       }
     },
-    "/v4.0.0alpha/derivedData/getSchemaByIdRequest": {
+    "/v4.0.0alpha/derivedData/getSchemaRequest": {
       "post": {
         "servers": [
           {
@@ -4630,9 +4643,9 @@
         "tags": [
           "Data Provider"
         ],
-        "summary": "Get Derived Data Schema by schema id",
+        "summary": "Get Schema Request",
         "description": "Accepts a get Derived Data Schema Request to be used called by the Lender",
-        "operationId": "getSchema",
+        "operationId": "getSchemaRequest",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4644,14 +4657,11 @@
                   "schemaId"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
-                  },
-                  "schemaId": {
-                    "type": "string"
                   }
                 }
               }
@@ -4681,7 +4691,7 @@
         }
       }
     },
-    "/v4.0.0alpha/derivedData/getSchemaByIdResponse": {
+    "/v4.0.0alpha/derivedData/getSchemaResponse": {
       "post": {
         "servers": [
           {
@@ -4691,9 +4701,9 @@
         "tags": [
           "Data Provider"
         ],
-        "summary": "Get Derived Data Schema response",
+        "summary": "Get Schema Response",
         "description": "This api returns the expected schema from the derived data provider to the lender",
-        "operationId": "getSchemaBySchemaIdResponse",
+        "operationId": "getSchemaResponse",
         "requestBody": {
           "description": "Response by Derived Data Provider to Lender containing the requested Schema",
           "content": {
@@ -4703,24 +4713,53 @@
                 "required": [
                   "metadata",
                   "response",
-                  "productData"
+                  "productData",
+                  "availableSchemas"
                 ],
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "schemaId": {
-                    "type": "string"
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
                   },
-                  "schema": {
-                    "type": "object",
-                    "description": "The schema object defining the data schema and identifier schema"
+                  "availableSchemas": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "schemaId",
+                        "identifiers"
+                      ],
+                      "properties": {
+                        "schemaId": {
+                          "type": "string",
+                          "schema": "object",
+                          "description": "The schema object defining the data schema and identifier schema"
+                        },
+                        "identifiers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "identifier",
+                              "identifierType"
+                            ],
+                            "properties": {
+                              "identifier": {
+                                "type": "string"
+                              },
+                              "identifierType": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -4765,7 +4804,7 @@
         "tags": [
           "Data Provider"
         ],
-        "summary": "Start Fetch of Derived Data by identifiers and schema id",
+        "summary": "Derived Data by identifiers and schema id",
         "description": "Accepts a Fetch request for Derived Data with the help of Schema Id and identifiers sent in the request. This api will be called by the lender on the Derived Data Provider.",
         "operationId": "getDerivedData",
         "requestBody": {
@@ -4777,20 +4816,39 @@
                   "metadata",
                   "productData",
                   "schemaId",
-                  "dataIdentifier"
+                  "identifier",
+                  "loanApplicationId"
                 ],
                 "properties": {
-                  "metaData": {
+                  "metadata": {
                     "$ref": "#/components/schemas/MetaData"
                   },
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
                   "schemaId": {
                     "type": "string"
                   },
-                  "dataIdentifier": {
-                    "type": "object"
+                  "identifiers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "identifier",
+                        "identifierType"
+                      ],
+                      "properties": {
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "identifierType": {
+                          "type": "string"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -4842,7 +4900,9 @@
                 "required": [
                   "metadata",
                   "response",
-                  "productData"
+                  "productData",
+                  "loanApplicationId",
+                  "data"
                 ],
                 "properties": {
                   "metadata": {
@@ -4854,11 +4914,8 @@
                   "productData": {
                     "ref": "../../components/schemas/ProductData.yaml"
                   },
-                  "schemaId": {
+                  "loanApplicationId": {
                     "type": "string"
-                  },
-                  "dataIdentifier": {
-                    "type": "object"
                   },
                   "data": {
                     "type": "object"
@@ -4892,6 +4949,128 @@
           },
           "404": {
             "description": "Not found"
+          }
+        }
+      }
+    },
+    "/realms/dev/protocol/openid-connect/token": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://auth.ocen.network"
+          }
+        ],
+        "tags": [
+          "Auth Service"
+        ],
+        "summary": "Generate Access Token",
+        "description": "Exchanges client credentials for access token",
+        "operationId": "GenerateAccessToken",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "example": "client_credentials",
+                    "default": "client_credentials"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token issued successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "Bearer"
+                    },
+                    "expires_in": {
+                      "type": "integer"
+                    },
+                    "scope": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/realms/dev/protocol/openid-connect/certs": {
+      "get": {
+        "servers": [
+          {
+            "url": "https://auth.ocen.network"
+          }
+        ],
+        "tags": [
+          "Auth Service"
+        ],
+        "summary": "Get Certificate",
+        "description": "Exchanges client credentials for access token",
+        "operationId": "GetCertificate",
+        "responses": {
+          "200": {
+            "description": "JWKS fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "kty": {
+                            "type": "string",
+                            "example": "RSA"
+                          },
+                          "kid": {
+                            "type": "string",
+                            "example": "key-123"
+                          },
+                          "use": {
+                            "type": "string",
+                            "example": "sig"
+                          },
+                          "n": {
+                            "type": "string",
+                            "example": "base64url-encoded-modulus"
+                          },
+                          "e": {
+                            "type": "string",
+                            "example": "base64url-encoded-exponent"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -5981,7 +6160,9 @@
             "enum": [
               "CURRENT",
               "SAVING",
-              "OVERDRAFT"
+              "OVERDRAFT",
+              "ESCROW",
+              "WALLET"
             ]
           },
           "accountIFSC": {
