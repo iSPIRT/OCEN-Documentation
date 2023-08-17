@@ -73,5 +73,10 @@
         "name": "SIDBI",
         "image": "img/logos/sidbi.png",
         "href": "https://www.sidbi.in/en"
+    },
+    {
+        "name": "AXIS",
+        "image": "img/logos/axis.png",
+        "href": "https://www.axisbank.com/"
     }
 ]
