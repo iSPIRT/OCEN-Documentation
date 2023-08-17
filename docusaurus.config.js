@@ -50,6 +50,8 @@ const config = {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
           editUrl:
             'https://github.com/iSPIRT/OCEN-Documentation/tree/main/',
         },
