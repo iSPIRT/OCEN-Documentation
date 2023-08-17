@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Aspire Financiers",
+        "image": "img/logos/aspire.png",
+        "href": "https://aspirefinanciers.com/company-profile-1"
+    },
+    {
+        "name": "Vivifi India Finance",
+        "image": "img/logos/vivifi.png",
+        "href": "https://www.vivifin.com/"
+    },
+    {
+        "name": "Eko India Financial Services",
+        "image": "img/logos/eko.svg",
+        "href": "https://eko.in/"
+    },
+    {
+        "name": "KredX",
+        "image": "img/logos/kredx.png",
+        "href": "https://www.kredx.com/"
+    },
+    {
+        "name": "Human Ventures",
+        "image": "img/logos/humanventures.png",
+        "href": "http://humanventures.in/"
+    },
+    {
+        "name": "Spice Money",
+        "image": "img/logos/spicemoney.png",
+        "href": "https://www.spicemoney.com/"
+    },
+    {
+        "name": "Indifi",
+        "image": "img/logos/indifi.png",
+        "href": "https://www.indifi.com/"
+    }
+]
