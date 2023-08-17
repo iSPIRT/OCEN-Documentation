@@ -1,13 +1,20 @@
 ---
 slug: credit-bureau-pull-in-ocen
 title: Credit Bureau pull in OCEN 4.0
-authors: aravind
+authors: [wribhu, aravind]
 tags: [escrow, collections]
 ---
 
-OCEN 4.0, in the process of going live with Wave 1 participants. OCEN 4.0 introduces auction based model where each loan application will be shared with multiple lenders. Lenders rely heavily on Credit Bureau reports for loan underwriting and the traditional approach of doing a hard-pull by each lender may cause a reduction in borrowers score. A consented soft pull done by the borrower’s agent emerges as the ideal path as it protects borrower’s score , yet keeps the borrower experience and transaction success rates high. As a framework, OCEN 4.0 allows for 4 different ways of consent-based data-flows. Illustrated via the GST example.
+#### Highlights
+
+* OCEN 4.0 introduces auction based model where each loan application will be shared with multiple lenders. 
+* Lenders rely heavily on Credit Bureau reports for loan underwriting and the traditional approach of doing a hard-pull by each lender may cause a reduction in borrowers score. 
+* A consented soft pull done by the borrower’s agent emerges as the ideal path as it protects borrower’s score, yet keeps the borrower experience and transaction success rates high. 
+* As a framework, OCEN 4.0 allows for 4 different ways of consent-based data-flows. Illustrated via the GST example.
 
 <!--truncate-->
+
+# Introduction
 
 Lenders evaluate a borrower across two key aspects to assess the credit risk - the intent to pay, and the ability to pay. In traditional lending, most lenders underwrite using the credit bureau hard-pull to gauge the intent to pay.  Their underwriting models incorporate multiple inputs from the credit report which contains details on credit account information including payment history, account balances, when the account was opened, date of the last activity, credit limit on the account, debt collections and bankruptcies.
 
@@ -27,7 +34,7 @@ The envisaged flow under this model is
 
 ![Flow](./bureau_pull.png)
 
-# Leveraging other data for underwriting in OCEN 4.0
+# Leveraging other data for underwriting
 The above model specifically focuses on fetching the credit bureau data in the multi-lender auction-based model with OCEN 4.0, given the nuances of hard vs soft bureau pull. 
 
 For other types of data, OCEN 4.0 supports four distinct ways in which lenders can fetch consent-based datasets about the borrower for underwriting. 
@@ -45,7 +52,7 @@ For other types of data, OCEN 4.0 supports four distinct ways in which lenders c
 
 For a particular loan product, the data-sets required are captured at the product definition and are available in the Product Registry. E.g. Say a 45-day bullet repayment product for pharma retailers might require Bank statements, GST data and also credit bureau reports.
 
-# How is the data collected = Network Configuration
+**How is the data collected = Network Configuration**
 The above product may be available across multiple networks. And in some networks the GST data may be collected by the Borrower’s Agent and shared ahead with all lenders. While in some other networks, the BA may choose to let the GST data be collected by the lenders, individually.
 This ensures that within the network , there is a consistent UI-UX and data-flow across products.
 
