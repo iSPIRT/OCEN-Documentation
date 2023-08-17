@@ -1,11 +1,15 @@
 ---
 slug: new-headline-metrics-to-account-for-short-term-lending
 title: Looking beyond AUM - Case for new headline metrics to account for short-term lending
-authors: aravind
-tags: []
+authors: wribhu
+tags: [metrics, aum]
 ---
 
-AUM has traditionally held the spotlight as lenders' key metric, but AUM might not reflect the opportunity within short-term lending. With AA and OCEN 4.0, short-tenure lending offers growth potential for MSME lenders - tap into significant drop in operational and sourcing costs, while offering a significant scale. Need to look beyond AUM to truly value short-term loan pools.
+# Highlights
+
+* AUM has traditionally held the spotlight as lenders' key metric, but AUM might not reflect the opportunity within short-term lending. 
+* With AA and OCEN 4.0, short-tenure lending offers growth potential for MSME lenders - tap into significant drop in operational and sourcing costs, while offering a significant scale. 
+* Need to look beyond AUM to truly value short-term loan pools.
 
 <!--truncate-->
 

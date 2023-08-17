@@ -5,7 +5,11 @@ authors: rahul
 tags: [MSME, underwriting]
 ---
 
-Most small businesses need small-ticket short-tenure loans. New datasets enable lenders to make easier underwriting decisions for cash-flow based lending. OCEN 4.0 brings together specialized data partners to serve lenders for underwriting short-term small-ticket loans.
+# Highlights
+
+* Most small businesses need small-ticket short-tenure loans. 
+* New datasets enable lenders to make easier underwriting decisions for cash-flow based lending. 
+* OCEN 4.0 brings together specialized data partners to serve lenders for underwriting short-term small-ticket loans.
 
 <!--truncate-->
 

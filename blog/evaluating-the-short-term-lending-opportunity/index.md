@@ -5,7 +5,10 @@ authors: rahul
 tags: [lending, costing]
 ---
 
-Cost per loan has been the primary deterrent for lenders to add short-term lending in their portfolios. OCEN 4.0 offers a strong case for lenders with respect to small-ticket, short-tenure loans as they help minimize loan processing costs and provide easy access to new borrower segments at scale.
+# Highlights
+
+* Cost per loan has been the primary deterrent for lenders to add short-term lending in their portfolios. 
+* OCEN 4.0 offers a strong case for lenders with respect to small-ticket, short-tenure loans as they help minimize loan processing costs and provide easy access to new borrower segments at scale.
 
 <!--truncate-->
 
