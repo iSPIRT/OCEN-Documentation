@@ -4969,7 +4969,7 @@
         "requestBody": {
           "required": true,
           "content": {
-            "application/x-www-form-urlencoded": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
@@ -5067,6 +5067,62 @@
                         }
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/creditGuarantee/checkCredit": {
+      "post": {
+        "servers": [
+          {
+            "url": "https://creditguarantee.ocen.network"
+          }
+        ],
+        "tags": [
+          "Credit Guarantee"
+        ],
+        "summary": "Check Credit Guarantee",
+        "description": "This API will be called by the Loan agent to check if the customer is eligible for Credit Guarantee. The result of the API call is added to the Loan Application.",
+        "operationId": "CheckCreditGuarantee",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customerData": {
+                    "type": "object",
+                    "properties": {
+                      "pan": {
+                        "type": "string"
+                      },
+                      "udyamRegistrationNumber": {
+                        "type": "string"
+                      },
+                      "gstin": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Eligibility check successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "isCgtmseEligible": "boolean"
                   }
                 }
               }
@@ -5849,6 +5905,14 @@
           },
           "description": {
             "type": "string"
+          },
+          "creditGuarantees": {
+            "type": "object",
+            "properties": {
+              "cgtmseEligible": {
+                "type": "boolean"
+              }
+            }
           },
           "extensibleData": "./ExtensibleData.yaml"
         }
