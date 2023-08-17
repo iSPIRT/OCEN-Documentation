@@ -95,6 +95,11 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           { to: '/apis', label: 'API', position: 'left' },
+          {
+            to: '/contact',
+            position: 'right',
+            label: 'Contact',
+          },
         ],
       },
       footer: {
