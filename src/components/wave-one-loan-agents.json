@@ -33,5 +33,10 @@
         "name": "Indifi",
         "image": "img/logos/indifi.png",
         "href": "https://www.indifi.com/"
+    },
+    {
+        "name": "Finagg",
+        "image": "img/logos/finagg.png",
+        "href": "https://finagg.in/"
     }
 ]

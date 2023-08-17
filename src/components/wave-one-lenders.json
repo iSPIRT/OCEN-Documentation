@@ -63,5 +63,15 @@
         "name": "Union Bank of India",
         "image": "img/logos/unionbank.png",
         "href": "https://www.unionbankofindia.co.in/english/home.aspx"
+    },
+    {
+        "name": "AU Small Finance Bank",
+        "image": "img/logos/aubank.webp",
+        "href": "https://www.aubank.in/"
+    },
+    {
+        "name": "SIDBI",
+        "image": "img/logos/sidbi.png",
+        "href": "https://www.sidbi.in/en"
     }
 ]

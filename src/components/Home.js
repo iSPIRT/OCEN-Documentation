@@ -2,9 +2,9 @@ import { Hero, Button } from '@algolia/ui-library';
 import { useColorMode } from '@docusaurus/theme-common';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import React from 'react';
-import gemSahayPartners from './gem-sahay-partners.json';
 import waveOneLenders from './wave-one-lenders.json';
 import waveOneLoanAgents from './wave-one-loan-agents.json';
+import waveOneTSPs from './wave-one-tsps.json';
 import HowItWorks from './HowItWorks';
 import Spacer from '../components/Spacer';
 import Link from '@docusaurus/Link';
@@ -105,33 +105,6 @@ function Partners() {
       <Spacer height={10} />
       <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-xl leading-9 font-bold md:text-2xl md:leading-10">
-            GEM Sahay Partners
-          </h2>
-        </div>
-      </div>
-      <div className="flex flex-row flex-wrap gap-10 mt-10 justify-center">
-        {gemSahayPartners.map(({ name, href, image }) => (
-          <div
-            key={href}
-            className="col-span-2 flex justify-center py-2 px-2 text-center"
-          >
-            <a
-              href={href}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <img
-                className="inline-block w-28"
-                src={withBaseUrl(image)}
-              />
-            </a>
-          </div>
-        ))}
-      </div>
-      <Spacer height={30} />
-      <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl leading-9 font-extrabold md:text-3xl md:leading-10">
             OCEN 4.0 Wave One Partners
           </h2>
@@ -188,6 +161,34 @@ function Partners() {
             </a>
           </div>
         ))}
+
+      </div>
+      <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-xl leading-9 font-bold md:text-2xl md:leading-10">
+            TSPs
+          </h2>
+        </div>
+      </div>
+      <div className="flex flex-row flex-wrap gap-10 mt-10 justify-center">
+        {waveOneTSPs.map(({ name, href, image }) => (
+          <div
+            key={href}
+            className="col-span-2 flex justify-center py-2 px-2 text-center"
+          >
+            <a
+              href={href}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <img
+                className="inline-block w-28"
+                src={withBaseUrl(image)}
+              />
+            </a>
+          </div>
+        ))}
+
       </div>
     </div>
   </div >;
