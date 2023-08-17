@@ -1,11 +1,11 @@
 ---
 slug: escrow-based-collections-in-ocen
 title: Escrow based collections in OCEN 4.0
-authors: wribhu
+authors: [wribhu, aravind]
 tags: [escrow, collections]
 ---
 
-# Highlights
+#### Highlights
 
 * Loan collections are an essential element of the lender’s financial health and stability. 
 * OCEN 4.0 introduces specialized roles, including collections partners, that can help reduce the burden on lenders. 

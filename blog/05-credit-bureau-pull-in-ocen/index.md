@@ -1,11 +1,11 @@
 ---
 slug: credit-bureau-pull-in-ocen
 title: Credit Bureau pull in OCEN 4.0
-authors: wribhu
+authors: [wribhu, aravind]
 tags: [escrow, collections]
 ---
 
-# Highlights
+#### Highlights
 
 * OCEN 4.0 introduces auction based model where each loan application will be shared with multiple lenders. 
 * Lenders rely heavily on Credit Bureau reports for loan underwriting and the traditional approach of doing a hard-pull by each lender may cause a reduction in borrowers score. 
@@ -13,6 +13,8 @@ tags: [escrow, collections]
 * As a framework, OCEN 4.0 allows for 4 different ways of consent-based data-flows. Illustrated via the GST example.
 
 <!--truncate-->
+
+# Introduction
 
 Lenders evaluate a borrower across two key aspects to assess the credit risk - the intent to pay, and the ability to pay. In traditional lending, most lenders underwrite using the credit bureau hard-pull to gauge the intent to pay.  Their underwriting models incorporate multiple inputs from the credit report which contains details on credit account information including payment history, account balances, when the account was opened, date of the last activity, credit limit on the account, debt collections and bankruptcies.
 

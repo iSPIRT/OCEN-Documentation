@@ -1,11 +1,11 @@
 ---
 slug: new-headline-metrics-to-account-for-short-term-lending
 title: Looking beyond AUM - Case for new headline metrics to account for short-term lending
-authors: wribhu
+authors: [wribhu, aravind]
 tags: [metrics, aum]
 ---
 
-# Highlights
+#### Highlights
 
 * AUM has traditionally held the spotlight as lenders' key metric, but AUM might not reflect the opportunity within short-term lending. 
 * With AA and OCEN 4.0, short-tenure lending offers growth potential for MSME lenders - tap into significant drop in operational and sourcing costs, while offering a significant scale. 
@@ -14,13 +14,13 @@ tags: [metrics, aum]
 <!--truncate-->
 
 
-Short-term MSME lending - a significant growth opportunity
+# Short-term MSME lending - a significant growth opportunity
 
 The [RBI UK Sinha MSME Report](https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=47331) reveals that only 11% of MSMEs have access to formal credit channels, and an astonishing 60% of credit demand remains unmet. The most significant gap exists for small, short-term loans for MSMEs across various sectors. For example, in the business correspondent ecosystem, the retailers need balance in their eValue with the service provider. They would need a 1-day loan to top-up their balance when their balance runs low, which can be repaid the next day post cash-collection. Similarly, in the dairy value chain, village level entrepreneurs (VLE) aggregate milk for private dairies where their payouts happen once in 10 or 15 days. They need sachet loans for the 1-2 week period. 
 
 While short term MSME lending has long been neglected by traditional lenders, more and more lenders have shifted their attention to the untapped opportunity in this space. NBFCs have short-term loans as a growing contribution in their portfolio with a lot more Fintechs serving as Loan agents. Innovation in the India stack, such as availability of GST data on Account Aggregator and upcoming OCEN 4.0 continue to unlock more growth opportunities for banks and NBFCs. Lenders now have easy access to a large volume of credit-starved MSME borrowers, with significantly low operational costs of serving small ticket size loans. For example, the entire loan application processing in GeM SAHAY including the amount disbursement is completed in 7 minutes. 
 
-Metrics to account for the short-term lending opportunity
+# Metrics to account for the short-term lending opportunity
 
 When the unit economics of sourcing & onboarding a new loan was high, keeping the tenure long made sense. Hence focus on AUM was meaningful. But this may not hold true in short-tenure lending markets. As a snapshot metric, AUM does not showcase the business done over a period of time. As lenders shift their focus on short-term lending, they need better business metrics, beyond AUM (Assets under management), to accurately capture and measure the opportunity. 
 

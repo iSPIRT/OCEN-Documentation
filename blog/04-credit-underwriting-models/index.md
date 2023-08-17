@@ -1,17 +1,19 @@
 ---
 slug: credit-underwriting-models-of-msme
-title: Credit Underwriting Models of MSME’s
+title: Credit Underwriting Models of MSMEs
 authors: rahul
 tags: [MSME, underwriting]
 ---
 
-# Highlights
+#### Highlights
 
 * Most small businesses need small-ticket short-tenure loans. 
 * New datasets enable lenders to make easier underwriting decisions for cash-flow based lending. 
 * OCEN 4.0 brings together specialized data partners to serve lenders for underwriting short-term small-ticket loans.
 
 <!--truncate-->
+
+# Introduction
 
 Over the recent few years, the credit assessment processes and policies of Lending institutions (Banks and NBFC’s) for MSME’s have evolved very efficiently with the availability of newer data sets. Traditionally credit underwriting was done mostly based on the Borrower’s credit bureau reports, Annual financial statements (P&L, Balance Sheet, etc) and verification of Bank Statements. The loan products were also designed with longer tenure repayments similar to consumer loan products.
 
