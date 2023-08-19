@@ -1,8 +1,8 @@
 [
     {
-        "name": "Aspire Financiers",
+        "name": "Aspire",
         "image": "img/logos/aspire.png",
-        "href": "https://aspirefinanciers.com/company-profile-1"
+        "href": "https://www.letsaspire.in/"
     },
     {
         "name": "Vivifi India Finance",
@@ -25,23 +25,23 @@
         "href": "http://humanventures.in/"
     },
     {
-        "name": "Spice Money",
-        "image": "img/logos/spicemoney.png",
-        "href": "https://www.spicemoney.com/"
-    },
-    {
         "name": "Indifi",
         "image": "img/logos/indifi.png",
         "href": "https://www.indifi.com/"
     },
     {
-        "name": "Finagg",
-        "image": "img/logos/finagg.png",
-        "href": "https://finagg.in/"
-    },
-    {
         "name": "Pemant",
         "image": "img/logos/pemant.svg",
         "href": "https://pemant.in/"
+    },
+    {
+        "name": "Spice Money",
+        "image": "img/logos/spicemoney.png",
+        "href": "https://www.spicemoney.com/"
+    },
+    {
+        "name": "Finagg",
+        "image": "img/logos/finagg.png",
+        "href": "https://finagg.in/"
     }
 ]

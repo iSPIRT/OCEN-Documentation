@@ -12,6 +12,15 @@ import Link from '@docusaurus/Link';
 
 const RESOURCES = [
   {
+    url: 'https://economictimes.indiatimes.com/tech/technology/ocen-4-0-unveiled-to-facilitate-short-tenor-loans-to-msmes/articleshow/102835337.cms',
+    type: 'Article',
+    title: 'OCEN 4.0 unveiled to facilitate short-tenor loans to MSMEs - The Economic Times',
+    description:
+      'OCEN is a framework of application programming interfaces (APIs) for interaction between lenders, loan agents, collection and disbursement partners, derived data providers, and account aggregators.',
+    image: 'https://img.etimg.com/thumb/msid-102835370,width-650,height-488,imgsize-13264,,resizemode-75/msmes.jpg',
+    duration: '3 min',
+  },
+  {
     url: 'https://theprint.in/india/all-about-helping-rajni-tech-gurus-at-ispirt-quietly-power-indias-digital-revolution/1007652/',
     type: 'Article',
     title: '\'All about helping Rajni\' — tech gurus at iSPIRT quietly power India\'s digital revolution - The Print',
@@ -19,15 +28,6 @@ const RESOURCES = [
       'With the fictitious Rajni from rural India as its guiding light, iSPIRT has been using internet & software to change structure of country’s economy, with aim to improve quality of life.',
     image: 'https://static.theprint.in/wp-content/uploads/2022/06/ispirt-1.jpg?compress=true&quality=80&w=800&dpr=2.0',
     duration: '8 min',
-  },
-  {
-    url: 'https://economictimes.indiatimes.com/small-biz/money/an-ocen-of-opportunities-expectations-from-the-next-digital-public-good/articleshow/83253466.cms',
-    type: 'Article',
-    title: 'An OCEN of opportunities: Expectations from the next digital public good - The Economic Times',
-    description:
-      'With OCEN, lenders can create customized loan products to address the financial needs of small businesses and will be able to underwrite norms based on a new set of information be getting access to data that helps them monitor credit.',
-    image: 'https://img.etimg.com/thumb/msid-83253585,width-300,height-225,imgsize-120351,,resizemode-75/istock-1195693419.jpg',
-    duration: '3 min',
   },
   {
     url: 'https://www.financialexpress.com/industry/open-credit-enablement-network-will-democratise-credit-help-small-businesses-nandan-nilekani/2032123/',
