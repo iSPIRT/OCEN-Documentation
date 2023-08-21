@@ -14,7 +14,7 @@
         "tags": [
           "Paticipant Registry"
         ],
-        "summary": "Lookup Query For Entities",
+        "summary": "Lookup Query For Participant Details",
         "operationId": "entityLookup",
         "parameters": [
           {
@@ -25,7 +25,7 @@
           }
         ],
         "requestBody": {
-          "description": "Query LA, lender, data-provider using properties",
+          "description": "Query BA, lender, data-provider using properties",
           "content": {
             "application/json": {
               "schema": {
@@ -87,16 +87,19 @@
       "EntityType": {
         "name": "type",
         "in": "path",
-        "description": "Type of the entity e.g. Loan Agent(LA), Lender, Data Provider",
+        "description": "Type of the entity e.g. Borrower Agent(BA), Lender, Data Provider",
         "schema": {
           "type": "string",
           "enum": [
-            "LA",
-            "lender",
-            "data-provider"
+            "LOAN_AGENT",
+            "LENDER",
+            "DERIVED_DATA_PROVIDER",
+            "COLLECTIONS_PARTNER",
+            "KYC_PARTNER",
+            "DISBURSEMENT_PARTNER"
           ]
         },
-        "example": "LA",
+        "example": "LOAN_AGENT",
         "required": true
       }
     },
@@ -163,7 +166,7 @@
             "type": "string",
             "description": "type of the entity",
             "enum": [
-              "LA",
+              "BA",
               "lender",
               "data-provider"
             ]
@@ -218,7 +221,7 @@
           "baseUrl": {
             "type": "string",
             "description": "base url of the module in eco-system. The typical format of a baseUrl is as follows.<br /> ``` <fqdn>.<extension> ``` where, <br/> <table> <thead> <tr> <td>Key</th> <td>Description</th> </tr> </thead> <tbody> <tr> <td>fqdn</th> <td>Fully qualified domain name</th> </tr> <tr> <td>extn</td> <td>Domain Extension</td> </tr> </tbody> </table> The domain name of the subscriber must be an ```https``` domain with a TLD extension and a valid SSL certificate from a trusted certificate authority",
-            "example": "https://LA.company.com"
+            "example": "https://BA.company.com"
           },
           "ips": {
             "type": "array",

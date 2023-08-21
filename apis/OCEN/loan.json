@@ -11,11 +11,6 @@
   "paths": {
     "/v4.0.0alpha/loanApplications/createLoanRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Create Loan Applications"
         ],
@@ -74,11 +69,6 @@
     },
     "/v4.0.0alpha/loanApplications/createLoanResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Create Loan Applications"
         ],
@@ -149,11 +139,6 @@
     },
     "/v4.0.0alpha/consent/consentHandleRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Consent"
         ],
@@ -211,11 +196,6 @@
     },
     "/v4.0.0alpha/consent/consentHandleResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Consent"
         ],
@@ -276,11 +256,6 @@
     },
     "/v4.0.0alpha/consent/journeyNotify": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Consent"
         ],
@@ -338,11 +313,6 @@
     },
     "/v4.0.0alpha/consent/statusRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Consent"
         ],
@@ -391,11 +361,6 @@
     },
     "/v4.0.0alpha/consent/statusResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Consent"
         ],
@@ -456,11 +421,6 @@
     },
     "/v4.0.0alpha/offers/generateOffersRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Offers"
         ],
@@ -523,11 +483,6 @@
     },
     "/v4.0.0alpha/offers/generateOffersResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Offers"
         ],
@@ -591,11 +546,6 @@
     },
     "/v4.0.0alpha/offers/sendAdditionalDocumentsRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Offers"
         ],
@@ -675,11 +625,6 @@
     },
     "/v4.0.0alpha/offers/sendAdditionalDocumentsResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Offers"
         ],
@@ -743,11 +688,6 @@
     },
     "/v4.0.0alpha/offers/setOffersRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Offers"
         ],
@@ -808,11 +748,6 @@
     },
     "/v4.0.0alpha/offers/setOffersResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Offers"
         ],
@@ -880,11 +815,6 @@
     },
     "/v4.0.0alpha/kyc/triggerKycRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "KYC"
         ],
@@ -948,11 +878,6 @@
     },
     "/v4.0.0alpha/kyc/triggerKycResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "KYC"
         ],
@@ -1020,11 +945,6 @@
     },
     "/v4.0.0alpha/kyc/kycStatusRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "KYC"
         ],
@@ -1090,11 +1010,6 @@
     },
     "/v4.0.0alpha/kyc/kycStatusResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "KYC"
         ],
@@ -1158,11 +1073,6 @@
     },
     "/v4.0.0alpha/loanAcceptance/loanAgreementRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Loan Acceptance"
         ],
@@ -1219,11 +1129,6 @@
     },
     "/v4.0.0alpha/loanAcceptance/LoanAgreementResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Loan Acceptance"
         ],
@@ -1306,11 +1211,6 @@
     },
     "/v4.0.0alpha/loanAcceptance/triggerLoanAcceptanceRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Loan Acceptance"
         ],
@@ -1393,11 +1293,6 @@
     },
     "/v4.0.0alpha/loanAcceptance/triggerLoanAcceptanceResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Loan Acceptance"
         ],
@@ -1480,11 +1375,6 @@
     },
     "/v4.0.0alpha/loanAcceptance/verifyLoanAcceptanceRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Loan Acceptance"
         ],
@@ -1563,11 +1453,6 @@
     },
     "/v4.0.0alpha/loanAcceptance/verifyLoanAcceptanceResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Loan Acceptance"
         ],
@@ -1652,11 +1537,6 @@
     },
     "/v4.0.0alpha/grantLoan/grantLoanRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Grant Loan"
         ],
@@ -1716,11 +1596,6 @@
     },
     "/v4.0.0alpha/grantLoan/grantLoanResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Grant Loan"
         ],
@@ -1833,11 +1708,6 @@
     },
     "/v4.0.0alpha/disbursement/setRepaymentPlanRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Set Repayment"
         ],
@@ -1907,11 +1777,6 @@
     },
     "/v4.0.0alpha/disbursement/setRepaymentPlanResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Set Repayment"
         ],
@@ -1988,11 +1853,6 @@
     },
     "/v4.0.0alpha/disbursement/setRepaymentPlanStatusRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Set Repayment"
         ],
@@ -2059,11 +1919,6 @@
     },
     "/v4.0.0alpha/disbursement/setRepaymentPlanStatusResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Set Repayment"
         ],
@@ -2140,11 +1995,6 @@
     },
     "/v4.0.0alpha/disbursement/setDisbursementAccountRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Disbursement"
         ],
@@ -2205,11 +2055,6 @@
     },
     "/v4.0.0alpha/disbursement/setDisbursementAccountResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Disbursement"
         ],
@@ -2293,11 +2138,6 @@
     },
     "/v4.0.0alpha/disbursement/triggerDisbursementRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Disbursement"
         ],
@@ -2361,11 +2201,6 @@
     },
     "/v4.0.0alpha/disbursement/triggerDisbursementResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Disbursement"
         ],
@@ -2433,11 +2268,6 @@
     },
     "/v4.0.0alpha/disbursement/triggerDisbursementStatusRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Disbursement"
         ],
@@ -2501,11 +2331,6 @@
     },
     "/v4.0.0alpha/disbursement/triggerDisbursementStatusResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Disbursement"
         ],
@@ -2573,11 +2398,6 @@
     },
     "/v4.0.0alpha/repayment/triggerRepaymentRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Trigger Repayment"
         ],
@@ -2638,11 +2458,6 @@
     },
     "/v4.0.0alpha/repayment/triggerRepaymentResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Trigger Repayment"
         ],
@@ -2707,11 +2522,6 @@
     },
     "/v4.0.0alpha/repayment/triggerRepaymentStatusRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Trigger Repayment"
         ],
@@ -2772,11 +2582,6 @@
     },
     "/v4.0.0alpha/repayment/triggerRepaymentStatusResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Trigger Repayment"
         ],
@@ -2841,11 +2646,6 @@
     },
     "/v4.0.0alpha/repayment/confirmRepaymentRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Trigger Repayment"
         ],
@@ -2914,11 +2714,6 @@
     },
     "/v4.0.0alpha/loanDetails/getloanRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -2978,11 +2773,6 @@
     },
     "/v4.0.0alpha/loanDetails/getloanResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -3133,11 +2923,6 @@
     },
     "/v4.0.0alpha/loanDetails/listloansRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -3200,11 +2985,6 @@
     },
     "/v4.0.0alpha/loanDetails/listLoansResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -3295,11 +3075,6 @@
     },
     "/v4.0.0alpha/loanDetails/loanStatementRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -3362,11 +3137,6 @@
     },
     "/v4.0.0alpha/loanDetails/loanStatementResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -3434,11 +3204,6 @@
     },
     "/v4.0.0alpha/loanDetails/loanStatementSummaryRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -3498,11 +3263,6 @@
     },
     "/v4.0.0alpha/loanDetails/loanStatementSummaryResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Loan Details"
         ],
@@ -3653,11 +3413,6 @@
     },
     "/v4.0.0alpha/disbursementPartner/getCatalogueRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.disbursementpartner.com"
-          }
-        ],
         "tags": [
           "Disbursement Partner"
         ],
@@ -3724,11 +3479,6 @@
     },
     "/v4.0.0alpha/disbursementPartner/getCatalogueResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Disbursement Partner"
         ],
@@ -3790,11 +3540,6 @@
     },
     "/v4.0.0alpha/disbursementPartner/finaliseOrderRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.disbursementpartner.com"
-          }
-        ],
         "tags": [
           "Disbursement Partner"
         ],
@@ -3861,11 +3606,6 @@
     },
     "/v4.0.0alpha/disbursementPartner/finaliseOrderResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Disbursement Partner"
         ],
@@ -3962,11 +3702,6 @@
     },
     "/v4.0.0alpha/collectionsPartner/getCollectionsStatusRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.collectionspartner.com"
-          }
-        ],
         "tags": [
           "Collections"
         ],
@@ -4027,11 +3762,6 @@
     },
     "/v4.0.0alpha/collectionsPartner/getCollectionsStatusResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Collections"
         ],
@@ -4096,11 +3826,6 @@
     },
     "/v4.0.0alpha/collectionsPartner/getPaymentMethodsRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.collectionspartner.com"
-          }
-        ],
         "tags": [
           "Collections"
         ],
@@ -4153,11 +3878,6 @@
     },
     "/v4.0.0alpha/collectionsPartner/getPaymentMethodsResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Collections"
         ],
@@ -4216,11 +3936,6 @@
     },
     "/v4.0.0alpha/collectionsPartner/triggerCollectionsRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.collectionspartner.com"
-          }
-        ],
         "tags": [
           "Collections"
         ],
@@ -4284,11 +3999,6 @@
     },
     "/v4.0.0alpha/collectionsPartner/triggerCollectionsResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.borrowagent.com"
-          }
-        ],
         "tags": [
           "Collections"
         ],
@@ -4353,11 +4063,6 @@
     },
     "/v4.0.0alpha/kycPartner/initiateKYCRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.kycpartner.com"
-          }
-        ],
         "tags": [
           "KYC Partner"
         ],
@@ -4421,11 +4126,6 @@
     },
     "/v4.0.0alpha/kycPartner/initiateKYCResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "KYC Partner"
         ],
@@ -4493,11 +4193,6 @@
     },
     "/v4.0.0alpha/kycPartner/statusKYCRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.kycpartner.com"
-          }
-        ],
         "tags": [
           "KYC Partner"
         ],
@@ -4563,11 +4258,6 @@
     },
     "/v4.0.0alpha/kycPartner/statusKYCResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "KYC Partner"
         ],
@@ -4635,11 +4325,6 @@
     },
     "/v4.0.0alpha/derivedData/getSchemaRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.deriveddataprovider.com"
-          }
-        ],
         "tags": [
           "Data Provider"
         ],
@@ -4693,11 +4378,6 @@
     },
     "/v4.0.0alpha/derivedData/getSchemaResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Data Provider"
         ],
@@ -4796,11 +4476,6 @@
     },
     "/v4.0.0alpha/derivedData/getDataRequest": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.deriveddataprovider.com"
-          }
-        ],
         "tags": [
           "Data Provider"
         ],
@@ -4880,11 +4555,6 @@
     },
     "/v4.0.0alpha/derivedData/getDataResponse": {
       "post": {
-        "servers": [
-          {
-            "url": "https://ocenapis.lender.com"
-          }
-        ],
         "tags": [
           "Data Provider"
         ],
@@ -4955,11 +4625,6 @@
     },
     "/realms/dev/protocol/openid-connect/token": {
       "post": {
-        "servers": [
-          {
-            "url": "https://auth.ocen.network"
-          }
-        ],
         "tags": [
           "Auth Service"
         ],
@@ -5020,11 +4685,6 @@
     },
     "/realms/dev/protocol/openid-connect/certs": {
       "get": {
-        "servers": [
-          {
-            "url": "https://auth.ocen.network"
-          }
-        ],
         "tags": [
           "Auth Service"
         ],
@@ -5077,11 +4737,6 @@
     },
     "/v4.0.0alpha/creditGuarantee/checkCredit": {
       "post": {
-        "servers": [
-          {
-            "url": "https://creditguarantee.ocen.network"
-          }
-        ],
         "tags": [
           "Credit Guarantee"
         ],
