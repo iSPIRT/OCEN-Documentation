@@ -9,6 +9,57 @@
     }
   },
   "paths": {
+    "/v4.0.0alpha/creditGuarantee/checkCredit": {
+      "post": {
+        "tags": [
+          "Credit Guarantee"
+        ],
+        "summary": "Check Credit Guarantee",
+        "description": "This API will be called by the Loan agent to check if the customer is eligible for Credit Guarantee. The result of the API call is added to the Loan Application.",
+        "operationId": "CheckCreditGuarantee",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customerData": {
+                    "type": "object",
+                    "properties": {
+                      "pan": {
+                        "type": "string"
+                      },
+                      "udyamRegistrationNumber": {
+                        "type": "string"
+                      },
+                      "gstin": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Eligibility check successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "isCgtmseEligible": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v4.0.0alpha/loanApplications/createLoanRequest": {
       "post": {
         "tags": [
@@ -3411,6 +3462,929 @@
         }
       }
     },
+    "/v4.0.0alpha/collections/getCollectionsStatusRequest": {
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Trigger Repayment Status Request",
+        "description": "This API is used by Lender on the Collections Partner to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Agent receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
+        "operationId": "triggerRepaymentStatusRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collectionsgetCollectionsStatusResponse": {
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Trigger Repayment Status Response",
+        "description": "This API is used by Collections Partner on the Lender to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Partner receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
+        "operationId": "triggerRepaymentStatusResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "response",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collections/getPaymentMethodsRequest": {
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Get Payment Methods Request",
+        "description": "This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
+        "operationId": "GetPaymentMethodsRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collections/getPaymentMethodsResponse": {
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Get Payment Methods Response",
+        "description": "This endpoint is initiated by the Collections partner on the BA as a response to Get Payment Methods returning all Collection Options available.",
+        "operationId": "GetPaymentMethodsResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "paymentMethods": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PaymentMethod"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collections/triggerCollectionsRequest": {
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Trigger Collections Request",
+        "description": "This API is invoked by the Lender to inform the Collections partner to trigger a repayment. This API will only be called when payment is routed to lender via collection agent.",
+        "operationId": "triggerCollectionsRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "paymentMethod": {
+                    "$ref": "#/components/schemas/PaymentMethod"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collections/triggerCollectionsResponse": {
+      "post": {
+        "tags": [
+          "Collections"
+        ],
+        "summary": "Trigger Collections Response",
+        "description": "This API is invoked by the collections partner to the Lender. The collections partner generates a collection id which will be used by the Lender to query the status of collections.",
+        "operationId": "triggerCollectionsResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "response",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedDataPartner/getSchemaRequest": {
+      "post": {
+        "tags": [
+          "Data Provider Partner"
+        ],
+        "summary": "Get Schema Request",
+        "description": "Accepts a get Derived Data Schema Request to be used called by the Lender",
+        "operationId": "getSchemaRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "schemaId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedDataPartner/getSchemaResponse": {
+      "post": {
+        "tags": [
+          "Data Provider Partner"
+        ],
+        "summary": "Get Schema Response",
+        "description": "This api returns the expected schema from the derived data provider to the lender",
+        "operationId": "getSchemaResponse",
+        "requestBody": {
+          "description": "Response by Derived Data Provider to Lender containing the requested Schema",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "availableSchemas"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "availableSchemas": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "schemaId",
+                        "identifiers"
+                      ],
+                      "properties": {
+                        "schemaId": {
+                          "type": "string",
+                          "schema": "object",
+                          "description": "The schema object defining the data schema and identifier schema"
+                        },
+                        "identifiers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "identifier",
+                              "identifierType"
+                            ],
+                            "properties": {
+                              "identifier": {
+                                "type": "string"
+                              },
+                              "identifierType": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Response Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ack"
+                  ],
+                  "properties": {
+                    "ack": {
+                      "$ref": "#/components/schemas/Ack"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedDataPartner/getDataRequest": {
+      "post": {
+        "tags": [
+          "Data Provider Partner"
+        ],
+        "summary": "Derived Data by identifiers and schema id",
+        "description": "Accepts a Fetch request for Derived Data with the help of Schema Id and identifiers sent in the request. This api will be called by the lender on the Derived Data Provider.",
+        "operationId": "getDerivedData",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "schemaId",
+                  "identifier",
+                  "loanApplicationId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  },
+                  "identifiers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "identifier",
+                        "identifierType"
+                      ],
+                      "properties": {
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "identifierType": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/derivedDataPartner/getDataResponse": {
+      "post": {
+        "tags": [
+          "Data Provider Partner"
+        ],
+        "summary": "Get Derived Data Response",
+        "description": "This api returns the expected data from the derived data provider to the lender",
+        "operationId": "getDerivedDataResponse",
+        "requestBody": {
+          "description": "Response by Derived Data Provider to Lender containing the requested derived data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplicationId",
+                  "data"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "ref": "../../components/schemas/ProductData.yaml"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Response Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ack"
+                  ],
+                  "properties": {
+                    "ack": {
+                      "$ref": "#/components/schemas/Ack"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/initiateKYCRequest": {
+      "post": {
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "Initiate KYC Partner Request",
+        "description": "This API is called by lender to KYC partner initiate the KYC process of the borrower after successfully accepting the final offer.",
+        "operationId": "InitiateKYCRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCPartnerDetailsRequest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/initiateKYCResponse": {
+      "post": {
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "Initiate KYC Partner Response",
+        "description": "This API is called by the KYS partnet in response to initiate KYC requests. The partner returns the next step for KYC details submission. The KYC process will be carried out by the partner.",
+        "operationId": "InitiateKYCResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCPartnerDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/statusKYCRequest": {
+      "post": {
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "KYC Partner Status Request",
+        "description": "This API is called by Lender to get the KYC status from partner. This API will be triggered just after the user completes the KYC process.",
+        "operationId": "KYCStatusRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "kyc": {
+                    "type": "object",
+                    "properties": {
+                      "kycRefNo": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kycPartner/statusKYCResponse": {
+      "post": {
+        "tags": [
+          "KYC Partner"
+        ],
+        "summary": "KYC Partner Status Response",
+        "description": "This API is called by the KYC partnet in response to initiate KYC response.",
+        "operationId": "StatusKYCResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "response",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "$ref": "#/components/schemas/KYCPartnerDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v4.0.0alpha/disbursementPartner/getCatalogueRequest": {
       "post": {
         "tags": [
@@ -3700,248 +4674,14 @@
         }
       }
     },
-    "/v4.0.0alpha/collectionsPartner/getCollectionsStatusRequest": {
+    "/v4.0.0alpha/collectionPartner/setupCollectionAccountRequest": {
       "post": {
         "tags": [
-          "Collections"
+          "Collections Partner"
         ],
-        "summary": "Trigger Repayment Status Request",
-        "description": "This API is used by Lender on the Collections Partner to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Agent receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
-        "operationId": "triggerRepaymentStatusRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "payment",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collectionsPartner/getCollectionsStatusResponse": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Trigger Repayment Status Response",
-        "description": "This API is used by Collections Partner on the Lender to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Partner receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
-        "operationId": "triggerRepaymentStatusResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "payment",
-                  "response",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collectionsPartner/getPaymentMethodsRequest": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Get Payment Methods Request",
+        "summary": "Setup Collection Account Request",
         "description": "This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
-        "operationId": "GetPaymentMethodsRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collectionsPartner/getPaymentMethodsResponse": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Get Payment Methods Response",
-        "description": "This endpoint is initiated by the Collections partner on the BA as a response to Get Payment Methods returning all Collection Options available.",
-        "operationId": "GetPaymentMethodsResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "paymentMethods": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/PaymentMethod"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collectionsPartner/triggerCollectionsRequest": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Trigger Collections Request",
-        "description": "This API is invoked by the Lender to inform the Collections partner to trigger a repayment. This API will only be called when payment is routed to lender via collection agent.",
-        "operationId": "triggerCollectionsRequest",
+        "operationId": "SetupCollectionAccountRequest",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3950,7 +4690,8 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "payment",
+                  "paymentMethod",
+                  "loanApplication",
                   "loanId"
                 ],
                 "properties": {
@@ -3960,14 +4701,12 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
-                  },
+                  "loanId": "string",
                   "paymentMethod": {
                     "$ref": "#/components/schemas/PaymentMethod"
                   },
-                  "loanId": {
-                    "type": "string"
+                  "loanApplication": {
+                    "$ref": "#/components/schemas/LoanApplication"
                   }
                 }
               }
@@ -3997,14 +4736,14 @@
         }
       }
     },
-    "/v4.0.0alpha/collectionsPartner/triggerCollectionsResponse": {
+    "/v4.0.0alpha/collectionPartner/setupCollectionAccountResponse": {
       "post": {
         "tags": [
-          "Collections"
+          "Collections Partner"
         ],
-        "summary": "Trigger Collections Response",
-        "description": "This API is invoked by the collections partner to the Lender. The collections partner generates a collection id which will be used by the Lender to query the status of collections.",
-        "operationId": "triggerCollectionsResponse",
+        "summary": "Setup Collection Account Response",
+        "description": "This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
+        "operationId": "SetupCollectionAccountResponse",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4013,8 +4752,9 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "payment",
-                  "response",
+                  "paymentMethod",
+                  "loanApplication",
+                  "loanAccount",
                   "loanId"
                 ],
                 "properties": {
@@ -4024,14 +4764,15 @@
                   "productData": {
                     "$ref": "#/components/schemas/ProductData"
                   },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
+                  "loanId": "string",
+                  "paymentMethod": {
+                    "$ref": "#/components/schemas/PaymentMethod"
                   },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
+                  "loanApplication": {
+                    "$ref": "#/components/schemas/LoanApplication"
                   },
-                  "loanId": {
-                    "type": "string"
+                  "loanAccount": {
+                    "$ref": "#/components/schemas/AccountDetails"
                   }
                 }
               }
@@ -4054,731 +4795,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/kycPartner/initiateKYCRequest": {
-      "post": {
-        "tags": [
-          "KYC Partner"
-        ],
-        "summary": "Initiate KYC Partner Request",
-        "description": "This API is called by lender to KYC partner initiate the KYC process of the borrower after successfully accepting the final offer.",
-        "operationId": "InitiateKYCRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
-                  },
-                  "kyc": {
-                    "$ref": "#/components/schemas/KYCPartnerDetailsRequest"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/kycPartner/initiateKYCResponse": {
-      "post": {
-        "tags": [
-          "KYC Partner"
-        ],
-        "summary": "Initiate KYC Partner Response",
-        "description": "This API is called by the KYS partnet in response to initiate KYC requests. The partner returns the next step for KYC details submission. The KYC process will be carried out by the partner.",
-        "operationId": "InitiateKYCResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
-                  },
-                  "kyc": {
-                    "$ref": "#/components/schemas/KYCPartnerDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/kycPartner/statusKYCRequest": {
-      "post": {
-        "tags": [
-          "KYC Partner"
-        ],
-        "summary": "KYC Partner Status Request",
-        "description": "This API is called by Lender to get the KYC status from partner. This API will be triggered just after the user completes the KYC process.",
-        "operationId": "KYCStatusRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string"
-                  },
-                  "kyc": {
-                    "type": "object",
-                    "properties": {
-                      "kycRefNo": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/kycPartner/statusKYCResponse": {
-      "post": {
-        "tags": [
-          "KYC Partner"
-        ],
-        "summary": "KYC Partner Status Response",
-        "description": "This API is called by the KYC partnet in response to initiate KYC response.",
-        "operationId": "StatusKYCResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData",
-                  "loanApplicationId",
-                  "kyc"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string",
-                    "examples": [
-                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
-                    ]
-                  },
-                  "kyc": {
-                    "$ref": "#/components/schemas/KYCPartnerDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getSchemaRequest": {
-      "post": {
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Get Schema Request",
-        "description": "Accepts a get Derived Data Schema Request to be used called by the Lender",
-        "operationId": "getSchemaRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "schemaId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getSchemaResponse": {
-      "post": {
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Get Schema Response",
-        "description": "This api returns the expected schema from the derived data provider to the lender",
-        "operationId": "getSchemaResponse",
-        "requestBody": {
-          "description": "Response by Derived Data Provider to Lender containing the requested Schema",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData",
-                  "availableSchemas"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "availableSchemas": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "required": [
-                        "schemaId",
-                        "identifiers"
-                      ],
-                      "properties": {
-                        "schemaId": {
-                          "type": "string",
-                          "schema": "object",
-                          "description": "The schema object defining the data schema and identifier schema"
-                        },
-                        "identifiers": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "required": [
-                              "identifier",
-                              "identifierType"
-                            ],
-                            "properties": {
-                              "identifier": {
-                                "type": "string"
-                              },
-                              "identifierType": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Response Received",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ack"
-                  ],
-                  "properties": {
-                    "ack": {
-                      "$ref": "#/components/schemas/Ack"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request"
-          },
-          "404": {
-            "description": "Not found"
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getDataRequest": {
-      "post": {
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Derived Data by identifiers and schema id",
-        "description": "Accepts a Fetch request for Derived Data with the help of Schema Id and identifiers sent in the request. This api will be called by the lender on the Derived Data Provider.",
-        "operationId": "getDerivedData",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "schemaId",
-                  "identifier",
-                  "loanApplicationId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanApplicationId": {
-                    "type": "string"
-                  },
-                  "schemaId": {
-                    "type": "string"
-                  },
-                  "identifiers": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "required": [
-                        "identifier",
-                        "identifierType"
-                      ],
-                      "properties": {
-                        "identifier": {
-                          "type": "string"
-                        },
-                        "identifierType": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/derivedData/getDataResponse": {
-      "post": {
-        "tags": [
-          "Data Provider"
-        ],
-        "summary": "Get Derived Data Response",
-        "description": "This api returns the expected data from the derived data provider to the lender",
-        "operationId": "getDerivedDataResponse",
-        "requestBody": {
-          "description": "Response by Derived Data Provider to Lender containing the requested derived data",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "response",
-                  "productData",
-                  "loanApplicationId",
-                  "data"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "productData": {
-                    "ref": "../../components/schemas/ProductData.yaml"
-                  },
-                  "loanApplicationId": {
-                    "type": "string"
-                  },
-                  "data": {
-                    "type": "object"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Response Received",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ack"
-                  ],
-                  "properties": {
-                    "ack": {
-                      "$ref": "#/components/schemas/Ack"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request"
-          },
-          "404": {
-            "description": "Not found"
-          }
-        }
-      }
-    },
-    "/realms/dev/protocol/openid-connect/token": {
-      "post": {
-        "tags": [
-          "Auth Service"
-        ],
-        "summary": "Generate Access Token",
-        "description": "Exchanges client credentials for access token",
-        "operationId": "GenerateAccessToken",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "grant_type": {
-                    "type": "string",
-                    "example": "client_credentials",
-                    "default": "client_credentials"
-                  },
-                  "client_id": {
-                    "type": "string"
-                  },
-                  "client_secret": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Token issued successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "access_token": {
-                      "type": "string"
-                    },
-                    "token_type": {
-                      "type": "string",
-                      "example": "Bearer"
-                    },
-                    "expires_in": {
-                      "type": "integer"
-                    },
-                    "scope": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/realms/dev/protocol/openid-connect/certs": {
-      "get": {
-        "tags": [
-          "Auth Service"
-        ],
-        "summary": "Get Certificate",
-        "description": "Exchanges client credentials for access token",
-        "operationId": "GetCertificate",
-        "responses": {
-          "200": {
-            "description": "JWKS fetched successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "keys": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "kty": {
-                            "type": "string",
-                            "example": "RSA"
-                          },
-                          "kid": {
-                            "type": "string",
-                            "example": "key-123"
-                          },
-                          "use": {
-                            "type": "string",
-                            "example": "sig"
-                          },
-                          "n": {
-                            "type": "string",
-                            "example": "base64url-encoded-modulus"
-                          },
-                          "e": {
-                            "type": "string",
-                            "example": "base64url-encoded-exponent"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/creditGuarantee/checkCredit": {
-      "post": {
-        "tags": [
-          "Credit Guarantee"
-        ],
-        "summary": "Check Credit Guarantee",
-        "description": "This API will be called by the Loan agent to check if the customer is eligible for Credit Guarantee. The result of the API call is added to the Loan Application.",
-        "operationId": "CheckCreditGuarantee",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "customerData": {
-                    "type": "object",
-                    "properties": {
-                      "pan": {
-                        "type": "string"
-                      },
-                      "udyamRegistrationNumber": {
-                        "type": "string"
-                      },
-                      "gstin": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Eligibility check successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "isCgtmseEligible": "boolean"
-                  }
                 }
               }
             }
@@ -4787,23 +4803,15 @@
       }
     }
   },
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      },
-      "oAuth2Client": {
-        "type": "oauth2",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "https://ocen.com/auth/oauth2/token/",
-            "scopes": {}
-          }
-        }
-      }
+  "security": [
+    {
+      "bearerAuth": []
     },
+    {
+      "oAuth2Client": []
+    }
+  ],
+  "components": {
     "schemas": {
       "MetaData": {
         "title": "metadata",
@@ -6441,102 +6449,6 @@
           }
         }
       },
-      "CommerceProductQuantity": {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "examples": [
-              "100"
-            ]
-          },
-          "unit": {
-            "type": "string",
-            "examples": [
-              "KG"
-            ]
-          }
-        },
-        "extensibleData": {
-          "$ref": "./ExtensibleData.yaml"
-        }
-      },
-      "CommerceProduct": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "description",
-          "price",
-          "currency",
-          "accountDetails"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              ""
-            ]
-          },
-          "name": {
-            "type": "string",
-            "examples": [
-              "Organic Vermicompost Fertilizer Manure 10 KG"
-            ]
-          },
-          "description": {
-            "type": "string",
-            "examples": [
-              "Using various species of worms, usually red wigglers, white worms, and other earthworms, to create a mixture of decomposing vegetable or food waste."
-            ]
-          },
-          "price": {
-            "type": "string",
-            "examples": [
-              "1000"
-            ]
-          },
-          "thumbnail": {
-            "type": "string",
-            "examples": [
-              "http://www.example.com/images/1.jpg"
-            ]
-          },
-          "images": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "examples": [
-                "http://www.example.com/images/1.jpg"
-              ]
-            }
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "examples": [
-                "Organic",
-                "Fertilizer",
-                "Manure"
-              ]
-            }
-          },
-          "currency": {
-            "type": "string",
-            "examples": [
-              "INR"
-            ]
-          },
-          "quantity": {
-            "$ref": "#/components/schemas/CommerceProductQuantity",
-            "examples": [
-              "Will be available quantity as a part of the Catalogue Request",
-              "Will be ordered quantity as a part of the Finalise Order Request"
-            ]
-          }
-        }
-      },
       "KYCPartnerDetailsRequest": {
         "type": "object",
         "properties": {
@@ -6765,15 +6677,103 @@
             "$ref": "#/components/schemas/ExtensibleData"
           }
         }
+      },
+      "CommerceProductQuantity": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "examples": [
+              "100"
+            ]
+          },
+          "unit": {
+            "type": "string",
+            "examples": [
+              "KG"
+            ]
+          }
+        },
+        "extensibleData": {
+          "$ref": "./ExtensibleData.yaml"
+        }
+      },
+      "CommerceProduct": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "price",
+          "currency",
+          "accountDetails"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              ""
+            ]
+          },
+          "name": {
+            "type": "string",
+            "examples": [
+              "Organic Vermicompost Fertilizer Manure 10 KG"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "examples": [
+              "Using various species of worms, usually red wigglers, white worms, and other earthworms, to create a mixture of decomposing vegetable or food waste."
+            ]
+          },
+          "price": {
+            "type": "string",
+            "examples": [
+              "1000"
+            ]
+          },
+          "thumbnail": {
+            "type": "string",
+            "examples": [
+              "http://www.example.com/images/1.jpg"
+            ]
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "http://www.example.com/images/1.jpg"
+              ]
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "Organic",
+                "Fertilizer",
+                "Manure"
+              ]
+            }
+          },
+          "currency": {
+            "type": "string",
+            "examples": [
+              "INR"
+            ]
+          },
+          "quantity": {
+            "$ref": "#/components/schemas/CommerceProductQuantity",
+            "examples": [
+              "Will be available quantity as a part of the Catalogue Request",
+              "Will be ordered quantity as a part of the Finalise Order Request"
+            ]
+          }
+        }
       }
     }
-  },
-  "security": [
-    {
-      "bearerAuth": []
-    },
-    {
-      "oAuth2Client": []
-    }
-  ]
+  }
 }
