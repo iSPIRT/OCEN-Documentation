@@ -3462,367 +3462,6 @@
         }
       }
     },
-    "/v4.0.0alpha/collections/getCollectionsStatusRequest": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Trigger Repayment Status Request",
-        "description": "This API is used by Lender on the Collections Partner to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Agent receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
-        "operationId": "triggerRepaymentStatusRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "payment",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collectionsgetCollectionsStatusResponse": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Trigger Repayment Status Response",
-        "description": "This API is used by Collections Partner on the Lender to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Partner receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
-        "operationId": "triggerRepaymentStatusResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "payment",
-                  "response",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collections/getPaymentMethodsRequest": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Get Payment Methods Request",
-        "description": "This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
-        "operationId": "GetPaymentMethodsRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collections/getPaymentMethodsResponse": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Get Payment Methods Response",
-        "description": "This endpoint is initiated by the Collections partner on the BA as a response to Get Payment Methods returning all Collection Options available.",
-        "operationId": "GetPaymentMethodsResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "paymentMethods": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/PaymentMethod"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collections/triggerCollectionsRequest": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Trigger Collections Request",
-        "description": "This API is invoked by the Lender to inform the Collections partner to trigger a repayment. This API will only be called when payment is routed to lender via collection agent.",
-        "operationId": "triggerCollectionsRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "payment",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
-                  },
-                  "paymentMethod": {
-                    "$ref": "#/components/schemas/PaymentMethod"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/collections/triggerCollectionsResponse": {
-      "post": {
-        "tags": [
-          "Collections"
-        ],
-        "summary": "Trigger Collections Response",
-        "description": "This API is invoked by the collections partner to the Lender. The collections partner generates a collection id which will be used by the Lender to query the status of collections.",
-        "operationId": "triggerCollectionsResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "payment",
-                  "response",
-                  "loanId"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "response": {
-                    "$ref": "#/components/schemas/Response"
-                  },
-                  "payment": {
-                    "$ref": "#/components/schemas/Payment"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v4.0.0alpha/derivedDataPartner/getSchemaRequest": {
       "post": {
         "tags": [
@@ -4645,6 +4284,367 @@
                         "description": "The entity to which the amount is payable"
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collectionPartner/getCollectionsStatusRequest": {
+      "post": {
+        "tags": [
+          "Collections Partner"
+        ],
+        "summary": "Trigger Repayment Status Request",
+        "description": "This API is used by Lender on the Collections Partner to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Agent receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
+        "operationId": "triggerRepaymentStatusRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collectionPartner/getCollectionsStatusResponse": {
+      "post": {
+        "tags": [
+          "Collections Partner"
+        ],
+        "summary": "Trigger Repayment Status Response",
+        "description": "This API is used by Collections Partner on the Lender to check the status of a previously initiated repayment transaction. In the case where collection is handled by Collection Management System (CMS), once the Collection Partner receives payment confirmation (including transaction reference number) from the Collection Management System, Collections Partner will send a request to the lender to check if a payment has been credited against the transaction Reference Number.",
+        "operationId": "triggerRepaymentStatusResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "response",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collectionPartner/getPaymentMethodsRequest": {
+      "post": {
+        "tags": [
+          "Collections Partner"
+        ],
+        "summary": "Get Payment Methods Request",
+        "description": "This endpoint is initiated by the BA on the Collections Partner before the Set Repayment Plan request to present the borrower with the available repayment methods.",
+        "operationId": "GetPaymentMethodsRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collectionPartner/getPaymentMethodsResponse": {
+      "post": {
+        "tags": [
+          "Collections Partner"
+        ],
+        "summary": "Get Payment Methods Response",
+        "description": "This endpoint is initiated by the Collections partner on the BA as a response to Get Payment Methods returning all Collection Options available.",
+        "operationId": "GetPaymentMethodsResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "paymentMethods": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PaymentMethod"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collectionPartner/triggerCollectionsRequest": {
+      "post": {
+        "tags": [
+          "Collections Partner"
+        ],
+        "summary": "Trigger Collections Request",
+        "description": "This API is invoked by the Lender to inform the Collections partner to trigger a repayment. This API will only be called when payment is routed to lender via collection agent.",
+        "operationId": "triggerCollectionsRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "paymentMethod": {
+                    "$ref": "#/components/schemas/PaymentMethod"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/collectionPartner/triggerCollectionsResponse": {
+      "post": {
+        "tags": [
+          "Collections Partner"
+        ],
+        "summary": "Trigger Collections Response",
+        "description": "This API is invoked by the collections partner to the Lender. The collections partner generates a collection id which will be used by the Lender to query the status of collections.",
+        "operationId": "triggerCollectionsResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "payment",
+                  "response",
+                  "loanId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "response": {
+                    "$ref": "#/components/schemas/Response"
+                  },
+                  "payment": {
+                    "$ref": "#/components/schemas/Payment"
+                  },
+                  "loanId": {
+                    "type": "string"
                   }
                 }
               }
