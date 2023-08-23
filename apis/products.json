@@ -15,7 +15,7 @@
         "tags": [
           "Product Registry"
         ],
-        "summary": "Product find by ID API.",
+        "summary": "Find Product by ID",
         "parameters": [
           {
             "name": "id",
@@ -58,7 +58,7 @@
         "tags": [
           "Product Registry"
         ],
-        "summary": "Get Product Participants List.",
+        "summary": "Get Product Network Participants",
         "parameters": [
           {
             "name": "id",
