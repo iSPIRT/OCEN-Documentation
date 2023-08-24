@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Stage: Loan Offer Selection to Disbursement
 
-This is *"one-to-one"* stage, where the LA helps with the processing of the loan application with the lenders whose offer was chosen by the borrower. The stage ends with disbursement of funds to the borrower account, or in case of purpose-controlled product, directly to the account of the other party. There are 5 sub-stages in this process.
+This is *"one-to-one"* stage, where the LA helps with the processing of the loan application with the lenders whose offer was chosen by the borrower. The stage ends with disbursement of funds to the borrower account, or in case of purpose-controlled product, directly to the account of the other party. There are 5 groups of APIs at this stage.
 
 ## KYC APIs
 Complete KYC process of the borrower after successfully accepting the final offer.
