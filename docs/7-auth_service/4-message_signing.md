@@ -1,10 +1,10 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 # Message Signing
 
 While the authentication mechanism of associating an incoming request with a set of identifying credentials 
-is provided by the [Auth Service](./readme.md). To provide the integrity and **non-repudiation**, whereby both parties (i.e., API Consumer & Provider) can assure themselves that the request and responses have originated by the private key holder and no message tampering has occurred somewhere in the connection, all requests must be digitally signed by the API consumer and all responses likewise must be signed by the API provider.
+is provided by the Auth Service. To provide the integrity and **non-repudiation**, whereby both parties (i.e., API Consumer & Provider) can assure themselves that the request and responses have originated by the private key holder and no message tampering has occurred somewhere in the connection, all requests must be digitally signed by the API consumer and all responses likewise must be signed by the API provider.
 
 > SSL/mTLS (mutual TLS) provides an additional layer of security for data in transit. Such layered security approach ensures that each defense component has a backup to counter any flaws or gaps in the security.
 
@@ -39,5 +39,5 @@ Other advantages of detached signatures are:
 
 As show in following diagram, **Detached JWS** is supplied in the HTTP header **Signature**.
 
-![Alt text](./img/detached_jws.png "Detached Json Web Signature")
+![Alt text](./_images/detached_jws.png "Detached Json Web Signature")
 

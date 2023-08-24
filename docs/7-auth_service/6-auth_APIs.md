@@ -1,63 +1,11 @@
 ---
-sidebar_position: 1
+sidebar_position: 6
 ---
-
-# Overview
-
-The OCEN ecosystem depends on all participants being able to seamlessly connect to each other for it’s smooth functioning. Seamless connection is enabled through a set of standards and protocols that guarantee interoperability amongst participants.
-
-Participant Registry & Auth Service, combined together represent the OCEN ecosystem's infrastructure layer. They provide following features to ensure interoperability across the ecosystem:
-
-- Registry of all participants’s API endpoints in the ecosystem.
-- Public Key of each ecosystem participant to verify digitally signed requests and responses.
-- A dynamic & short-lived [access token](./access_token.md), to authorize the API calls amongst the ecosystem participants.
-
-These features are mapped to Participant Registry & Auth Service as follows:
-
-| Feature                                  | Service              |
-| ---------------------------------------- | -------------------- |
-| Registry of all module’s API endpoints   | Participant Registry |
-| Public Key of each ecosystem participant | Participant Registry |
-| A dynamic & short-lived access token     | Auth Service         |
-
-To enable these features, all participants must register with Auth Service as client, as well as on Participant Registry with their API endpoints & public key. The identifier assigned to each module must be the same on both Auth Service (client) & Gateway (in it’s registries and mappings).
-
-> See [Participant Registry & Auth Service onboarding](#onboardingoffboarding) section for more details.
-
-Each participant in the ecosystem may play the role of either being both or being one of an API provider and an API client to communicate with other modules. In these roles:
-
-1. API Clients need an [access token](./access_token.md) to present to the API providers, for them to authorize the calls.
-2. API providers need access to the public key of token issuing Auth Service, to validate the access token presented by an API client.
-3. API providers, upon identifying the API caller using the access token, further need access to the public key of the API caller available at the Participant Registry to verify the integrity of digitally signed request sent by API client.
-4. On similar lines to (3), API Clients, while receiving response to their requests, also need access to the API Provider’s public key to verify the digitally signed response from the API provider.
-
-Participant Registry & Auth Service together facilitate easy, secure availability of the above information.
-
-# Onboarding/Offboarding
-
-As mentioned above, in order to ensure interoperability between modules across the OCEN ecosystem. All modules (ecosystem participants) are required to register with both Auth Service & Participant Registry.
-
-## Onboarding
-
-1. Reach out to Participant Registry administrators using an established channel (email, slack etc.) to get on boarded onto the OCEN ecosystem with following required details:
-   - Participant Type
-   - API Endpoint
-   - Public Certificate Key
-2. **Client Id & Secret** are issued as final output of this process using the Authentication Service.
-3. Participant Registry is updated with participants details (API endpoint, Public key).
-
-## Offboarding
-
-1. Using an established channel (email, slack etc.) notify Participant Registry administrators to trigger the offboarding process.
-2. Client Id & Secret are deactivated and removed from the authentication service.
-3. Module API endpoint & public key entries are removed from Participant Registry.
-4. All resource mappings are removed.
-
-# Auth Service
+# Auth APIs
 
 Auth Service is a standards-compliant OAuth 2.0 authorization server, as well as, a OpenID Connect protocol implementation.
 
-OpenID Connect extends OAuth 2.0. The OAuth 2.0 protocol provides API security via scoped [access tokens](./access_token.md), and OpenID Connect provides user authentication functionality.
+OpenID Connect extends OAuth 2.0. The OAuth 2.0 protocol provides API security via scoped [access tokens](./3-access_token.md), and OpenID Connect provides user authentication functionality.
 
 Following sections provide detailed information about the endpoints that the Auth Service exposes.
 
@@ -161,7 +109,7 @@ This is a starting point for browser-based OpenID Connect flows such as the impl
 
 Following image depicts access token generation using client credentials grant flow.
 
-![Alt text](./img/auth_access_token_generation.png "Client Credentials Flow")
+![Alt text](./_images/auth_access_token_generation.png "Client Credentials Flow")
 
 The Client Credentials flow is recommended for server-side (AKA confidential) client applications with no end user, which normally describes machine-to-machine communication. Your application needs to securely store its Client ID and secret & pass those to Auth Service in exchange for an access token.
 
@@ -170,11 +118,11 @@ At a high-level, this flow has the following steps:
 1. Your client application (app) makes an authorization request to Auth Service using its client credentials.
 2. If the credentials are accurate, Auth Service responds with an access token.
 3. Your app uses the access token to make authorized requests to the API providers.
-4. The API provider validates the token before responding to the request. See [Validate access token](./access_token.md#verify-access-token).
+4. The API provider validates the token before responding to the request. See [Validate access token](./3-access_token.md#verify-access-token).
 
 ### References
 
-- [How to verify an Access Token](./access_token.md#verify-access-token)
+- [How to verify an Access Token](./3-access_token.md#verify-access-token)
 - https://aaronparecki.com/oauth-2-simplified/#single-page-apps
 - https://example-app.com/pkce: to generate a secret and hash
 
