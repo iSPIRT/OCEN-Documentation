@@ -2,20 +2,22 @@
 sidebar_position: 2
 ---
 
-# Loan Journey Stages
+# Participant Overview
 
-The steps in the lending jounery for a borrower can be categorized into three stages as below.
+The following is a high-level sequence diagram of the end-to-end lending journey, split into the three phases - Onboarding, Application Processing and Post-Disbursement.
 
 ## Onboarding
 
-In the onboarding phase, all participants register themselves with OCEN, the lending product is created and the network of participants that will be serving the product gets setup.
+![Onboarding sequence diagram](./_images/sq_onboarding.png)
 
-1. **Participant Registration**: All participants register in the [Participant Registry](../components/participant_registry).
-2. **Product Creation**: Lender creates a product and registers it in the [Product Registry](../components/product_registry).
-3. **Product Group Creation**: LA creates a product group in the [Product Registry](../components/product_registry).
-4. **Analytics:** Heartbeat events invoked by all participants for all their actions.
+## Application Processing
 
-For more details, see the [components](../components/components_overview) section.
+![Application processing sequence diagram (1 of 2)](./_images/sq_application_process_1.png)
+![Application processing sequence diagram (2 of 2)](./_images/sq_application_process_2.png)
+
+## Post-Disbursement
+
+![Post disbursement sequence diagram](./_images/sq_post_disbursement.png)
 
 ## Application Processing
 
