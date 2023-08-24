@@ -4,6 +4,8 @@ sidebar_position: 7
 
 # Stage: Partner APIs
 
+These APIs are used by the Lender / LA to communicate with other participants - Derived Data Partners, KYC Partner, Disbursement Partner and Collections Partner.
+
 ## Derived Data Partner APIs
 Lender to fetch schema and data from a derived data partner.
 

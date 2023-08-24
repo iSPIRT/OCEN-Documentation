@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Stage: Loan Application Auction and Offer
 
-In this *"one-to-many"* stage, the LA shares the loan application with all lenders in the product network. The LA coordinates the request-responses across all lenders and enables the borrower to choose an offer from among all returned offers. There are 3 sub-stages to this process.
+In this *"one-to-many"* stage, the LA shares the loan application with all lenders in the product network. The LA coordinates the request-responses across all lenders and enables the borrower to choose an offer from among all returned offers. There are 3 groups of APIs at this stage.
 
 ## Create Loan Application APIs
 Loan agent forwards the Loan Application from the borrower to all lenders in the product network.
