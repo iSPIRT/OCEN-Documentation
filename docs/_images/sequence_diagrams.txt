@@ -1,0 +1,16 @@
+
+entryspacing 0.4
+frame Async APIs
+
+participant Caller
+participant Callee
+
+Caller --> Callee: Application Request
+Callee --> Caller: 200 OK
+
+Callee<-->Callee: process request
+
+Callee --> Caller: Application Response
+Caller --> Callee: 200 OK
+
+end 

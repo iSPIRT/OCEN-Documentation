@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Registries and Product Network
@@ -22,7 +22,7 @@ Lender will create & manage the Product and the Loan Agent will create & manage 
 
 # Registry access
 
-The OCEN registries will be accessed via a UI portal. The portal will enable registration, management and discoverability of products, participants and product networks.
+The OCEN registries will be accessed via a **UI portal**. The portal will enable registration, management and discoverability of products, participants and product networks.
 
 The OCEN 4.0 specification include APIs to programatically fetch the details of a product or a participant. These APIs can be used by the participants as part of the Loan Journey.
 
