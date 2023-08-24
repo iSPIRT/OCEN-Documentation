@@ -59,7 +59,95 @@ end
 
 =======
 
--title Onboarding Phase
+entryspacing 0.4
+frame Loan Offer Selection to Disbursement
+
+actor Borrower
+participant Loan Agent
+participant Lender
+
+participant #lightgreen KYC Partner#lightgreen
+
+group #lightblue KYC
+Loan Agent --> Lender:Trigger KYC Request
+Lender --> Loan Agent:Trigger KYC Response
+Borrower <--> KYC Partner: Borrower KYC process
+Loan Agent --> Lender:KYC Status Request
+Lender --> Loan Agent:KYC Status Response
+end 
+
+group #lightblue Loan Acceptance
+Loan Agent --> Lender:Loan Agreement Request
+Lender --> Loan Agent:Loan Agreement Response
+Loan Agent <--> Borrower: [initiates loan acceptance]
+Loan Agent --> Lender:Trigger Loan Acceptance Request
+Lender --> Loan Agent: Trigger Loan Acceptance Response
+Loan Agent <--> Borrower: [OTP authentication]
+Loan Agent --> Lender:Verify Loan Acceptance Request
+Lender --> Loan Agent: Verify Loan Acceptance Response
+end 
+
+group #lightblue Grant Loan
+Loan Agent --> Lender:Grant Loan Request
+Lender --> Loan Agent:Grant Loan Response
+Borrower <-- Loan Agent: [shares loan details]
+end 
+
+group #lightblue Repayment Plan
+Borrower --> Loan Agent: [selects repayment plan]
+Loan Agent --> Lender:Set Repayment Plan Request
+Lender --> Loan Agent:Set Repayment Plan Response
+Loan Agent --> Lender:Set Repayment Plan Status Request
+Lender --> Loan Agent:Set Repayment Plan Status Response
+end 
+
+
+group #lightblue Loan Disbursement
+Borrower <--> Loan Agent: [select disbursement details]
+Loan Agent --> Lender: Set Disbursement Account Request
+Lender --> Loan Agent: Set Disbursement Account Response
+Borrower --> Loan Agent: [approves disbursement]
+Loan Agent --> Lender: Trigger Disbursement Request
+Lender --> Loan Agent: Trigger Disbursement Response
+Loan Agent --> Lender: Trigger Disbursement Status Request
+Lender --> Loan Agent: Trigger Disbursement Status Response
+end 
+
+=======
+
+entryspacing 0.4
+frame Post-disbursement
+
+actor Borrower
+participant Loan Agent
+participant Lender
+
+
+group #lightblue Repayment
+Borrower --> Loan Agent: [repayment started]
+Loan Agent --> Lender:Trigger Repayment Request
+Lender --> Loan Agent:Trigger Repayment Response
+Loan Agent --> Lender:Trigger Repayment Status Request
+Lender --> Loan Agent:Trigger Repayment Status Response
+Lender --> Loan Agent:Confirm Repayment Request
+end 
+
+group #lightblue Loan Details
+Borrower --> Loan Agent: [views loan details]
+Loan Agent --> Lender:Get Loan Request
+Lender --> Loan Agent:Get Loan Response
+Loan Agent --> Lender:Loan Summary Request
+Lender --> Loan Agent:Loan Summary Response
+Loan Agent --> Lender:Loan Statement Request
+Lender --> Loan Agent:Loan Statement Response
+Loan Agent --> Lender:List Loans Request
+Lender --> Loan Agent:List Loans Response
+end 
+
+=======
+Deprecated
+=======
+title Onboarding Phase
 
 participant #lightgreen Participant Registry #lightgreen
 participant #lightgreen Product Registry #lightgreen
@@ -95,122 +183,9 @@ Disbursement Agent-->Product Registry: add to product group
 Collections Agent-->Product Registry: add to product group
 end
 
-======
-
-entryspacing 0.4
-frame Application Processing Phase ( 1 of 2 )
-
-actor Borrower
-participant Loan Agent
-participant Lender
-participant #lightgreen AA #lightgreen
-participant Derived Data Provider
-
-lifelinestyle AA
-
-group #lightblue Initiate Loan Application
-Borrower --> Loan Agent:Loan Application
-Loan Agent --> Lender:Create Loan Applications Request
-Lender --> Loan Agent:Create Loan Applications Response
-end 
-
-group #lightblue User Consent
-Loan Agent --> Lender:Consent Handle Request
-Lender --> Loan Agent:Consent Handle Response
-Loan Agent --> Borrower: initiate consent
-AA <--> Borrower: acquire consent
-Lender --> Loan Agent:Consent Status Request
-Loan Agent --> Lender:Consent Status Response
-end 
-
 group #lightblue User Data Fetch and Underwriting
 Lender --> AA: Fetch data from FIP
 Lender --> Derived Data Provider: Fetch data from DDP
-end 
-
-group #lightblue Loan Offer
-Loan Agent --> Lender:Generate Offers Request
-Lender --> Loan Agent:Generate Offers Response
-Loan Agent <--> Borrower: share and select offer
-Loan Agent --> Lender:Set Offer Request
-Lender --> Loan Agent:Set Offer Response
-end 
-
-======
-
-entryspacing 0.4
-frame Application Processing Phase ( 2 of 2 )
-
-actor Borrower
-participant Loan Agent
-participant Lender
-
-group #lightblue KYC
-Loan Agent --> Lender:Trigger KYC Request
-Lender --> Loan Agent:Trigger KYC Response
-Borrower <--> Lender: Borrower KYC process
-Loan Agent --> Lender:KYC Status Request
-Lender --> Loan Agent:KYC Status Response
-end 
-
-group #lightblue Loan Acceptance
-Loan Agent --> Lender:Loan Agreement Request
-Lender --> Loan Agent:Loan Agreement Response
-Loan Agent <--> Borrower: initiate loan acceptance
-Loan Agent --> Lender:Trigger Loan Acceptance Request
-Lender --> Loan Agent: Trigger Loan Acceptance Response
-Loan Agent <--> Borrower: OTP authentication
-Loan Agent --> Lender:Verify Loan Acceptance Request
-Lender --> Loan Agent: Verify Loan Acceptance Response
-end 
-
-group #lightblue Repayment Plan
-Borrower --> Loan Agent: select repayment plan
-Loan Agent --> Lender:Set Repayment Plan Request
-Lender --> Loan Agent:Set Repayment Plan Response
-Lender --> Loan Agent:Confirm Repayment Request
-end 
-
-group #lightblue Grant Loan
-Loan Agent --> Lender:Grant Loan Request
-Lender --> Loan Agent:Grant Loan Response
-Borrower <-- Loan Agent: share loan details
-end 
-
-group #lightblue Loan Disbursement
-Borrower <--> Loan Agent: disbursement details
-Loan Agent --> Lender: Set Disbursement Account Request
-Lender --> Loan Agent: Set Disbursement Account Response
-Borrower --> Loan Agent: approve disbursement 
-Loan Agent --> Lender: Trigger Disbursement Request
-Lender --> Loan Agent: Trigger Disbursement Response
-end 
-
-======
-
-entryspacing 0.4
-frame Post-Disbursement Phase
-
-actor Borrower
-participant Loan Agent
-participant Lender
-
-group #lightblue Repayment
-Borrower --> Loan Agent: repayment
-Loan Agent --> Lender:Trigger Repayment Request
-Lender --> Loan Agent:Trigger Repayment Response
-end 
-
-group #lightblue Loan Details
-Borrower --> Loan Agent: view loan details
-Loan Agent --> Lender:Get Loan Request
-Lender --> Loan Agent:Get Loan Response
-Loan Agent --> Lender:Loan Summary Request
-Lender --> Loan Agent:Loan Summary Response
-Loan Agent --> Lender:Loan Statement Request
-Lender --> Loan Agent:Loan Statement Response
-Loan Agent --> Lender:List Loans Request
-Lender --> Loan Agent:List Loans Response
 end 
 
 group #lightblue Issues and Disputes
