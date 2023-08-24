@@ -14,7 +14,50 @@ end
 
 =======
 
+entryspacing 0.4
+frame Loan Application Auction and Offer
 
+actor Borrower
+participant Loan Agent
+participant Lender1
+participant Lender2
+
+participant #lightgreen AA #lightgreen
+
+group #lightblue Initiate Loan Application - Lender 1
+Borrower --> Loan Agent:Loan Application
+Loan Agent --> Lender1:Create Loan Applications Request
+Lender1 --> Loan Agent:Create Loan Applications Response
+end 
+
+group #lightblue Initiate Loan Application - Lender 2
+Borrower --> Loan Agent:Loan Application
+Loan Agent --> Lender2:Create Loan Applications Request
+Lender2 --> Loan Agent:Create Loan Applications Response
+end 
+
+group #lightblue User Consent
+Loan Agent --> Lender1:Consent Handle Request
+Loan Agent --> Lender2:Consent Handle Request
+Lender1 --> Loan Agent:Consent Handle Response
+Lender2 --> Loan Agent:Consent Handle Response
+Loan Agent --> Borrower: [initiates consent]
+AA <--> Borrower: [acquires consent]
+Lender2 --> Loan Agent:Consent Status Request
+Loan Agent --> Lender2:Consent Status Response
+end 
+
+group #lightblue Loan Offer
+Loan Agent --> Lender1:Generate Offers Request
+Loan Agent --> Lender2:Generate Offers Request
+Lender1 --> Loan Agent:Generate Offers Response
+Lender2 --> Loan Agent:Generate Offers Response
+Loan Agent <--> Borrower: share and select offer
+Loan Agent --> Lender2:Set Offer Request
+Lender2 --> Loan Agent:Set Offer Response
+end 
+
+=======
 
 -title Onboarding Phase
 
