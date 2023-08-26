@@ -3795,7 +3795,7 @@
                     ]
                   },
                   "kyc": {
-                    "$ref": "#/components/schemas/KYCPartnerDetailsRequest"
+                    "$ref": "#/components/schemas/KYCDetailsRequest"
                   }
                 }
               }
@@ -3862,7 +3862,7 @@
                     ]
                   },
                   "kyc": {
-                    "$ref": "#/components/schemas/KYCPartnerDetails"
+                    "$ref": "#/components/schemas/KYCDetails"
                   }
                 }
               }
@@ -3994,7 +3994,7 @@
                     ]
                   },
                   "kyc": {
-                    "$ref": "#/components/schemas/KYCPartnerDetails"
+                    "$ref": "#/components/schemas/KYCDetails"
                   }
                 }
               }
@@ -5680,87 +5680,145 @@
       "KYCDetails": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "CKYC",
-              "UDYAM",
-              "OFFLINE_AADHAAR"
-            ]
-          },
-          "kycType": {
-            "type": "string",
-            "enum": [
-              "INDIVIDUAL",
-              "CORPORATE"
-            ]
-          },
-          "url": {
-            "type": "string"
-          },
           "kycRefNo": {
             "type": "string"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "SUCCESS",
-              "REJECTED",
-              "PENDING",
-              "ACTION_REQUIRED"
-            ]
           },
           "description": {
             "type": "string"
           },
-          "udyamRegistrationNumber": {
-            "type": "string"
+          "business": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "CKYC",
+                  "UDYAM",
+                  "OFFLINE_AADHAAR"
+                ]
+              },
+              "scale": {
+                "type": "string",
+                "enum": [
+                  "MICRO",
+                  "SMALL",
+                  "MEDIUM"
+                ]
+              },
+              "category": {
+                "type": "string",
+                "enum": [
+                  "SERVICE",
+                  "MANUFACTURING"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "incorporationDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "commencementDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "udyam": {
+                "type": "object",
+                "properties": {
+                  "registrationNumber": {
+                    "type": "string"
+                  },
+                  "registrationDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "extensibleData": {
+                    "$ref": "#/components/schemas/ExtensibleData"
+                  }
+                }
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "SUCCESS",
+                  "REJECTED",
+                  "PENDING",
+                  "ACTION_REQUIRED"
+                ]
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
           },
-          "businessType": {
-            "type": "string",
-            "enum": [
-              "MICRO",
-              "SMALL",
-              "MEDIUM"
-            ]
+          "individual": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "CKYC",
+                  "UDYAM",
+                  "OFFLINE_AADHAAR"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "dob": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "SUCCESS",
+                  "REJECTED",
+                  "PENDING",
+                  "ACTION_REQUIRED"
+                ]
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
           },
-          "businessCategory": {
-            "type": "string",
-            "enum": [
-              "SERVICE",
-              "MANUFACTURING"
-            ]
-          },
-          "businessName": {
-            "type": "string"
-          },
-          "businessAddress": {},
-          "businessEmail": {
-            "type": "string"
-          },
-          "businessPhoneNumber": {
-            "type": "string"
-          },
-          "incorporationDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "businessCommencementDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "udyamRegistrationDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "fullName": {
-            "type": "string"
-          },
-          "dob": {
-            "type": "string"
-          },
-          "address": {
-            "$ref": "#/components/schemas/Address"
+          "next": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "REDIRECT"
+                ]
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           },
           "extensibleData": {
             "$ref": "#/components/schemas/ExtensibleData"
@@ -6156,10 +6214,8 @@
             "$ref": "#/components/schemas/LoanApplicationStatus"
           },
           "kyc": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/KYCDetails"
-            }
+            "$ref": "#/components/schemas/KYCDetails",
+            "description": "KYC details"
           },
           "offers": {
             "type": "array",
@@ -6201,75 +6257,108 @@
       "KYCDetailsRequest": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "CKYC",
-              "UDYAM",
-              "OFFLINE_AADHAAR"
-            ]
-          },
-          "kycType": {
-            "type": "string",
-            "enum": [
-              "INDIVIDUAL",
-              "CORPORATE"
-            ]
-          },
           "description": {
             "type": "string"
           },
-          "udyamRegistrationNumber": {
-            "type": "string"
+          "business": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "CKYC",
+                  "UDYAM",
+                  "OFFLINE_AADHAAR"
+                ]
+              },
+              "scale": {
+                "type": "string",
+                "enum": [
+                  "MICRO",
+                  "SMALL",
+                  "MEDIUM"
+                ]
+              },
+              "category": {
+                "type": "string",
+                "enum": [
+                  "SERVICE",
+                  "MANUFACTURING"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "incorporationDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "commencementDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "udyam": {
+                "type": "object",
+                "properties": {
+                  "registrationNumber": {
+                    "type": "string"
+                  },
+                  "registrationDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "extensibleData": {
+                    "$ref": "#/components/schemas/ExtensibleData"
+                  }
+                }
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
           },
-          "businessType": {
-            "type": "string",
-            "enum": [
-              "MICRO",
-              "SMALL",
-              "MEDIUM"
-            ]
-          },
-          "businessCategory": {
-            "type": "string",
-            "enum": [
-              "SERVICE",
-              "MANUFACTURING"
-            ]
-          },
-          "businessName": {
-            "type": "string"
-          },
-          "businessAddress": {},
-          "businessEmail": {
-            "type": "string"
-          },
-          "businessPhoneNumber": {
-            "type": "string"
-          },
-          "incorporationDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "businessCommencementDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "udyamRegistrationDate": {
-            "type": "string",
-            "format": "date"
+          "individual": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "CKYC",
+                  "UDYAM",
+                  "OFFLINE_AADHAAR"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "dob": {
+                "type": "string"
+              },
+              "address": {
+                "$ref": "#/components/schemas/Address"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "extensibleData": {
+                "$ref": "#/components/schemas/ExtensibleData"
+              }
+            }
           },
           "extensibleData": {
             "$ref": "#/components/schemas/ExtensibleData"
-          },
-          "fullName": {
-            "type": "string"
-          },
-          "dob": {
-            "type": "string"
-          },
-          "address": {
-            "$ref": "#/components/schemas/Address"
           }
         }
       },
@@ -6443,235 +6532,6 @@
           },
           "url": {
             "type": "string"
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "KYCPartnerDetailsRequest": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "CKYC",
-              "UDYAM",
-              "OFFLINE_AADHAAR"
-            ]
-          },
-          "kycType": {
-            "type": "string",
-            "enum": [
-              "INDIVIDUAL",
-              "CORPORATE"
-            ]
-          },
-          "description": {
-            "type": "string"
-          },
-          "business": {
-            "type": "object",
-            "properties": {
-              "scale": {
-                "type": "string",
-                "enum": [
-                  "MICRO",
-                  "SMALL",
-                  "MEDIUM"
-                ]
-              },
-              "category": {
-                "type": "string",
-                "enum": [
-                  "SERVICE",
-                  "MANUFACTURING"
-                ]
-              },
-              "name": {
-                "type": "string"
-              },
-              "address": {
-                "$ref": "#/components/schemas/Address"
-              },
-              "email": {
-                "type": "string"
-              },
-              "phoneNumber": {
-                "type": "string"
-              },
-              "incorporationDate": {
-                "type": "string",
-                "format": "date"
-              },
-              "commencementDate": {
-                "type": "string",
-                "format": "date"
-              },
-              "udyam": {
-                "type": "object",
-                "properties": {
-                  "registrationNumber": {
-                    "type": "string"
-                  },
-                  "registrationDate": {
-                    "type": "string",
-                    "format": "date"
-                  },
-                  "extensibleData": {
-                    "$ref": "#/components/schemas/ExtensibleData"
-                  }
-                }
-              },
-              "extensibleData": {
-                "$ref": "#/components/schemas/ExtensibleData"
-              }
-            }
-          },
-          "individual": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "dob": {
-                "type": "string"
-              },
-              "address": {
-                "$ref": "#/components/schemas/Address"
-              },
-              "extensibleData": {
-                "$ref": "#/components/schemas/ExtensibleData"
-              }
-            }
-          },
-          "extensibleData": {
-            "$ref": "#/components/schemas/ExtensibleData"
-          }
-        }
-      },
-      "KYCPartnerDetails": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "CKYC",
-              "UDYAM",
-              "OFFLINE_AADHAAR"
-            ]
-          },
-          "kycType": {
-            "type": "string",
-            "enum": [
-              "INDIVIDUAL",
-              "CORPORATE"
-            ]
-          },
-          "description": {
-            "type": "string"
-          },
-          "next": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "OTP",
-                  "REDIRECT"
-                ]
-              },
-              "data": {
-                "type": "object"
-              }
-            }
-          },
-          "kycRefNo": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "SUCCESS",
-              "REJECTED",
-              "PENDING",
-              "ACTION_REQUIRED"
-            ]
-          },
-          "business": {
-            "type": "object",
-            "properties": {
-              "scale": {
-                "type": "string",
-                "enum": [
-                  "MICRO",
-                  "SMALL",
-                  "MEDIUM"
-                ]
-              },
-              "category": {
-                "type": "string",
-                "enum": [
-                  "SERVICE",
-                  "MANUFACTURING"
-                ]
-              },
-              "name": {
-                "type": "string"
-              },
-              "address": {
-                "$ref": "#/components/schemas/Address"
-              },
-              "email": {
-                "type": "string"
-              },
-              "phoneNumber": {
-                "type": "string"
-              },
-              "incorporationDate": {
-                "type": "string",
-                "format": "date"
-              },
-              "commencementDate": {
-                "type": "string",
-                "format": "date"
-              },
-              "udyam": {
-                "type": "object",
-                "properties": {
-                  "registrationNumber": {
-                    "type": "string"
-                  },
-                  "registrationDate": {
-                    "type": "string",
-                    "format": "date"
-                  },
-                  "extensibleData": {
-                    "$ref": "#/components/schemas/ExtensibleData"
-                  }
-                }
-              },
-              "extensibleData": {
-                "$ref": "#/components/schemas/ExtensibleData"
-              }
-            }
-          },
-          "individual": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "dob": {
-                "type": "string"
-              },
-              "address": {
-                "$ref": "#/components/schemas/Address"
-              },
-              "extensibleData": {
-                "$ref": "#/components/schemas/ExtensibleData"
-              }
-            }
           },
           "extensibleData": {
             "$ref": "#/components/schemas/ExtensibleData"
