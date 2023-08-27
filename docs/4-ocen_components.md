@@ -13,7 +13,7 @@ The components of OCEN 4.0 are captured below. These include:
 
 2. **Services**
     * **Auth service:** Enables security on the platform
-    * **Hearbeat and Analytics service:** Enables intrumentation across the loan journey and the requests for performance monitoring on the network and to drive business analytics
+    * **Heartbeat and Analytics service:** Enables intrumentation across the loan journey and the requests for performance monitoring on the network and to drive business analytics
     * **Credit Gurantees service:** Verifies eligibility of a borrower for a credit gurantee
 
 3. **OCEN 4.0 APIs**
