@@ -368,7 +368,7 @@
           "Consent"
         ],
         "summary": "Consent Status Request",
-        "description": "Invoked by Lender to get consent handle status from BA",
+        "description": "Invoked by BA to get consent handle status from Lender",
         "requestBody": {
           "description": "Consent Status Request",
           "content": {
@@ -416,7 +416,7 @@
           "Consent"
         ],
         "summary": "Consent Status Response",
-        "description": "Invoked by BA to send consent status to Lender",
+        "description": "Invoked by Lender to send consent status to BA",
         "requestBody": {
           "description": "Consent Status Response",
           "content": {
