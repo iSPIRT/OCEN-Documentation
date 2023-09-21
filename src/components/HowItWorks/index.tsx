@@ -18,7 +18,12 @@ const sections: SectionInterface[] = [
     title: 'OCEN 4.0: Intro to Borrower Agent Openhouse',
     icon: 'users',
     source: 'https://www.youtube.com/embed/6X5yAYipGzA',
-  }
+  },
+  {
+    title: 'OCEN 4.0: Intro to Lenders Openhouse',
+    icon: 'users',
+    source: 'https://www.youtube.com/embed/hVPThhubM7I',
+  },
 ];
 
 const HowItWorks: React.FC = () => {
