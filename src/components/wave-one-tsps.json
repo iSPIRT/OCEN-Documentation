@@ -13,5 +13,10 @@
         "name": "CredAll",
         "image": "img/logos/credall.jpeg",
         "href": "https://www.credall.org/index.html"
-    }
+    },
+		{
+			"name": "Finagg",
+			"image": "img/logos/finagg.png",
+			"href": "https://finagg.in/"
+		}
 ]
