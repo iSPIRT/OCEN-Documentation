@@ -4,6 +4,11 @@
         "image": "img/logos/aspire.png",
         "href": "https://www.letsaspire.in/"
     },
+		{
+			"name": "GetVantage",
+			"image": "img/logos/getvantage.png",
+			"href": "https://www.getvantage.co/"
+		},
     {
         "name": "Vivifi India Finance",
         "image": "img/logos/vivifi.png",
@@ -38,10 +43,5 @@
         "name": "Spice Money",
         "image": "img/logos/spicemoney.png",
         "href": "https://www.spicemoney.com/"
-    },
-    {
-        "name": "Finagg",
-        "image": "img/logos/finagg.png",
-        "href": "https://finagg.in/"
     }
 ]

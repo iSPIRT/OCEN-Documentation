@@ -5,6 +5,7 @@ import React from 'react';
 import waveOneLenders from './wave-one-lenders.json';
 import waveOneLoanAgents from './wave-one-loan-agents.json';
 import waveOneTSPs from './wave-one-tsps.json';
+import waveOneCreditGuaranteePartners from './wave-one-credit-guarantee-partners.json';
 import HowItWorks from './HowItWorks';
 import Spacer from '../components/Spacer';
 import Link from '@docusaurus/Link';
@@ -44,7 +45,7 @@ const RESOURCES = [
 function ResourcesSection() {
   return (
     <div className="z-0 bg-secondary-800">
-      <section className="my-20 px-6">
+      <section className="mb-10 px-6">
         <div className="mx-auto max-w-5xl">
           <span>IN THE NEWS</span>
           <h2 className="lg:text-3xl">Read how OCEN is making waves</h2>
@@ -102,7 +103,7 @@ function Partners() {
           </h2>
         </div>
       </div>
-      <Spacer height={10} />
+      <Spacer height={15} />
       <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl leading-9 font-extrabold md:text-3xl md:leading-10">
@@ -136,6 +137,7 @@ function Partners() {
           </div>
         ))}
       </div>
+			<Spacer height={15} />
       <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-xl leading-9 font-bold md:text-2xl md:leading-10">
@@ -161,8 +163,8 @@ function Partners() {
             </a>
           </div>
         ))}
-
       </div>
+			<Spacer height={15} />
       <div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-xl leading-9 font-bold md:text-2xl md:leading-10">
@@ -188,8 +190,34 @@ function Partners() {
             </a>
           </div>
         ))}
-
       </div>
+			<Spacer height={15} />
+			<div className="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
+				<div className="max-w-4xl mx-auto text-center">
+					<h2 className="text-xl leading-9 font-bold md:text-2xl md:leading-10">
+						Credit Guarantee Partners
+					</h2>
+				</div>
+			</div>
+			<div className="flex flex-row flex-wrap gap-10 mt-10 justify-center">
+				{waveOneCreditGuaranteePartners.map(({ name, href, image }) => (
+					<div
+						key={href}
+						className="col-span-2 flex justify-center py-2 px-2 text-center"
+					>
+						<a
+							href={href}
+							rel="noreferrer"
+							target="_blank"
+						>
+							<img
+								className="inline-block w-20"
+								src={withBaseUrl(image)}
+							/>
+						</a>
+					</div>
+				))}
+			</div>
     </div>
   </div >;
 

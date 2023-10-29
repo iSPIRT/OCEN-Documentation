@@ -78,5 +78,10 @@
         "name": "AXIS",
         "image": "img/logos/axis.png",
         "href": "https://www.axisbank.com/"
-    }
+    },
+		{
+				"name": "GetGrowth Capital",
+				"href": "https://getgrowthcapital.co/",
+				"image": "img/logos/getgrowthcapital.png"
+		}
 ]
