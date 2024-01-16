@@ -14,7 +14,7 @@
         "tags": [
           "Paticipant Registry"
         ],
-        "summary": "Get Participant Details",
+        "summary": "API is used to lookup the participants using entity identifier, type, status and attributes.",
         "operationId": "entityLookup",
         "parameters": [
           {
@@ -25,7 +25,6 @@
           }
         ],
         "requestBody": {
-          "description": "Query BA, lender, data-provider using properties",
           "content": {
             "application/json": {
               "schema": {
@@ -37,7 +36,7 @@
         },
         "responses": {
           "200": {
-            "description": "Acknowledgement of Request Received",
+            "description": "Array of participant details that meet the search criteria.",
             "content": {
               "application/json": {
                 "schema": {
