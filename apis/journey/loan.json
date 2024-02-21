@@ -864,6 +864,164 @@
         }
       }
     },
+    "/v4.0.0alpha/kyc/getKYCMethodsRequest": {
+      "post": {
+        "tags": [
+          "KYC"
+        ],
+        "summary": "Get KYC Methods Request",
+        "description": "This API is called by LA to fetch the preferred KYC method by the Lender.",
+        "operationId": "GetKYCMethodsRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/kyc/getKYCMethodsResponse": {
+      "post": {
+        "tags": [
+          "KYC"
+        ],
+        "summary": "Get KYC Methods Response",
+        "description": "This  API is called by Lender to the LA in response to teh GetKYCMethodsRequest. The Lender returns the preffered KYC Method for the LoanApplication.",
+        "operationId": "GetKYCMethodsResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId",
+                  "kyc"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "examples": [
+                      "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
+                    ]
+                  },
+                  "kyc": {
+                    "type": "object",
+                    "properties": {
+                      "business": {
+                        "type": "object",
+                        "properties": {
+                          "isRequired": {
+                            "type": "boolean"
+                          },
+                          "method": {
+                            "type": "string",
+                            "enum": [
+                              "CKYC",
+                              "UDYAM",
+                              "OFFLINE_AADHAAR"
+                            ]
+                          }
+                        }
+                      },
+                      "individual": {
+                        "type": "object",
+                        "properties": {
+                          "isRequired": {
+                            "type": "boolean"
+                          },
+                          "method": {
+                            "type": "string",
+                            "enum": [
+                              "CKYC",
+                              "UDYAM",
+                              "OFFLINE_AADHAAR",
+                              "AADHAR_EKYC"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v4.0.0alpha/kyc/triggerKycRequest": {
       "post": {
         "tags": [
