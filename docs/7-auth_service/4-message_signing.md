@@ -20,7 +20,7 @@ A JSON Web Signature is a simple format:
 base64Encode(header) + "." + base64Encode(payload) + "." + base64Encode(signature)
 ```
 
-- The **header** contains parameters holding meta data about the signature (algorith for signing, the id of the key pair used etc.).
+- The **header** contains parameters holding meta data about the signature (algorithm for signing, the id of the key pair used etc.).
 - The **payload** contains the actual content to be signed.
   > The payload will be the HTTP message body or endpoint URI (in case of HTTP GET requests).
 - The **signature** is the cipher text from enciphering the <u>header</u> and <u>payload</u> together.
