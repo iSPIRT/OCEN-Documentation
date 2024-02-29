@@ -5,19 +5,14 @@
         "href": "https://www.letsaspire.in/"
     },
     {
-        "name": "Vivifi India Finance",
-        "image": "img/logos/vivifi.png",
-        "href": "https://www.vivifin.com/"
-    },
-    {
         "name": "Eko India Financial Services",
         "image": "img/logos/eko.svg",
         "href": "https://eko.in/"
     },
     {
-        "name": "KredX",
-        "image": "img/logos/kredx.png",
-        "href": "https://www.kredx.com/"
+        "name": "Finagg",
+        "image": "img/logos/finagg.png",
+        "href": "https://finagg.in/"
     },
     {
         "name": "Human Ventures",
@@ -30,6 +25,11 @@
         "href": "https://www.indifi.com/"
     },
     {
+        "name": "KredX",
+        "image": "img/logos/kredx.png",
+        "href": "https://www.kredx.com/"
+    },
+    {
         "name": "Pemant",
         "image": "img/logos/pemant.svg",
         "href": "https://pemant.in/"
@@ -40,8 +40,8 @@
         "href": "https://www.spicemoney.com/"
     },
     {
-        "name": "Finagg",
-        "image": "img/logos/finagg.png",
-        "href": "https://finagg.in/"
+        "name": "Vivifi India Finance",
+        "image": "img/logos/vivifi.png",
+        "href": "https://www.vivifin.com/"
     }
 ]
