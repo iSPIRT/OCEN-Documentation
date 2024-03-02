@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Access Token
 
-The Auth Service provides the dynamic and short-lived access token to each API client in the ecosystem. These access tokens are formatted as [JSON Web Token](https://datatracker.ietf.org/doc/html/rfc7519) (JWT). Each JWT is digitally signed by the Auth Service, as the issuer of the token. The digitally-signed access token is inserted into API authorization headers by the API client, as its identity token, for every call made to any API provider in the ecosystem.
+The Auth Component provides dynamic and short-lived access token to each API Client in the ecosystem. These access tokens are formatted as [JSON Web Token](https://datatracker.ietf.org/doc/html/rfc7519) (JWT). Each JWT is digitally signed by the Auth Service, as the issuer of the token. The digitally-signed access token is inserted into API authorization headers by the API client, as its identity token, for every call made to any API provider in the ecosystem.
 
 JWTs are issued with a lifespan of 24 hours. So, all ecosystem API clients are expected to refresh their tokens every 24 hours.
 
