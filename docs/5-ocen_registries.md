@@ -4,17 +4,19 @@ sidebar_position: 5
 
 # OCEN Registry and Product Network
 
-OCEN 4.0 introduces the OCEN registry that will be maintained via SROs. All **products** served on OCEN as well as **participants** that serve a product are registered in the **OCEN registry** as part of the initial onboarding process onto OCEN 4.0. And the product is served by participants as part of a **Product Network**.
+OCEN 4.0 introduces two separate registries - **Participant Registry** for Participants, and **Product Registry** for Products, that are maintained via SROs. These registries are accessed via a shared UI portal and are also referred together as the **OCEN Registry**. All participants that serve a product do so as part of a **Product Network**.
+
+These registries and the product network are part of the initial onboarding process onto OCEN 4.0. 
 
 # Participant Onboarding
 
-All participants are onboarded to OCEN 4.0 via the participant onboarding in OCEN registry. A standard onboarding process is followed for all participants, and their verification is guaranteed by SROs to ensure that new members receive an equivalent level of trust within the network.
+All participants are onboarded to OCEN 4.0 via the participant onboarding in the Participant Registry. A standard onboarding process is followed for all participants, and their verification is guaranteed by SROs to ensure that new members receive an equivalent level of trust within the network.
 
 ![Participant Registry](./_images/participant_registry.png "Participant Registry")
 
 # Product and Product Network onboarding
 
-Lender will create & manage the Product and the Loan Agent will create & manage the Product Network to serve that product. All participants in OCEN 4.0 can browse the Products and Product Networks on the Product Registry and subscribe to serve a Product via the Product Networks.
+Lender will create & manage the Product via the Product Registry and the Loan Agent will create & manage the Product Network to serve that product. All participants in OCEN 4.0 can browse the Products and Product Networks on the Product Registry and subscribe to serve a Product via the Product Networks.
 
 ![Product Registry](./_images/product_registry_and_network.png "Product Registry")
 

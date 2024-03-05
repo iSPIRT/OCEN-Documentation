@@ -14,7 +14,7 @@ The OCEN 4.0 Auth APIs perform two key elements of security on the platform:
     * Ensure authenticity & completeness of data exchanged between entities
     * This is achieved through digital signatures
 
-All participants must register with OCEN Registry as client, as well as on Participant Registry with their API endpoints & public key. Each participant in the ecosystem may play the role of either being both or being one of an API provider and an API client to communicate with other modules. 
+All participants must register on the Participant Registry with their API endpoints & public key. Each participant in the ecosystem may play the role of either being both or being one of an API Provider and an API Client to communicate with other modules. 
 
 ## Sample flow
 
@@ -30,7 +30,7 @@ Both particpants switch roles when the Provider needs to send a response back to
 
 ## Participant Onboarding
 
-1. Reach out to OCEN Registry administrators using an established channel (email, slack etc.) to get on boarded onto the OCEN ecosystem with following required details:
+1. Reach out to OCEN Registry administrators using an established channel (see FAQs for details) to get on boarded onto the OCEN ecosystem with following required details:
    - Participant Type
    - API Endpoint (base URL where other participants can call them)
    - Public Certificate Key

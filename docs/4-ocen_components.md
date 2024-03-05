@@ -14,7 +14,7 @@ The components of OCEN 4.0 are captured below. These include:
 
 2. **Heartbeat and Analytics service** This service enables intrumentation across the loan journey and the requests for performance monitoring on the network and to drive business analytics.
 
-3. **Credit Gurantees service:** Verifies eligibility of a borrower for a credit gurantee.
+3. **Credit Gurantees service:** Verifies eligibility of a borrower for a credit gurantee with CGTMSE.
 
 3. **OCEN 4.0 APIs** API specification for the participants to communicate with each other and the OCEN components.
 
