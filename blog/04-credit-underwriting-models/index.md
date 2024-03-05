@@ -57,8 +57,6 @@ Multiple credit models will evolve for underwriting a “Borrower or a Transacti
 
 Multiple parameters across above data sources can be used to quickly underwrite an Invoice by building a scoring model around parameters across a combination of data sources. 
 
-Here is an **Sample underwriting model** for an Invoice financing product to get started:
-
-![Underwriting Model](./underwriting_model.png)
+Here is a [Sample Underwriting Model](https://docs.google.com/spreadsheets/d/1HD8j70rDWeQaN8jzyxljPEVEzXubUORb) for an Invoice financing product to get started:
 
 OCEN 4.0 aims at bringing the Borrowers, Borrower Agents, Lenders, Derived Data Partners, Prediction Service Providers, Collection Agents, Escrow Agents on a single platform to facilitate the credit needs of short-term small-ticket loans for the underserved segment of borrowers who lack the access to credit. 

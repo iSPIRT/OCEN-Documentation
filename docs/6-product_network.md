@@ -13,7 +13,7 @@ OCEN 4.0 enables a network of product networks via with participants can discove
     - Loan agent 1 can serve their borrowers other products as well. 
 
 2. Network expands with *Product Network 2*
-    - Created by *Loan Agent 1* who onboards as network participants - 2 new lenders, the sanme disbursement partner, and a new derived data partner
+    - Created by *Loan Agent 1* who onboards as network participants - 2 new lenders, the same disbursement partner, and a new derived data partner
     - Loan agent 1 can continue to serve their borrowers other products as well. 
 
 3. Network expands with *Product Network 3*

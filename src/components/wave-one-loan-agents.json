@@ -4,6 +4,11 @@
         "image": "img/logos/aspire.png",
         "href": "https://www.letsaspire.in/"
     },
+		{
+			"name": "GetVantage",
+			"image": "img/logos/getvantage.png",
+			"href": "https://www.getvantage.co/"
+		},
     {
         "name": "Eko India Financial Services",
         "image": "img/logos/eko.svg",

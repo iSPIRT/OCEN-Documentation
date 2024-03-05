@@ -1,29 +1,17 @@
 import React, { useRef } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
-import { useSpring, animated } from 'react-spring';
 import Icons from '../../../../Icons';
 
 export type Props = {
   icon?: any;
   title: string;
-  description: string;
   onClick: () => void;
   active: boolean;
 };
 
 const SectionRightItem: React.FC<Props> = (props) => {
-  const { icon, title, description, onClick, active } = props;
-  const descriptionRef = useRef(null);
-
-  const animatedDescriptionProps = useSpring({
-    to: {
-      height: active ? (descriptionRef.current as any)?.clientHeight || 'auto' : 0,
-      marginTop: active ? 5 : 0,
-    },
-    config: { tension: 2000, friction: 100, precision: 1 },
-  });
-
+  const { icon, title, onClick, active } = props;
   return (
     <div
       className={clsx(styles.Container, {
@@ -34,11 +22,6 @@ const SectionRightItem: React.FC<Props> = (props) => {
         {icon && <Icons type={icon} className={styles.Icon} />}
         {title}
       </h3>
-      {/* <animated.div
-        className={styles.Description}
-        style={animatedDescriptionProps}>
-        <p ref={descriptionRef}>{description}</p>
-      </animated.div> */}
     </div>
   );
 };
