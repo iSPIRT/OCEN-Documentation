@@ -1,39 +1,28 @@
 import React from 'react';
-import styles from './styles.module.css';
 import SectionScroller, {
   SectionInterface,
 } from './SectionScroller';
 
 const sections: SectionInterface[] = [
   {
-    title: 'New Credit Enablement Network (OCEN)',
-    description: 'The introductory, first open house discussion on OCEN',
+    title: 'Introducing OCEN 4.0: Transforming MSME Lending',
     icon: 'zap',
-    source: 'https://www.youtube.com/embed/rcMx9UVRYWg',
+    source: 'https://www.youtube.com/embed/VH2XLXBB2Sc',
   },
   {
-    title: 'Varied LSP & Cashflow Lending Models',
-    description: 'Dynamically bind State to UI-Components for reactivity.',
-    icon: 'repeat',
-    source: 'https://www.youtube.com/embed/rNcEAYzke2w',
-  },
-  {
-    title: 'API Specifications',
-    description: 'Permanently store State in the appropriate local Storage.',
+    title: 'Deep Dive Into OCEN 4.0 Tech',
     icon: 'server',
-    source: 'https://www.youtube.com/embed/Mee9eq-t-nA',
+    source: 'https://www.youtube.com/embed/RKEFeACArIc',
   },
   {
-    title: 'Market Opportunities',
-    description: 'Permanently store State in the appropriate local Storage.',
+    title: 'OCEN 4.0: Intro to Borrower Agent Openhouse',
     icon: 'users',
-    source: 'https://www.youtube.com/embed/mWHh5fZeEgc',
+    source: 'https://www.youtube.com/embed/6X5yAYipGzA',
   },
   {
-    title: 'Credit Bureau Inquiry for Cash Flow based Sachet Loans',
-    description: 'Easily create a dynamic and reactive set of States.',
-    icon: 'edit',
-    source: 'https://www.youtube.com/embed/EKpi3e6Uoms',
+    title: 'OCEN 4.0: Intro to Lenders Openhouse',
+    icon: 'users',
+    source: 'https://www.youtube.com/embed/hVPThhubM7I',
   },
 ];
 
@@ -47,11 +36,6 @@ const HowItWorks: React.FC = () => {
               <h2 className="text-3xl leading-9 font-extrabold text-gray-900 md:text-4xl md:leading-10">
                 How it works
               </h2>
-              {/* <p className="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              </p> */}
             </div>
           </div>
           <SectionScroller sections={sections} startIndex={0} />

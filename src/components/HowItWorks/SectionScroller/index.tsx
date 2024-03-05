@@ -50,7 +50,6 @@ export function useWindowSize(): WindowSizeInterface {
 
 export interface SectionInterface {
   title: string;
-  description: string;
   icon?: any;
   source: string;
 }
@@ -141,7 +140,6 @@ const SectionScroller: React.FC<Props> = (props) => {
               <SectionRightItem
                 key={i}
                 title={section.title}
-                description={section.description}
                 onClick={() => {
                   setIndex(i);
                 }}

@@ -7,8 +7,8 @@ sidebar_position: 4
 The components of OCEN 4.0 are captured below. These include:
 
 1. **OCEN Registry:** OCEN Registry helps manage
-    * **Participants:** Manages all participants on OCEN
-    * **Products:** Manages all products on OCEN
+    * **Participant Registry:** Manages all participants on OCEN
+    * **Product Registry:** Manages all products on OCEN
     * **Product Network & Network Policies:** Manages the serving of the product via a network of participants via defined network policies
     * **Authentication:** Enables security on the platform by providing client credentials
 
@@ -16,6 +16,6 @@ The components of OCEN 4.0 are captured below. These include:
 
 3. **Credit Gurantees service:** Verifies eligibility of a borrower for a credit gurantee.
 
-3. **OCEN 4.0 APIs** API specification for the participants to communicate with each other and the OCEN components.
+4. **OCEN 4.0 APIs** API specification for the participants to communicate with each other and the OCEN components.
 
 ![OCEN Components](./_images/ocen_components.png "OCEN Components")
