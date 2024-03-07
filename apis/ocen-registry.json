@@ -1,0 +1,549 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.0.0",
+    "title": "OCEN Registry API",
+    "contact": {
+      "email": "community@ispirt.in",
+      "url": "https://ispirt.in/"
+    }
+  },
+  "paths": {
+    "/service/products/{id}": {
+      "get": {
+        "operationId": "getCreditProductByID",
+        "tags": [
+          "OCEN Registry API"
+        ],
+        "summary": "Lookup a product by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Product"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service/lender-network-filters/{id}": {
+      "get": {
+        "tags": [
+          "OCEN Registry API"
+        ],
+        "summary": "Lender Network Filter",
+        "description": "Lender NetworkFilter",
+        "operationId": "GetLenderNetworkFilterByID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Lender Network Filter ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LenderNetworkFilter"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/service/server-whitelisting-items/{id}": {
+      "get": {
+        "tags": [
+          "OCEN Registry API"
+        ],
+        "summary": "Server Whitelisting Item",
+        "description": "Server Whitelisting Item",
+        "operationId": "GetServerWhitelistingItemByID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ServerWhitelistingItem ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found ServerWhitelistingItem for given ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerWhitelistingItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "oAuth2Client": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://ocen.com/auth/oauth2/token/",
+            "scopes": {}
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ProductPartner": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "Network": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "partners": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductPartner"
+            }
+          }
+        }
+      },
+      "ProductField": {
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductPartnerWithData": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "status",
+          "version"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "creater": {
+            "type": "string"
+          },
+          "is_enable": {
+            "type": "boolean"
+          },
+          "is_private": {
+            "type": "boolean"
+          },
+          "approved_at": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "is_aa_required": {
+            "type": "boolean"
+          },
+          "dedupe": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "network": {
+            "$ref": "#/components/schemas/Network"
+          },
+          "lender": {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductPartner"
+                }
+              }
+            }
+          },
+          "loan_service": {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductPartner"
+                }
+              }
+            }
+          },
+          "benchmark_data": {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductPartner"
+                }
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductField"
+                }
+              }
+            }
+          },
+          "disbursement": {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductPartnerWithData"
+                }
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductField"
+                }
+              }
+            }
+          },
+          "collection": {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductPartner"
+                }
+              }
+            }
+          },
+          "collateral": {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductPartner"
+                }
+              }
+            }
+          },
+          "monitoring": {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductPartner"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ParticipantRole": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "participantRole": {
+            "type": "string",
+            "enum": [
+              "LENDER",
+              "LOAN_AGENT",
+              "DISBURSEMENT_PARTNER",
+              "COLLECTIONS_PARTNER",
+              "DERIVED_DATA_PARTNER",
+              "KYC_PARTNER",
+              "ADMIN",
+              "REGULATOR"
+            ]
+          },
+          "participantRoleStatus": {
+            "type": "string",
+            "enum": [
+              "APPLIED",
+              "UNDER_REVIEW",
+              "APPROVED",
+              "REJECTED"
+            ]
+          }
+        }
+      },
+      "CreditProduct": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "productCreatedBy": {
+            "$ref": "#/components/schemas/ParticipantRole"
+          }
+        }
+      },
+      "ProductNetwork": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productNetworkName": {
+            "type": "string"
+          },
+          "productNetworkDescription": {
+            "type": "string"
+          },
+          "participantRoles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParticipantRole"
+            }
+          },
+          "creditProduct": {
+            "$ref": "#/components/schemas/CreditProduct"
+          },
+          "networkCreatedBy": {
+            "$ref": "#/components/schemas/ParticipantRole"
+          }
+        }
+      },
+      "LenderNetworkFilter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "requirementName": {
+            "type": "string",
+            "enum": [
+              "BORROWER_TYPE",
+              "MINIMUM_TENURE",
+              "MAXIMUM_TENURE",
+              "MINIMUM_AMOUNT",
+              "MAXIMUM_AMOUNT",
+              "UNDERWRITING_PARAMETER",
+              "BUREAU_SCORE"
+            ]
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "EQUALS,",
+              "GREATER_THAN",
+              "LESS_THAN",
+              "GREATER_THAN_OR_EQUAL_TO",
+              "LESS_THAN_OR_EQUAL_TO",
+              "NOT_EQUALS"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "productNetwork": {
+            "$ref": "#/components/schemas/ProductNetwork"
+          },
+          "participantId": {
+            "$ref": "#/components/schemas/ParticipantRole"
+          }
+        }
+      },
+      "ServerWhitelistingItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ipAddress": {
+            "type": "string"
+          },
+          "portNumber": {
+            "type": "string"
+          },
+          "participantRole": {
+            "ref": "#/ParticipantRole"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    },
+    {
+      "oAuth2Client": []
+    }
+  ]
+}
