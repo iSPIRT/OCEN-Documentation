@@ -5,6 +5,12 @@ sidebar_position: 12
 # FAQs
 
 Following is a list of commonly asked questions around the OCEN 4.0 pilot.
+
+## Contact Channels
+
+#### What is the preferred channel for contacting OCEN 4.0 administrators?
+Please reach out to the team at contact@ocen.dev
+
 ## Product Creation and Registry
 
 #### What type of products are we looking to pilot on OCEN 4.0?

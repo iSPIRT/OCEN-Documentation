@@ -1,43 +1,8 @@
 [
     {
-        "name": "UGRO Capital",
-        "image": "img/logos/ugro.png",
-        "href": "https://www.ugrocapital.com/"
-    },
-    {
-        "name": "ICICI Bank",
-        "image": "img/logos/ICICI.png",
-        "href": "https://www.icicibank.com/"
-    },
-    {
         "name": "121 Finance",
         "image": "img/logos/121.png",
         "href": "https://121finance.com/"
-    },
-    {
-        "name": "TATA Capital",
-        "image": "img/logos/tata.jpeg",
-        "href": "https://www.tatacapital.com/"
-    },
-    {
-        "name": "Kotak",
-        "image": "img/logos/kotak.png",
-        "href": "https://www.kotak.com/en/home.html"
-    },
-    {
-        "name": "OXYZO",
-        "image": "img/logos/oxyzo.png",
-        "href": "https://www.oxyzo.in/"
-    },
-    {
-        "name": "CREDABLE",
-        "image": "img/logos/credable.png",
-        "href": "https://www.credable.in/"
-    },
-    {
-        "name": "Leanding Kart",
-        "image": "img/logos/lendingkart.jpeg",
-        "href": "https://www.lendingkart.com/"
     },
     {
         "name": "Aditya Birla Capital",
@@ -45,9 +10,39 @@
         "href": "https://www.adityabirlacapital.com/"
     },
     {
-        "name": "Samunnati",
-        "image": "img/logos/samunnati.png",
-        "href": "https://samunnati.com/"
+        "name": "AU Small Finance Bank",
+        "image": "img/logos/aubank.webp",
+        "href": "https://www.aubank.in/"
+    },
+    {
+        "name": "AXIS",
+        "image": "img/logos/axis.png",
+        "href": "https://www.axisbank.com/"
+    },
+    {
+        "name": "CREDABLE",
+        "image": "img/logos/credable.png",
+        "href": "https://www.credable.in/"
+    },
+    {
+        "name": "DMI Finance",
+        "image": "img/logos/dmi.jpeg",
+        "href": "https://www.dmifinance.in/"
+    },
+  	{
+				"name": "GetGrowth Capital",
+				"href": "https://getgrowthcapital.co/",
+				"image": "img/logos/getgrowthcapital.png"
+		},
+    {
+        "name": "ICICI Bank",
+        "image": "img/logos/ICICI.png",
+        "href": "https://www.icicibank.com/"
+    },
+    {
+        "name": "Kotak",
+        "image": "img/logos/kotak.png",
+        "href": "https://www.kotak.com/en/home.html"
     },
     {
         "name": "IIFL Finance",
@@ -55,19 +50,19 @@
         "href": "https://www.iifl.com/"
     },
     {
-        "name": "DMI Finance",
-        "image": "img/logos/dmi.jpeg",
-        "href": "https://www.dmifinance.in/"
+        "name": "Leanding Kart",
+        "image": "img/logos/lendingkart.jpeg",
+        "href": "https://www.lendingkart.com/"
     },
     {
-        "name": "Union Bank of India",
-        "image": "img/logos/unionbank.png",
-        "href": "https://www.unionbankofindia.co.in/english/home.aspx"
+        "name": "OXYZO",
+        "image": "img/logos/oxyzo.png",
+        "href": "https://www.oxyzo.in/"
     },
     {
-        "name": "AU Small Finance Bank",
-        "image": "img/logos/aubank.webp",
-        "href": "https://www.aubank.in/"
+        "name": "Samunnati",
+        "image": "img/logos/samunnati.png",
+        "href": "https://samunnati.com/"
     },
     {
         "name": "SIDBI",
@@ -75,13 +70,18 @@
         "href": "https://www.sidbi.in/en"
     },
     {
-        "name": "AXIS",
-        "image": "img/logos/axis.png",
-        "href": "https://www.axisbank.com/"
+        "name": "TATA Capital",
+        "image": "img/logos/tata.jpeg",
+        "href": "https://www.tatacapital.com/"
     },
-		{
-				"name": "GetGrowth Capital",
-				"href": "https://getgrowthcapital.co/",
-				"image": "img/logos/getgrowthcapital.png"
-		}
+    {
+        "name": "UGRO Capital",
+        "image": "img/logos/ugro.png",
+        "href": "https://www.ugrocapital.com/"
+    },
+    {
+        "name": "Union Bank of India",
+        "image": "img/logos/unionbank.png",
+        "href": "https://www.unionbankofindia.co.in/english/home.aspx"
+    }
 ]
