@@ -1110,6 +1110,7 @@
                   "response",
                   "productData",
                   "loanApplicationId",
+                  "loanApplicationStatus",
                   "kyc"
                 ],
                 "properties": {
@@ -1127,6 +1128,9 @@
                     "examples": [
                       "t8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                     ]
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "kyc": {
                     "$ref": "#/components/schemas/KYCDetails"
@@ -1241,7 +1245,8 @@
                   "metadata",
                   "productData",
                   "loanApplicationId",
-                  "kyc"
+                  "kyc",
+                  "loanApplicationStatus"
                 ],
                 "properties": {
                   "metadata": {
@@ -1252,6 +1257,9 @@
                   },
                   "loanApplicationId": {
                     "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
@@ -1303,7 +1311,7 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "loanApplicationIds"
+                  "loanApplicationId"
                 ],
                 "properties": {
                   "metadata": {
@@ -1368,7 +1376,8 @@
                   "productData",
                   "loanApplicationId",
                   "response",
-                  "loanAgreement"
+                  "loanAgreement",
+                  "loanApplicationStatus"
                 ],
                 "properties": {
                   "metadata": {
@@ -1382,6 +1391,9 @@
                   },
                   "loanApplicationId": {
                     "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "loanAgreement": {
                     "type": "object",
@@ -1448,7 +1460,7 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "loanApplicationIds",
+                  "loanApplicationId",
                   "credBlock"
                 ],
                 "properties": {
@@ -1531,7 +1543,9 @@
                   "metadata",
                   "productData",
                   "response",
-                  "credBlock"
+                  "credBlock",
+                  "loanApplicationStatus",
+                  "loanApplicationId"
                 ],
                 "properties": {
                   "metadata": {
@@ -1545,6 +1559,9 @@
                   },
                   "loanApplicationId": {
                     "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "credBlock": {
                     "type": "object",
@@ -1612,7 +1629,8 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "credBlock"
+                  "credBlock",
+                  "loanApplicationId"
                 ],
                 "properties": {
                   "metadata": {
@@ -1690,7 +1708,9 @@
                 "required": [
                   "metadata",
                   "productData",
-                  "response"
+                  "response",
+                  "loanApplicationId",
+                  "loanApplicationStatus"
                 ],
                 "properties": {
                   "metadata": {
@@ -1704,6 +1724,9 @@
                   },
                   "loanApplicationId": {
                     "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "credBlock": {
                     "type": "object",
@@ -1854,16 +1877,8 @@
                       "loanApplicationId": {
                         "type": "string"
                       },
-                      "loanStatus": {
-                        "type": "string",
-                        "enum": [
-                          "GRANTED",
-                          "REJECTED",
-                          "ACTIVE",
-                          "DEFAULTED",
-                          "OVERDUE",
-                          "ACTION_REQUIRED"
-                        ]
+                      "loanApplicationStatus": {
+                        "$ref": "#/components/schemas/LoanApplicationStatus"
                       },
                       "createdDate": {
                         "type": "string"
@@ -2014,6 +2029,7 @@
                   "productData",
                   "response",
                   "loanApplicationId",
+                  "loanApplicationStatus",
                   "plan",
                   "paymentMethod",
                   "useCollectionSupport"
@@ -2033,6 +2049,9 @@
                   },
                   "loanId": {
                     "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "plan": {
                     "$ref": "#/components/schemas/PaymentPlan"
@@ -2159,7 +2178,8 @@
                   "loanApplicationId",
                   "plan",
                   "paymentMethod",
-                  "useCollectionSupport"
+                  "useCollectionSupport",
+                  "loanApplicationStatus"
                 ],
                 "properties": {
                   "metadata": {
@@ -2173,6 +2193,9 @@
                   },
                   "loanApplicationId": {
                     "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "loanId": {
                     "type": "string"
@@ -2299,7 +2322,8 @@
                   "hasOtherWorkingCapitalAccount",
                   "isWorkingCapitalAccount",
                   "otherWorkingCapitalAccounts",
-                  "loanApplicationId"
+                  "loanApplicationId",
+                  "loanApplicationStatus"
                 ],
                 "properties": {
                   "metadata": {
@@ -2310,6 +2334,9 @@
                   },
                   "loanApplicationId": {
                     "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "loanId": {
                     "type": "string"
@@ -2443,6 +2470,8 @@
                   "metadata",
                   "productData",
                   "response",
+                  "loanApplicationId",
+                  "loanApplicationStatus",
                   "loanId",
                   "payment"
                 ],
@@ -2455,6 +2484,12 @@
                   },
                   "response": {
                     "$ref": "#/components/schemas/Response"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "loanId": {
                     "type": "string",
@@ -2572,6 +2607,8 @@
                 "required": [
                   "metadata",
                   "loanId",
+                  "loanApplicationId",
+                  "loanApplicationStatus",
                   "productData",
                   "payment",
                   "response"
@@ -2579,6 +2616,12 @@
                 "properties": {
                   "metadata": {
                     "$ref": "#/components/schemas/MetaData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string"
+                  },
+                  "loanApplicationStatus": {
+                    "$ref": "#/components/schemas/LoanApplicationStatus"
                   },
                   "loanId": {
                     "type": "string",
@@ -2708,7 +2751,8 @@
                   "productData",
                   "payment",
                   "response",
-                  "loanId"
+                  "loanId",
+                  "loanStatus"
                 ],
                 "properties": {
                   "metadata": {
@@ -2725,6 +2769,9 @@
                   },
                   "loanId": {
                     "type": "string"
+                  },
+                  "loanStatus": {
+                    "$ref": "#/components/schemas/LoanStatus"
                   }
                 }
               }
@@ -2832,7 +2879,8 @@
                   "productData",
                   "payment",
                   "response",
-                  "loanId"
+                  "loanId",
+                  "loanStatus"
                 ],
                 "properties": {
                   "metadata": {
@@ -2849,6 +2897,9 @@
                   },
                   "loanId": {
                     "type": "string"
+                  },
+                  "loanStatus": {
+                    "$ref": "#/components/schemas/LoanStatus"
                   }
                 }
               }
@@ -3054,15 +3105,7 @@
                     ]
                   },
                   "loanStatus": {
-                    "type": "string",
-                    "enum": [
-                      "GRANTED",
-                      "REJECTED",
-                      "ACTIVE",
-                      "DEFAULTED",
-                      "OVERDUE",
-                      "ACTION_REQUIRED"
-                    ]
+                    "$ref": "#/components/schemas/LoanStatus"
                   },
                   "createdDate": {
                     "type": "string"
@@ -3273,6 +3316,9 @@
                             "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
                           ]
                         },
+                        "loanStatus": {
+                          "$ref": "#/components/schemas/LoanStatus"
+                        },
                         "terms": {
                           "$ref": "#/components/schemas/LoanTerms"
                         }
@@ -3387,6 +3433,7 @@
                   "response",
                   "productData",
                   "loanId",
+                  "loanStatus",
                   "accountStatement"
                 ],
                 "properties": {
@@ -3401,6 +3448,9 @@
                   },
                   "loanId": {
                     "type": "string"
+                  },
+                  "loanStatus": {
+                    "$ref": "#/components/schemas/LoanStatus"
                   },
                   "accountStatement": {
                     "type": "array",
@@ -3544,16 +3594,7 @@
                     ]
                   },
                   "loanStatus": {
-                    "type": "string",
-                    "enum": [
-                      "GRANTED",
-                      "REJECTED",
-                      "ACTIVE",
-                      "DEFAULTED",
-                      "OVERDUE",
-                      "ACTION_REQUIRED",
-                      "COMPLETED"
-                    ]
+                    "$ref": "#/components/schemas/LoanStatus"
                   },
                   "createdDate": {
                     "type": "string"
@@ -5731,7 +5772,8 @@
           "pledgedDocuments",
           "guarantors",
           "applicants",
-          "terms"
+          "terms",
+          "loanApplicationStatus"
         ],
         "properties": {
           "createdDate": {
@@ -6701,6 +6743,24 @@
             "$ref": "#/components/schemas/ExtensibleData"
           }
         }
+      },
+      "LoanStatus": {
+        "type": "string",
+        "enum": [
+          "EMI_DUE",
+          "EMI_PAID",
+          "EMI_OVERDUE",
+          "EMI_WAIVED",
+          "LOAN_CLOSED",
+          "NPA",
+          "PARTIALLY_PAID",
+          "PRECLOSURE",
+          "SETTLEMENT_STARTED",
+          "SETTLEMENT_COMPLETED",
+          "SETTLEMENT_FAILED",
+          "SETTLEMENT_PAID",
+          "HEALTHY"
+        ]
       },
       "Transaction": {
         "type": "object",
