@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "http://http://analytics-dev.ocen.network/",
+      "url": "https://analytics-dev.ocen.network/",
       "description": "Heartbeat and Analytics Sandbox"
     }
   ],
