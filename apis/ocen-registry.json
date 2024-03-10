@@ -36,7 +36,7 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/Product"
+                      "$ref": "#/components/schemas/CreditProduct"
                     }
                   }
                 }
@@ -149,261 +149,6 @@
       }
     },
     "schemas": {
-      "ProductPartner": {
-        "type": "object",
-        "required": [
-          "id",
-          "type",
-          "name",
-          "status"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          }
-        }
-      },
-      "Network": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "description"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "partners": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductPartner"
-            }
-          }
-        }
-      },
-      "ProductField": {
-        "type": "object",
-        "required": [
-          "name",
-          "description"
-        ],
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        }
-      },
-      "ProductPartnerWithData": {
-        "type": "object",
-        "required": [
-          "id",
-          "type",
-          "name",
-          "status"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "data": {
-            "type": "object"
-          }
-        }
-      },
-      "Product": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "description",
-          "status",
-          "version"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "creater": {
-            "type": "string"
-          },
-          "is_enable": {
-            "type": "boolean"
-          },
-          "is_private": {
-            "type": "boolean"
-          },
-          "approved_at": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "is_aa_required": {
-            "type": "boolean"
-          },
-          "dedupe": {
-            "type": "object",
-            "properties": {
-              "source": {
-                "type": "object",
-                "properties": {
-                  "url": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "network": {
-            "$ref": "#/components/schemas/Network"
-          },
-          "lender": {
-            "type": "object",
-            "properties": {
-              "allowed": {
-                "type": "boolean"
-              },
-              "partners": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductPartner"
-                }
-              }
-            }
-          },
-          "loan_service": {
-            "type": "object",
-            "properties": {
-              "allowed": {
-                "type": "boolean"
-              },
-              "partners": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductPartner"
-                }
-              }
-            }
-          },
-          "benchmark_data": {
-            "type": "object",
-            "properties": {
-              "allowed": {
-                "type": "boolean"
-              },
-              "partners": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductPartner"
-                }
-              },
-              "fields": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductField"
-                }
-              }
-            }
-          },
-          "disbursement": {
-            "type": "object",
-            "properties": {
-              "allowed": {
-                "type": "boolean"
-              },
-              "partners": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductPartnerWithData"
-                }
-              },
-              "fields": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductField"
-                }
-              }
-            }
-          },
-          "collection": {
-            "type": "object",
-            "properties": {
-              "allowed": {
-                "type": "boolean"
-              },
-              "partners": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductPartner"
-                }
-              }
-            }
-          },
-          "collateral": {
-            "type": "object",
-            "properties": {
-              "allowed": {
-                "type": "boolean"
-              },
-              "partners": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductPartner"
-                }
-              }
-            }
-          },
-          "monitoring": {
-            "type": "object",
-            "properties": {
-              "allowed": {
-                "type": "boolean"
-              },
-              "partners": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductPartner"
-                }
-              }
-            }
-          }
-        }
-      },
       "ParticipantRole": {
         "type": "object",
         "properties": {
@@ -424,6 +169,12 @@
               "REGULATOR"
             ]
           },
+          "approvedBy": {
+            "type": "string"
+          },
+          "isApproved": {
+            "type": "boolean"
+          },
           "participantRoleStatus": {
             "type": "string",
             "enum": [
@@ -432,21 +183,60 @@
               "APPROVED",
               "REJECTED"
             ]
+          },
+          "participatingOrganization": {
+            "type": "object",
+            "ref": null
           }
         }
       },
       "CreditProduct": {
         "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
+          "name": {
+            "type": "string",
+            "maxLength": 35,
+            "description": "Name of product"
           },
           "productName": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 35,
+            "description": "Name of product"
           },
           "productCreatedBy": {
             "$ref": "#/components/schemas/ParticipantRole"
+          },
+          "productDescription": {
+            "type": "string",
+            "maxLength": 35,
+            "description": "Description of product."
+          },
+          "isPrivate": {
+            "type": "boolean"
+          },
+          "isEndUseControlled": {
+            "type": "boolean"
+          },
+          "isCollectionControlled": {
+            "type": "boolean"
+          },
+          "isAAFlowRequired": {
+            "type": "boolean"
+          },
+          "isMonitoringConsentRequired": {
+            "type": "boolean"
+          },
+          "isDerivedDataPartnerRequired": {
+            "type": "boolean"
+          },
+          "derivedDataDescription": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "Description of product."
           }
         }
       },
@@ -532,7 +322,7 @@
             "type": "string"
           },
           "participantRole": {
-            "ref": "#/ParticipantRole"
+            "ref": "./ParticipantRole.yaml"
           }
         }
       }
