@@ -11,7 +11,7 @@
   "paths": {
     "/service/products/{id}": {
       "get": {
-        "operationId": "getCreditProductByID",
+        "operationId": "getProductByID",
         "tags": [
           "OCEN Registry API"
         ],
