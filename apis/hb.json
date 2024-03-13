@@ -159,46 +159,6 @@
           }
         }
       }
-    },
-    "/ocen/v4/health": {
-      "get": {
-        "tags": [
-          "Health"
-        ],
-        "operationId": "healthCheck",
-        "responses": {
-          "200": {
-            "description": "{status:UP}",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseMessage"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
