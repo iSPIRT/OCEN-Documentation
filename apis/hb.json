@@ -1,0 +1,366 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Heartbeat and Analytics Service",
+    "contact": {
+      "name": "Ocen",
+      "email": "community@ispirt.in",
+      "url": "community@ispirt.in"
+    },
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://analytics-dev.ocen.network/",
+      "description": "Heartbeat and Analytics Sandbox"
+    }
+  ],
+  "paths": {
+    "/ocen/v4/metrics/lender/loanDisbursementMetric": {
+      "post": {
+        "tags": [
+          "Analytics API"
+        ],
+        "summary": "Submit Loan Disbursement Metrics",
+        "description": "Disbursement Metrics that will be pushed by Lender to Analytics Service. This API should be called by the Lender after it receives Trigger Disbursement request and it has successfully made a disbursement",
+        "operationId": "disbursementMetricRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanDisbursementAnalytics"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorised",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ocen/v4/event": {
+      "post": {
+        "tags": [
+          "Heartbeat API"
+        ],
+        "summary": "Submit Heartbeat Event",
+        "description": "Submit Hearbeat event to the service",
+        "operationId": "getEvent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HeartbeatEventRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorised",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ocen/v4/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "{status:UP}",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResponseMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "DisbursementMetrics": {
+        "required": [
+          "amount",
+          "interestRate",
+          "tenure"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "tenure": {
+            "$ref": "#/components/schemas/Tenure"
+          },
+          "interestRate": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "LoanDisbursementAnalytics": {
+        "required": [
+          "metrics"
+        ],
+        "type": "object",
+        "properties": {
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DisbursementMetrics"
+            }
+          }
+        }
+      },
+      "ProductData": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string"
+          },
+          "productNetworkId": {
+            "type": "string"
+          }
+        }
+      },
+      "Tenure": {
+        "type": "object",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Event": {
+        "required": [
+          "eventType",
+          "loanMetaData",
+          "requestId",
+          "timestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "eventType": {
+            "type": "string",
+            "description": "Heartbeat Event Types",
+            "enum": [
+              "LOAN_REQ",
+              "LOAN_RESP",
+              "CONSENT_REQ",
+              "CONSENT_RESP",
+              "LOAN_GEN_OFFER_REQ",
+              "LOAN_GEN_OFFER_RESP",
+              "LOAN_OFFER_REQ",
+              "LOAN_OFFER_RESP",
+              "TRIGGER_KYC_REQ",
+              "KYC_RESP",
+              "LOAN_ACCEPTANCE_REQ",
+              "LOAN_ACCEPTANCE_RESP",
+              "LOAN_REPAYMENT_REQ",
+              "LOAN_REPAYMENT_RESP",
+              "LOAN_REPAYMENT_CONF_RESP",
+              "LOAN_GRANT_REQ",
+              "LOAN_GRANT_RESP",
+              "LOAN_DISBURSMENT_REQ",
+              "LOAN_DISBURSMENT_RESP",
+              "LOAN_TRIGGER_DISBURSMENT_REQ",
+              "LOAN_TRIGGER_DISBURSMENT_RESP",
+              "LOAN_TRIGGER_REPAYMENT_REQ",
+              "LOAN_TRIGGER_COLLECTION_REQ"
+            ]
+          },
+          "requestId": {
+            "type": "string"
+          },
+          "loanMetaData": {
+            "$ref": "#/components/schemas/LoanMetaData"
+          },
+          "responseCode": {
+            "type": "integer",
+            "description": "Response Code when request was sent",
+            "format": "int32"
+          }
+        }
+      },
+      "HeartbeatEventRequest": {
+        "required": [
+          "event"
+        ],
+        "type": "object",
+        "properties": {
+          "event": {
+            "$ref": "#/components/schemas/Event"
+          }
+        }
+      },
+      "LoanMetaData": {
+        "required": [
+          "loanApplicationId",
+          "loanId",
+          "productData"
+        ],
+        "type": "object",
+        "properties": {
+          "loanApplicationId": {
+            "type": "string"
+          },
+          "loanId": {
+            "type": "string"
+          },
+          "productData": {
+            "$ref": "#/components/schemas/ProductData"
+          }
+        }
+      }
+    }
+  }
+}
