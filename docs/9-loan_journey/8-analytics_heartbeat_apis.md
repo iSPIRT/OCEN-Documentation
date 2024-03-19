@@ -2,12 +2,16 @@
 sidebar_position: 8
 ---
 
-# Heartbeat APIs
+# Stage: Heartbeat and Analytics APIs
+
+## Heartbeat APIs
 
 Lender and LA participants in the OCEN platform are expected to send Heartbeat APIs to the OCEN registry after every API call so that the registry can maintain the overall health of the loan product and the product network.
 
-## SubmitHearbeatEvent API
+### SubmitHearbeatEvent API
 
+| Heartbeat Event Type | Caller and Event Timing  |                                                                                 |
+| ------------ | -------------------- | 
 | LOAN_REQ | Sent by LA after Create Loan Application Request API |
 | LOAN_RESP | Sent by Lender after Create Loan Application Response API |
 | CONSENT_REQ | Sent by LA after Consent Handle Request API |
@@ -31,9 +35,9 @@ Lender and LA participants in the OCEN platform are expected to send Heartbeat A
 | LOAN_TRIGGER_REPAYMENT_REQ | Sent by LA after Trigger Repayment Request API |
 | LOAN_TRIGGER_COLLECTION_REQ | Sent by Lender after Trigger Repayment Response API |
 
-# Analytics APIs
+## Analytics APIs
 
 Lenders in the OCEN platform are expected to send Analytics to the OCEN registry after every disbursement action made by them. This API call ensures that the registry can maintain a high level metric on the amount disbursed by the platform.
 
-## SubmitLoanDisbursementMetrics API
+### SubmitLoanDisbursementMetrics API
 API call by Lender to the OCEN registry for sharing the disbursed amount, agreed tenure, and interest rate for the loan post-disbursement.
