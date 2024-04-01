@@ -52,6 +52,45 @@
         }
       }
     },
+    "/service/product-network/{id}/participants": {
+      "get": {
+        "tags": [
+          "OCEN Registry API"
+        ],
+        "summary": "Get Product Network Participants",
+        "description": "Get Product Network Participants",
+        "operationId": "GetProductNetworkParticipants",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ProductNetwork ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found Product Network Participants for given ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IndexedProductNetworkParticipants"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
     "/service/lender-network-filters/{id}": {
       "get": {
         "tags": [
@@ -237,6 +276,145 @@
             "type": "string",
             "maxLength": 1000,
             "description": "Description of product."
+          }
+        }
+      },
+      "ProductNetworkParticipantItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "participantRole": {
+            "type": "string",
+            "enum": [
+              "LENDER",
+              "LOAN_AGENT",
+              "DISBURSEMENT_PARTNER",
+              "COLLECTIONS_PARTNER",
+              "DERIVED_DATA_PARTNER",
+              "KYC_PARTNER",
+              "ADMIN",
+              "REGULATOR"
+            ]
+          },
+          "approvedBy": {
+            "type": "string"
+          },
+          "isApproved": {
+            "type": "boolean"
+          },
+          "participantRoleStatus": {
+            "type": "string",
+            "enum": [
+              "APPLIED",
+              "UNDER_REVIEW",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedOn": {
+            "type": "string",
+            "format": "timestamp"
+          },
+          "approvedOn": {
+            "type": "string",
+            "format": "timestamp"
+          },
+          "participant": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "participantName": {
+                "type": "string"
+              },
+              "participantDescription": {
+                "type": "string"
+              },
+              "participantLogo": {
+                "type": "string"
+              },
+              "participantLogoContentType": {
+                "type": "string"
+              },
+              "participantWebsite": {
+                "type": "string"
+              },
+              "participantEmail": {
+                "type": "string"
+              },
+              "participantPhone": {
+                "type": "string"
+              },
+              "createdOn": {
+                "type": "string",
+                "format": "timestamp"
+              },
+              "updatedOn": {
+                "type": "string",
+                "format": "timestamp"
+              }
+            }
+          }
+        }
+      },
+      "IndexedProductNetworkParticipants": {
+        "type": "object",
+        "properties": {
+          "LENDER": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
+          },
+          "LOAN_AGENT": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
+          },
+          "DISBURSEMENT_PARTNER": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
+          },
+          "COLLECTIONS_PARTNER": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
+          },
+          "DERIVED_DATA_PARTNER": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
+          },
+          "KYC_PARTNER": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
+          },
+          "ADMIN": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
+          },
+          "REGULATOR": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductNetworkParticipantItem"
+            }
           }
         }
       },
