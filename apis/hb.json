@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Heartbeat and Analytics Service",
+    "title": "OCEN Heartbeat and Analytics Service",
     "contact": {
       "name": "Ocen",
       "email": "community@ispirt.in",
@@ -11,15 +11,15 @@
   },
   "servers": [
     {
-      "url": "https://analytics-dev.ocen.network/",
-      "description": "Heartbeat and Analytics Sandbox"
+      "url": "http://analytics-dev.ocen.network",
+      "description": "Generated server url"
     }
   ],
   "paths": {
     "/ocen/v4/metrics/lender/loanDisbursementMetric": {
       "post": {
         "tags": [
-          "Analytics API"
+          "Lender API"
         ],
         "summary": "Submit Loan Disbursement Metrics",
         "description": "Disbursement Metrics that will be pushed by Lender to Analytics Service. This API should be called by the Lender after it receives Trigger Disbursement request and it has successfully made a disbursement",
@@ -254,28 +254,46 @@
             "description": "Heartbeat Event Types",
             "enum": [
               "LOAN_REQ",
+              "LOAN_REQ_ACK",
               "LOAN_RESP",
+              "LOAN_RESP_ACK",
               "CONSENT_REQ",
               "CONSENT_RESP",
               "LOAN_GEN_OFFER_REQ",
+              "LOAN_GEN_OFFER_REQ_ACK",
               "LOAN_GEN_OFFER_RESP",
+              "LOAN_GEN_OFFER_ACK",
               "LOAN_OFFER_REQ",
+              "LOAN_OFFER_REQ_ACK",
               "LOAN_OFFER_RESP",
+              "LOAN_OFFER_RESP_ACK",
               "TRIGGER_KYC_REQ",
+              "KYC_REQ",
               "KYC_RESP",
               "LOAN_ACCEPTANCE_REQ",
+              "LOAN_ACCEPTANCE_REQ_ACK",
               "LOAN_ACCEPTANCE_RESP",
-              "LOAN_REPAYMENT_REQ",
-              "LOAN_REPAYMENT_RESP",
-              "LOAN_REPAYMENT_CONF_RESP",
+              "LOAN_ACCEPTANCE_RESP_ACK",
+              "TRIGGER_LOAN_ACCEPTANCE_REQ",
+              "TRIGGER_LOAN_ACCEPTANCE_RESP",
               "LOAN_GRANT_REQ",
+              "LOAN_GRANT_REQ_ACK",
               "LOAN_GRANT_RESP",
-              "LOAN_DISBURSMENT_REQ",
-              "LOAN_DISBURSMENT_RESP",
-              "LOAN_TRIGGER_DISBURSMENT_REQ",
-              "LOAN_TRIGGER_DISBURSMENT_RESP",
+              "LOAN_GRANT_RESP_ACK",
+              "LOAN_REPAYMENT_REQ",
+              "LOAN_REPAYMENT_REQ_ACK",
+              "LOAN_REPAYMENT_RESP",
+              "LOAN_REPAYMENT_RESP_ACK",
+              "LOAN_DISBURSEMENT_REQ",
+              "LOAN_DISBURSEMENT_REQ_ACK",
+              "LOAN_DISBURSEMENT_RESP",
+              "LOAN_DISBURSEMENT_RESP_ACK",
+              "LOAN_TRIGGER_DISBURSEMENT_REQ",
+              "LOAN_TRIGGER_DISBURSEMENT_REQ_ACK",
+              "LOAN_TRIGGER_DISBURSEMENT_RESP",
+              "LOAN_TRIGGER_DISBURSEMENT_RESP_ACK",
               "LOAN_TRIGGER_REPAYMENT_REQ",
-              "LOAN_TRIGGER_COLLECTION_REQ"
+              "LOAN_TRIGGER_REPAYMENT_RESP"
             ]
           },
           "requestId": {
