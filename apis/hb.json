@@ -253,47 +253,51 @@
             "type": "string",
             "description": "Heartbeat Event Types",
             "enum": [
-              "LOAN_REQ",
-              "LOAN_REQ_ACK",
-              "LOAN_RESP",
-              "LOAN_RESP_ACK",
-              "CONSENT_REQ",
-              "CONSENT_RESP",
-              "LOAN_GEN_OFFER_REQ",
-              "LOAN_GEN_OFFER_REQ_ACK",
-              "LOAN_GEN_OFFER_RESP",
-              "LOAN_GEN_OFFER_ACK",
-              "LOAN_OFFER_REQ",
-              "LOAN_OFFER_REQ_ACK",
-              "LOAN_OFFER_RESP",
-              "LOAN_OFFER_RESP_ACK",
-              "TRIGGER_KYC_REQ",
-              "KYC_REQ",
-              "KYC_RESP",
-              "LOAN_ACCEPTANCE_REQ",
-              "LOAN_ACCEPTANCE_REQ_ACK",
-              "LOAN_ACCEPTANCE_RESP",
-              "LOAN_ACCEPTANCE_RESP_ACK",
-              "TRIGGER_LOAN_ACCEPTANCE_REQ",
-              "TRIGGER_LOAN_ACCEPTANCE_RESP",
-              "LOAN_GRANT_REQ",
-              "LOAN_GRANT_REQ_ACK",
-              "LOAN_GRANT_RESP",
-              "LOAN_GRANT_RESP_ACK",
-              "LOAN_REPAYMENT_REQ",
-              "LOAN_REPAYMENT_REQ_ACK",
-              "LOAN_REPAYMENT_RESP",
+              "CREATE_LOAN_APPLICATION_REQUEST",
+              "CREATE_LOAN_APPLICATION_REQUEST_ACK",
+              "CREATE_LOAN_APPLICATIONS_RESPONSE",
+              "CREATE_LOAN_APPLICATIONS_RESPONSE_ACK",
+              "CONSENT_HANDLE_REQUEST",
+              "CONSENT_HANDLE_RESPONSE",
+              "GENERATE_OFFERS_REQUEST",
+              "GENERATE_OFFERS_REQUEST_ACK",
+              "GENERATE_OFFERS_RESPONSE",
+              "GENERATE_OFFERS_RESPONSE_ACK",
+              "SEND_ADDITIONAL_DOCUMENTS_REQUEST",
+              "SEND_ADDITIONAL_DOCUMENTS_RESPONSE",
+              "SET_OFFERS_REQUEST",
+              "SET_OFFERS_REQUEST_ACK",
+              "SET_OFFERS_RESPONSE",
+              "SET_OFFERS_RESPONSE_ACK",
+              "GET_KYC_METHODS_REQUEST",
+              "GET_KYC_METHODS_RESPONSE",
+              "TRIGGER_KYC_REQUEST",
+              "TRIGGER_KYC_RESPONSE",
+              "LOAN_AGREEMENT_REQUEST",
+              "LOAN_AGREEMENT_REQUEST_ACK",
+              "LOAN_AGREEMENT_RESPONSE",
+              "LOAN_AGREEMENT_RESPONSE_ACK",
+              "TRIGGER_LOAN_ACCEPTANCE_REQUEST",
+              "TRIGGER_LOAN_ACCEPTANCE_RESPONSE",
+              "GRANT_LOAN_REQUEST",
+              "GRANT_LOAN_REQUEST_ACK",
+              "GRANT_LOAN_RESPONSE",
+              "GRANT_LOAN_RESPONSE_ACK",
+              "SET_REPAYMENT_PLAN_REQUEST",
+              "SET_REPAYMENT_PLAN_REQUEST_ACK",
+              "SET_REPAYMENT_PLAN_RESPONSE",
               "LOAN_REPAYMENT_RESP_ACK",
-              "LOAN_DISBURSEMENT_REQ",
-              "LOAN_DISBURSEMENT_REQ_ACK",
-              "LOAN_DISBURSEMENT_RESP",
-              "LOAN_DISBURSEMENT_RESP_ACK",
-              "LOAN_TRIGGER_DISBURSEMENT_REQ",
-              "LOAN_TRIGGER_DISBURSEMENT_REQ_ACK",
-              "LOAN_TRIGGER_DISBURSEMENT_RESP",
-              "LOAN_TRIGGER_DISBURSEMENT_RESP_ACK",
-              "LOAN_TRIGGER_REPAYMENT_REQ",
-              "LOAN_TRIGGER_REPAYMENT_RESP"
+              "SET_DISBURSEMENT_ACCOUNT_REQUEST",
+              "SET_DISBURSEMENT_ACCOUNT_REQUEST_ACK",
+              "SET_DISBURSEMENT_ACCOUNT_RESPONSE",
+              "SET_DISBURSEMENT_ACCOUNT_RESPONSE_ACK",
+              "TRIGGER_DISBURSEMENT_REQUEST",
+              "TRIGGER_DISBURSEMENT_REQUEST_ACK",
+              "TRIGGER_DISBURSEMENT_RESPONSE",
+              "TRIGGER_DISBURSEMENT_RESPONSE_ACK",
+              "TRIGGER_REPAYMENT_REQUEST",
+              "TRIGGER_REPAYMENT_RESPONSE",
+              "CONFIRM_REPAYMENT_REQUEST"
             ]
           },
           "requestId": {
@@ -302,10 +306,12 @@
           "loanMetaData": {
             "$ref": "#/components/schemas/LoanMetaData"
           },
-          "responseCode": {
-            "type": "integer",
-            "description": "Response Code when request was sent",
-            "format": "int32"
+          "recipients": {
+            "type": "array",
+            "description": "Information to whom request was sent to and the response received with message",
+            "items": {
+              "$ref": "#/components/schemas/Recipient"
+            }
           }
         }
       },
@@ -337,7 +343,24 @@
           "productData": {
             "$ref": "#/components/schemas/ProductData"
           }
-        }
+        },
+        "description": "Information about the Loan"
+      },
+      "Recipient": {
+        "type": "object",
+        "properties": {
+          "roleId": {
+            "type": "string"
+          },
+          "responseCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "responseMessage": {
+            "type": "string"
+          }
+        },
+        "description": "Information to whom request was sent to and the response received with message"
       }
     }
   }
