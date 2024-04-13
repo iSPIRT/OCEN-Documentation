@@ -129,6 +129,48 @@
           }
         }
       }
+    },
+    "/service/participant-roles/server-whitelisting-items/{participantRoleId}": {
+      "get": {
+        "tags": [
+          "OCEN Registry API"
+        ],
+        "summary": "Server Whitelisting Items by ParticipantRoleIDs",
+        "description": "Server Whitelisting Items by ParticipantRoleIDs",
+        "operationId": "GetServerWhitelistingItemsByParticipantRoleID",
+        "parameters": [
+          {
+            "name": "participantRoleId",
+            "in": "path",
+            "description": "Participant Role ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found ServerWhitelistingItems for given Participant Role ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ServerWhitelistingItem"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -184,9 +226,8 @@
               "REJECTED"
             ]
           },
-          "participatingOrganization": {
-            "type": "object",
-            "ref": null
+          "publicKey": {
+            "type": "string"
           }
         }
       },
@@ -322,7 +363,8 @@
             "type": "string"
           },
           "participantRole": {
-            "ref": "./ParticipantRole.yaml"
+            "type": "object",
+            "$ref": "#/components/schemas/ParticipantRole"
           }
         }
       }
