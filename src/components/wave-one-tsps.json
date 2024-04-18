@@ -23,5 +23,10 @@
 			"name": "Finagg",
 			"image": "img/logos/finagg.png",
 			"href": "https://finagg.in/"
+		},
+		{
+			"name": "Ignosis",
+			"image": "img/logos/ignosis.png",
+			"href": "https://ignosis.ai/"
 		}
 ]
