@@ -52,7 +52,7 @@
         }
       }
     },
-    "/service/product-network/{id}/participants": {
+    "/service/product-networks/{id}/participants": {
       "get": {
         "tags": [
           "OCEN Registry API"
@@ -133,7 +133,7 @@
         "tags": [
           "OCEN Registry API"
         ],
-        "summary": "Server Whitelisting Item",
+        "summary": "Get Server Whitelisting Item By ID",
         "description": "Get Server Whitelisting Item By ID",
         "operationId": "GetServerWhitelistingItemByID",
         "parameters": [
@@ -173,6 +173,7 @@
           "OCEN Registry API"
         ],
         "summary": "Get Server Whitelisting Items by ParticipantRoleIDs",
+        "description": "Get Server Whitelisting Items by ParticipantRoleIDs",
         "operationId": "GetServerWhitelistingItemsByParticipantRoleID",
         "parameters": [
           {
