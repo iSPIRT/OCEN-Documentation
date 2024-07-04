@@ -188,6 +188,191 @@
         }
       }
     },
+    "/v4.0.0alpha/loanApplications/getAdditionalPledgedDocumentsRequest": {
+      "post": {
+        "tags": [
+          "Offers"
+        ],
+        "summary": "Get Additional Pledged Documents Request",
+        "description": "This API will be invoked by the Lender to pull any additional documents available. The hasAdditionalDocuments flag in the pledgedDocuments object of the loan application will be set to true if there are any additional documents available.",
+        "operationId": "GetAdditionalPledgedDocumentsRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "description": "UUID for the loan application.",
+                    "examples": [
+                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb1e1b4"
+                    ]
+                  },
+                  "requestedDocumentPagination": {
+                    "type": "object",
+                    "properties": {
+                      "pageNumber": {
+                        "type": "integer",
+                        "description": "Page number to be fetched.",
+                        "examples": [
+                          1
+                        ]
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "description": "Number of documents to be fetched per page.",
+                        "examples": [
+                          10
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/loanApplications/getAdditionalPledgedDocumentsResponse": {
+      "post": {
+        "tags": [
+          "Offers"
+        ],
+        "summary": "Get Additional Pledged Documents Response",
+        "description": "This API will be invoked by the Loan Agent to push additional documents available againgst the loan application in a paginated manner as requested by the Lender.",
+        "operationId": "GetAdditionalPledgedDocumentsResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanApplicationId"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanApplicationId": {
+                    "type": "string",
+                    "description": "UUID for the loan application.",
+                    "examples": [
+                      "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb1e1b4"
+                    ]
+                  },
+                  "requestedDocumentPagination": {
+                    "type": "object",
+                    "properties": {
+                      "pageNumber": {
+                        "type": "integer",
+                        "description": "Page number to be fetched.",
+                        "examples": [
+                          1
+                        ]
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "description": "Number of documents to be fetched per page.",
+                        "examples": [
+                          10
+                        ]
+                      },
+                      "totalDocumentCount": {
+                        "type": "integer",
+                        "description": "Total number of documents available.",
+                        "examples": [
+                          100
+                        ]
+                      }
+                    }
+                  },
+                  "pledgedDocuments": {
+                    "type": "object",
+                    "required": [
+                      "totalDocumentCount",
+                      "hasAdditionalDocuments",
+                      "documents"
+                    ],
+                    "totalDocumentCount": {
+                      "type": "integer"
+                    },
+                    "hasAdditionalDocuments": {
+                      "type": "boolean"
+                    },
+                    "documents": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "./Document.yaml"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v4.0.0alpha/consent/consentHandleRequest": {
       "post": {
         "tags": [
@@ -5139,6 +5324,12 @@
           "data"
         ],
         "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "docref12"
+            ]
+          },
           "source": {
             "type": "string",
             "default": "",
@@ -5148,7 +5339,8 @@
               "FIP",
               "FSR",
               "FIU",
-              "USER"
+              "USER",
+              "OTHER"
             ]
           },
           "sourceIdentifier": {
@@ -5164,7 +5356,9 @@
               "DOC",
               "IMAGE",
               "CSV",
-              "XML"
+              "XML",
+              "PDF",
+              "URL"
             ]
           },
           "reference": {
@@ -6323,6 +6517,12 @@
             "examples": [
               "e8cc6822bd4bbb4eb1b9e1b4996fbff8acb"
             ]
+          },
+          "isMappedtoDocument": {
+            "type": "boolean"
+          },
+          "documentId": {
+            "type": "string"
           },
           "validTill": {
             "type": "string",
