@@ -332,16 +332,18 @@
                       "hasAdditionalDocuments",
                       "documents"
                     ],
-                    "totalDocumentCount": {
-                      "type": "integer"
-                    },
-                    "hasAdditionalDocuments": {
-                      "type": "boolean"
-                    },
-                    "documents": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "./Document.yaml"
+                    "properties": {
+                      "totalDocumentCount": {
+                        "type": "integer"
+                      },
+                      "hasAdditionalDocuments": {
+                        "type": "boolean"
+                      },
+                      "documents": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Document"
+                        }
                       }
                     }
                   }
