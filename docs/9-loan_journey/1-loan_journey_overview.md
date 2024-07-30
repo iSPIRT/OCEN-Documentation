@@ -11,6 +11,7 @@ The steps in the lending jounery can be categorized into the following stages.
 * **Stages 3-5:** *Loan application prep* to *Offer selection to disbursement*, happen in sequence and depict the core loan application processing steps and involve the LA and Lender.
 * **Stage 6:** *Post-disbursement*, varies for different products based on how collections are setup.
 * **Stage 7:** *Partner APIs*, is the colection of APIs used by Lenders with other participants outside of LA.
+* **Stage 8:** *Heartbeat and Analytics APIs*, is the colection of APIs that LA and Lender participants must call for the OCEN registry to maintain the overall network health.
 
 | # | Stage | Explanation |
 |-------|-------|---------|
@@ -21,3 +22,4 @@ The steps in the lending jounery can be categorized into the following stages.
 | 5 | **Offer selection to disbursement** | APIs for offer selection, KYC, agreement, repayment and disbursement |
 | 6 | **Post-disbursement** | APIs for steps post-disbursement. Eg: Repayment, Loan Details, Collections |
 | 7 | **Partner APIs** | APIs involving partners (DDP, KYC, Collections, Disbursement partners) |
+| 7 | **Heartbeat and Analytics APIs** | APIs for maintaining the health of the network |
