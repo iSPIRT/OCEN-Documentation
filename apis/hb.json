@@ -208,6 +208,12 @@
           "productData": {
             "$ref": "#/components/schemas/ProductData"
           },
+          "loanId": {
+            "type": "string"
+          },
+          "loanApplicationId": {
+            "type": "string"
+          },
           "metrics": {
             "type": "array",
             "items": {
@@ -218,6 +224,10 @@
       },
       "ProductData": {
         "type": "object",
+        "required": [
+          "productId",
+          "productNetworkId"
+        ],
         "properties": {
           "productId": {
             "type": "string"
@@ -403,6 +413,11 @@
       },
       "Recipient": {
         "type": "object",
+        "required": [
+          "roleId",
+          "responseCode",
+          "responseMessage"
+        ],
         "properties": {
           "roleId": {
             "type": "string"

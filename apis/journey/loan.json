@@ -6184,16 +6184,18 @@
               "hasAdditionalDocuments",
               "documents"
             ],
-            "totalDocumentCount": {
-              "type": "integer"
-            },
-            "hasAdditionalDocuments": {
-              "type": "boolean"
-            },
-            "documents": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/Document"
+            "properties": {
+              "totalDocumentCount": {
+                "type": "integer"
+              },
+              "hasAdditionalDocuments": {
+                "type": "boolean"
+              },
+              "documents": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Document"
+                }
               }
             }
           },
@@ -6230,7 +6232,9 @@
               }
             }
           },
-          "extensibleData": "./ExtensibleData.yaml"
+          "extensibleData": {
+            "$ref": "#/components/schemas/ExtensibleData"
+          }
         }
       },
       "Ack": {
