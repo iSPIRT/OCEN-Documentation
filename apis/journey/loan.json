@@ -375,193 +375,6 @@
         }
       }
     },
-    "/v4.0.0alpha/repayment/repaymentConditionChangeRequest": {
-      "post": {
-        "tags": [
-          "Repayment Condition Change Request"
-        ],
-        "summary": "Repayment Condition Change Request",
-        "description": "This api is used by the LoanAgent to inform the Lender that the underlying contract on which Lien was marked has undergone a change. Hence the repayment date might be changed or any other data related to the contract has changed.",
-        "operationId": "repaymentConditionChangeRequest",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanId",
-                  "repaymentConditionUpdate"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  },
-                  "repaymentConditionUpdate": {
-                    "type": "object",
-                    "required": [
-                      "changedCondition",
-                      "repaymentDate",
-                      "amount"
-                    ],
-                    "properties": {
-                      "changedCondition": {
-                        "type": "string",
-                        "enum": [
-                          "DATE_CHANGED",
-                          "AMOUNT_CHANGED",
-                          "RESTRUCTURED_DATE_AND_AMOUNT",
-                          "CANCELLED",
-                          "ON_HOLD",
-                          "OTHER"
-                        ]
-                      },
-                      "repaymentDate": {
-                        "type": "string",
-                        "format": "date"
-                      },
-                      "amount": {
-                        "type": "number",
-                        "format": "double"
-                      },
-                      "documents": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/components/schemas/Document"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v4.0.0alpha/repayment/repaymentConditionChangeResponse": {
-      "post": {
-        "tags": [
-          "Repayment Condition Change Response"
-        ],
-        "summary": "Repayment Condition Change Response",
-        "description": "This api is used by the Lender to inform the LoanAgent about the status of the Repayment Condition Change Request. If the lender rejects the request, the loan contract remains unchanged and the Loan Agent must inform the borrower to pay the amount on due date.",
-        "operationId": "repaymentConditionChangeResponse",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "metadata",
-                  "productData",
-                  "loanId",
-                  "repaymentConditionUpdate"
-                ],
-                "properties": {
-                  "metadata": {
-                    "$ref": "#/components/schemas/MetaData"
-                  },
-                  "productData": {
-                    "$ref": "#/components/schemas/ProductData"
-                  },
-                  "loanId": {
-                    "type": "string"
-                  },
-                  "repaymentConditionUpdate": {
-                    "type": "object",
-                    "required": [
-                      "changedCondition",
-                      "repaymentDate",
-                      "amount",
-                      "status"
-                    ],
-                    "properties": {
-                      "changedCondition": {
-                        "type": "string",
-                        "enum": [
-                          "DATE_CHANGED",
-                          "AMOUNT_CHANGED",
-                          "RESTRUCTURED_DATE_AND_AMOUNT",
-                          "CANCELLED",
-                          "ON_HOLD",
-                          "OTHER"
-                        ]
-                      },
-                      "repaymentDate": {
-                        "type": "string",
-                        "format": "date"
-                      },
-                      "amount": {
-                        "type": "number",
-                        "format": "double"
-                      },
-                      "status": {
-                        "type": "string",
-                        "enum": [
-                          "ACCEPTED",
-                          "REJECTED",
-                          "PARTIALLY_ACCEPTED"
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Acknowledgement of Request Received",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Ack"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v4.0.0alpha/consent/consentHandleRequest": {
       "post": {
         "tags": [
@@ -3303,6 +3116,193 @@
         }
       }
     },
+    "/v4.0.0alpha/repayment/repaymentConditionChangeRequest": {
+      "post": {
+        "tags": [
+          "Trigger Repayment"
+        ],
+        "summary": "Repayment Condition Change Request",
+        "description": "This api is used by the LoanAgent to inform the Lender that the underlying contract on which Lien was marked has undergone a change. Hence the repayment date might be changed or any other data related to the contract has changed.",
+        "operationId": "repaymentConditionChangeRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanId",
+                  "repaymentConditionUpdate"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "repaymentConditionUpdate": {
+                    "type": "object",
+                    "required": [
+                      "changedCondition",
+                      "repaymentDate",
+                      "amount"
+                    ],
+                    "properties": {
+                      "changedCondition": {
+                        "type": "string",
+                        "enum": [
+                          "DATE_CHANGED",
+                          "AMOUNT_CHANGED",
+                          "RESTRUCTURED_DATE_AND_AMOUNT",
+                          "CANCELLED",
+                          "ON_HOLD",
+                          "OTHER"
+                        ]
+                      },
+                      "repaymentDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "documents": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Document"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v4.0.0alpha/repayment/repaymentConditionChangeResponse": {
+      "post": {
+        "tags": [
+          "Trigger Repayment"
+        ],
+        "summary": "Repayment Condition Change Response",
+        "description": "This api is used by the Lender to inform the LoanAgent about the status of the Repayment Condition Change Request. If the lender rejects the request, the loan contract remains unchanged and the Loan Agent must inform the borrower to pay the amount on due date.",
+        "operationId": "repaymentConditionChangeResponse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "metadata",
+                  "productData",
+                  "loanId",
+                  "repaymentConditionUpdate"
+                ],
+                "properties": {
+                  "metadata": {
+                    "$ref": "#/components/schemas/MetaData"
+                  },
+                  "productData": {
+                    "$ref": "#/components/schemas/ProductData"
+                  },
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "repaymentConditionUpdate": {
+                    "type": "object",
+                    "required": [
+                      "changedCondition",
+                      "repaymentDate",
+                      "amount",
+                      "status"
+                    ],
+                    "properties": {
+                      "changedCondition": {
+                        "type": "string",
+                        "enum": [
+                          "DATE_CHANGED",
+                          "AMOUNT_CHANGED",
+                          "RESTRUCTURED_DATE_AND_AMOUNT",
+                          "CANCELLED",
+                          "ON_HOLD",
+                          "OTHER"
+                        ]
+                      },
+                      "repaymentDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "ACCEPTED",
+                          "REJECTED",
+                          "PARTIALLY_ACCEPTED"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledgement of Request Received",
+            "headers": {
+              "X-Rate-Limit": {
+                "description": "calls per hour allowed by the user",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v4.0.0alpha/repayment/confirmRepaymentRequest": {
       "post": {
         "tags": [
@@ -5491,6 +5491,14 @@
           "LOAN_AGREEMENT_INITIATED",
           "LOAN_AGREEMENT_COMPLETED",
           "LOAN_AGREEMENT_FAILED",
+          "REPAYMENT_SETUP_INITIATED",
+          "REPAYMENT_SETUP_COMPLETED",
+          "REPAYMENT_SETUP_FAILED",
+          "REPAYMENT_SETUP_REJECTED",
+          "SET_DISBURSEMENT_ACCOUNT_INITIATED",
+          "SET_DISBURSEMENT_ACCOUNT_COMPLETED",
+          "SET_DISBURSEMENT_ACCOUNT_FAILED",
+          "SET_DISBURSEMENT_ACCOUNT_REJECTED",
           "GRANTED",
           "REJECTED",
           "ACTION_REQUIRED",
@@ -6170,9 +6178,25 @@
             "$ref": "#/components/schemas/LoanApplicationStatus"
           },
           "pledgedDocuments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Document"
+            "type": "object",
+            "required": [
+              "totalDocumentCount",
+              "hasAdditionalDocuments",
+              "documents"
+            ],
+            "properties": {
+              "totalDocumentCount": {
+                "type": "integer"
+              },
+              "hasAdditionalDocuments": {
+                "type": "boolean"
+              },
+              "documents": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Document"
+                }
+              }
             }
           },
           "borrower": {
@@ -6208,7 +6232,9 @@
               }
             }
           },
-          "extensibleData": "./ExtensibleData.yaml"
+          "extensibleData": {
+            "$ref": "#/components/schemas/ExtensibleData"
+          }
         }
       },
       "Ack": {
