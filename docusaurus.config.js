@@ -128,6 +128,10 @@ const config = {
                 label: 'Twitter',
                 href: 'https://twitter.com/India_Stack',
               },
+              {
+                label: 'Developer Community',
+                href: 'https://pn.ispirt.in/developer-community-for-ocen/'
+              },
             ],
           },
           {
