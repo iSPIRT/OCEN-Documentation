@@ -19,14 +19,20 @@
         "image": "img/logos/credall.jpeg",
         "href": "https://www.credall.org/index.html"
     },
-		{
-			"name": "Finagg",
-			"image": "img/logos/finagg.png",
-			"href": "https://finagg.in/"
-		},
-		{
-			"name": "Ignosis",
-			"image": "img/logos/ignosis.png",
-			"href": "https://ignosis.ai/"
-		}
+    {
+	"name": "Finagg",
+	"image": "img/logos/finagg.png",
+	"href": "https://finagg.in/"
+    },
+    {
+	"name": "Ignosis",
+	"image": "img/logos/ignosis.png",
+	"href": "https://ignosis.ai/"
+    },
+    {
+        "name": "Perfios Software Solutions Private Ltd",
+        "image": "img/logos/perfios.jpg",
+        "href": "https://www.perfios.com/"
+    }
+	
 ]
