@@ -955,6 +955,27 @@
                   },
                   "offer": {
                     "$ref": "#/components/schemas/Offer"
+                  },
+                  "consents": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "consentType": {
+                          "type": "string"
+                        },
+                        "consentStatus": {
+                          "type": "string"
+                        },
+                        "consentTimestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "consentMessage": {
+                          "type": "string"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -1019,27 +1040,6 @@
                   },
                   "loanApplicationStatus": {
                     "$ref": "#/components/schemas/LoanApplicationStatus"
-                  },
-                  "consents": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "consentType": {
-                          "type": "string"
-                        },
-                        "consentStatus": {
-                          "type": "string"
-                        },
-                        "consentTimestamp": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "consentMessage": {
-                          "type": "string"
-                        }
-                      }
-                    }
                   },
                   "extensibleData": {
                     "$ref": "#/components/schemas/ExtensibleData"
