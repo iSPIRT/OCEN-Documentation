@@ -1178,7 +1178,9 @@
                             "enum": [
                               "CKYC",
                               "UDYAM",
-                              "OFFLINE_AADHAAR"
+                              "OFFLINE_AADHAAR",
+                              "VKYC",
+                              "OFFLINE"
                             ]
                           }
                         }
@@ -1195,7 +1197,9 @@
                               "CKYC",
                               "UDYAM",
                               "OFFLINE_AADHAAR",
-                              "AADHAR_EKYC"
+                              "AADHAR_EKYC",
+                              "VKYC",
+                              "OFFLINE"
                             ]
                           }
                         }
@@ -6206,7 +6210,10 @@
               "documents"
             ],
             "totalDocumentCount": {
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                1
+              ]
             },
             "hasAdditionalDocuments": {
               "type": "boolean"
@@ -6391,7 +6398,9 @@
                 "enum": [
                   "CKYC",
                   "UDYAM",
-                  "OFFLINE_AADHAAR"
+                  "OFFLINE_AADHAAR",
+                  "VKYC",
+                  "OFFLINE"
                 ]
               },
               "scale": {
@@ -6466,7 +6475,9 @@
                 "enum": [
                   "CKYC",
                   "UDYAM",
-                  "OFFLINE_AADHAAR"
+                  "OFFLINE_AADHAAR",
+                  "VKYC",
+                  "OFFLINE"
                 ]
               },
               "name": {
@@ -6504,13 +6515,23 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "REDIRECT"
+                  "REDIRECT",
+                  "OFFLINE"
                 ]
               },
               "data": {
                 "type": "object",
                 "properties": {
                   "url": {
+                    "type": "string"
+                  },
+                  "offlineDisplayDataFormat": {
+                    "enum": [
+                      "TEXT",
+                      "HTML"
+                    ]
+                  },
+                  "offlineDisplayData": {
                     "type": "string"
                   }
                 }
