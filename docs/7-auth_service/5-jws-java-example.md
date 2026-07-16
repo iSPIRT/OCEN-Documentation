@@ -84,3 +84,101 @@ public static void parseSignature(String detachedSignature, byte[] payload, RsaJ
     }
 }
 ```
+
+# Node.js based Example for verifying signatures
+
+```
+const { JWS, JWK } = require('jose');
+const { Writable } = require('stream');
+
+class ReactiveResponseSigner {
+    constructor(response, key) {
+        this.response = response;
+        this.key = key; 
+    }
+
+    // Method to sign the payload before sending the response
+    writeWith(payloadStream, detached = true) {
+        const buffers = [];
+
+        // Collect the payload data from the stream
+        payloadStream.on('data', (chunk) => {
+            buffers.push(chunk);
+        });
+
+        // Once all data is collected, sign the payload and send the response
+        payloadStream.on('end', async () => {
+            try {
+                const payload = Buffer.concat(buffers);
+                const signature = await this.sign(payload, detached);
+
+                // Set the signature in the response headers
+                this.response.setHeader('Signature', signature);
+
+                // Write the original payload to the response
+                this.response.write(payload);
+                this.response.end();
+            } catch (error) {
+                console.error('Error signing response:', error);
+                this.response.statusCode = 500;
+                this.response.end('Internal Server Error');
+            }
+        });
+    }
+
+    // Method to sign the payload
+    async sign(payload, detached) {
+        // Create the JWS signer with the payload
+        const signer = new JWS.Sign(payload);
+        
+        // Set the algorithm and key to be used for signing
+        signer.recipient(this.key, { alg: 'RS256', b64: !detached });
+
+        // If detached, return the detached JWS; otherwise, return the full JWS
+        if (detached) {
+            return signer.sign('compact', { detached: true });
+        } else {
+            return signer.sign('compact');
+        }
+    }
+}
+
+module.exports = ReactiveResponseSigner;
+
+```
+
+Usage Example in Express.js
+
+```
+const express = require('express');
+const { JWK } = require('jose');
+const ReactiveResponseSigner = require('./ReactiveResponseSigner');
+
+const app = express();
+
+// JSON Web Key (JWK) 
+const jwk = JWK.generateSync('RSA', 2048, { alg: 'RS256', use: 'sig' });
+
+app.use((req, res, next) => {
+    
+    const signer = new ReactiveResponseSigner(res, jwk);
+
+    // Mock payload stream 
+    const payloadStream = new Writable({
+        write(chunk, encoding, callback) {
+            callback(); // No-op, this is a mock stream
+        }
+    });
+
+    // Simulate the end of the payload with some content
+    payloadStream.end(Buffer.from(JSON.stringify({ message: "Hello, World!" })));
+
+    // Use the signer's writeWith method to sign and send the response
+    signer.writeWith(payloadStream);
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
+```
