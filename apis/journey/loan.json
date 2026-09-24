@@ -6643,6 +6643,7 @@
             "type": "string",
             "enum": [
               "ACTIVE",
+              "INITIATED",
               "INACTIVE",
               "PENDING_AUTH"
             ]
